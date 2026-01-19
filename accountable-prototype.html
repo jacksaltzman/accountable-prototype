@@ -2855,12 +2855,221 @@
             }
         }
 
+        // ==========================================
+        // TAX DATA BY YEAR
+        // ==========================================
+
+        const taxDataByYear = {
+            2019: {
+                totalTax: 21650,
+                incomeTax: 11890,
+                payrollTax: 9760,
+                categories: [
+                    { id: 'social-security', name: 'Social Security', amount: 4763, percent: 22, description: 'Retirement, survivors, and disability benefits' },
+                    { id: 'health', name: 'Health', amount: 3897, percent: 18, description: 'Medicare, Medicaid, and public health programs' },
+                    { id: 'defense', name: 'National Defense', amount: 3465, percent: 16, description: 'Military operations, personnel, and equipment' },
+                    { id: 'income-security', name: 'Income Security', amount: 2382, percent: 11, description: 'Unemployment, food assistance, housing, and disability' },
+                    { id: 'interest', name: 'Net Interest', amount: 1733, percent: 8, description: 'Interest payments on the national debt' },
+                    { id: 'veterans', name: 'Veterans Benefits', amount: 1083, percent: 5, description: 'Healthcare, compensation, and services for veterans' },
+                    { id: 'education', name: 'Education', amount: 866, percent: 4, description: 'K-12, higher education, and student aid programs' },
+                    { id: 'transportation', name: 'Transportation', amount: 649, percent: 3, description: 'Highways, aviation, rail, and transit systems' },
+                    { id: 'other', name: 'All Other', amount: 2812, percent: 13, description: 'Science, agriculture, justice, international affairs, and more' }
+                ]
+            },
+            2020: {
+                totalTax: 22340,
+                incomeTax: 12280,
+                payrollTax: 10060,
+                categories: [
+                    { id: 'social-security', name: 'Social Security', amount: 4915, percent: 22, description: 'Retirement, survivors, and disability benefits' },
+                    { id: 'health', name: 'Health', amount: 4021, percent: 18, description: 'Medicare, Medicaid, and public health programs' },
+                    { id: 'defense', name: 'National Defense', amount: 3128, percent: 14, description: 'Military operations, personnel, and equipment' },
+                    { id: 'income-security', name: 'Income Security', amount: 3128, percent: 14, description: 'Unemployment, food assistance, housing, and disability' },
+                    { id: 'interest', name: 'Net Interest', amount: 1787, percent: 8, description: 'Interest payments on the national debt' },
+                    { id: 'veterans', name: 'Veterans Benefits', amount: 1117, percent: 5, description: 'Healthcare, compensation, and services for veterans' },
+                    { id: 'education', name: 'Education', amount: 894, percent: 4, description: 'K-12, higher education, and student aid programs' },
+                    { id: 'transportation', name: 'Transportation', amount: 670, percent: 3, description: 'Highways, aviation, rail, and transit systems' },
+                    { id: 'other', name: 'All Other', amount: 2680, percent: 12, description: 'Science, agriculture, justice, international affairs, and more' }
+                ]
+            },
+            2021: {
+                totalTax: 23120,
+                incomeTax: 12710,
+                payrollTax: 10410,
+                categories: [
+                    { id: 'social-security', name: 'Social Security', amount: 5086, percent: 22, description: 'Retirement, survivors, and disability benefits' },
+                    { id: 'health', name: 'Health', amount: 4162, percent: 18, description: 'Medicare, Medicaid, and public health programs' },
+                    { id: 'defense', name: 'National Defense', amount: 2774, percent: 12, description: 'Military operations, personnel, and equipment' },
+                    { id: 'income-security', name: 'Income Security', amount: 3468, percent: 15, description: 'Unemployment, food assistance, housing, and disability' },
+                    { id: 'interest', name: 'Net Interest', amount: 1618, percent: 7, description: 'Interest payments on the national debt' },
+                    { id: 'veterans', name: 'Veterans Benefits', amount: 1156, percent: 5, description: 'Healthcare, compensation, and services for veterans' },
+                    { id: 'education', name: 'Education', amount: 1156, percent: 5, description: 'K-12, higher education, and student aid programs' },
+                    { id: 'transportation', name: 'Transportation', amount: 693, percent: 3, description: 'Highways, aviation, rail, and transit systems' },
+                    { id: 'other', name: 'All Other', amount: 3007, percent: 13, description: 'Science, agriculture, justice, international affairs, and more' }
+                ]
+            },
+            2022: {
+                totalTax: 23890,
+                incomeTax: 13130,
+                payrollTax: 10760,
+                categories: [
+                    { id: 'social-security', name: 'Social Security', amount: 5256, percent: 22, description: 'Retirement, survivors, and disability benefits' },
+                    { id: 'health', name: 'Health', amount: 4300, percent: 18, description: 'Medicare, Medicaid, and public health programs' },
+                    { id: 'defense', name: 'National Defense', amount: 3106, percent: 13, description: 'Military operations, personnel, and equipment' },
+                    { id: 'income-security', name: 'Income Security', amount: 2867, percent: 12, description: 'Unemployment, food assistance, housing, and disability' },
+                    { id: 'interest', name: 'Net Interest', amount: 2151, percent: 9, description: 'Interest payments on the national debt' },
+                    { id: 'veterans', name: 'Veterans Benefits', amount: 1195, percent: 5, description: 'Healthcare, compensation, and services for veterans' },
+                    { id: 'education', name: 'Education', amount: 956, percent: 4, description: 'K-12, higher education, and student aid programs' },
+                    { id: 'transportation', name: 'Transportation', amount: 717, percent: 3, description: 'Highways, aviation, rail, and transit systems' },
+                    { id: 'other', name: 'All Other', amount: 3342, percent: 14, description: 'Science, agriculture, justice, international affairs, and more' }
+                ]
+            },
+            2023: {
+                totalTax: 24180,
+                incomeTax: 13279,
+                payrollTax: 10901,
+                categories: [
+                    { id: 'social-security', name: 'Social Security', amount: 5320, percent: 22, description: 'Retirement, survivors, and disability benefits' },
+                    { id: 'health', name: 'Health', amount: 4352, percent: 18, description: 'Medicare, Medicaid, and public health programs' },
+                    { id: 'defense', name: 'National Defense', amount: 3143, percent: 13, description: 'Military operations, personnel, and equipment' },
+                    { id: 'income-security', name: 'Income Security', amount: 2660, percent: 11, description: 'Unemployment, food assistance, housing, and disability' },
+                    { id: 'interest', name: 'Net Interest', amount: 2418, percent: 10, description: 'Interest payments on the national debt' },
+                    { id: 'veterans', name: 'Veterans Benefits', amount: 1209, percent: 5, description: 'Healthcare, compensation, and services for veterans' },
+                    { id: 'education', name: 'Education', amount: 967, percent: 4, description: 'K-12, higher education, and student aid programs' },
+                    { id: 'transportation', name: 'Transportation', amount: 725, percent: 3, description: 'Highways, aviation, rail, and transit systems' },
+                    { id: 'other', name: 'All Other', amount: 3386, percent: 14, description: 'Science, agriculture, justice, international affairs, and more' }
+                ]
+            },
+            2024: {
+                totalTax: 24820,
+                incomeTax: 13640,
+                payrollTax: 11180,
+                categories: [
+                    { id: 'social-security', name: 'Social Security', amount: 5460, percent: 22, description: 'Retirement, survivors, and disability benefits' },
+                    { id: 'health', name: 'Health', amount: 4468, percent: 18, description: 'Medicare, Medicaid, and public health programs' },
+                    { id: 'defense', name: 'National Defense', amount: 3227, percent: 13, description: 'Military operations, personnel, and equipment' },
+                    { id: 'income-security', name: 'Income Security', amount: 2730, percent: 11, description: 'Unemployment, food assistance, housing, and disability' },
+                    { id: 'interest', name: 'Net Interest', amount: 2730, percent: 11, description: 'Interest payments on the national debt' },
+                    { id: 'veterans', name: 'Veterans Benefits', amount: 1241, percent: 5, description: 'Healthcare, compensation, and services for veterans' },
+                    { id: 'education', name: 'Education', amount: 993, percent: 4, description: 'K-12, higher education, and student aid programs' },
+                    { id: 'transportation', name: 'Transportation', amount: 745, percent: 3, description: 'Highways, aviation, rail, and transit systems' },
+                    { id: 'other', name: 'All Other', amount: 3226, percent: 13, description: 'Science, agriculture, justice, international affairs, and more' }
+                ]
+            }
+        };
+
+        let currentYear = 2023;
+
+        // ==========================================
+        // UPDATE DISPLAY WITH YEAR DATA
+        // ==========================================
+
+        function updateTaxDisplay(year) {
+            const data = taxDataByYear[year];
+            if (!data) return;
+
+            currentYear = year;
+
+            // Update tax summary card
+            document.querySelector('.summary-label').textContent = `Your ${year} federal tax contribution`;
+            document.querySelector('.summary-value').textContent = `$${data.totalTax.toLocaleString()}`;
+            document.querySelector('.tax-summary-breakdown-item:nth-child(1) .tax-summary-breakdown-value').textContent = `$${data.incomeTax.toLocaleString()}`;
+            document.querySelector('.tax-summary-breakdown-item:nth-child(2) .tax-summary-breakdown-value').textContent = `$${data.payrollTax.toLocaleString()}`;
+
+            // Update allocation bar
+            const allocationBar = document.getElementById('allocation-bar');
+            allocationBar.innerHTML = '';
+
+            data.categories.forEach(cat => {
+                const segment = document.createElement('div');
+                segment.className = 'allocation-segment';
+                if (cat.percent <= 5) segment.classList.add('small');
+                else if (cat.percent <= 12) segment.classList.add('medium');
+                if (cat.id === 'interest') {
+                    const fill = segment.querySelector('.breakdown-bar-fill');
+                    if (fill) fill.classList.add('coral');
+                }
+
+                segment.style.width = cat.percent + '%';
+                segment.dataset.category = cat.id;
+                segment.dataset.name = cat.name;
+                segment.dataset.amount = '$' + cat.amount.toLocaleString();
+                segment.dataset.percent = cat.percent + '%';
+
+                const label = document.createElement('span');
+                label.className = 'segment-label';
+                label.textContent = cat.name === 'National Defense' ? 'Defense' :
+                                  cat.name === 'Income Security' ? 'Income' :
+                                  cat.name === 'Net Interest' ? 'Interest' :
+                                  cat.name === 'Veterans Benefits' ? 'Veterans' :
+                                  cat.name === 'Transportation' ? 'Transport' :
+                                  cat.name === 'All Other' ? 'Other' : cat.name;
+
+                segment.appendChild(label);
+                allocationBar.appendChild(segment);
+
+                // Re-attach event listeners for tooltips
+                segment.addEventListener('mouseenter', function(e) {
+                    tooltipName.textContent = this.dataset.name;
+                    tooltipAmount.textContent = this.dataset.amount;
+                    tooltipPercent.textContent = this.dataset.percent;
+                    allocationTooltip.classList.add('visible');
+                    positionTooltip(e);
+                });
+                segment.addEventListener('mousemove', function(e) {
+                    positionTooltip(e);
+                });
+                segment.addEventListener('mouseleave', function() {
+                    allocationTooltip.classList.remove('visible');
+                });
+                segment.addEventListener('click', function() {
+                    scrollToCategory(this.dataset.category);
+                });
+            });
+
+            // Update allocation context
+            document.querySelector('.allocation-context').textContent =
+                `Your $${data.totalTax.toLocaleString()} in federal taxes, allocated across ${data.categories.length} categories.`;
+
+            // Update categories breakdown list
+            const breakdownList = document.querySelector('#view-categories .breakdown-list');
+            breakdownList.innerHTML = '';
+
+            data.categories.forEach(cat => {
+                const item = document.createElement('div');
+                item.className = 'breakdown-list-item';
+                item.onclick = function() { showAgencies(cat.id); };
+
+                item.innerHTML = `
+                    <div class="breakdown-bar-container">
+                        <div class="breakdown-bar">
+                            <div class="breakdown-bar-fill${cat.id === 'interest' ? ' coral' : ''}" style="width: ${cat.percent}%;"></div>
+                        </div>
+                    </div>
+                    <div class="breakdown-content">
+                        <p class="breakdown-name">${cat.name}</p>
+                        <p class="breakdown-description">${cat.description}</p>
+                    </div>
+                    <div class="breakdown-figures">
+                        <span class="breakdown-list-amount">$${cat.amount.toLocaleString()}</span>
+                        <span class="breakdown-percent">${cat.percent}%</span>
+                    </div>
+                    <svg class="breakdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                `;
+
+                breakdownList.appendChild(item);
+            });
+        }
+
         // Year selector
         document.querySelectorAll('.year-pill').forEach(pill => {
             pill.addEventListener('click', function() {
                 document.querySelectorAll('.year-pill').forEach(p => p.classList.remove('active'));
                 this.classList.add('active');
-                // In a real app, this would reload data for the selected year
+                const selectedYear = parseInt(this.dataset.year);
+                updateTaxDisplay(selectedYear);
             });
         });
 
@@ -2872,36 +3081,6 @@
         const tooltipName = allocationTooltip.querySelector('.allocation-tooltip-name');
         const tooltipAmount = allocationTooltip.querySelector('.tooltip-amount');
         const tooltipPercent = allocationTooltip.querySelector('.tooltip-percent');
-
-        document.querySelectorAll('.allocation-segment').forEach(segment => {
-            // Hover: show tooltip
-            segment.addEventListener('mouseenter', function(e) {
-                const name = this.dataset.name;
-                const amount = this.dataset.amount;
-                const percent = this.dataset.percent;
-
-                tooltipName.textContent = name;
-                tooltipAmount.textContent = amount;
-                tooltipPercent.textContent = percent;
-
-                allocationTooltip.classList.add('visible');
-                positionTooltip(e);
-            });
-
-            segment.addEventListener('mousemove', function(e) {
-                positionTooltip(e);
-            });
-
-            segment.addEventListener('mouseleave', function() {
-                allocationTooltip.classList.remove('visible');
-            });
-
-            // Click: scroll to and highlight category in the list
-            segment.addEventListener('click', function() {
-                const category = this.dataset.category;
-                scrollToCategory(category);
-            });
-        });
 
         function positionTooltip(e) {
             const tooltipRect = allocationTooltip.getBoundingClientRect();
@@ -2960,6 +3139,9 @@
         // ==========================================
 
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize tax display with default year
+            updateTaxDisplay(currentYear);
+            // Navigate to default page
             navigateTo('record');
         });
     </script>
