@@ -1002,6 +1002,125 @@
             border-color: var(--ink);
         }
 
+        /* Total Burden Card */
+        .total-burden-card {
+            background: var(--paper-warm);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .total-burden-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .total-burden-title {
+            font-size: 0.8125rem;
+            color: var(--ink-tertiary);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+        }
+
+        .total-burden-amount {
+            font-family: var(--serif);
+            font-size: 2.5rem;
+            font-weight: 500;
+            color: var(--ink);
+            letter-spacing: -0.02em;
+            margin-bottom: 0.25rem;
+        }
+
+        .total-burden-subtitle {
+            font-size: 0.875rem;
+            color: var(--ink-secondary);
+        }
+
+        .total-burden-breakdown {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .burden-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .burden-bar-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 0.375rem;
+        }
+
+        .burden-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .burden-name {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--ink);
+        }
+
+        .burden-amount {
+            font-family: var(--serif);
+            font-size: 1.125rem;
+            font-weight: 500;
+            color: var(--ink);
+        }
+
+        .burden-bar {
+            height: 8px;
+            background: var(--paper);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .burden-bar-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.4s ease;
+        }
+
+        .burden-bar-fill.federal {
+            background: #5C6B7A;
+        }
+
+        .burden-bar-fill.state {
+            background: #7A9E7E;
+        }
+
+        .burden-bar-fill.city {
+            background: #8B7355;
+        }
+
+        .burden-percentage {
+            font-size: 0.75rem;
+            color: var(--ink-tertiary);
+            min-width: 35px;
+            text-align: right;
+        }
+
+        .total-burden-note {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--paper-line);
+            font-size: 0.8125rem;
+            color: var(--ink-secondary);
+            line-height: 1.5;
+        }
+
+        .total-burden-note strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
         /* Tax Summary Card */
         .tax-summary-card {
             background: var(--paper-warm);
@@ -2352,6 +2471,60 @@
                     <button class="year-pill" data-year="2022">2022</button>
                     <button class="year-pill active" data-year="2023">2023</button>
                     <button class="year-pill" data-year="2024">2024</button>
+                </div>
+            </div>
+
+            <!-- Total Burden Card -->
+            <div class="total-burden-card">
+                <div class="total-burden-header">
+                    <p class="total-burden-title">Your Complete Tax Picture</p>
+                    <p class="total-burden-amount">$37,290</p>
+                    <p class="total-burden-subtitle">All taxes paid in 2023</p>
+                </div>
+
+                <div class="total-burden-breakdown">
+                    <div class="burden-row">
+                        <div class="burden-bar-container">
+                            <div class="burden-header">
+                                <span class="burden-name">Federal</span>
+                                <span class="burden-amount">$24,180</span>
+                            </div>
+                            <div class="burden-bar">
+                                <div class="burden-bar-fill federal" style="width: 65%;"></div>
+                            </div>
+                        </div>
+                        <span class="burden-percentage">65%</span>
+                    </div>
+
+                    <div class="burden-row">
+                        <div class="burden-bar-container">
+                            <div class="burden-header">
+                                <span class="burden-name">New York State</span>
+                                <span class="burden-amount">$11,420</span>
+                            </div>
+                            <div class="burden-bar">
+                                <div class="burden-bar-fill state" style="width: 31%;"></div>
+                            </div>
+                        </div>
+                        <span class="burden-percentage">31%</span>
+                    </div>
+
+                    <div class="burden-row">
+                        <div class="burden-bar-container">
+                            <div class="burden-header">
+                                <span class="burden-name">New York City</span>
+                                <span class="burden-amount">$1,690</span>
+                            </div>
+                            <div class="burden-bar">
+                                <div class="burden-bar-fill city" style="width: 4%;"></div>
+                            </div>
+                        </div>
+                        <span class="burden-percentage">4%</span>
+                    </div>
+                </div>
+
+                <div class="total-burden-note">
+                    <strong>Federal breakdown below.</strong> Most education and infrastructure spending happens at state and local levels—federal spending focuses on defense, healthcare, and social programs.
                 </div>
             </div>
 
