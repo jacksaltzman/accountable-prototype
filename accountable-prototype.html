@@ -265,6 +265,126 @@
             background: currentColor;
         }
 
+        /* Benefits Breakdown Section */
+        .benefits-breakdown {
+            background: var(--paper-warm);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .benefits-breakdown-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .benefits-breakdown-title {
+            font-size: 0.8125rem;
+            color: var(--ink-tertiary);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+        }
+
+        .benefits-breakdown-total {
+            font-family: var(--serif);
+            font-size: 2.5rem;
+            font-weight: 500;
+            color: var(--ink);
+            letter-spacing: -0.02em;
+            margin-bottom: 0.25rem;
+        }
+
+        .benefits-breakdown-subtitle {
+            font-size: 0.875rem;
+            color: var(--ink-secondary);
+        }
+
+        .benefits-jurisdiction-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            margin-top: 1.5rem;
+        }
+
+        .benefits-jurisdiction {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .jurisdiction-bar-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 0.375rem;
+        }
+
+        .jurisdiction-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .jurisdiction-name {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--ink);
+        }
+
+        .jurisdiction-amount {
+            font-family: var(--serif);
+            font-size: 1.125rem;
+            font-weight: 500;
+            color: var(--ink);
+        }
+
+        .jurisdiction-bar {
+            height: 8px;
+            background: var(--paper);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .jurisdiction-bar-fill {
+            height: 100%;
+            background: var(--confirmed);
+            border-radius: 4px;
+            transition: width 0.4s ease;
+        }
+
+        .jurisdiction-details {
+            font-size: 0.75rem;
+            color: var(--ink-tertiary);
+            display: flex;
+            gap: 1rem;
+        }
+
+        .jurisdiction-detail-item {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .benefit-highlight {
+            background: var(--paper);
+            border-radius: 8px;
+            padding: 1rem 1.25rem;
+            margin-top: 1.5rem;
+            border-left: 3px solid var(--confirmed);
+        }
+
+        .benefit-highlight-text {
+            font-size: 0.875rem;
+            color: var(--ink-secondary);
+            line-height: 1.5;
+        }
+
+        .benefit-highlight-amount {
+            font-weight: 600;
+            color: var(--confirmed);
+        }
+
         /* Policy Impact Section */
         .policy-section {
             margin-bottom: 4rem;
@@ -1617,6 +1737,68 @@
                             <span class="data-badge confirmed"><span class="data-badge-dot"></span>Confirmed</span>
                         </div>
                     </div>
+                </div>
+            </section>
+
+            <!-- Benefits Breakdown Section -->
+            <section class="benefits-breakdown animate-in delay-2">
+                <div class="benefits-breakdown-header">
+                    <p class="benefits-breakdown-title">Benefits We Found for You</p>
+                    <p class="benefits-breakdown-total">$18,340</p>
+                    <p class="benefits-breakdown-subtitle">Credits, deductions, and refunds claimed since 2019</p>
+                </div>
+
+                <div class="benefits-jurisdiction-list">
+                    <div class="benefits-jurisdiction">
+                        <div class="jurisdiction-bar-container">
+                            <div class="jurisdiction-header">
+                                <span class="jurisdiction-name">Federal Benefits</span>
+                                <span class="jurisdiction-amount">$16,000</span>
+                            </div>
+                            <div class="jurisdiction-bar">
+                                <div class="jurisdiction-bar-fill" style="width: 87%;"></div>
+                            </div>
+                            <div class="jurisdiction-details">
+                                <span class="jurisdiction-detail-item">Child Tax Credit, EITC, Standard Deduction</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="benefits-jurisdiction">
+                        <div class="jurisdiction-bar-container">
+                            <div class="jurisdiction-header">
+                                <span class="jurisdiction-name">New York State Benefits</span>
+                                <span class="jurisdiction-amount">$2,090</span>
+                            </div>
+                            <div class="jurisdiction-bar">
+                                <div class="jurisdiction-bar-fill" style="width: 11%;"></div>
+                            </div>
+                            <div class="jurisdiction-details">
+                                <span class="jurisdiction-detail-item">Empire State Child Credit, NY EITC, STAR Credit</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="benefits-jurisdiction">
+                        <div class="jurisdiction-bar-container">
+                            <div class="jurisdiction-header">
+                                <span class="jurisdiction-name">New York City Benefits</span>
+                                <span class="jurisdiction-amount">$250</span>
+                            </div>
+                            <div class="jurisdiction-bar">
+                                <div class="jurisdiction-bar-fill" style="width: 2%;"></div>
+                            </div>
+                            <div class="jurisdiction-details">
+                                <span class="jurisdiction-detail-item">School Tax Credit, NYC EITC</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="benefit-highlight">
+                    <p class="benefit-highlight-text">
+                        Without Accountable, you might have missed <span class="benefit-highlight-amount">$2,340</span> in state and local benefits that typically go unclaimed.
+                    </p>
                 </div>
             </section>
 
