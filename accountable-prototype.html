@@ -2162,514 +2162,22 @@
                 </div>
             </section>
 
-            <!-- Section Divider -->
-            <div class="section-divider"></div>
+            <!-- Link to Your Voice -->
+            <div style="text-align: center; margin-top: 4rem; padding: 2.5rem; background: var(--paper-warm); border-radius: 12px;">
+                <p style="font-size: 1.125rem; font-weight: 600; color: var(--ink); margin-bottom: 0.75rem;">
+                    How Did Policy Change Your Taxes?
+                </p>
+                <p style="font-size: 0.875rem; color: var(--ink-secondary); margin-bottom: 1.5rem; max-width: 500px; margin-left: auto; margin-right: auto;">
+                    See which legislation affected your tax bill, who voted for it, and what you can do to make your voice heard.
+                </p>
+                <a href="#" onclick="navigateTo('voice'); return false;" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.875rem 1.75rem; background: var(--coral); color: white; text-decoration: none; border-radius: 6px; font-weight: 500; font-size: 0.9375rem;">
+                    View Policy Impact & Your Voice
+                    <svg style="width: 18px; height: 18px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </a>
+            </div>
 
-            <!-- Policy Impact Section -->
-            <section class="policy-section animate-in delay-2">
-                <div class="policy-header">
-                    <p class="section-label">Policy Impact</p>
-                    <h2 class="section-title">How Legislation Affected Your Taxes</h2>
-                    <p class="section-description">
-                        This section shows federal and state policies that directly changed your tax liability or benefits. Each entry includes the officials responsible for the decision and your estimated financial impact.
-                    </p>
-                </div>
-
-                <!-- Impact Summary Strip -->
-                <div class="impact-summary-strip">
-                    <div class="impact-summary-card">
-                        <p class="impact-summary-label">
-                            Net policy impact on your taxes
-                            <span class="tooltip-trigger">
-                                <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="12" cy="12" r="10"/>
-                                    <path d="M12 16v-4M12 8h.01"/>
-                                </svg>
-                                <span class="tooltip">Combined effect of all tracked policies on your tax position since 2019</span>
-                            </span>
-                        </p>
-                        <p class="impact-summary-value decrease">-$2,847</p>
-                        <p class="impact-summary-meta">2019 – 2024 · 7 policies tracked</p>
-                    </div>
-                    <div class="impact-summary-card">
-                        <p class="impact-summary-label">
-                            Net policy impact on your benefits
-                            <span class="tooltip-trigger">
-                                <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="12" cy="12" r="10"/>
-                                    <path d="M12 16v-4M12 8h.01"/>
-                                </svg>
-                                <span class="tooltip">Combined effect of all tracked policies on credits and deductions you've claimed</span>
-                            </span>
-                        </p>
-                        <p class="impact-summary-value increase">+$4,620</p>
-                        <p class="impact-summary-meta">2019 – 2024 · 5 policies tracked</p>
-                    </div>
-                </div>
-
-                <!-- Filter Controls -->
-                <div class="filter-controls">
-                    <button class="filter-btn active" data-filter="all">All Policies</button>
-                    <button class="filter-btn" data-filter="federal">Federal</button>
-                    <button class="filter-btn" data-filter="state">State</button>
-                    <button class="filter-btn" data-filter="credits">Credits & Benefits</button>
-                    <button class="filter-btn" data-filter="rates">Tax Rates</button>
-                </div>
-
-                <!-- Policy Cards -->
-                <div class="policy-cards">
-
-                    <!-- Policy Card 1: Child Tax Credit Expansion -->
-                    <div class="policy-card expanded" data-type="federal credits">
-                        <div class="policy-card-header" onclick="togglePolicy(this)">
-                            <div class="policy-card-main">
-                                <h3 class="policy-name">Child Tax Credit Expansion</h3>
-                                <div class="policy-meta">
-                                    <span class="policy-date">Effective 2021 – 2022</span>
-                                    <span class="policy-type">Federal · Credit</span>
-                                    <span class="data-badge confirmed"><span class="data-badge-dot"></span>Confirmed</span>
-                                </div>
-                            </div>
-                            <div class="policy-impact-badge">
-                                <span class="impact-amount increase">+$3,600</span>
-                                <span class="impact-label">Your impact</span>
-                            </div>
-                            <svg class="expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="6 9 12 15 18 9"></polyline>
-                            </svg>
-                        </div>
-                        <div class="policy-card-body">
-                            <div class="policy-description">
-                                <p class="policy-description-text">
-                                    The American Rescue Plan Act temporarily increased the Child Tax Credit from $2,000 to $3,600 per child under 6 and $3,000 per child ages 6–17 for tax year 2021. Based on your filing status and dependents, this increased your available credit.
-                                </p>
-                                <p class="policy-source">
-                                    Source: <a href="#" class="policy-source-link">American Rescue Plan Act of 2021, Sec. 9611</a> · <a href="#" class="policy-source-link">IRS Publication 972</a>
-                                </p>
-                            </div>
-                            <div class="policy-officials">
-                                <p class="officials-title">Officials responsible for this policy</p>
-                                <div class="officials-list">
-                                    <div class="official-row">
-                                        <div class="official-info">
-                                            <div class="official-avatar">JB</div>
-                                            <div class="official-details">
-                                                <span class="official-name">Joseph R. Biden</span>
-                                                <span class="official-role">President · 2021 – 2025</span>
-                                            </div>
-                                        </div>
-                                        <div class="official-vote">
-                                            <span class="vote-action">Signed into law</span>
-                                            <span class="vote-date">March 11, 2021</span>
-                                        </div>
-                                    </div>
-                                    <div class="official-row">
-                                        <div class="official-info">
-                                            <div class="official-avatar">CS</div>
-                                            <div class="official-details">
-                                                <span class="official-name">Charles Schumer</span>
-                                                <span class="official-role">Senator, New York · 2017 – present</span>
-                                            </div>
-                                        </div>
-                                        <div class="official-vote">
-                                            <span class="vote-action">Voted yes</span>
-                                            <span class="vote-date">March 6, 2021</span>
-                                        </div>
-                                    </div>
-                                    <div class="official-row">
-                                        <div class="official-info">
-                                            <div class="official-avatar">KG</div>
-                                            <div class="official-details">
-                                                <span class="official-name">Kirsten Gillibrand</span>
-                                                <span class="official-role">Senator, New York · 2009 – present</span>
-                                            </div>
-                                        </div>
-                                        <div class="official-vote">
-                                            <span class="vote-action">Voted yes</span>
-                                            <span class="vote-date">March 6, 2021</span>
-                                        </div>
-                                    </div>
-                                    <div class="official-row">
-                                        <div class="official-info">
-                                            <div class="official-avatar">AO</div>
-                                            <div class="official-details">
-                                                <span class="official-name">Alexandria Ocasio-Cortez</span>
-                                                <span class="official-role">Representative, NY-14 · 2019 – present</span>
-                                            </div>
-                                        </div>
-                                        <div class="official-vote">
-                                            <span class="vote-action">Voted yes</span>
-                                            <span class="vote-date">February 27, 2021</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="policy-year-breakdown">
-                                <p class="breakdown-title">Impact on your filings by year</p>
-                                <div class="breakdown-grid">
-                                    <div class="breakdown-item">
-                                        <p class="breakdown-year">2021</p>
-                                        <p class="breakdown-amount increase">+$1,600</p>
-                                    </div>
-                                    <div class="breakdown-item">
-                                        <p class="breakdown-year">2022</p>
-                                        <p class="breakdown-amount increase">+$2,000</p>
-                                    </div>
-                                    <div class="breakdown-item">
-                                        <p class="breakdown-year">2023</p>
-                                        <p class="breakdown-amount neutral">$0</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Policy Card 2: SALT Deduction Cap -->
-                    <div class="policy-card" data-type="federal rates">
-                        <div class="policy-card-header" onclick="togglePolicy(this)">
-                            <div class="policy-card-main">
-                                <h3 class="policy-name">State and Local Tax Deduction Cap</h3>
-                                <div class="policy-meta">
-                                    <span class="policy-date">Effective 2018 – 2025</span>
-                                    <span class="policy-type">Federal · Deduction</span>
-                                    <span class="data-badge estimate"><span class="data-badge-dot"></span>Estimate</span>
-                                </div>
-                            </div>
-                            <div class="policy-impact-badge">
-                                <span class="impact-amount decrease">-$4,280</span>
-                                <span class="impact-label">Your impact</span>
-                            </div>
-                            <svg class="expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="6 9 12 15 18 9"></polyline>
-                            </svg>
-                        </div>
-                        <div class="policy-card-body">
-                            <div class="policy-description">
-                                <p class="policy-description-text">
-                                    The Tax Cuts and Jobs Act of 2017 capped the state and local tax (SALT) deduction at $10,000 for single filers and married couples filing jointly. Based on your state income and property taxes, your itemized deductions were limited, reducing the tax benefit you would have received under prior law.
-                                </p>
-                                <p class="policy-source">
-                                    Source: <a href="#" class="policy-source-link">Tax Cuts and Jobs Act, Sec. 11042</a> · <a href="#" class="policy-source-link">IRS Notice 2019-12</a>
-                                </p>
-                            </div>
-                            <div class="policy-officials">
-                                <p class="officials-title">Officials responsible for this policy</p>
-                                <div class="officials-list">
-                                    <div class="official-row">
-                                        <div class="official-info">
-                                            <div class="official-avatar">DT</div>
-                                            <div class="official-details">
-                                                <span class="official-name">Donald J. Trump</span>
-                                                <span class="official-role">President · 2017 – 2021</span>
-                                            </div>
-                                        </div>
-                                        <div class="official-vote">
-                                            <span class="vote-action">Signed into law</span>
-                                            <span class="vote-date">December 22, 2017</span>
-                                        </div>
-                                    </div>
-                                    <div class="official-row">
-                                        <div class="official-info">
-                                            <div class="official-avatar">CS</div>
-                                            <div class="official-details">
-                                                <span class="official-name">Charles Schumer</span>
-                                                <span class="official-role">Senator, New York · 2017 – present</span>
-                                            </div>
-                                        </div>
-                                        <div class="official-vote">
-                                            <span class="vote-action">Voted no</span>
-                                            <span class="vote-date">December 20, 2017</span>
-                                        </div>
-                                    </div>
-                                    <div class="official-row">
-                                        <div class="official-info">
-                                            <div class="official-avatar">KG</div>
-                                            <div class="official-details">
-                                                <span class="official-name">Kirsten Gillibrand</span>
-                                                <span class="official-role">Senator, New York · 2009 – present</span>
-                                            </div>
-                                        </div>
-                                        <div class="official-vote">
-                                            <span class="vote-action">Voted no</span>
-                                            <span class="vote-date">December 20, 2017</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="policy-year-breakdown">
-                                <p class="breakdown-title">Impact on your filings by year</p>
-                                <div class="breakdown-grid">
-                                    <div class="breakdown-item">
-                                        <p class="breakdown-year">2019</p>
-                                        <p class="breakdown-amount decrease">-$680</p>
-                                    </div>
-                                    <div class="breakdown-item">
-                                        <p class="breakdown-year">2020</p>
-                                        <p class="breakdown-amount decrease">-$720</p>
-                                    </div>
-                                    <div class="breakdown-item">
-                                        <p class="breakdown-year">2021</p>
-                                        <p class="breakdown-amount decrease">-$840</p>
-                                    </div>
-                                    <div class="breakdown-item">
-                                        <p class="breakdown-year">2022</p>
-                                        <p class="breakdown-amount decrease">-$920</p>
-                                    </div>
-                                    <div class="breakdown-item">
-                                        <p class="breakdown-year">2023</p>
-                                        <p class="breakdown-amount decrease">-$1,120</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Policy Card 3: Standard Deduction Increase -->
-                    <div class="policy-card" data-type="federal rates">
-                        <div class="policy-card-header" onclick="togglePolicy(this)">
-                            <div class="policy-card-main">
-                                <h3 class="policy-name">Standard Deduction Increase</h3>
-                                <div class="policy-meta">
-                                    <span class="policy-date">Effective 2018 – 2025</span>
-                                    <span class="policy-type">Federal · Deduction</span>
-                                    <span class="data-badge confirmed"><span class="data-badge-dot"></span>Confirmed</span>
-                                </div>
-                            </div>
-                            <div class="policy-impact-badge">
-                                <span class="impact-amount increase">+$2,340</span>
-                                <span class="impact-label">Your impact</span>
-                            </div>
-                            <svg class="expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="6 9 12 15 18 9"></polyline>
-                            </svg>
-                        </div>
-                        <div class="policy-card-body">
-                            <div class="policy-description">
-                                <p class="policy-description-text">
-                                    The Tax Cuts and Jobs Act nearly doubled the standard deduction from $6,350 to $12,000 for single filers (with inflation adjustments in subsequent years). In years where you took the standard deduction, this reduced your taxable income.
-                                </p>
-                                <p class="policy-source">
-                                    Source: <a href="#" class="policy-source-link">Tax Cuts and Jobs Act, Sec. 11021</a>
-                                </p>
-                            </div>
-                            <div class="policy-officials">
-                                <p class="officials-title">Officials responsible for this policy</p>
-                                <div class="officials-list">
-                                    <div class="official-row">
-                                        <div class="official-info">
-                                            <div class="official-avatar">DT</div>
-                                            <div class="official-details">
-                                                <span class="official-name">Donald J. Trump</span>
-                                                <span class="official-role">President · 2017 – 2021</span>
-                                            </div>
-                                        </div>
-                                        <div class="official-vote">
-                                            <span class="vote-action">Signed into law</span>
-                                            <span class="vote-date">December 22, 2017</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="policy-year-breakdown">
-                                <p class="breakdown-title">Impact on your filings by year</p>
-                                <div class="breakdown-grid">
-                                    <div class="breakdown-item">
-                                        <p class="breakdown-year">2019</p>
-                                        <p class="breakdown-amount increase">+$390</p>
-                                    </div>
-                                    <div class="breakdown-item">
-                                        <p class="breakdown-year">2020</p>
-                                        <p class="breakdown-amount increase">+$390</p>
-                                    </div>
-                                    <div class="breakdown-item">
-                                        <p class="breakdown-year">2021</p>
-                                        <p class="breakdown-amount neutral">$0</p>
-                                    </div>
-                                    <div class="breakdown-item">
-                                        <p class="breakdown-year">2022</p>
-                                        <p class="breakdown-amount neutral">$0</p>
-                                    </div>
-                                    <div class="breakdown-item">
-                                        <p class="breakdown-year">2023</p>
-                                        <p class="breakdown-amount increase">+$780</p>
-                                    </div>
-                                    <div class="breakdown-item">
-                                        <p class="breakdown-year">2024</p>
-                                        <p class="breakdown-amount increase">+$780</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Policy Card 4: NY STAR Property Tax Credit -->
-                    <div class="policy-card" data-type="state credits">
-                        <div class="policy-card-header" onclick="togglePolicy(this)">
-                            <div class="policy-card-main">
-                                <h3 class="policy-name">New York STAR Credit Enhancement</h3>
-                                <div class="policy-meta">
-                                    <span class="policy-date">Effective 2019 – present</span>
-                                    <span class="policy-type">State · Credit</span>
-                                    <span class="data-badge confirmed"><span class="data-badge-dot"></span>Confirmed</span>
-                                </div>
-                            </div>
-                            <div class="policy-impact-badge">
-                                <span class="impact-amount increase">+$1,020</span>
-                                <span class="impact-label">Your impact</span>
-                            </div>
-                            <svg class="expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="6 9 12 15 18 9"></polyline>
-                            </svg>
-                        </div>
-                        <div class="policy-card-body">
-                            <div class="policy-description">
-                                <p class="policy-description-text">
-                                    The New York STAR (School Tax Relief) program provides property tax relief to eligible homeowners. As a homeowner in New York, you received STAR credit checks based on your primary residence status and income level.
-                                </p>
-                                <p class="policy-source">
-                                    Source: <a href="#" class="policy-source-link">NY Tax Law § 606(e-1)</a> · <a href="#" class="policy-source-link">NYS Department of Taxation and Finance</a>
-                                </p>
-                            </div>
-                            <div class="policy-officials">
-                                <p class="officials-title">Officials responsible for this policy</p>
-                                <div class="officials-list">
-                                    <div class="official-row">
-                                        <div class="official-info">
-                                            <div class="official-avatar">KH</div>
-                                            <div class="official-details">
-                                                <span class="official-name">Kathy Hochul</span>
-                                                <span class="official-role">Governor, New York · 2021 – present</span>
-                                            </div>
-                                        </div>
-                                        <div class="official-vote">
-                                            <span class="vote-action">Maintained program</span>
-                                            <span class="vote-date">2022 Budget</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="policy-year-breakdown">
-                                <p class="breakdown-title">Impact on your filings by year</p>
-                                <div class="breakdown-grid">
-                                    <div class="breakdown-item">
-                                        <p class="breakdown-year">2021</p>
-                                        <p class="breakdown-amount increase">+$340</p>
-                                    </div>
-                                    <div class="breakdown-item">
-                                        <p class="breakdown-year">2022</p>
-                                        <p class="breakdown-amount increase">+$340</p>
-                                    </div>
-                                    <div class="breakdown-item">
-                                        <p class="breakdown-year">2023</p>
-                                        <p class="breakdown-amount increase">+$340</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Policy Card 5: Recovery Rebate Credit -->
-                    <div class="policy-card" data-type="federal credits">
-                        <div class="policy-card-header" onclick="togglePolicy(this)">
-                            <div class="policy-card-main">
-                                <h3 class="policy-name">Recovery Rebate Credits (Economic Impact Payments)</h3>
-                                <div class="policy-meta">
-                                    <span class="policy-date">2020 – 2021</span>
-                                    <span class="policy-type">Federal · Credit</span>
-                                    <span class="data-badge confirmed"><span class="data-badge-dot"></span>Confirmed</span>
-                                </div>
-                            </div>
-                            <div class="policy-impact-badge">
-                                <span class="impact-amount increase">+$3,200</span>
-                                <span class="impact-label">Your impact</span>
-                            </div>
-                            <svg class="expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="6 9 12 15 18 9"></polyline>
-                            </svg>
-                        </div>
-                        <div class="policy-card-body">
-                            <div class="policy-description">
-                                <p class="policy-description-text">
-                                    Three rounds of direct payments were issued as advance payments of the Recovery Rebate Credit in response to the COVID-19 pandemic. Based on your income and filing status, you received payments totaling $3,200 across 2020 and 2021.
-                                </p>
-                                <p class="policy-source">
-                                    Source: <a href="#" class="policy-source-link">CARES Act, Sec. 2201</a> · <a href="#" class="policy-source-link">American Rescue Plan Act, Sec. 9601</a>
-                                </p>
-                            </div>
-                            <div class="policy-officials">
-                                <p class="officials-title">Officials responsible for this policy</p>
-                                <div class="officials-list">
-                                    <div class="official-row">
-                                        <div class="official-info">
-                                            <div class="official-avatar">DT</div>
-                                            <div class="official-details">
-                                                <span class="official-name">Donald J. Trump</span>
-                                                <span class="official-role">President · 2017 – 2021</span>
-                                            </div>
-                                        </div>
-                                        <div class="official-vote">
-                                            <span class="vote-action">Signed CARES Act</span>
-                                            <span class="vote-date">March 27, 2020</span>
-                                        </div>
-                                    </div>
-                                    <div class="official-row">
-                                        <div class="official-info">
-                                            <div class="official-avatar">JB</div>
-                                            <div class="official-details">
-                                                <span class="official-name">Joseph R. Biden</span>
-                                                <span class="official-role">President · 2021 – 2025</span>
-                                            </div>
-                                        </div>
-                                        <div class="official-vote">
-                                            <span class="vote-action">Signed ARP Act</span>
-                                            <span class="vote-date">March 11, 2021</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="policy-year-breakdown">
-                                <p class="breakdown-title">Impact on your filings by year</p>
-                                <div class="breakdown-grid">
-                                    <div class="breakdown-item">
-                                        <p class="breakdown-year">2020</p>
-                                        <p class="breakdown-amount increase">+$1,800</p>
-                                    </div>
-                                    <div class="breakdown-item">
-                                        <p class="breakdown-year">2021</p>
-                                        <p class="breakdown-amount increase">+$1,400</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <!-- Methodology Section -->
-                <div class="methodology-section animate-in delay-4">
-                    <div class="methodology-header">
-                        <svg class="methodology-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"/>
-                            <path d="M12 16v-4M12 8h.01"/>
-                        </svg>
-                        <div>
-                            <p class="methodology-title">How we calculate policy impacts</p>
-                            <p class="methodology-text">
-                                Impact figures are calculated by comparing your tax position under current law to what it would have been under prior law, using your actual filed returns as the baseline. Some factors to consider:
-                            </p>
-                            <ul class="methodology-list">
-                                <li><strong>Confirmed impacts</strong> are calculated directly from changes visible in your filed returns (e.g., a credit that didn't exist before).</li>
-                                <li><strong>Estimated impacts</strong> involve counterfactual modeling—what your taxes might have been under different rules. These carry more uncertainty.</li>
-                                <li>We do not account for behavioral changes you might have made in response to tax policy (e.g., choosing to itemize vs. take the standard deduction).</li>
-                                <li>State policy impacts are limited to your state of residence during the relevant tax years.</li>
-                            </ul>
-                            <p class="methodology-text" style="margin-top: 0.75rem;">
-                                <a href="#" class="methodology-link">Read our full methodology</a> · <a href="#" class="methodology-link">Download your data</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
 
             <!-- Data Source -->
             <div class="data-source animate-in delay-5">
@@ -3440,6 +2948,592 @@
         </main>
     </div>
 
+    <!-- ==========================================
+         PAGE: YOUR VOICE
+         ========================================== -->
+    <div class="page-view" id="page-voice">
+        <main class="main">
+            <!-- Page Header -->
+            <section class="profile-header animate-in">
+                <h1 class="profile-greeting">Your Voice</h1>
+                <p class="profile-subtitle">How legislation affected your taxes and what you can do about it</p>
+            </section>
+
+            <!-- POLICY CARDS WILL GO HERE -->
+
+            <!-- Section Divider -->
+            <div class="section-divider"></div>
+
+            <!-- Your Representatives Section -->
+            <section class="policy-section animate-in delay-2">
+                <div class="policy-header">
+                    <p class="section-label">Your Representatives</p>
+                    <h2 class="section-title">Who Represents You</h2>
+                    <p class="section-description">
+                        Your elected officials in Washington, D.C. They vote on federal budgets and tax policy.
+                    </p>
+                </div>
+
+                <div style="background: var(--paper-warm); border-radius: 12px; padding: 2rem; margin-bottom: 2rem;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+                        <!-- President -->
+                        <div>
+                            <p style="font-size: 0.75rem; color: var(--ink-tertiary); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; font-weight: 600;">President</p>
+                            <p style="font-size: 1.125rem; font-weight: 600; color: var(--ink); margin-bottom: 0.25rem;">Joseph R. Biden</p>
+                            <p style="font-size: 0.875rem; color: var(--ink-secondary);">2021 – 2025</p>
+                        </div>
+
+                        <!-- U.S. Senators -->
+                        <div>
+                            <p style="font-size: 0.75rem; color: var(--ink-tertiary); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; font-weight: 600;">U.S. Senators (New York)</p>
+                            <p style="font-size: 1rem; font-weight: 600; color: var(--ink); margin-bottom: 0.125rem;">Charles Schumer</p>
+                            <p style="font-size: 0.875rem; color: var(--ink-secondary); margin-bottom: 0.75rem;">Majority Leader</p>
+                            <p style="font-size: 1rem; font-weight: 600; color: var(--ink); margin-bottom: 0.125rem;">Kirsten Gillibrand</p>
+                            <p style="font-size: 0.875rem; color: var(--ink-secondary);">Senator</p>
+                        </div>
+
+                        <!-- U.S. Representative -->
+                        <div>
+                            <p style="font-size: 0.75rem; color: var(--ink-tertiary); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; font-weight: 600;">U.S. Representative (NY-14)</p>
+                            <p style="font-size: 1rem; font-weight: 600; color: var(--ink); margin-bottom: 0.125rem;">Alexandria Ocasio-Cortez</p>
+                            <p style="font-size: 0.875rem; color: var(--ink-secondary);">Representative</p>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--paper-line);">
+                        <p style="font-size: 0.8125rem; color: var(--ink-secondary);">
+                            Contact information, voting records, and upcoming town halls available at <a href="https://www.congress.gov" target="_blank" style="color: var(--coral); text-decoration: none; font-weight: 500;">Congress.gov</a>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section Divider -->
+            <div class="section-divider"></div>
+
+            <!-- Take Action Section -->
+            <section class="policy-section animate-in delay-3">
+                <div class="policy-header">
+                    <p class="section-label">Take Action</p>
+                    <h2 class="section-title">Upcoming Opportunities</h2>
+                <!-- Policy Cards -->
+                <div class="policy-cards">
+
+                    <!-- Policy Card 1: Child Tax Credit Expansion -->
+                    <div class="policy-card expanded" data-type="federal credits">
+                        <div class="policy-card-header" onclick="togglePolicy(this)">
+                            <div class="policy-card-main">
+                                <h3 class="policy-name">Child Tax Credit Expansion</h3>
+                                <div class="policy-meta">
+                                    <span class="policy-date">Effective 2021 – 2022</span>
+                                    <span class="policy-type">Federal · Credit</span>
+                                    <span class="data-badge confirmed"><span class="data-badge-dot"></span>Confirmed</span>
+                                </div>
+                            </div>
+                            <div class="policy-impact-badge">
+                                <span class="impact-amount increase">+$3,600</span>
+                                <span class="impact-label">Your impact</span>
+                            </div>
+                            <svg class="expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                        <div class="policy-card-body">
+                            <div class="policy-description">
+                                <p class="policy-description-text">
+                                    The American Rescue Plan Act temporarily increased the Child Tax Credit from $2,000 to $3,600 per child under 6 and $3,000 per child ages 6–17 for tax year 2021. Based on your filing status and dependents, this increased your available credit.
+                                </p>
+                                <p class="policy-source">
+                                    Source: <a href="#" class="policy-source-link">American Rescue Plan Act of 2021, Sec. 9611</a> · <a href="#" class="policy-source-link">IRS Publication 972</a>
+                                </p>
+                            </div>
+                            <div class="policy-officials">
+                                <p class="officials-title">Officials responsible for this policy</p>
+                                <div class="officials-list">
+                                    <div class="official-row">
+                                        <div class="official-info">
+                                            <div class="official-avatar">JB</div>
+                                            <div class="official-details">
+                                                <span class="official-name">Joseph R. Biden</span>
+                                                <span class="official-role">President · 2021 – 2025</span>
+                                            </div>
+                                        </div>
+                                        <div class="official-vote">
+                                            <span class="vote-action">Signed into law</span>
+                                            <span class="vote-date">March 11, 2021</span>
+                                        </div>
+                                    </div>
+                                    <div class="official-row">
+                                        <div class="official-info">
+                                            <div class="official-avatar">CS</div>
+                                            <div class="official-details">
+                                                <span class="official-name">Charles Schumer</span>
+                                                <span class="official-role">Senator, New York · 2017 – present</span>
+                                            </div>
+                                        </div>
+                                        <div class="official-vote">
+                                            <span class="vote-action">Voted yes</span>
+                                            <span class="vote-date">March 6, 2021</span>
+                                        </div>
+                                    </div>
+                                    <div class="official-row">
+                                        <div class="official-info">
+                                            <div class="official-avatar">KG</div>
+                                            <div class="official-details">
+                                                <span class="official-name">Kirsten Gillibrand</span>
+                                                <span class="official-role">Senator, New York · 2009 – present</span>
+                                            </div>
+                                        </div>
+                                        <div class="official-vote">
+                                            <span class="vote-action">Voted yes</span>
+                                            <span class="vote-date">March 6, 2021</span>
+                                        </div>
+                                    </div>
+                                    <div class="official-row">
+                                        <div class="official-info">
+                                            <div class="official-avatar">AO</div>
+                                            <div class="official-details">
+                                                <span class="official-name">Alexandria Ocasio-Cortez</span>
+                                                <span class="official-role">Representative, NY-14 · 2019 – present</span>
+                                            </div>
+                                        </div>
+                                        <div class="official-vote">
+                                            <span class="vote-action">Voted yes</span>
+                                            <span class="vote-date">February 27, 2021</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="policy-year-breakdown">
+                                <p class="breakdown-title">Impact on your filings by year</p>
+                                <div class="breakdown-grid">
+                                    <div class="breakdown-item">
+                                        <p class="breakdown-year">2021</p>
+                                        <p class="breakdown-amount increase">+$1,600</p>
+                                    </div>
+                                    <div class="breakdown-item">
+                                        <p class="breakdown-year">2022</p>
+                                        <p class="breakdown-amount increase">+$2,000</p>
+                                    </div>
+                                    <div class="breakdown-item">
+                                        <p class="breakdown-year">2023</p>
+                                        <p class="breakdown-amount neutral">$0</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Policy Card 2: SALT Deduction Cap -->
+                    <div class="policy-card" data-type="federal rates">
+                        <div class="policy-card-header" onclick="togglePolicy(this)">
+                            <div class="policy-card-main">
+                                <h3 class="policy-name">State and Local Tax Deduction Cap</h3>
+                                <div class="policy-meta">
+                                    <span class="policy-date">Effective 2018 – 2025</span>
+                                    <span class="policy-type">Federal · Deduction</span>
+                                    <span class="data-badge estimate"><span class="data-badge-dot"></span>Estimate</span>
+                                </div>
+                            </div>
+                            <div class="policy-impact-badge">
+                                <span class="impact-amount decrease">-$4,280</span>
+                                <span class="impact-label">Your impact</span>
+                            </div>
+                            <svg class="expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                        <div class="policy-card-body">
+                            <div class="policy-description">
+                                <p class="policy-description-text">
+                                    The Tax Cuts and Jobs Act of 2017 capped the state and local tax (SALT) deduction at $10,000 for single filers and married couples filing jointly. Based on your state income and property taxes, your itemized deductions were limited, reducing the tax benefit you would have received under prior law.
+                                </p>
+                                <p class="policy-source">
+                                    Source: <a href="#" class="policy-source-link">Tax Cuts and Jobs Act, Sec. 11042</a> · <a href="#" class="policy-source-link">IRS Notice 2019-12</a>
+                                </p>
+                            </div>
+                            <div class="policy-officials">
+                                <p class="officials-title">Officials responsible for this policy</p>
+                                <div class="officials-list">
+                                    <div class="official-row">
+                                        <div class="official-info">
+                                            <div class="official-avatar">DT</div>
+                                            <div class="official-details">
+                                                <span class="official-name">Donald J. Trump</span>
+                                                <span class="official-role">President · 2017 – 2021</span>
+                                            </div>
+                                        </div>
+                                        <div class="official-vote">
+                                            <span class="vote-action">Signed into law</span>
+                                            <span class="vote-date">December 22, 2017</span>
+                                        </div>
+                                    </div>
+                                    <div class="official-row">
+                                        <div class="official-info">
+                                            <div class="official-avatar">CS</div>
+                                            <div class="official-details">
+                                                <span class="official-name">Charles Schumer</span>
+                                                <span class="official-role">Senator, New York · 2017 – present</span>
+                                            </div>
+                                        </div>
+                                        <div class="official-vote">
+                                            <span class="vote-action">Voted no</span>
+                                            <span class="vote-date">December 20, 2017</span>
+                                        </div>
+                                    </div>
+                                    <div class="official-row">
+                                        <div class="official-info">
+                                            <div class="official-avatar">KG</div>
+                                            <div class="official-details">
+                                                <span class="official-name">Kirsten Gillibrand</span>
+                                                <span class="official-role">Senator, New York · 2009 – present</span>
+                                            </div>
+                                        </div>
+                                        <div class="official-vote">
+                                            <span class="vote-action">Voted no</span>
+                                            <span class="vote-date">December 20, 2017</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="policy-year-breakdown">
+                                <p class="breakdown-title">Impact on your filings by year</p>
+                                <div class="breakdown-grid">
+                                    <div class="breakdown-item">
+                                        <p class="breakdown-year">2019</p>
+                                        <p class="breakdown-amount decrease">-$680</p>
+                                    </div>
+                                    <div class="breakdown-item">
+                                        <p class="breakdown-year">2020</p>
+                                        <p class="breakdown-amount decrease">-$720</p>
+                                    </div>
+                                    <div class="breakdown-item">
+                                        <p class="breakdown-year">2021</p>
+                                        <p class="breakdown-amount decrease">-$840</p>
+                                    </div>
+                                    <div class="breakdown-item">
+                                        <p class="breakdown-year">2022</p>
+                                        <p class="breakdown-amount decrease">-$920</p>
+                                    </div>
+                                    <div class="breakdown-item">
+                                        <p class="breakdown-year">2023</p>
+                                        <p class="breakdown-amount decrease">-$1,120</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Policy Card 3: Standard Deduction Increase -->
+                    <div class="policy-card" data-type="federal rates">
+                        <div class="policy-card-header" onclick="togglePolicy(this)">
+                            <div class="policy-card-main">
+                                <h3 class="policy-name">Standard Deduction Increase</h3>
+                                <div class="policy-meta">
+                                    <span class="policy-date">Effective 2018 – 2025</span>
+                                    <span class="policy-type">Federal · Deduction</span>
+                                    <span class="data-badge confirmed"><span class="data-badge-dot"></span>Confirmed</span>
+                                </div>
+                            </div>
+                            <div class="policy-impact-badge">
+                                <span class="impact-amount increase">+$2,340</span>
+                                <span class="impact-label">Your impact</span>
+                            </div>
+                            <svg class="expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                        <div class="policy-card-body">
+                            <div class="policy-description">
+                                <p class="policy-description-text">
+                                    The Tax Cuts and Jobs Act nearly doubled the standard deduction from $6,350 to $12,000 for single filers (with inflation adjustments in subsequent years). In years where you took the standard deduction, this reduced your taxable income.
+                                </p>
+                                <p class="policy-source">
+                                    Source: <a href="#" class="policy-source-link">Tax Cuts and Jobs Act, Sec. 11021</a>
+                                </p>
+                            </div>
+                            <div class="policy-officials">
+                                <p class="officials-title">Officials responsible for this policy</p>
+                                <div class="officials-list">
+                                    <div class="official-row">
+                                        <div class="official-info">
+                                            <div class="official-avatar">DT</div>
+                                            <div class="official-details">
+                                                <span class="official-name">Donald J. Trump</span>
+                                                <span class="official-role">President · 2017 – 2021</span>
+                                            </div>
+                                        </div>
+                                        <div class="official-vote">
+                                            <span class="vote-action">Signed into law</span>
+                                            <span class="vote-date">December 22, 2017</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="policy-year-breakdown">
+                                <p class="breakdown-title">Impact on your filings by year</p>
+                                <div class="breakdown-grid">
+                                    <div class="breakdown-item">
+                                        <p class="breakdown-year">2019</p>
+                                        <p class="breakdown-amount increase">+$390</p>
+                                    </div>
+                                    <div class="breakdown-item">
+                                        <p class="breakdown-year">2020</p>
+                                        <p class="breakdown-amount increase">+$390</p>
+                                    </div>
+                                    <div class="breakdown-item">
+                                        <p class="breakdown-year">2021</p>
+                                        <p class="breakdown-amount neutral">$0</p>
+                                    </div>
+                                    <div class="breakdown-item">
+                                        <p class="breakdown-year">2022</p>
+                                        <p class="breakdown-amount neutral">$0</p>
+                                    </div>
+                                    <div class="breakdown-item">
+                                        <p class="breakdown-year">2023</p>
+                                        <p class="breakdown-amount increase">+$780</p>
+                                    </div>
+                                    <div class="breakdown-item">
+                                        <p class="breakdown-year">2024</p>
+                                        <p class="breakdown-amount increase">+$780</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Policy Card 4: NY STAR Property Tax Credit -->
+                    <div class="policy-card" data-type="state credits">
+                        <div class="policy-card-header" onclick="togglePolicy(this)">
+                            <div class="policy-card-main">
+                                <h3 class="policy-name">New York STAR Credit Enhancement</h3>
+                                <div class="policy-meta">
+                                    <span class="policy-date">Effective 2019 – present</span>
+                                    <span class="policy-type">State · Credit</span>
+                                    <span class="data-badge confirmed"><span class="data-badge-dot"></span>Confirmed</span>
+                                </div>
+                            </div>
+                            <div class="policy-impact-badge">
+                                <span class="impact-amount increase">+$1,020</span>
+                                <span class="impact-label">Your impact</span>
+                            </div>
+                            <svg class="expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                        <div class="policy-card-body">
+                            <div class="policy-description">
+                                <p class="policy-description-text">
+                                    The New York STAR (School Tax Relief) program provides property tax relief to eligible homeowners. As a homeowner in New York, you received STAR credit checks based on your primary residence status and income level.
+                                </p>
+                                <p class="policy-source">
+                                    Source: <a href="#" class="policy-source-link">NY Tax Law § 606(e-1)</a> · <a href="#" class="policy-source-link">NYS Department of Taxation and Finance</a>
+                                </p>
+                            </div>
+                            <div class="policy-officials">
+                                <p class="officials-title">Officials responsible for this policy</p>
+                                <div class="officials-list">
+                                    <div class="official-row">
+                                        <div class="official-info">
+                                            <div class="official-avatar">KH</div>
+                                            <div class="official-details">
+                                                <span class="official-name">Kathy Hochul</span>
+                                                <span class="official-role">Governor, New York · 2021 – present</span>
+                                            </div>
+                                        </div>
+                                        <div class="official-vote">
+                                            <span class="vote-action">Maintained program</span>
+                                            <span class="vote-date">2022 Budget</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="policy-year-breakdown">
+                                <p class="breakdown-title">Impact on your filings by year</p>
+                                <div class="breakdown-grid">
+                                    <div class="breakdown-item">
+                                        <p class="breakdown-year">2021</p>
+                                        <p class="breakdown-amount increase">+$340</p>
+                                    </div>
+                                    <div class="breakdown-item">
+                                        <p class="breakdown-year">2022</p>
+                                        <p class="breakdown-amount increase">+$340</p>
+                                    </div>
+                                    <div class="breakdown-item">
+                                        <p class="breakdown-year">2023</p>
+                                        <p class="breakdown-amount increase">+$340</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Policy Card 5: Recovery Rebate Credit -->
+                    <div class="policy-card" data-type="federal credits">
+                        <div class="policy-card-header" onclick="togglePolicy(this)">
+                            <div class="policy-card-main">
+                                <h3 class="policy-name">Recovery Rebate Credits (Economic Impact Payments)</h3>
+                                <div class="policy-meta">
+                                    <span class="policy-date">2020 – 2021</span>
+                                    <span class="policy-type">Federal · Credit</span>
+                                    <span class="data-badge confirmed"><span class="data-badge-dot"></span>Confirmed</span>
+                                </div>
+                            </div>
+                            <div class="policy-impact-badge">
+                                <span class="impact-amount increase">+$3,200</span>
+                                <span class="impact-label">Your impact</span>
+                            </div>
+                            <svg class="expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                        <div class="policy-card-body">
+                            <div class="policy-description">
+                                <p class="policy-description-text">
+                                    Three rounds of direct payments were issued as advance payments of the Recovery Rebate Credit in response to the COVID-19 pandemic. Based on your income and filing status, you received payments totaling $3,200 across 2020 and 2021.
+                                </p>
+                                <p class="policy-source">
+                                    Source: <a href="#" class="policy-source-link">CARES Act, Sec. 2201</a> · <a href="#" class="policy-source-link">American Rescue Plan Act, Sec. 9601</a>
+                                </p>
+                            </div>
+                            <div class="policy-officials">
+                                <p class="officials-title">Officials responsible for this policy</p>
+                                <div class="officials-list">
+                                    <div class="official-row">
+                                        <div class="official-info">
+                                            <div class="official-avatar">DT</div>
+                                            <div class="official-details">
+                                                <span class="official-name">Donald J. Trump</span>
+                                                <span class="official-role">President · 2017 – 2021</span>
+                                            </div>
+                                        </div>
+                                        <div class="official-vote">
+                                            <span class="vote-action">Signed CARES Act</span>
+                                            <span class="vote-date">March 27, 2020</span>
+                                        </div>
+                                    </div>
+                                    <div class="official-row">
+                                        <div class="official-info">
+                                            <div class="official-avatar">JB</div>
+                                            <div class="official-details">
+                                                <span class="official-name">Joseph R. Biden</span>
+                                                <span class="official-role">President · 2021 – 2025</span>
+                                            </div>
+                                        </div>
+                                        <div class="official-vote">
+                                            <span class="vote-action">Signed ARP Act</span>
+                                            <span class="vote-date">March 11, 2021</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="policy-year-breakdown">
+                                <p class="breakdown-title">Impact on your filings by year</p>
+                                <div class="breakdown-grid">
+                                    <div class="breakdown-item">
+                                        <p class="breakdown-year">2020</p>
+                                        <p class="breakdown-amount increase">+$1,800</p>
+                                    </div>
+                                    <div class="breakdown-item">
+                                        <p class="breakdown-year">2021</p>
+                                        <p class="breakdown-amount increase">+$1,400</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Methodology Section -->
+                <div class="methodology-section animate-in delay-4">
+                    <div class="methodology-header">
+                        <svg class="methodology-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 16v-4M12 8h.01"/>
+                        </svg>
+                        <div>
+                            <p class="methodology-title">How we calculate policy impacts</p>
+                            <p class="methodology-text">
+                                Impact figures are calculated by comparing your tax position under current law to what it would have been under prior law, using your actual filed returns as the baseline. Some factors to consider:
+                            </p>
+                            <ul class="methodology-list">
+                                <li><strong>Confirmed impacts</strong> are calculated directly from changes visible in your filed returns (e.g., a credit that didn't exist before).</li>
+                                <li><strong>Estimated impacts</strong> involve counterfactual modeling—what your taxes might have been under different rules. These carry more uncertainty.</li>
+                                <li>We do not account for behavioral changes you might have made in response to tax policy (e.g., choosing to itemize vs. take the standard deduction).</li>
+                                <li>State policy impacts are limited to your state of residence during the relevant tax years.</li>
+                            </ul>
+                            <p class="methodology-text" style="margin-top: 0.75rem;">
+                                <a href="#" class="methodology-link">Read our full methodology</a> · <a href="#" class="methodology-link">Download your data</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+                    </p>
+                </div>
+
+                <div style="display: grid; gap: 1.5rem;">
+                    <!-- Budget Process -->
+                    <div style="background: var(--paper-warm); border-radius: 12px; padding: 1.75rem; border-left: 3px solid var(--confirmed);">
+                        <p style="font-size: 0.875rem; font-weight: 600; color: var(--ink); margin-bottom: 0.75rem;">Federal Budget Process</p>
+                        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li style="font-size: 0.875rem; color: var(--ink-secondary); padding-left: 1.25rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--coral);">•</span>
+                                House Budget Committee hearing: March 15, 2024
+                            </li>
+                            <li style="font-size: 0.875rem; color: var(--ink-secondary); padding-left: 1.25rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--coral);">•</span>
+                                Public comment period open until: April 1, 2024
+                            </li>
+                            <li style="font-size: 0.875rem; color: var(--ink-secondary); padding-left: 1.25rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--coral);">•</span>
+                                Submit comments at <a href="#" style="color: var(--coral); text-decoration: none; font-weight: 500;">Budget.House.gov</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Elections -->
+                    <div style="background: var(--paper-warm); border-radius: 12px; padding: 1.75rem; border-left: 3px solid var(--coral);">
+                        <p style="font-size: 0.875rem; font-weight: 600; color: var(--ink); margin-bottom: 0.75rem;">Upcoming Elections</p>
+                        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li style="font-size: 0.875rem; color: var(--ink-secondary); padding-left: 1.25rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--coral);">•</span>
+                                Presidential Election: November 5, 2024
+                            </li>
+                            <li style="font-size: 0.875rem; color: var(--ink-secondary); padding-left: 1.25rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--coral);">•</span>
+                                Congressional Election (NY-14): November 5, 2024
+                            </li>
+                            <li style="font-size: 0.875rem; color: var(--ink-secondary); padding-left: 1.25rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--coral);">•</span>
+                                Check registration status at <a href="https://vote.gov" target="_blank" style="color: var(--coral); text-decoration: none; font-weight: 500;">Vote.gov</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Contact Your Representatives -->
+                    <div style="background: var(--paper-warm); border-radius: 12px; padding: 1.75rem;">
+                        <p style="font-size: 0.875rem; font-weight: 600; color: var(--ink); margin-bottom: 0.75rem;">Contact Your Representatives</p>
+                        <p style="font-size: 0.875rem; color: var(--ink-secondary); line-height: 1.6;">
+                            Let your representatives know how you feel about tax policy, budget priorities, and spending decisions. Find contact information and local office hours at <a href="https://www.congress.gov" target="_blank" style="color: var(--coral); text-decoration: none; font-weight: 500;">Congress.gov</a>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Methodology Footer -->
+            <div class="methodology-footer">
+                <div class="methodology-content">
+                    <p class="methodology-title">About This Data</p>
+                    <p class="methodology-text">
+                        Policy impact estimates are based on your filed tax returns and publicly available legislative text. Official voting records are sourced from Congress.gov and state legislative databases. Representative information is current as of 2024.
+                    </p>
+                </div>
+            </div>
+        </main>
+    </div>
+
     <script>
         // ==========================================
         // NAVIGATION
@@ -3460,13 +3554,17 @@
             if (page === 'record') {
                 document.getElementById('page-record').classList.add('active');
                 document.getElementById('nav-record').classList.add('active');
-                document.title = 'Your Record — Accountable';
+                document.title = 'Your Taxes — Accountable';
             } else if (page === 'taxes') {
                 document.getElementById('page-taxes').classList.add('active');
                 document.getElementById('nav-taxes').classList.add('active');
-                document.title = 'Where Your Taxes Go — Accountable';
+                document.title = 'Where Your Federal Taxes Go — Accountable';
                 // Reset to categories view when navigating to taxes page
                 showCategories();
+            } else if (page === 'voice') {
+                document.getElementById('page-voice').classList.add('active');
+                document.getElementById('nav-voice').classList.add('active');
+                document.title = 'Your Voice — Accountable';
             } else {
                 // Placeholder for other pages
                 alert('This page is coming soon.');
