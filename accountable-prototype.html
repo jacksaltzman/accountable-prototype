@@ -265,6 +265,130 @@
             background: currentColor;
         }
 
+        /* This Year Section */
+        .this-year-section {
+            margin-bottom: 4rem;
+        }
+
+        .year-selector-page1 {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--paper-line);
+        }
+
+        .year-selector-page1-label {
+            font-size: 0.875rem;
+            color: var(--ink-secondary);
+            font-weight: 500;
+        }
+
+        .taxes-paid-card {
+            background: var(--paper-warm);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+
+        .taxes-paid-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .taxes-paid-title {
+            font-size: 0.8125rem;
+            color: var(--ink-tertiary);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+        }
+
+        .taxes-paid-amount {
+            font-family: var(--serif);
+            font-size: 2.5rem;
+            font-weight: 500;
+            color: var(--ink);
+            letter-spacing: -0.02em;
+            margin-bottom: 0.25rem;
+        }
+
+        .taxes-paid-subtitle {
+            font-size: 0.875rem;
+            color: var(--ink-secondary);
+        }
+
+        .tax-type-breakdown {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .tax-type-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .tax-type-bar-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 0.375rem;
+        }
+
+        .tax-type-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .tax-type-name {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--ink);
+        }
+
+        .tax-type-amount {
+            font-family: var(--serif);
+            font-size: 1.125rem;
+            font-weight: 500;
+            color: var(--ink);
+        }
+
+        .tax-type-bar {
+            height: 8px;
+            background: var(--paper);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .tax-type-bar-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.4s ease;
+        }
+
+        .tax-type-bar-fill.federal {
+            background: #5C6B7A;
+        }
+
+        .tax-type-bar-fill.state {
+            background: #7A9E7E;
+        }
+
+        .tax-type-bar-fill.city {
+            background: #8B7355;
+        }
+
+        .tax-type-percentage {
+            font-size: 0.75rem;
+            color: var(--ink-tertiary);
+            min-width: 35px;
+            text-align: right;
+        }
+
         /* Benefits Breakdown Section */
         .benefits-breakdown {
             background: var(--paper-warm);
@@ -1784,21 +1908,21 @@
         </div>
         <nav class="nav-items">
             <a class="nav-link" onclick="navigateTo('file')">File</a>
-            <a class="nav-link" id="nav-record" onclick="navigateTo('record')">Your Record</a>
+            <a class="nav-link" id="nav-record" onclick="navigateTo('record')">Your Taxes</a>
             <a class="nav-link" id="nav-taxes" onclick="navigateTo('taxes')">Where It Goes</a>
             <a class="nav-link" onclick="navigateTo('documents')">Documents</a>
         </nav>
     </header>
 
     <!-- ==========================================
-         PAGE: YOUR RECORD
+         PAGE: YOUR TAXES
          ========================================== -->
     <div class="page-view" id="page-record">
         <main class="main">
             <!-- Profile Header -->
             <section class="profile-header animate-in">
-                <h1 class="profile-greeting">Your Record</h1>
-                <p class="profile-subtitle">A complete view of your contributions and claims since 2019</p>
+                <h1 class="profile-greeting">Your Taxes</h1>
+                <p class="profile-subtitle">A complete view of what you've paid and received since 2019</p>
             </section>
 
             <!-- Lifetime Summary -->
@@ -1859,8 +1983,88 @@
                 </div>
             </section>
 
+            <!-- Section Divider -->
+            <div class="section-divider"></div>
+
+            <!-- This Year Section -->
+            <section class="this-year-section animate-in delay-2">
+                <p class="section-label">This Year</p>
+
+                <!-- Year Selector -->
+                <div class="year-selector-page1">
+                    <span class="year-selector-page1-label">Tax year:</span>
+                    <div class="year-pills">
+                        <button class="year-pill" data-year="2019">2019</button>
+                        <button class="year-pill" data-year="2020">2020</button>
+                        <button class="year-pill" data-year="2021">2021</button>
+                        <button class="year-pill" data-year="2022">2022</button>
+                        <button class="year-pill active" data-year="2023" id="page1-year-2023">2023</button>
+                        <button class="year-pill" data-year="2024">2024</button>
+                    </div>
+                </div>
+
+                <!-- What You Paid Card -->
+                <div class="taxes-paid-card">
+                    <div class="taxes-paid-header">
+                        <p class="taxes-paid-title">What You Paid in 2023</p>
+                        <p class="taxes-paid-amount" id="total-taxes-paid">$37,290</p>
+                        <p class="taxes-paid-subtitle">All taxes: federal, state, and local</p>
+                    </div>
+
+                    <div class="tax-type-breakdown">
+                        <div class="tax-type-row">
+                            <div class="tax-type-bar-container">
+                                <div class="tax-type-header">
+                                    <span class="tax-type-name">Federal</span>
+                                    <span class="tax-type-amount" id="federal-taxes">$24,180</span>
+                                </div>
+                                <div class="tax-type-bar">
+                                    <div class="tax-type-bar-fill federal" style="width: 65%;"></div>
+                                </div>
+                            </div>
+                            <span class="tax-type-percentage">65%</span>
+                        </div>
+
+                        <div class="tax-type-row">
+                            <div class="tax-type-bar-container">
+                                <div class="tax-type-header">
+                                    <span class="tax-type-name">New York State</span>
+                                    <span class="tax-type-amount" id="state-taxes">$11,420</span>
+                                </div>
+                                <div class="tax-type-bar">
+                                    <div class="tax-type-bar-fill state" style="width: 31%;"></div>
+                                </div>
+                            </div>
+                            <span class="tax-type-percentage">31%</span>
+                        </div>
+
+                        <div class="tax-type-row">
+                            <div class="tax-type-bar-container">
+                                <div class="tax-type-header">
+                                    <span class="tax-type-name">New York City</span>
+                                    <span class="tax-type-amount" id="city-taxes">$1,690</span>
+                                </div>
+                                <div class="tax-type-bar">
+                                    <div class="tax-type-bar-fill city" style="width: 4%;"></div>
+                                </div>
+                            </div>
+                            <span class="tax-type-percentage">4%</span>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--paper-line);">
+                        <p style="font-size: 0.8125rem; color: var(--ink-secondary); line-height: 1.5;">
+                            <strong>Federal breakdown below.</strong> See exactly where your $24,180 in federal taxes went. <a href="#" onclick="navigateTo('taxes'); return false;" style="color: var(--coral); text-decoration: none; font-weight: 500;">Explore federal spending →</a>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section Divider -->
+            <div class="section-divider"></div>
+
             <!-- Benefits Breakdown Section -->
-            <section class="benefits-breakdown animate-in delay-2">
+            <section class="benefits-breakdown animate-in delay-3">
                 <div class="benefits-breakdown-header">
                     <p class="benefits-breakdown-title">Benefits We Found for You</p>
                     <p class="benefits-breakdown-total">$18,340</p>
