@@ -1126,7 +1126,44 @@
             border-color: var(--ink);
         }
 
-        /* Total Burden Card */
+        /* Federal Context Card */
+        .federal-context-card {
+            background: var(--paper-warm);
+            border-radius: 12px;
+            padding: 1.75rem;
+            margin-bottom: 2.5rem;
+            border-left: 3px solid var(--coral);
+        }
+
+        .federal-context-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 0.75rem;
+        }
+
+        .federal-context-text {
+            font-size: 0.875rem;
+            color: var(--ink-secondary);
+            line-height: 1.6;
+            margin-bottom: 0.75rem;
+        }
+
+        .federal-context-text:last-child {
+            margin-bottom: 0;
+        }
+
+        .federal-context-link {
+            color: var(--coral);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .federal-context-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Total Burden Card (deprecated - moved to Page 1) */
         .total-burden-card {
             background: var(--paper-warm);
             border-radius: 12px;
@@ -2657,12 +2694,12 @@
             <!-- Page Header -->
             <div class="page-header">
                 <nav class="breadcrumb">
-                    <a onclick="navigateTo('record')">Your Record</a>
+                    <a onclick="navigateTo('record')">Your Taxes</a>
                     <span class="breadcrumb-separator">›</span>
-                    <span>Where Your Taxes Go</span>
+                    <span>Where It Goes</span>
                 </nav>
-                <h1 class="page-title">Where Your Taxes Go</h1>
-                <p class="page-subtitle">A breakdown of how your federal tax dollars are allocated across government functions, agencies, and programs.</p>
+                <h1 class="page-title">Where Your Federal Taxes Go</h1>
+                <p class="page-subtitle">Your $24,180 in federal taxes, broken down by government function, agency, and program.</p>
             </div>
 
             <!-- Year Selector -->
@@ -2678,58 +2715,15 @@
                 </div>
             </div>
 
-            <!-- Total Burden Card -->
-            <div class="total-burden-card">
-                <div class="total-burden-header">
-                    <p class="total-burden-title">Your Complete Tax Picture</p>
-                    <p class="total-burden-amount">$37,290</p>
-                    <p class="total-burden-subtitle">All taxes paid in 2023</p>
-                </div>
-
-                <div class="total-burden-breakdown">
-                    <div class="burden-row">
-                        <div class="burden-bar-container">
-                            <div class="burden-header">
-                                <span class="burden-name">Federal</span>
-                                <span class="burden-amount">$24,180</span>
-                            </div>
-                            <div class="burden-bar">
-                                <div class="burden-bar-fill federal" style="width: 65%;"></div>
-                            </div>
-                        </div>
-                        <span class="burden-percentage">65%</span>
-                    </div>
-
-                    <div class="burden-row">
-                        <div class="burden-bar-container">
-                            <div class="burden-header">
-                                <span class="burden-name">New York State</span>
-                                <span class="burden-amount">$11,420</span>
-                            </div>
-                            <div class="burden-bar">
-                                <div class="burden-bar-fill state" style="width: 31%;"></div>
-                            </div>
-                        </div>
-                        <span class="burden-percentage">31%</span>
-                    </div>
-
-                    <div class="burden-row">
-                        <div class="burden-bar-container">
-                            <div class="burden-header">
-                                <span class="burden-name">New York City</span>
-                                <span class="burden-amount">$1,690</span>
-                            </div>
-                            <div class="burden-bar">
-                                <div class="burden-bar-fill city" style="width: 4%;"></div>
-                            </div>
-                        </div>
-                        <span class="burden-percentage">4%</span>
-                    </div>
-                </div>
-
-                <div class="total-burden-note">
-                    <strong>Federal breakdown below.</strong> Most education and infrastructure spending happens at state and local levels—federal spending focuses on defense, healthcare, and social programs.
-                </div>
+            <!-- Federal Context Card -->
+            <div class="federal-context-card">
+                <p class="federal-context-title">Federal Spending Only</p>
+                <p class="federal-context-text">
+                    This page shows how your <strong>federal taxes</strong> ($24,180 in 2023) are allocated. State and local taxes fund schools, roads, police, and other services—those budgets are managed separately.
+                </p>
+                <p class="federal-context-text">
+                    <a href="#" onclick="navigateTo('record'); return false;" class="federal-context-link">← See your complete tax picture</a> (federal + state + city)
+                </p>
             </div>
 
             <!-- Summary Card -->
