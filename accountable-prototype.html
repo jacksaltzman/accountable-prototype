@@ -3427,13 +3427,414 @@
             <!-- Section Divider -->
             <div class="section-divider"></div>
 
+            <!-- Spending Allocation Section -->
+            <section class="policy-section animate-in delay-2">
+                <div class="policy-header">
+                    <p class="section-label">Spending Allocation</p>
+                    <h2 class="section-title">How Your Taxes Were Allocated</h2>
+                    <p class="section-description">
+                        Major spending bills and appropriations that determined where your tax dollars went. These votes connect directly to the categories in "Where It Goes."
+                    </p>
+                </div>
+
+                <!-- Spending Policy Cards -->
+                <div class="policy-cards">
+
+                    <!-- Spending Card 1: Infrastructure Investment and Jobs Act -->
+                    <div class="policy-card expanded" data-type="federal spending">
+                        <div class="policy-card-header" onclick="togglePolicy(this)">
+                            <div class="policy-card-main">
+                                <h3 class="policy-name">Infrastructure Investment and Jobs Act</h3>
+                                <div class="policy-meta">
+                                    <span class="policy-date">Enacted November 2021</span>
+                                    <span class="policy-type">Federal · Appropriations</span>
+                                    <span class="data-badge confirmed"><span class="data-badge-dot"></span>Confirmed</span>
+                                </div>
+                            </div>
+                            <div class="policy-impact-badge">
+                                <span class="impact-amount neutral">~$487</span>
+                                <span class="impact-label">From your 2022-2024 taxes</span>
+                            </div>
+                            <svg class="expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                        <div class="policy-card-body">
+                            <div class="policy-description">
+                                <p class="policy-description-text">
+                                    A $1.2 trillion infrastructure package funding roads, bridges, public transit, broadband internet, electric vehicle charging, and water systems. Based on your tax contribution, approximately $487 of your taxes over three years went toward this program. This connects to the "Transportation" category in Where It Goes.
+                                </p>
+                                <p class="policy-source">
+                                    Source: <a href="#" class="policy-source-link">Infrastructure Investment and Jobs Act, H.R. 3684</a> · <a href="#" class="policy-source-link">CBO Cost Estimate</a>
+                                </p>
+                            </div>
+                            <div class="policy-officials">
+                                <p class="officials-title">How your representatives voted</p>
+                                <div class="officials-list">
+                                    <div class="official-row">
+                                        <div class="official-info">
+                                            <div class="official-avatar">JB</div>
+                                            <div class="official-details">
+                                                <span class="official-name">Joseph R. Biden</span>
+                                                <span class="official-role">President · 2021 – 2025</span>
+                                            </div>
+                                        </div>
+                                        <div class="official-vote">
+                                            <span class="vote-action">Signed into law</span>
+                                            <span class="vote-date">November 15, 2021</span>
+                                        </div>
+                                    </div>
+                                    <div class="official-row">
+                                        <div class="official-info">
+                                            <div class="official-avatar">CS</div>
+                                            <div class="official-details">
+                                                <span class="official-name">Charles Schumer</span>
+                                                <span class="official-role">Senator, New York · 2017 – present</span>
+                                            </div>
+                                        </div>
+                                        <div class="official-vote">
+                                            <span class="vote-action">Voted yes</span>
+                                            <span class="vote-date">August 10, 2021</span>
+                                        </div>
+                                    </div>
+                                    <div class="official-row">
+                                        <div class="official-info">
+                                            <div class="official-avatar">KG</div>
+                                            <div class="official-details">
+                                                <span class="official-name">Kirsten Gillibrand</span>
+                                                <span class="official-role">Senator, New York · 2009 – present</span>
+                                            </div>
+                                        </div>
+                                        <div class="official-vote">
+                                            <span class="vote-action">Voted yes</span>
+                                            <span class="vote-date">August 10, 2021</span>
+                                        </div>
+                                    </div>
+                                    <div class="official-row">
+                                        <div class="official-info">
+                                            <div class="official-avatar">AO</div>
+                                            <div class="official-details">
+                                                <span class="official-name">Alexandria Ocasio-Cortez</span>
+                                                <span class="official-role">Representative, NY-14 · 2019 – present</span>
+                                            </div>
+                                        </div>
+                                        <div class="official-vote">
+                                            <span class="vote-action">Voted yes</span>
+                                            <span class="vote-date">November 5, 2021</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="policy-year-breakdown">
+                                <p class="breakdown-title">Estimated allocation from your taxes by year</p>
+                                <div class="breakdown-grid">
+                                    <div class="breakdown-item">
+                                        <p class="breakdown-year">2022</p>
+                                        <p class="breakdown-amount neutral">~$162</p>
+                                    </div>
+                                    <div class="breakdown-item">
+                                        <p class="breakdown-year">2023</p>
+                                        <p class="breakdown-amount neutral">~$162</p>
+                                    </div>
+                                    <div class="breakdown-item">
+                                        <p class="breakdown-year">2024</p>
+                                        <p class="breakdown-amount neutral">~$163</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Spending Card 2: National Defense Authorization Act -->
+                    <div class="policy-card" data-type="federal spending">
+                        <div class="policy-card-header" onclick="togglePolicy(this)">
+                            <div class="policy-card-main">
+                                <h3 class="policy-name">National Defense Authorization Act (FY 2024)</h3>
+                                <div class="policy-meta">
+                                    <span class="policy-date">Enacted December 2023</span>
+                                    <span class="policy-type">Federal · Appropriations</span>
+                                    <span class="data-badge confirmed"><span class="data-badge-dot"></span>Confirmed</span>
+                                </div>
+                            </div>
+                            <div class="policy-impact-badge">
+                                <span class="impact-amount neutral">~$3,248</span>
+                                <span class="impact-label">From your 2024 taxes</span>
+                            </div>
+                            <svg class="expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                        <div class="policy-card-body">
+                            <div class="policy-description">
+                                <p class="policy-description-text">
+                                    The annual National Defense Authorization Act authorizes $886 billion in defense spending for FY 2024, funding military personnel, operations, equipment, and research. Based on your tax contribution, approximately $3,248 (15%) of your 2024 taxes went toward national defense. This is the "National Defense" category in Where It Goes.
+                                </p>
+                                <p class="policy-source">
+                                    Source: <a href="#" class="policy-source-link">FY 2024 NDAA, H.R. 2670</a> · <a href="#" class="policy-source-link">Department of Defense Budget</a>
+                                </p>
+                            </div>
+                            <div class="policy-officials">
+                                <p class="officials-title">How your representatives voted</p>
+                                <div class="officials-list">
+                                    <div class="official-row">
+                                        <div class="official-info">
+                                            <div class="official-avatar">JB</div>
+                                            <div class="official-details">
+                                                <span class="official-name">Joseph R. Biden</span>
+                                                <span class="official-role">President · 2021 – 2025</span>
+                                            </div>
+                                        </div>
+                                        <div class="official-vote">
+                                            <span class="vote-action">Signed into law</span>
+                                            <span class="vote-date">December 22, 2023</span>
+                                        </div>
+                                    </div>
+                                    <div class="official-row">
+                                        <div class="official-info">
+                                            <div class="official-avatar">CS</div>
+                                            <div class="official-details">
+                                                <span class="official-name">Charles Schumer</span>
+                                                <span class="official-role">Senator, New York · 2017 – present</span>
+                                            </div>
+                                        </div>
+                                        <div class="official-vote">
+                                            <span class="vote-action">Voted yes</span>
+                                            <span class="vote-date">December 13, 2023</span>
+                                        </div>
+                                    </div>
+                                    <div class="official-row">
+                                        <div class="official-info">
+                                            <div class="official-avatar">KG</div>
+                                            <div class="official-details">
+                                                <span class="official-name">Kirsten Gillibrand</span>
+                                                <span class="official-role">Senator, New York · 2009 – present</span>
+                                            </div>
+                                        </div>
+                                        <div class="official-vote">
+                                            <span class="vote-action">Voted yes</span>
+                                            <span class="vote-date">December 13, 2023</span>
+                                        </div>
+                                    </div>
+                                    <div class="official-row">
+                                        <div class="official-info">
+                                            <div class="official-avatar">AO</div>
+                                            <div class="official-details">
+                                                <span class="official-name">Alexandria Ocasio-Cortez</span>
+                                                <span class="official-role">Representative, NY-14 · 2019 – present</span>
+                                            </div>
+                                        </div>
+                                        <div class="official-vote">
+                                            <span class="vote-action">Voted no</span>
+                                            <span class="vote-date">December 14, 2023</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Spending Card 3: American Rescue Plan Spending -->
+                    <div class="policy-card" data-type="federal spending">
+                        <div class="policy-card-header" onclick="togglePolicy(this)">
+                            <div class="policy-card-main">
+                                <h3 class="policy-name">American Rescue Plan Spending Provisions</h3>
+                                <div class="policy-meta">
+                                    <span class="policy-date">Enacted March 2021</span>
+                                    <span class="policy-type">Federal · Appropriations</span>
+                                    <span class="data-badge confirmed"><span class="data-badge-dot"></span>Confirmed</span>
+                                </div>
+                            </div>
+                            <div class="policy-impact-badge">
+                                <span class="impact-amount neutral">~$1,890</span>
+                                <span class="impact-label">From your 2021-2022 taxes</span>
+                            </div>
+                            <svg class="expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                        <div class="policy-card-body">
+                            <div class="policy-description">
+                                <p class="policy-description-text">
+                                    A $1.9 trillion COVID-19 relief package that funded stimulus payments, unemployment benefits, vaccine distribution, state and local aid, and small business support. Beyond the direct payments you received (shown in the tax policy section), approximately $1,890 of your taxes over two years funded other program costs. This spending touched multiple categories: Income Security, Medicare & Health, and Education.
+                                </p>
+                                <p class="policy-source">
+                                    Source: <a href="#" class="policy-source-link">American Rescue Plan Act, H.R. 1319</a> · <a href="#" class="policy-source-link">Treasury Department Implementation</a>
+                                </p>
+                            </div>
+                            <div class="policy-officials">
+                                <p class="officials-title">How your representatives voted</p>
+                                <div class="officials-list">
+                                    <div class="official-row">
+                                        <div class="official-info">
+                                            <div class="official-avatar">JB</div>
+                                            <div class="official-details">
+                                                <span class="official-name">Joseph R. Biden</span>
+                                                <span class="official-role">President · 2021 – 2025</span>
+                                            </div>
+                                        </div>
+                                        <div class="official-vote">
+                                            <span class="vote-action">Signed into law</span>
+                                            <span class="vote-date">March 11, 2021</span>
+                                        </div>
+                                    </div>
+                                    <div class="official-row">
+                                        <div class="official-info">
+                                            <div class="official-avatar">CS</div>
+                                            <div class="official-details">
+                                                <span class="official-name">Charles Schumer</span>
+                                                <span class="official-role">Senator, New York · 2017 – present</span>
+                                            </div>
+                                        </div>
+                                        <div class="official-vote">
+                                            <span class="vote-action">Voted yes</span>
+                                            <span class="vote-date">March 6, 2021</span>
+                                        </div>
+                                    </div>
+                                    <div class="official-row">
+                                        <div class="official-info">
+                                            <div class="official-avatar">KG</div>
+                                            <div class="official-details">
+                                                <span class="official-name">Kirsten Gillibrand</span>
+                                                <span class="official-role">Senator, New York · 2009 – present</span>
+                                            </div>
+                                        </div>
+                                        <div class="official-vote">
+                                            <span class="vote-action">Voted yes</span>
+                                            <span class="vote-date">March 6, 2021</span>
+                                        </div>
+                                    </div>
+                                    <div class="official-row">
+                                        <div class="official-info">
+                                            <div class="official-avatar">AO</div>
+                                            <div class="official-details">
+                                                <span class="official-name">Alexandria Ocasio-Cortez</span>
+                                                <span class="official-role">Representative, NY-14 · 2019 – present</span>
+                                            </div>
+                                        </div>
+                                        <div class="official-vote">
+                                            <span class="vote-action">Voted yes</span>
+                                            <span class="vote-date">February 27, 2021</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="policy-year-breakdown">
+                                <p class="breakdown-title">Estimated allocation from your taxes by year</p>
+                                <div class="breakdown-grid">
+                                    <div class="breakdown-item">
+                                        <p class="breakdown-year">2021</p>
+                                        <p class="breakdown-amount neutral">~$1,260</p>
+                                    </div>
+                                    <div class="breakdown-item">
+                                        <p class="breakdown-year">2022</p>
+                                        <p class="breakdown-amount neutral">~$630</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Spending Card 4: Consolidated Appropriations Act -->
+                    <div class="policy-card" data-type="federal spending">
+                        <div class="policy-card-header" onclick="togglePolicy(this)">
+                            <div class="policy-card-main">
+                                <h3 class="policy-name">Consolidated Appropriations Act (FY 2024)</h3>
+                                <div class="policy-meta">
+                                    <span class="policy-date">Enacted March 2024</span>
+                                    <span class="policy-type">Federal · Appropriations</span>
+                                    <span class="data-badge confirmed"><span class="data-badge-dot"></span>Confirmed</span>
+                                </div>
+                            </div>
+                            <div class="policy-impact-badge">
+                                <span class="impact-amount neutral">~$11,725</span>
+                                <span class="impact-label">From your 2024 taxes</span>
+                            </div>
+                            <svg class="expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                        <div class="policy-card-body">
+                            <div class="policy-description">
+                                <p class="policy-description-text">
+                                    The annual omnibus spending bill that funds most federal government operations for FY 2024, including Medicare & Health ($3,682), Income Security programs ($2,814), Veterans Benefits ($1,299), Education & Training ($1,082), and other domestic programs. This is where the majority of your tax dollars are allocated across all categories in Where It Goes (excluding Social Security and Defense, which have separate authorization).
+                                </p>
+                                <p class="policy-source">
+                                    Source: <a href="#" class="policy-source-link">Consolidated Appropriations Act, 2024</a> · <a href="#" class="policy-source-link">OMB Budget Tables</a>
+                                </p>
+                            </div>
+                            <div class="policy-officials">
+                                <p class="officials-title">How your representatives voted</p>
+                                <div class="officials-list">
+                                    <div class="official-row">
+                                        <div class="official-info">
+                                            <div class="official-avatar">JB</div>
+                                            <div class="official-details">
+                                                <span class="official-name">Joseph R. Biden</span>
+                                                <span class="official-role">President · 2021 – 2025</span>
+                                            </div>
+                                        </div>
+                                        <div class="official-vote">
+                                            <span class="vote-action">Signed into law</span>
+                                            <span class="vote-date">March 23, 2024</span>
+                                        </div>
+                                    </div>
+                                    <div class="official-row">
+                                        <div class="official-info">
+                                            <div class="official-avatar">CS</div>
+                                            <div class="official-details">
+                                                <span class="official-name">Charles Schumer</span>
+                                                <span class="official-role">Senator, New York · 2017 – present</span>
+                                            </div>
+                                        </div>
+                                        <div class="official-vote">
+                                            <span class="vote-action">Voted yes</span>
+                                            <span class="vote-date">March 22, 2024</span>
+                                        </div>
+                                    </div>
+                                    <div class="official-row">
+                                        <div class="official-info">
+                                            <div class="official-avatar">KG</div>
+                                            <div class="official-details">
+                                                <span class="official-name">Kirsten Gillibrand</span>
+                                                <span class="official-role">Senator, New York · 2009 – present</span>
+                                            </div>
+                                        </div>
+                                        <div class="official-vote">
+                                            <span class="vote-action">Voted yes</span>
+                                            <span class="vote-date">March 22, 2024</span>
+                                        </div>
+                                    </div>
+                                    <div class="official-row">
+                                        <div class="official-info">
+                                            <div class="official-avatar">AO</div>
+                                            <div class="official-details">
+                                                <span class="official-name">Alexandria Ocasio-Cortez</span>
+                                                <span class="official-role">Representative, NY-14 · 2019 – present</span>
+                                            </div>
+                                        </div>
+                                        <div class="official-vote">
+                                            <span class="vote-action">Voted yes</span>
+                                            <span class="vote-date">March 22, 2024</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Section Divider -->
+            <div class="section-divider"></div>
+
             <!-- Your Representatives Section -->
             <section class="policy-section animate-in delay-2">
                 <div class="policy-header">
                     <p class="section-label">Your Representatives</p>
                     <h2 class="section-title">Who Represents You</h2>
                     <p class="section-description">
-                        Your elected officials in Washington, D.C. They vote on federal budgets and tax policy.
+                        Your elected officials in Washington, D.C. They vote on federal budgets and how your tax dollars are spent on programs like defense, healthcare, education, infrastructure, and more.
                     </p>
                 </div>
 
