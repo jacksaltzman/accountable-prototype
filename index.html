@@ -73,15 +73,8 @@
         .logo-mark {
             width: 36px;
             height: 36px;
-            background: var(--coral);
             border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: var(--serif);
-            font-weight: 600;
-            font-size: 1.5rem;
-            color: var(--ink);
+            object-fit: cover;
         }
 
         .logo-text {
@@ -242,7 +235,6 @@
             .logo-mark {
                 width: 32px;
                 height: 32px;
-                font-size: 1.25rem;
             }
         }
 
@@ -2993,7 +2985,7 @@
     <!-- Header -->
     <header class="header">
         <div class="logo" onclick="navigateTo('record')">
-            <div class="logo-mark">&#x1D504;</div>
+            <img class="logo-mark" src="Favicon.png" alt="Accountable logo">
             <span class="logo-text">Accountable</span>
         </div>
         <nav class="nav-items">
