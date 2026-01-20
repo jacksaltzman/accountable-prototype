@@ -2741,6 +2741,140 @@
             }
         }
 
+        /* ==========================================
+           WHERE IT GOES - JURISDICTION TABS
+           ========================================== */
+
+        .jurisdiction-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            padding: 0.375rem;
+            background: var(--paper-warm);
+            border-radius: 10px;
+            width: fit-content;
+        }
+
+        .jurisdiction-tab {
+            padding: 0.75rem 1.25rem;
+            border: none;
+            background: transparent;
+            border-radius: 8px;
+            font-family: var(--sans);
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--ink-secondary);
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .jurisdiction-tab:hover {
+            color: var(--ink);
+            background: var(--paper);
+        }
+
+        .jurisdiction-tab.active {
+            background: var(--paper);
+            color: var(--ink);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .jurisdiction-tab-amount {
+            font-family: var(--serif);
+            font-weight: 500;
+            color: var(--ink-tertiary);
+        }
+
+        .jurisdiction-tab.active .jurisdiction-tab-amount {
+            color: var(--ink);
+        }
+
+        /* Jurisdiction content containers */
+        .jurisdiction-content {
+            display: none;
+        }
+
+        .jurisdiction-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        /* State/City specific colors */
+        .allocation-segment.state-education { background: #7A9E7E; }
+        .allocation-segment.state-health { background: #5C8A6B; }
+        .allocation-segment.state-transport { background: #4A7A5A; }
+        .allocation-segment.state-safety { background: #3D6B4D; }
+        .allocation-segment.state-economic { background: #8FB896; }
+        .allocation-segment.state-environment { background: #A5C9AC; }
+        .allocation-segment.state-other { background: #B8D4BE; }
+
+        .allocation-segment.city-education { background: #8B7355; }
+        .allocation-segment.city-safety { background: #7A6348; }
+        .allocation-segment.city-health { background: #9B8365; }
+        .allocation-segment.city-infrastructure { background: #6A5338; }
+        .allocation-segment.city-housing { background: #AB9375; }
+        .allocation-segment.city-parks { background: #BBA385; }
+        .allocation-segment.city-other { background: #CBB395; }
+
+        .breakdown-bar-fill.state { background: #7A9E7E; }
+        .breakdown-bar-fill.city { background: #8B7355; }
+
+        /* Context card variants */
+        .spending-context-card {
+            background: var(--paper-warm);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--paper-line);
+        }
+
+        .spending-context-card.federal {
+            border-left-color: #5C6B7A;
+        }
+
+        .spending-context-card.state {
+            border-left-color: #7A9E7E;
+        }
+
+        .spending-context-card.city {
+            border-left-color: #8B7355;
+        }
+
+        .spending-context-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 0.5rem;
+        }
+
+        .spending-context-text {
+            font-size: 0.8125rem;
+            color: var(--ink-secondary);
+            line-height: 1.5;
+        }
+
+        /* Responsive for tabs */
+        @media (max-width: 600px) {
+            .jurisdiction-tabs {
+                width: 100%;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .jurisdiction-tab {
+                padding: 0.625rem 1rem;
+                font-size: 0.8125rem;
+                white-space: nowrap;
+            }
+
+            .jurisdiction-tab-amount {
+                display: none;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -3534,9 +3668,28 @@
                     <span class="breadcrumb-separator">›</span>
                     <span>Where It Goes</span>
                 </nav>
-                <h1 class="page-title">Where Your Federal Taxes Go</h1>
-                <p class="page-subtitle">Your $24,180 in federal taxes, broken down by government function, agency, and program.</p>
+                <h1 class="page-title" id="spending-page-title">Where Your Taxes Go</h1>
+                <p class="page-subtitle" id="spending-page-subtitle">See how your $37,290 in taxes are allocated across federal, state, and city programs.</p>
             </div>
+
+            <!-- Jurisdiction Tabs -->
+            <div class="jurisdiction-tabs">
+                <button class="jurisdiction-tab active" onclick="switchJurisdiction('federal')" id="tab-federal">
+                    Federal
+                    <span class="jurisdiction-tab-amount">$24,180</span>
+                </button>
+                <button class="jurisdiction-tab" onclick="switchJurisdiction('state')" id="tab-state">
+                    NY State
+                    <span class="jurisdiction-tab-amount">$11,420</span>
+                </button>
+                <button class="jurisdiction-tab" onclick="switchJurisdiction('city')" id="tab-city">
+                    NYC
+                    <span class="jurisdiction-tab-amount">$1,690</span>
+                </button>
+            </div>
+
+            <!-- ========== FEDERAL SPENDING ========== -->
+            <div class="jurisdiction-content active" id="content-federal">
 
             <!-- Year Selector -->
             <div class="year-selector">
@@ -3552,13 +3705,10 @@
             </div>
 
             <!-- Federal Context Card -->
-            <div class="federal-context-card">
-                <p class="federal-context-title">Federal Spending Only</p>
-                <p class="federal-context-text">
-                    This page shows how your <strong>federal taxes</strong> ($24,180 in 2023) are allocated. State and local taxes fund schools, roads, police, and other services—those budgets are managed separately.
-                </p>
-                <p class="federal-context-text">
-                    <a href="#" onclick="navigateTo('record'); return false;" class="federal-context-link">← See your complete tax picture</a> (federal + state + city)
+            <div class="spending-context-card federal">
+                <p class="spending-context-title">Federal Spending</p>
+                <p class="spending-context-text">
+                    Your federal taxes fund national defense, Social Security, Medicare, and other programs administered by the U.S. government. Click into any category to see agencies and specific programs.
                 </p>
             </div>
 
@@ -4254,6 +4404,366 @@
                     </div>
                 </div>
             </div>
+
+            </div> <!-- END content-federal -->
+
+            <!-- ========== NY STATE SPENDING ========== -->
+            <div class="jurisdiction-content" id="content-state">
+                <!-- State Context Card -->
+                <div class="spending-context-card state">
+                    <p class="spending-context-title">New York State Spending</p>
+                    <p class="spending-context-text">
+                        Your $11,420 in state taxes fund education (including SUNY/CUNY), Medicaid, transportation infrastructure (including MTA support), and state agencies. New York's budget is one of the largest among U.S. states.
+                    </p>
+                </div>
+
+                <!-- State Summary Card -->
+                <div class="tax-summary-card">
+                    <div class="tax-summary-main">
+                        <p class="summary-label">Your 2023 NY State tax contribution</p>
+                        <p class="summary-value">$11,420</p>
+                        <p class="summary-meta">Based on your filed return · State income tax</p>
+                    </div>
+                </div>
+
+                <!-- State Allocation Bar -->
+                <div class="allocation-bar-section">
+                    <div class="allocation-bar">
+                        <div class="allocation-segment state-education" style="width: 35%;" data-name="Education" data-amount="$3,997" data-percent="35%">
+                            <span class="segment-label">Education</span>
+                        </div>
+                        <div class="allocation-segment state-health" style="width: 25%;" data-name="Health" data-amount="$2,855" data-percent="25%">
+                            <span class="segment-label">Health</span>
+                        </div>
+                        <div class="allocation-segment state-transport medium" style="width: 12%;" data-name="Transportation" data-amount="$1,370" data-percent="12%">
+                            <span class="segment-label">Transit</span>
+                        </div>
+                        <div class="allocation-segment state-safety medium" style="width: 8%;" data-name="Public Safety" data-amount="$914" data-percent="8%">
+                            <span class="segment-label">Safety</span>
+                        </div>
+                        <div class="allocation-segment state-economic small" style="width: 6%;" data-name="Economic Dev" data-amount="$685" data-percent="6%">
+                            <span class="segment-label">Econ</span>
+                        </div>
+                        <div class="allocation-segment state-environment small" style="width: 4%;" data-name="Environment" data-amount="$457" data-percent="4%">
+                            <span class="segment-label">Env</span>
+                        </div>
+                        <div class="allocation-segment state-other" style="width: 10%;" data-name="All Other" data-amount="$1,142" data-percent="10%">
+                            <span class="segment-label">Other</span>
+                        </div>
+                    </div>
+                    <p class="allocation-context">Your $11,420 in state taxes, allocated across 7 categories.</p>
+                </div>
+
+                <!-- State Categories -->
+                <div class="nav-panel">
+                    <div class="nav-panel-header">
+                        <span class="nav-panel-title">NY State Spending Categories</span>
+                        <span class="data-badge estimate"><span class="data-badge-dot"></span>Proportional estimate</span>
+                    </div>
+                    <div class="breakdown-list">
+                        <div class="breakdown-list-item no-drill">
+                            <div class="breakdown-bar-container">
+                                <div class="breakdown-bar">
+                                    <div class="breakdown-bar-fill state" style="width: 35%;"></div>
+                                </div>
+                            </div>
+                            <div class="breakdown-content">
+                                <p class="breakdown-name">Education</p>
+                                <p class="breakdown-description">K-12 school aid, SUNY and CUNY systems, pre-K programs, and special education services</p>
+                            </div>
+                            <div class="breakdown-figures">
+                                <span class="breakdown-list-amount">$3,997</span>
+                                <span class="breakdown-percent">35%</span>
+                            </div>
+                        </div>
+                        <div class="breakdown-list-item no-drill">
+                            <div class="breakdown-bar-container">
+                                <div class="breakdown-bar">
+                                    <div class="breakdown-bar-fill state" style="width: 25%;"></div>
+                                </div>
+                            </div>
+                            <div class="breakdown-content">
+                                <p class="breakdown-name">Health & Human Services</p>
+                                <p class="breakdown-description">Medicaid (state share), mental health services, developmental disabilities, public health programs</p>
+                            </div>
+                            <div class="breakdown-figures">
+                                <span class="breakdown-list-amount">$2,855</span>
+                                <span class="breakdown-percent">25%</span>
+                            </div>
+                        </div>
+                        <div class="breakdown-list-item no-drill">
+                            <div class="breakdown-bar-container">
+                                <div class="breakdown-bar">
+                                    <div class="breakdown-bar-fill state" style="width: 12%;"></div>
+                                </div>
+                            </div>
+                            <div class="breakdown-content">
+                                <p class="breakdown-name">Transportation</p>
+                                <p class="breakdown-description">MTA operating support, highway maintenance, bridge repairs, rail and aviation programs</p>
+                            </div>
+                            <div class="breakdown-figures">
+                                <span class="breakdown-list-amount">$1,370</span>
+                                <span class="breakdown-percent">12%</span>
+                            </div>
+                        </div>
+                        <div class="breakdown-list-item no-drill">
+                            <div class="breakdown-bar-container">
+                                <div class="breakdown-bar">
+                                    <div class="breakdown-bar-fill state" style="width: 8%;"></div>
+                                </div>
+                            </div>
+                            <div class="breakdown-content">
+                                <p class="breakdown-name">Public Safety</p>
+                                <p class="breakdown-description">State Police, corrections, parole, homeland security, and emergency management</p>
+                            </div>
+                            <div class="breakdown-figures">
+                                <span class="breakdown-list-amount">$914</span>
+                                <span class="breakdown-percent">8%</span>
+                            </div>
+                        </div>
+                        <div class="breakdown-list-item no-drill">
+                            <div class="breakdown-bar-container">
+                                <div class="breakdown-bar">
+                                    <div class="breakdown-bar-fill state" style="width: 6%;"></div>
+                                </div>
+                            </div>
+                            <div class="breakdown-content">
+                                <p class="breakdown-name">Economic Development</p>
+                                <p class="breakdown-description">Business incentives, workforce development, housing programs, and regional economic councils</p>
+                            </div>
+                            <div class="breakdown-figures">
+                                <span class="breakdown-list-amount">$685</span>
+                                <span class="breakdown-percent">6%</span>
+                            </div>
+                        </div>
+                        <div class="breakdown-list-item no-drill">
+                            <div class="breakdown-bar-container">
+                                <div class="breakdown-bar">
+                                    <div class="breakdown-bar-fill state" style="width: 4%;"></div>
+                                </div>
+                            </div>
+                            <div class="breakdown-content">
+                                <p class="breakdown-name">Environment & Parks</p>
+                                <p class="breakdown-description">DEC programs, state parks, environmental protection, clean water infrastructure</p>
+                            </div>
+                            <div class="breakdown-figures">
+                                <span class="breakdown-list-amount">$457</span>
+                                <span class="breakdown-percent">4%</span>
+                            </div>
+                        </div>
+                        <div class="breakdown-list-item no-drill">
+                            <div class="breakdown-bar-container">
+                                <div class="breakdown-bar">
+                                    <div class="breakdown-bar-fill state" style="width: 10%;"></div>
+                                </div>
+                            </div>
+                            <div class="breakdown-content">
+                                <p class="breakdown-name">All Other</p>
+                                <p class="breakdown-description">General government, debt service, local assistance, courts, and legislature</p>
+                            </div>
+                            <div class="breakdown-figures">
+                                <span class="breakdown-list-amount">$1,142</span>
+                                <span class="breakdown-percent">10%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- State Data Source -->
+                <div class="methodology-footer" style="margin-top: 2rem;">
+                    <div class="methodology-header">
+                        <svg class="methodology-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 16v-4M12 8h.01"/>
+                        </svg>
+                        <div class="methodology-content">
+                            <p class="methodology-title">About NY State budget data</p>
+                            <p class="methodology-text">
+                                State spending allocations are based on the NYS Enacted Budget for FY2023-24. Your share is calculated proportionally based on your state income tax paid. Data source: <a href="#" class="methodology-link">NYS Division of the Budget</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- END content-state -->
+
+            <!-- ========== NYC SPENDING ========== -->
+            <div class="jurisdiction-content" id="content-city">
+                <!-- City Context Card -->
+                <div class="spending-context-card city">
+                    <p class="spending-context-title">New York City Spending</p>
+                    <p class="spending-context-text">
+                        Your $1,690 in city taxes fund local services including public schools (NYC DOE), police and fire departments, sanitation, parks, and social services. NYC has the largest municipal budget in the United States.
+                    </p>
+                </div>
+
+                <!-- City Summary Card -->
+                <div class="tax-summary-card">
+                    <div class="tax-summary-main">
+                        <p class="summary-label">Your 2023 NYC tax contribution</p>
+                        <p class="summary-value">$1,690</p>
+                        <p class="summary-meta">Based on your filed return · City income tax</p>
+                    </div>
+                </div>
+
+                <!-- City Allocation Bar -->
+                <div class="allocation-bar-section">
+                    <div class="allocation-bar">
+                        <div class="allocation-segment city-education" style="width: 35%;" data-name="Education" data-amount="$592" data-percent="35%">
+                            <span class="segment-label">Education</span>
+                        </div>
+                        <div class="allocation-segment city-safety" style="width: 18%;" data-name="Public Safety" data-amount="$304" data-percent="18%">
+                            <span class="segment-label">Safety</span>
+                        </div>
+                        <div class="allocation-segment city-health medium" style="width: 15%;" data-name="Health & Social" data-amount="$254" data-percent="15%">
+                            <span class="segment-label">Health</span>
+                        </div>
+                        <div class="allocation-segment city-infrastructure medium" style="width: 10%;" data-name="Infrastructure" data-amount="$169" data-percent="10%">
+                            <span class="segment-label">Infra</span>
+                        </div>
+                        <div class="allocation-segment city-housing small" style="width: 8%;" data-name="Housing" data-amount="$135" data-percent="8%">
+                            <span class="segment-label">Housing</span>
+                        </div>
+                        <div class="allocation-segment city-parks small" style="width: 4%;" data-name="Parks & Culture" data-amount="$68" data-percent="4%">
+                            <span class="segment-label">Parks</span>
+                        </div>
+                        <div class="allocation-segment city-other" style="width: 10%;" data-name="All Other" data-amount="$169" data-percent="10%">
+                            <span class="segment-label">Other</span>
+                        </div>
+                    </div>
+                    <p class="allocation-context">Your $1,690 in city taxes, allocated across 7 categories.</p>
+                </div>
+
+                <!-- City Categories -->
+                <div class="nav-panel">
+                    <div class="nav-panel-header">
+                        <span class="nav-panel-title">NYC Spending Categories</span>
+                        <span class="data-badge estimate"><span class="data-badge-dot"></span>Proportional estimate</span>
+                    </div>
+                    <div class="breakdown-list">
+                        <div class="breakdown-list-item no-drill">
+                            <div class="breakdown-bar-container">
+                                <div class="breakdown-bar">
+                                    <div class="breakdown-bar-fill city" style="width: 35%;"></div>
+                                </div>
+                            </div>
+                            <div class="breakdown-content">
+                                <p class="breakdown-name">Education (NYC DOE)</p>
+                                <p class="breakdown-description">Public schools K-12, pre-K for All, after-school programs, school facilities, and support services</p>
+                            </div>
+                            <div class="breakdown-figures">
+                                <span class="breakdown-list-amount">$592</span>
+                                <span class="breakdown-percent">35%</span>
+                            </div>
+                        </div>
+                        <div class="breakdown-list-item no-drill">
+                            <div class="breakdown-bar-container">
+                                <div class="breakdown-bar">
+                                    <div class="breakdown-bar-fill city" style="width: 18%;"></div>
+                                </div>
+                            </div>
+                            <div class="breakdown-content">
+                                <p class="breakdown-name">Public Safety</p>
+                                <p class="breakdown-description">NYPD, FDNY, Department of Correction, emergency management, and 911 services</p>
+                            </div>
+                            <div class="breakdown-figures">
+                                <span class="breakdown-list-amount">$304</span>
+                                <span class="breakdown-percent">18%</span>
+                            </div>
+                        </div>
+                        <div class="breakdown-list-item no-drill">
+                            <div class="breakdown-bar-container">
+                                <div class="breakdown-bar">
+                                    <div class="breakdown-bar-fill city" style="width: 15%;"></div>
+                                </div>
+                            </div>
+                            <div class="breakdown-content">
+                                <p class="breakdown-name">Health & Social Services</p>
+                                <p class="breakdown-description">NYC Health + Hospitals, public health programs, social services, homeless services, and senior programs</p>
+                            </div>
+                            <div class="breakdown-figures">
+                                <span class="breakdown-list-amount">$254</span>
+                                <span class="breakdown-percent">15%</span>
+                            </div>
+                        </div>
+                        <div class="breakdown-list-item no-drill">
+                            <div class="breakdown-bar-container">
+                                <div class="breakdown-bar">
+                                    <div class="breakdown-bar-fill city" style="width: 10%;"></div>
+                                </div>
+                            </div>
+                            <div class="breakdown-content">
+                                <p class="breakdown-name">Infrastructure & Transportation</p>
+                                <p class="breakdown-description">DOT street maintenance, sanitation, water and sewer, city fleet, and capital projects</p>
+                            </div>
+                            <div class="breakdown-figures">
+                                <span class="breakdown-list-amount">$169</span>
+                                <span class="breakdown-percent">10%</span>
+                            </div>
+                        </div>
+                        <div class="breakdown-list-item no-drill">
+                            <div class="breakdown-bar-container">
+                                <div class="breakdown-bar">
+                                    <div class="breakdown-bar-fill city" style="width: 8%;"></div>
+                                </div>
+                            </div>
+                            <div class="breakdown-content">
+                                <p class="breakdown-name">Housing & Development</p>
+                                <p class="breakdown-description">HPD affordable housing programs, NYCHA support, city planning, and economic development</p>
+                            </div>
+                            <div class="breakdown-figures">
+                                <span class="breakdown-list-amount">$135</span>
+                                <span class="breakdown-percent">8%</span>
+                            </div>
+                        </div>
+                        <div class="breakdown-list-item no-drill">
+                            <div class="breakdown-bar-container">
+                                <div class="breakdown-bar">
+                                    <div class="breakdown-bar-fill city" style="width: 4%;"></div>
+                                </div>
+                            </div>
+                            <div class="breakdown-content">
+                                <p class="breakdown-name">Parks & Culture</p>
+                                <p class="breakdown-description">NYC Parks, libraries (NYPL, BPL, QPL), cultural institutions, and recreation programs</p>
+                            </div>
+                            <div class="breakdown-figures">
+                                <span class="breakdown-list-amount">$68</span>
+                                <span class="breakdown-percent">4%</span>
+                            </div>
+                        </div>
+                        <div class="breakdown-list-item no-drill">
+                            <div class="breakdown-bar-container">
+                                <div class="breakdown-bar">
+                                    <div class="breakdown-bar-fill city" style="width: 10%;"></div>
+                                </div>
+                            </div>
+                            <div class="breakdown-content">
+                                <p class="breakdown-name">All Other</p>
+                                <p class="breakdown-description">City Council, Mayor's office, debt service, pensions, and miscellaneous agencies</p>
+                            </div>
+                            <div class="breakdown-figures">
+                                <span class="breakdown-list-amount">$169</span>
+                                <span class="breakdown-percent">10%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- City Data Source -->
+                <div class="methodology-footer" style="margin-top: 2rem;">
+                    <div class="methodology-header">
+                        <svg class="methodology-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 16v-4M12 8h.01"/>
+                        </svg>
+                        <div class="methodology-content">
+                            <p class="methodology-title">About NYC budget data</p>
+                            <p class="methodology-text">
+                                City spending allocations are based on the NYC Adopted Budget for FY2024. Your share is calculated proportionally based on your city income tax paid. Data source: <a href="#" class="methodology-link">NYC Office of Management and Budget</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- END content-city -->
 
             <!-- Methodology Footer (shown on main view) -->
             <div class="methodology-footer" id="main-methodology">
@@ -5375,9 +5885,9 @@
             } else if (page === 'taxes') {
                 document.getElementById('page-taxes').classList.add('active');
                 document.getElementById('nav-taxes').classList.add('active');
-                document.title = 'Where Your Federal Taxes Go — Accountable';
-                // Reset to categories view when navigating to taxes page
-                showCategories();
+                document.title = 'Where Your Taxes Go — Accountable';
+                // Reset to federal jurisdiction and categories view when navigating to taxes page
+                switchJurisdiction('federal');
             } else if (page === 'voice') {
                 document.getElementById('page-voice').classList.add('active');
                 document.getElementById('nav-voice').classList.add('active');
@@ -5395,6 +5905,51 @@
 
         function toggleBenefitCategory(element) {
             element.classList.toggle('expanded');
+        }
+
+        // ==========================================
+        // WHERE IT GOES - JURISDICTION SWITCHING
+        // ==========================================
+
+        function switchJurisdiction(jurisdiction) {
+            // Update tab states
+            document.querySelectorAll('.jurisdiction-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.getElementById('tab-' + jurisdiction).classList.add('active');
+
+            // Update content visibility
+            document.querySelectorAll('.jurisdiction-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById('content-' + jurisdiction).classList.add('active');
+
+            // Update page title and subtitle
+            const pageTitle = document.getElementById('spending-page-title');
+            const pageSubtitle = document.getElementById('spending-page-subtitle');
+            const mainMethodology = document.getElementById('main-methodology');
+
+            if (jurisdiction === 'federal') {
+                pageTitle.textContent = 'Where Your Taxes Go';
+                pageSubtitle.textContent = 'See how your $37,290 in taxes are allocated across federal, state, and city programs.';
+                if (mainMethodology) mainMethodology.style.display = 'block';
+            } else if (jurisdiction === 'state') {
+                pageTitle.textContent = 'Where Your NY State Taxes Go';
+                pageSubtitle.textContent = 'Your $11,420 in state taxes fund education, healthcare, transportation, and more.';
+                if (mainMethodology) mainMethodology.style.display = 'none';
+            } else if (jurisdiction === 'city') {
+                pageTitle.textContent = 'Where Your NYC Taxes Go';
+                pageSubtitle.textContent = 'Your $1,690 in city taxes fund schools, public safety, and essential city services.';
+                if (mainMethodology) mainMethodology.style.display = 'none';
+            }
+
+            // If switching to federal, reset to categories view
+            if (jurisdiction === 'federal') {
+                showCategories();
+            }
+
+            // Scroll to top of content
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         // ==========================================
