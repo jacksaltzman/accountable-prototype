@@ -2166,6 +2166,7 @@
             gap: 1rem;
             width: 100%;
             justify-content: center;
+            flex-wrap: wrap;
         }
 
         .celebration-btn {
@@ -2271,6 +2272,475 @@
                 justify-content: center;
             }
         }
+
+        /* ==========================================
+           MONEY YOU'RE OWED PAGE STYLES
+           ========================================== */
+
+        /* Two-column summary for claimed vs potential */
+        .owed-summary-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .owed-summary-card {
+            background: var(--paper-warm);
+            border-radius: 12px;
+            padding: 1.75rem;
+            position: relative;
+        }
+
+        .owed-summary-card.claimed {
+            border-left: 4px solid var(--confirmed);
+        }
+
+        .owed-summary-card.potential {
+            border-left: 4px solid var(--estimate);
+        }
+
+        .owed-summary-card .summary-label {
+            font-size: 0.8125rem;
+            color: var(--ink-tertiary);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .owed-summary-card .summary-value {
+            font-family: var(--serif);
+            font-size: 2.25rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+
+        .owed-summary-card.claimed .summary-value {
+            color: var(--confirmed);
+        }
+
+        .owed-summary-card.potential .summary-value {
+            color: var(--estimate);
+        }
+
+        .owed-summary-card .summary-description {
+            font-size: 0.875rem;
+            color: var(--ink-secondary);
+            line-height: 1.5;
+        }
+
+        /* Benefits Section Headers */
+        .benefits-section {
+            margin-bottom: 3rem;
+        }
+
+        .benefits-section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.25rem;
+        }
+
+        .benefits-section-title {
+            font-family: var(--serif);
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--ink);
+            letter-spacing: -0.01em;
+        }
+
+        .benefits-section-total {
+            font-family: var(--serif);
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--ink);
+        }
+
+        /* Expandable Benefit Rows */
+        .benefit-category {
+            background: var(--paper);
+            border: 1px solid var(--paper-line);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .benefit-category-header {
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .benefit-category-header:hover {
+            background: var(--paper-warm);
+        }
+
+        .benefit-category-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .benefit-category-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .benefit-category-icon.credits {
+            background: var(--confirmed-bg);
+            color: var(--confirmed);
+        }
+
+        .benefit-category-icon.refunds {
+            background: var(--increase-bg);
+            color: var(--increase);
+        }
+
+        .benefit-category-icon svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .benefit-category-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .benefit-category-name {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--ink);
+            margin-bottom: 0.125rem;
+        }
+
+        .benefit-category-count {
+            font-size: 0.8125rem;
+            color: var(--ink-tertiary);
+        }
+
+        .benefit-category-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .benefit-category-amount {
+            font-family: var(--serif);
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--confirmed);
+        }
+
+        .benefit-category-chevron {
+            width: 20px;
+            height: 20px;
+            color: var(--ink-tertiary);
+            transition: transform 0.2s;
+        }
+
+        .benefit-category.expanded .benefit-category-chevron {
+            transform: rotate(180deg);
+        }
+
+        .benefit-category-body {
+            display: none;
+            border-top: 1px solid var(--paper-line);
+            background: var(--paper-warm);
+        }
+
+        .benefit-category.expanded .benefit-category-body {
+            display: block;
+        }
+
+        .benefit-item {
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--paper-line);
+        }
+
+        .benefit-item:last-child {
+            border-bottom: none;
+        }
+
+        .benefit-item-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .benefit-item-name {
+            font-size: 0.9375rem;
+            font-weight: 500;
+            color: var(--ink);
+            margin-bottom: 0.125rem;
+        }
+
+        .benefit-item-source {
+            font-size: 0.75rem;
+            color: var(--ink-tertiary);
+        }
+
+        .benefit-item-amount {
+            font-family: var(--serif);
+            font-size: 1.125rem;
+            font-weight: 500;
+            color: var(--ink);
+        }
+
+        /* Potential Benefits Cards */
+        .potential-benefits-callout {
+            background: var(--estimate-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .potential-benefits-callout-icon {
+            width: 24px;
+            height: 24px;
+            color: var(--estimate);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .potential-benefits-callout-content {
+            flex: 1;
+        }
+
+        .potential-benefits-callout-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 0.25rem;
+        }
+
+        .potential-benefits-callout-text {
+            font-size: 0.875rem;
+            color: var(--ink-secondary);
+            line-height: 1.5;
+        }
+
+        /* Jurisdiction Sections for Potential Benefits */
+        .jurisdiction-section {
+            margin-bottom: 2rem;
+        }
+
+        .jurisdiction-header {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--ink-tertiary);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--paper-line);
+        }
+
+        .potential-benefit-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .potential-benefit-card {
+            background: var(--paper);
+            border: 1px solid var(--paper-line);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .potential-benefit-card:hover {
+            border-color: var(--estimate);
+            box-shadow: 0 2px 8px rgba(139, 105, 20, 0.1);
+        }
+
+        .potential-benefit-main {
+            flex: 1;
+        }
+
+        .potential-benefit-name {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--ink);
+            margin-bottom: 0.375rem;
+        }
+
+        .potential-benefit-description {
+            font-size: 0.875rem;
+            color: var(--ink-secondary);
+            line-height: 1.5;
+            margin-bottom: 0.75rem;
+        }
+
+        .potential-benefit-eligibility {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+        }
+
+        .eligibility-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .eligibility-dot.high {
+            background: var(--confirmed);
+        }
+
+        .eligibility-dot.medium {
+            background: var(--estimate);
+        }
+
+        .eligibility-dot.low {
+            background: var(--ink-tertiary);
+        }
+
+        .eligibility-text {
+            color: var(--ink-tertiary);
+        }
+
+        .eligibility-text.high {
+            color: var(--confirmed);
+        }
+
+        .eligibility-text.medium {
+            color: var(--estimate);
+        }
+
+        .potential-benefit-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 0.75rem;
+        }
+
+        .potential-benefit-value {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .potential-benefit-amount {
+            font-family: var(--serif);
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--estimate);
+        }
+
+        .potential-benefit-period {
+            font-size: 0.6875rem;
+            color: var(--ink-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .potential-benefit-cta {
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--coral);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            transition: gap 0.2s;
+        }
+
+        .potential-benefit-cta:hover {
+            gap: 0.5rem;
+        }
+
+        .potential-benefit-cta svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        /* Phase 3 Teaser */
+        .enrollment-teaser {
+            background: var(--paper-warm);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .enrollment-teaser-icon {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 1rem;
+            color: var(--coral);
+        }
+
+        .enrollment-teaser-title {
+            font-family: var(--serif);
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--ink);
+            margin-bottom: 0.5rem;
+        }
+
+        .enrollment-teaser-text {
+            font-size: 0.875rem;
+            color: var(--ink-secondary);
+            line-height: 1.6;
+            max-width: 500px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .enrollment-teaser-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--paper);
+            border: 1px solid var(--paper-line);
+            border-radius: 6px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--ink-secondary);
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        /* Responsive adjustments for Money You're Owed */
+        @media (max-width: 768px) {
+            .owed-summary-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .potential-benefit-card {
+                flex-direction: column;
+            }
+
+            .potential-benefit-right {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -2282,7 +2752,8 @@
         </div>
         <nav class="nav-items">
             <a class="nav-link" id="nav-file" onclick="navigateTo('file')">File</a>
-            <a class="nav-link" id="nav-record" onclick="navigateTo('record')">Your Taxes</a>
+            <a class="nav-link" id="nav-record" onclick="navigateTo('record')">Tax History</a>
+            <a class="nav-link" id="nav-owed" onclick="navigateTo('owed')">Money You're Owed</a>
             <a class="nav-link" id="nav-taxes" onclick="navigateTo('taxes')">Where It Goes</a>
             <a class="nav-link" id="nav-voice" onclick="navigateTo('voice')">Your Voice</a>
         </nav>
@@ -2378,12 +2849,18 @@
 
                 <!-- Action Buttons -->
                 <div class="celebration-actions animate-in delay-4">
-                    <button class="celebration-btn primary" onclick="navigateTo('taxes')">
+                    <button class="celebration-btn primary" onclick="navigateTo('owed')">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                        </svg>
+                        See Benefits You're Owed
+                    </button>
+                    <button class="celebration-btn secondary" onclick="navigateTo('taxes')">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <circle cx="12" cy="12" r="10"></circle>
                             <path d="M12 6v6l4 2"></path>
                         </svg>
-                        See Where It Goes
+                        Where It Goes
                     </button>
                     <button class="celebration-btn secondary" onclick="navigateTo('record')">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -2393,7 +2870,7 @@
                             <line x1="16" y1="17" x2="8" y2="17"></line>
                             <polyline points="10 9 9 9 8 9"></polyline>
                         </svg>
-                        View Tax History
+                        Tax History
                     </button>
                 </div>
             </div>
@@ -2401,14 +2878,14 @@
     </div>
 
     <!-- ==========================================
-         PAGE: YOUR TAXES
+         PAGE: TAX HISTORY
          ========================================== -->
     <div class="page-view" id="page-record">
         <main class="main">
             <!-- Profile Header -->
             <section class="profile-header animate-in">
-                <h1 class="profile-greeting">Your Taxes</h1>
-                <p class="profile-subtitle">A complete view of what you've paid and received since 2019</p>
+                <h1 class="profile-greeting">Tax History</h1>
+                <p class="profile-subtitle">Your complete tax record from 2019 to present</p>
             </section>
 
             <!-- Lifetime Summary -->
@@ -2432,9 +2909,9 @@
                             <span class="data-badge confirmed"><span class="data-badge-dot"></span>Confirmed</span>
                         </div>
                     </div>
-                    <div class="summary-card">
+                    <div class="summary-card" style="cursor: pointer;" onclick="navigateTo('owed')">
                         <p class="summary-label">
-                            Benefits & credits claimed
+                            Benefits & credits
                             <span class="tooltip-trigger">
                                 <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <circle cx="12" cy="12" r="10"/>
@@ -2444,9 +2921,9 @@
                             </span>
                         </p>
                         <p class="summary-value">$18,340</p>
-                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
                             <span class="summary-meta">2019 – 2024</span>
-                            <span class="data-badge confirmed"><span class="data-badge-dot"></span>Confirmed</span>
+                            <a href="#" onclick="navigateTo('owed'); event.stopPropagation(); return false;" style="font-size: 0.75rem; color: var(--coral); text-decoration: none; font-weight: 500;">View details →</a>
                         </div>
                     </div>
                     <div class="summary-card">
@@ -2549,81 +3026,140 @@
             <!-- Section Divider -->
             <div class="section-divider"></div>
 
-            <!-- Benefits Breakdown Section -->
-            <section class="benefits-breakdown animate-in delay-3">
-                <div class="benefits-breakdown-header">
-                    <p class="benefits-breakdown-title">Benefits We Found for You</p>
-                    <p class="benefits-breakdown-total">$18,340</p>
-                    <p class="benefits-breakdown-subtitle">Credits, deductions, and refunds claimed since 2019</p>
-                </div>
-
-                <div class="benefits-jurisdiction-list">
-                    <div class="benefits-jurisdiction">
-                        <div class="jurisdiction-bar-container">
-                            <div class="jurisdiction-header">
-                                <span class="jurisdiction-name">Federal Benefits</span>
-                                <span class="jurisdiction-amount">$16,000</span>
+            <!-- Filing History Section -->
+            <section class="animate-in delay-3" style="margin-bottom: 3rem;">
+                <p class="section-label">Filing History</p>
+                <div style="background: var(--paper-warm); border-radius: 12px; overflow: hidden;">
+                    <!-- 2024 Filing -->
+                    <div style="padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--paper-line);">
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <div style="width: 40px; height: 40px; background: var(--confirmed-bg); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                                <svg style="width: 20px; height: 20px; color: var(--confirmed);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
                             </div>
-                            <div class="jurisdiction-bar">
-                                <div class="jurisdiction-bar-fill" style="width: 87%;"></div>
-                            </div>
-                            <div class="jurisdiction-details">
-                                <span class="jurisdiction-detail-item">Child Tax Credit, EITC, Standard Deduction</span>
+                            <div>
+                                <p style="font-size: 1rem; font-weight: 500; color: var(--ink); margin-bottom: 0.125rem;">2024 Tax Return</p>
+                                <p style="font-size: 0.8125rem; color: var(--ink-tertiary);">Filed January 18, 2025 · Federal & NY State</p>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="benefits-jurisdiction">
-                        <div class="jurisdiction-bar-container">
-                            <div class="jurisdiction-header">
-                                <span class="jurisdiction-name">New York State Benefits</span>
-                                <span class="jurisdiction-amount">$2,090</span>
-                            </div>
-                            <div class="jurisdiction-bar">
-                                <div class="jurisdiction-bar-fill" style="width: 11%;"></div>
-                            </div>
-                            <div class="jurisdiction-details">
-                                <span class="jurisdiction-detail-item">Empire State Child Credit, NY EITC, STAR Credit</span>
-                            </div>
+                        <div style="text-align: right;">
+                            <p style="font-size: 0.75rem; color: var(--confirmed); font-weight: 500; margin-bottom: 0.125rem;">Accepted</p>
+                            <p style="font-size: 0.6875rem; color: var(--ink-tertiary);">#ACT-2024-847291</p>
                         </div>
                     </div>
-
-                    <div class="benefits-jurisdiction">
-                        <div class="jurisdiction-bar-container">
-                            <div class="jurisdiction-header">
-                                <span class="jurisdiction-name">New York City Benefits</span>
-                                <span class="jurisdiction-amount">$250</span>
+                    <!-- 2023 Filing -->
+                    <div style="padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--paper-line);">
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <div style="width: 40px; height: 40px; background: var(--confirmed-bg); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                                <svg style="width: 20px; height: 20px; color: var(--confirmed);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
                             </div>
-                            <div class="jurisdiction-bar">
-                                <div class="jurisdiction-bar-fill" style="width: 2%;"></div>
-                            </div>
-                            <div class="jurisdiction-details">
-                                <span class="jurisdiction-detail-item">School Tax Credit, NYC EITC</span>
+                            <div>
+                                <p style="font-size: 1rem; font-weight: 500; color: var(--ink); margin-bottom: 0.125rem;">2023 Tax Return</p>
+                                <p style="font-size: 0.8125rem; color: var(--ink-tertiary);">Filed April 10, 2024 · Federal & NY State</p>
                             </div>
                         </div>
+                        <div style="text-align: right;">
+                            <p style="font-size: 0.75rem; color: var(--confirmed); font-weight: 500; margin-bottom: 0.125rem;">Accepted</p>
+                            <p style="font-size: 0.6875rem; color: var(--ink-tertiary);">#ACT-2023-651842</p>
+                        </div>
                     </div>
-                </div>
-
-                <div class="benefit-highlight">
-                    <p class="benefit-highlight-text">
-                        Without Accountable, you might have missed <span class="benefit-highlight-amount">$2,340</span> in state and local benefits that typically go unclaimed.
-                    </p>
+                    <!-- 2022 Filing -->
+                    <div style="padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--paper-line);">
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <div style="width: 40px; height: 40px; background: var(--confirmed-bg); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                                <svg style="width: 20px; height: 20px; color: var(--confirmed);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </div>
+                            <div>
+                                <p style="font-size: 1rem; font-weight: 500; color: var(--ink); margin-bottom: 0.125rem;">2022 Tax Return</p>
+                                <p style="font-size: 0.8125rem; color: var(--ink-tertiary);">Filed April 14, 2023 · Federal & NY State</p>
+                            </div>
+                        </div>
+                        <div style="text-align: right;">
+                            <p style="font-size: 0.75rem; color: var(--confirmed); font-weight: 500; margin-bottom: 0.125rem;">Accepted</p>
+                            <p style="font-size: 0.6875rem; color: var(--ink-tertiary);">#ACT-2022-493817</p>
+                        </div>
+                    </div>
+                    <!-- 2021 Filing -->
+                    <div style="padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--paper-line);">
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <div style="width: 40px; height: 40px; background: var(--confirmed-bg); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                                <svg style="width: 20px; height: 20px; color: var(--confirmed);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </div>
+                            <div>
+                                <p style="font-size: 1rem; font-weight: 500; color: var(--ink); margin-bottom: 0.125rem;">2021 Tax Return</p>
+                                <p style="font-size: 0.8125rem; color: var(--ink-tertiary);">Filed April 12, 2022 · Federal & NY State</p>
+                            </div>
+                        </div>
+                        <div style="text-align: right;">
+                            <p style="font-size: 0.75rem; color: var(--confirmed); font-weight: 500; margin-bottom: 0.125rem;">Accepted</p>
+                            <p style="font-size: 0.6875rem; color: var(--ink-tertiary);">#ACT-2021-284619</p>
+                        </div>
+                    </div>
+                    <!-- 2020 Filing -->
+                    <div style="padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--paper-line);">
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <div style="width: 40px; height: 40px; background: var(--confirmed-bg); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                                <svg style="width: 20px; height: 20px; color: var(--confirmed);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </div>
+                            <div>
+                                <p style="font-size: 1rem; font-weight: 500; color: var(--ink); margin-bottom: 0.125rem;">2020 Tax Return</p>
+                                <p style="font-size: 0.8125rem; color: var(--ink-tertiary);">Filed May 17, 2021 · Federal & NY State</p>
+                            </div>
+                        </div>
+                        <div style="text-align: right;">
+                            <p style="font-size: 0.75rem; color: var(--confirmed); font-weight: 500; margin-bottom: 0.125rem;">Accepted</p>
+                            <p style="font-size: 0.6875rem; color: var(--ink-tertiary);">#ACT-2020-173528</p>
+                        </div>
+                    </div>
+                    <!-- 2019 Filing -->
+                    <div style="padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <div style="width: 40px; height: 40px; background: var(--confirmed-bg); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                                <svg style="width: 20px; height: 20px; color: var(--confirmed);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </div>
+                            <div>
+                                <p style="font-size: 1rem; font-weight: 500; color: var(--ink); margin-bottom: 0.125rem;">2019 Tax Return</p>
+                                <p style="font-size: 0.8125rem; color: var(--ink-tertiary);">Filed April 15, 2020 · Federal & NY State</p>
+                            </div>
+                        </div>
+                        <div style="text-align: right;">
+                            <p style="font-size: 0.75rem; color: var(--confirmed); font-weight: 500; margin-bottom: 0.125rem;">Accepted</p>
+                            <p style="font-size: 0.6875rem; color: var(--ink-tertiary);">#ACT-2019-092461</p>
+                        </div>
+                    </div>
                 </div>
             </section>
 
-            <!-- Link to Your Voice -->
-            <div style="text-align: center; margin-top: 4rem; padding: 2.5rem; background: var(--paper-warm); border-radius: 12px;">
-                <p style="font-size: 1.125rem; font-weight: 600; color: var(--ink); margin-bottom: 0.75rem;">
-                    How Did Policy Change Your Taxes?
-                </p>
-                <p style="font-size: 0.875rem; color: var(--ink-secondary); margin-bottom: 1.5rem; max-width: 500px; margin-left: auto; margin-right: auto;">
-                    See which legislation affected your tax bill, who voted for it, and what you can do to make your voice heard.
-                </p>
-                <a href="#" onclick="navigateTo('voice'); return false;" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.875rem 1.75rem; background: var(--coral); color: white; text-decoration: none; border-radius: 6px; font-weight: 500; font-size: 0.9375rem;">
-                    View Policy Impact & Your Voice
-                    <svg style="width: 18px; height: 18px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polyline points="9 18 15 12 9 6"></polyline>
+            <!-- Navigation Links -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem;">
+                <a href="#" onclick="navigateTo('owed'); return false;" style="background: var(--paper-warm); border-radius: 12px; padding: 1.5rem; text-decoration: none; display: flex; align-items: center; gap: 1rem; transition: background 0.2s; border-left: 3px solid var(--confirmed);">
+                    <svg style="width: 28px; height: 28px; color: var(--confirmed);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
                     </svg>
+                    <div>
+                        <p style="font-size: 0.9375rem; font-weight: 600; color: var(--ink); margin-bottom: 0.25rem;">Money You're Owed</p>
+                        <p style="font-size: 0.8125rem; color: var(--ink-secondary); line-height: 1.4;">See benefits you've claimed and what you may be missing</p>
+                    </div>
+                </a>
+                <a href="#" onclick="navigateTo('voice'); return false;" style="background: var(--paper-warm); border-radius: 12px; padding: 1.5rem; text-decoration: none; display: flex; align-items: center; gap: 1rem; transition: background 0.2s; border-left: 3px solid var(--coral);">
+                    <svg style="width: 28px; height: 28px; color: var(--coral);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                    <div>
+                        <p style="font-size: 0.9375rem; font-weight: 600; color: var(--ink); margin-bottom: 0.25rem;">Your Voice</p>
+                        <p style="font-size: 0.8125rem; color: var(--ink-secondary); line-height: 1.4;">How policy changed your taxes and who's responsible</p>
+                    </div>
                 </a>
             </div>
 
@@ -2644,6 +3180,349 @@
     </div>
 
     <!-- ==========================================
+         PAGE: MONEY YOU'RE OWED
+         ========================================== -->
+    <div class="page-view" id="page-owed">
+        <main class="main">
+            <!-- Page Header -->
+            <section class="profile-header animate-in">
+                <h1 class="profile-greeting">Money You're Owed</h1>
+                <p class="profile-subtitle">Benefits you've claimed and opportunities you may be missing in 2024</p>
+            </section>
+
+            <!-- Summary Cards -->
+            <section class="owed-summary-grid animate-in delay-1">
+                <div class="owed-summary-card claimed">
+                    <p class="summary-label">
+                        What You Claimed
+                        <span class="data-badge confirmed"><span class="data-badge-dot"></span>Confirmed</span>
+                    </p>
+                    <p class="summary-value">$6,759</p>
+                    <p class="summary-description">Tax credits and refunds you received for 2024</p>
+                </div>
+                <div class="owed-summary-card potential">
+                    <p class="summary-label">
+                        Money You May Be Missing
+                        <span class="data-badge estimate"><span class="data-badge-dot"></span>Estimate</span>
+                    </p>
+                    <p class="summary-value">~$3,200<span style="font-size: 1rem; font-weight: 400;">/yr</span></p>
+                    <p class="summary-description">Additional benefits you may qualify for based on your profile</p>
+                </div>
+            </section>
+
+            <!-- What You Claimed Section -->
+            <section class="benefits-section animate-in delay-2">
+                <div class="benefits-section-header">
+                    <h2 class="benefits-section-title">What You Claimed in 2024</h2>
+                    <span class="benefits-section-total">$6,759 total</span>
+                </div>
+
+                <!-- Tax Credits Category -->
+                <div class="benefit-category expanded" onclick="toggleBenefitCategory(this)">
+                    <div class="benefit-category-header">
+                        <div class="benefit-category-info">
+                            <div class="benefit-category-icon credits">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                                </svg>
+                            </div>
+                            <div class="benefit-category-details">
+                                <span class="benefit-category-name">Tax Credits</span>
+                                <span class="benefit-category-count">4 credits claimed</span>
+                            </div>
+                        </div>
+                        <div class="benefit-category-right">
+                            <span class="benefit-category-amount">$3,500</span>
+                            <svg class="benefit-category-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="benefit-category-body">
+                        <div class="benefit-item">
+                            <div class="benefit-item-info">
+                                <span class="benefit-item-name">Child Tax Credit</span>
+                                <span class="benefit-item-source">Federal · IRS Form 1040</span>
+                            </div>
+                            <span class="benefit-item-amount">$2,000</span>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-item-info">
+                                <span class="benefit-item-name">Earned Income Tax Credit (EITC)</span>
+                                <span class="benefit-item-source">Federal · IRS Form 1040</span>
+                            </div>
+                            <span class="benefit-item-amount">$1,200</span>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-item-info">
+                                <span class="benefit-item-name">Empire State Child Credit</span>
+                                <span class="benefit-item-source">NY State · Form IT-213</span>
+                            </div>
+                            <span class="benefit-item-amount">$200</span>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-item-info">
+                                <span class="benefit-item-name">NYC School Tax Credit</span>
+                                <span class="benefit-item-source">NYC · Form NYC-210</span>
+                            </div>
+                            <span class="benefit-item-amount">$100</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Refunds Category -->
+                <div class="benefit-category" onclick="toggleBenefitCategory(this)">
+                    <div class="benefit-category-header">
+                        <div class="benefit-category-info">
+                            <div class="benefit-category-icon refunds">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                    <polyline points="9 22 9 12 15 12 15 22"/>
+                                </svg>
+                            </div>
+                            <div class="benefit-category-details">
+                                <span class="benefit-category-name">Tax Refunds</span>
+                                <span class="benefit-category-count">Federal and state refunds</span>
+                            </div>
+                        </div>
+                        <div class="benefit-category-right">
+                            <span class="benefit-category-amount">$3,259</span>
+                            <svg class="benefit-category-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="benefit-category-body">
+                        <div class="benefit-item">
+                            <div class="benefit-item-info">
+                                <span class="benefit-item-name">Federal Tax Refund</span>
+                                <span class="benefit-item-source">IRS · Expected by Feb 8, 2025</span>
+                            </div>
+                            <span class="benefit-item-amount">$2,847</span>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-item-info">
+                                <span class="benefit-item-name">New York State Refund</span>
+                                <span class="benefit-item-source">NY Tax Dept · Expected by Feb 15, 2025</span>
+                            </div>
+                            <span class="benefit-item-amount">$412</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section Divider -->
+            <div class="section-divider"></div>
+
+            <!-- Benefits You May Be Missing Section -->
+            <section class="benefits-section animate-in delay-3">
+                <div class="benefits-section-header">
+                    <h2 class="benefits-section-title">Benefits You May Be Missing</h2>
+                </div>
+
+                <!-- Callout -->
+                <div class="potential-benefits-callout">
+                    <svg class="potential-benefits-callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M12 16v-4M12 8h.01"/>
+                    </svg>
+                    <div class="potential-benefits-callout-content">
+                        <p class="potential-benefits-callout-title">You could be leaving ~$3,200/year on the table</p>
+                        <p class="potential-benefits-callout-text">Based on your income, location, and family status, you may qualify for additional benefits that many people overlook. These estimates are based on typical eligibility—your actual amounts may vary.</p>
+                    </div>
+                </div>
+
+                <!-- Federal Benefits -->
+                <div class="jurisdiction-section">
+                    <p class="jurisdiction-header">Federal Benefits</p>
+                    <div class="potential-benefit-cards">
+                        <div class="potential-benefit-card">
+                            <div class="potential-benefit-main">
+                                <p class="potential-benefit-name">Saver's Credit</p>
+                                <p class="potential-benefit-description">Tax credit for contributing to retirement accounts like 401(k) or IRA. Based on your income level, you may qualify for up to 50% credit on the first $2,000 contributed.</p>
+                                <div class="potential-benefit-eligibility">
+                                    <span class="eligibility-dot high"></span>
+                                    <span class="eligibility-text high">High confidence you qualify</span>
+                                </div>
+                            </div>
+                            <div class="potential-benefit-right">
+                                <div class="potential-benefit-value">
+                                    <span class="potential-benefit-amount">~$400</span>
+                                    <span class="potential-benefit-period">per year</span>
+                                </div>
+                                <a href="#" class="potential-benefit-cta">
+                                    Learn more
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="9 18 15 12 9 6"></polyline>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="potential-benefit-card">
+                            <div class="potential-benefit-main">
+                                <p class="potential-benefit-name">Dependent Care FSA</p>
+                                <p class="potential-benefit-description">Pre-tax dollars for childcare expenses through your employer. Families can set aside up to $5,000/year, reducing taxable income significantly.</p>
+                                <div class="potential-benefit-eligibility">
+                                    <span class="eligibility-dot medium"></span>
+                                    <span class="eligibility-text medium">May qualify if employer offers</span>
+                                </div>
+                            </div>
+                            <div class="potential-benefit-right">
+                                <div class="potential-benefit-value">
+                                    <span class="potential-benefit-amount">~$1,200</span>
+                                    <span class="potential-benefit-period">per year</span>
+                                </div>
+                                <a href="#" class="potential-benefit-cta">
+                                    Learn more
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="9 18 15 12 9 6"></polyline>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NY State Benefits -->
+                <div class="jurisdiction-section">
+                    <p class="jurisdiction-header">New York State Benefits</p>
+                    <div class="potential-benefit-cards">
+                        <div class="potential-benefit-card">
+                            <div class="potential-benefit-main">
+                                <p class="potential-benefit-name">NY 529 College Savings Deduction</p>
+                                <p class="potential-benefit-description">Deduct up to $5,000 ($10,000 if married filing jointly) in contributions to NY's 529 plan from your state taxable income.</p>
+                                <div class="potential-benefit-eligibility">
+                                    <span class="eligibility-dot high"></span>
+                                    <span class="eligibility-text high">High confidence you qualify</span>
+                                </div>
+                            </div>
+                            <div class="potential-benefit-right">
+                                <div class="potential-benefit-value">
+                                    <span class="potential-benefit-amount">~$500</span>
+                                    <span class="potential-benefit-period">per year</span>
+                                </div>
+                                <a href="#" class="potential-benefit-cta">
+                                    Learn more
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="9 18 15 12 9 6"></polyline>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="potential-benefit-card">
+                            <div class="potential-benefit-main">
+                                <p class="potential-benefit-name">NYS Real Property Tax Credit</p>
+                                <p class="potential-benefit-description">Credit for homeowners or renters with household income under $200,000 who pay property taxes exceeding a percentage of their income.</p>
+                                <div class="potential-benefit-eligibility">
+                                    <span class="eligibility-dot medium"></span>
+                                    <span class="eligibility-text medium">May qualify based on income</span>
+                                </div>
+                            </div>
+                            <div class="potential-benefit-right">
+                                <div class="potential-benefit-value">
+                                    <span class="potential-benefit-amount">~$350</span>
+                                    <span class="potential-benefit-period">per year</span>
+                                </div>
+                                <a href="#" class="potential-benefit-cta">
+                                    Learn more
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="9 18 15 12 9 6"></polyline>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NYC Benefits -->
+                <div class="jurisdiction-section">
+                    <p class="jurisdiction-header">New York City Benefits</p>
+                    <div class="potential-benefit-cards">
+                        <div class="potential-benefit-card">
+                            <div class="potential-benefit-main">
+                                <p class="potential-benefit-name">IDNYC Benefits Package</p>
+                                <p class="potential-benefit-description">Free city ID card with valuable perks: free museum memberships (Met, MoMA, etc.), library access, discounts at 100+ cultural institutions, and Citi Bike membership discounts.</p>
+                                <div class="potential-benefit-eligibility">
+                                    <span class="eligibility-dot high"></span>
+                                    <span class="eligibility-text high">All NYC residents qualify</span>
+                                </div>
+                            </div>
+                            <div class="potential-benefit-right">
+                                <div class="potential-benefit-value">
+                                    <span class="potential-benefit-amount">~$750</span>
+                                    <span class="potential-benefit-period">value per year</span>
+                                </div>
+                                <a href="#" class="potential-benefit-cta">
+                                    Learn more
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="9 18 15 12 9 6"></polyline>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Phase 3 Teaser: Enrollment Assistant -->
+            <div class="enrollment-teaser animate-in delay-4">
+                <svg class="enrollment-teaser-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                    <polyline points="14 2 14 8 20 8"/>
+                    <line x1="16" y1="13" x2="8" y2="13"/>
+                    <line x1="16" y1="17" x2="8" y2="17"/>
+                    <polyline points="10 9 9 9 8 9"/>
+                </svg>
+                <p class="enrollment-teaser-title">Enrollment Assistant Coming Soon</p>
+                <p class="enrollment-teaser-text">We're building tools to help you apply for these benefits: eligibility quizzes, document checklists, direct application links, and deadline reminders.</p>
+                <button class="enrollment-teaser-btn" disabled>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 16px; height: 16px;">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                    Coming in 2025
+                </button>
+            </div>
+
+            <!-- Navigation Links -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 3rem;">
+                <a href="#" onclick="navigateTo('record'); return false;" style="background: var(--paper-warm); border-radius: 12px; padding: 1.5rem; text-decoration: none; display: flex; align-items: center; gap: 1rem; transition: background 0.2s;">
+                    <svg style="width: 24px; height: 24px; color: var(--ink-tertiary);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <polyline points="14 2 14 8 20 8"/>
+                    </svg>
+                    <div>
+                        <p style="font-size: 0.875rem; font-weight: 500; color: var(--ink); margin-bottom: 0.125rem;">Tax History</p>
+                        <p style="font-size: 0.75rem; color: var(--ink-tertiary);">See what you've paid over time</p>
+                    </div>
+                </a>
+                <a href="#" onclick="navigateTo('voice'); return false;" style="background: var(--paper-warm); border-radius: 12px; padding: 1.5rem; text-decoration: none; display: flex; align-items: center; gap: 1rem; transition: background 0.2s;">
+                    <svg style="width: 24px; height: 24px; color: var(--ink-tertiary);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                    <div>
+                        <p style="font-size: 0.875rem; font-weight: 500; color: var(--ink); margin-bottom: 0.125rem;">Your Voice</p>
+                        <p style="font-size: 0.75rem; color: var(--ink-tertiary);">Who decided these policies?</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Data Source -->
+            <div class="data-source animate-in delay-5">
+                <svg class="data-source-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+                <div class="data-source-content">
+                    <p class="data-source-title">About this data</p>
+                    <p class="data-source-text">
+                        Claimed benefits are based on your filed tax returns. Potential benefits are estimates based on your income, location, and family status—actual eligibility may vary. We recommend consulting a tax professional for personalized advice. <a href="#" class="data-source-link">Learn more about our methodology</a>
+                    </p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- ==========================================
          PAGE: WHERE YOUR TAXES GO
          ========================================== -->
     <div class="page-view" id="page-taxes">
@@ -2651,7 +3530,7 @@
             <!-- Page Header -->
             <div class="page-header">
                 <nav class="breadcrumb">
-                    <a onclick="navigateTo('record')">Your Taxes</a>
+                    <a onclick="navigateTo('record')">Tax History</a>
                     <span class="breadcrumb-separator">›</span>
                     <span>Where It Goes</span>
                 </nav>
@@ -4488,7 +5367,11 @@
             } else if (page === 'record') {
                 document.getElementById('page-record').classList.add('active');
                 document.getElementById('nav-record').classList.add('active');
-                document.title = 'Your Taxes — Accountable';
+                document.title = 'Tax History — Accountable';
+            } else if (page === 'owed') {
+                document.getElementById('page-owed').classList.add('active');
+                document.getElementById('nav-owed').classList.add('active');
+                document.title = 'Money You\'re Owed — Accountable';
             } else if (page === 'taxes') {
                 document.getElementById('page-taxes').classList.add('active');
                 document.getElementById('nav-taxes').classList.add('active');
@@ -4504,6 +5387,14 @@
                 alert('This page is coming soon.');
                 navigateTo('record');
             }
+        }
+
+        // ==========================================
+        // MONEY YOU'RE OWED - Benefit Categories
+        // ==========================================
+
+        function toggleBenefitCategory(element) {
+            element.classList.toggle('expanded');
         }
 
         // ==========================================
