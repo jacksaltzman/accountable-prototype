@@ -115,6 +115,137 @@
             font-weight: 500;
         }
 
+        /* Mobile Navigation */
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 44px;
+            height: 44px;
+            padding: 0;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            gap: 5px;
+            z-index: 200;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--ink);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-btn.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .mobile-menu-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-btn.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .mobile-nav-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(26, 26, 26, 0.5);
+            z-index: 150;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-nav-overlay.active {
+            opacity: 1;
+        }
+
+        .mobile-nav-drawer {
+            position: fixed;
+            top: 0;
+            right: -280px;
+            width: 280px;
+            height: 100%;
+            background: var(--paper);
+            z-index: 175;
+            transition: right 0.3s ease;
+            padding: 5rem 1.5rem 2rem;
+            box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+        }
+
+        .mobile-nav-drawer.active {
+            right: 0;
+        }
+
+        .mobile-nav-drawer .nav-link {
+            display: flex;
+            align-items: center;
+            padding: 1rem 0.75rem;
+            font-size: 1.125rem;
+            border-bottom: 1px solid var(--paper-line);
+            min-height: 52px;
+            border-radius: 8px;
+            margin: 0 -0.75rem;
+            transition: background 0.2s ease;
+        }
+
+        .mobile-nav-drawer .nav-link:hover {
+            background: var(--paper-warm);
+        }
+
+        .mobile-nav-drawer .nav-link.active {
+            background: var(--coral-soft);
+            color: var(--coral);
+            font-weight: 500;
+        }
+
+        .mobile-nav-drawer .nav-link:last-child {
+            border-bottom: none;
+        }
+
+        @media (max-width: 600px) {
+            .header {
+                padding: 0.75rem 1rem;
+            }
+
+            .nav-items {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .mobile-nav-overlay {
+                display: block;
+                pointer-events: none;
+            }
+
+            .mobile-nav-overlay.active {
+                pointer-events: auto;
+            }
+
+            .logo-text {
+                font-size: 1.125rem;
+            }
+
+            .logo-mark {
+                width: 32px;
+                height: 32px;
+                font-size: 1.25rem;
+            }
+        }
+
         /* Main Container */
         .main {
             max-width: 900px;
@@ -2891,7 +3022,22 @@
             <a class="nav-link" id="nav-taxes" onclick="navigateTo('taxes')">Where It Goes</a>
             <a class="nav-link" id="nav-voice" onclick="navigateTo('voice')">Your Voice</a>
         </nav>
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
+    <nav class="mobile-nav-drawer" id="mobile-nav-drawer">
+        <a class="nav-link" id="mobile-nav-file" onclick="navigateTo('file'); closeMobileMenu();">File</a>
+        <a class="nav-link" id="mobile-nav-record" onclick="navigateTo('record'); closeMobileMenu();">Tax History</a>
+        <a class="nav-link" id="mobile-nav-owed" onclick="navigateTo('owed'); closeMobileMenu();">Money You're Owed</a>
+        <a class="nav-link" id="mobile-nav-taxes" onclick="navigateTo('taxes'); closeMobileMenu();">Where It Goes</a>
+        <a class="nav-link" id="mobile-nav-voice" onclick="navigateTo('voice'); closeMobileMenu();">Your Voice</a>
+    </nav>
 
     <!-- ==========================================
          PAGE: FILE (Celebration/Completion State)
@@ -5853,6 +5999,38 @@
 
     <script>
         // ==========================================
+        // MOBILE NAVIGATION
+        // ==========================================
+
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
+        const mobileNavDrawer = document.getElementById('mobile-nav-drawer');
+
+        function toggleMobileMenu() {
+            mobileMenuBtn.classList.toggle('active');
+            mobileNavOverlay.classList.toggle('active');
+            mobileNavDrawer.classList.toggle('active');
+            document.body.style.overflow = mobileNavDrawer.classList.contains('active') ? 'hidden' : '';
+        }
+
+        function closeMobileMenu() {
+            mobileMenuBtn.classList.remove('active');
+            mobileNavOverlay.classList.remove('active');
+            mobileNavDrawer.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        mobileNavOverlay.addEventListener('click', closeMobileMenu);
+
+        // Close mobile menu on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileNavDrawer.classList.contains('active')) {
+                closeMobileMenu();
+            }
+        });
+
+        // ==========================================
         // NAVIGATION
         // ==========================================
 
@@ -5867,30 +6045,35 @@
                 link.classList.remove('active');
             });
 
-            // Show selected page and update nav
+            // Show selected page and update nav (both desktop and mobile)
             if (page === 'file') {
                 document.getElementById('page-file').classList.add('active');
                 document.getElementById('nav-file').classList.add('active');
+                document.getElementById('mobile-nav-file').classList.add('active');
                 document.title = 'Filing Complete — Accountable';
                 // Trigger confetti celebration
                 launchConfetti();
             } else if (page === 'record') {
                 document.getElementById('page-record').classList.add('active');
                 document.getElementById('nav-record').classList.add('active');
+                document.getElementById('mobile-nav-record').classList.add('active');
                 document.title = 'Tax History — Accountable';
             } else if (page === 'owed') {
                 document.getElementById('page-owed').classList.add('active');
                 document.getElementById('nav-owed').classList.add('active');
+                document.getElementById('mobile-nav-owed').classList.add('active');
                 document.title = 'Money You\'re Owed — Accountable';
             } else if (page === 'taxes') {
                 document.getElementById('page-taxes').classList.add('active');
                 document.getElementById('nav-taxes').classList.add('active');
+                document.getElementById('mobile-nav-taxes').classList.add('active');
                 document.title = 'Where Your Taxes Go — Accountable';
                 // Reset to federal jurisdiction and categories view when navigating to taxes page
                 switchJurisdiction('federal');
             } else if (page === 'voice') {
                 document.getElementById('page-voice').classList.add('active');
                 document.getElementById('nav-voice').classList.add('active');
+                document.getElementById('mobile-nav-voice').classList.add('active');
                 document.title = 'Your Voice — Accountable';
             } else {
                 // Placeholder for other pages
