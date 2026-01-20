@@ -2886,9 +2886,9 @@
         </div>
         <nav class="nav-items">
             <a class="nav-link" id="nav-file" onclick="navigateTo('file')">File</a>
-            <a class="nav-link" id="nav-record" onclick="navigateTo('record')">Tax History</a>
+            <a class="nav-link" id="nav-record" onclick="navigateTo('record')">Your Taxes</a>
+            <a class="nav-link" id="nav-taxes" onclick="navigateTo('taxes')">Where They Go</a>
             <a class="nav-link" id="nav-owed" onclick="navigateTo('owed')">Money You're Owed</a>
-            <a class="nav-link" id="nav-taxes" onclick="navigateTo('taxes')">Where It Goes</a>
             <a class="nav-link" id="nav-voice" onclick="navigateTo('voice')">Your Voice</a>
         </nav>
     </header>
@@ -2994,7 +2994,7 @@
                             <circle cx="12" cy="12" r="10"></circle>
                             <path d="M12 6v6l4 2"></path>
                         </svg>
-                        Where It Goes
+                        Where They Go
                     </button>
                     <button class="celebration-btn secondary" onclick="navigateTo('record')">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -3004,7 +3004,7 @@
                             <line x1="16" y1="17" x2="8" y2="17"></line>
                             <polyline points="10 9 9 9 8 9"></polyline>
                         </svg>
-                        Tax History
+                        Your Taxes
                     </button>
                 </div>
             </div>
@@ -3012,13 +3012,13 @@
     </div>
 
     <!-- ==========================================
-         PAGE: TAX HISTORY
+         PAGE: YOUR TAXES
          ========================================== -->
     <div class="page-view" id="page-record">
         <main class="main">
             <!-- Profile Header -->
             <section class="profile-header animate-in">
-                <h1 class="profile-greeting">Tax History</h1>
+                <h1 class="profile-greeting">Your Taxes</h1>
                 <p class="profile-subtitle">Your complete tax record from 2019 to present</p>
             </section>
 
@@ -3626,7 +3626,7 @@
                         <polyline points="14 2 14 8 20 8"/>
                     </svg>
                     <div>
-                        <p style="font-size: 0.875rem; font-weight: 500; color: var(--ink); margin-bottom: 0.125rem;">Tax History</p>
+                        <p style="font-size: 0.875rem; font-weight: 500; color: var(--ink); margin-bottom: 0.125rem;">Your Taxes</p>
                         <p style="font-size: 0.75rem; color: var(--ink-tertiary);">See what you've paid over time</p>
                     </div>
                 </a>
@@ -3657,18 +3657,18 @@
     </div>
 
     <!-- ==========================================
-         PAGE: WHERE YOUR TAXES GO
+         PAGE: WHERE THEY GO
          ========================================== -->
     <div class="page-view" id="page-taxes">
         <main class="main wide">
             <!-- Page Header -->
             <div class="page-header">
                 <nav class="breadcrumb">
-                    <a onclick="navigateTo('record')">Tax History</a>
+                    <a onclick="navigateTo('record')">Your Taxes</a>
                     <span class="breadcrumb-separator">›</span>
-                    <span>Where It Goes</span>
+                    <span>Where They Go</span>
                 </nav>
-                <h1 class="page-title" id="spending-page-title">Where Your Taxes Go</h1>
+                <h1 class="page-title" id="spending-page-title">Where They Go</h1>
                 <p class="page-subtitle" id="spending-page-subtitle">See how your $37,290 in taxes are allocated across federal, state, and city programs.</p>
             </div>
 
@@ -5877,7 +5877,7 @@
             } else if (page === 'record') {
                 document.getElementById('page-record').classList.add('active');
                 document.getElementById('nav-record').classList.add('active');
-                document.title = 'Tax History — Accountable';
+                document.title = 'Your Taxes — Accountable';
             } else if (page === 'owed') {
                 document.getElementById('page-owed').classList.add('active');
                 document.getElementById('nav-owed').classList.add('active');
@@ -5885,7 +5885,7 @@
             } else if (page === 'taxes') {
                 document.getElementById('page-taxes').classList.add('active');
                 document.getElementById('nav-taxes').classList.add('active');
-                document.title = 'Where Your Taxes Go — Accountable';
+                document.title = 'Where They Go — Accountable';
                 // Reset to federal jurisdiction and categories view when navigating to taxes page
                 switchJurisdiction('federal');
             } else if (page === 'voice') {
@@ -5930,15 +5930,15 @@
             const mainMethodology = document.getElementById('main-methodology');
 
             if (jurisdiction === 'federal') {
-                pageTitle.textContent = 'Where Your Taxes Go';
+                pageTitle.textContent = 'Where They Go';
                 pageSubtitle.textContent = 'See how your $37,290 in taxes are allocated across federal, state, and city programs.';
                 if (mainMethodology) mainMethodology.style.display = 'block';
             } else if (jurisdiction === 'state') {
-                pageTitle.textContent = 'Where Your NY State Taxes Go';
+                pageTitle.textContent = 'Where They Go — NY State';
                 pageSubtitle.textContent = 'Your $11,420 in state taxes fund education, healthcare, transportation, and more.';
                 if (mainMethodology) mainMethodology.style.display = 'none';
             } else if (jurisdiction === 'city') {
-                pageTitle.textContent = 'Where Your NYC Taxes Go';
+                pageTitle.textContent = 'Where They Go — NYC';
                 pageSubtitle.textContent = 'Your $1,690 in city taxes fund schools, public safety, and essential city services.';
                 if (mainMethodology) mainMethodology.style.display = 'none';
             }
