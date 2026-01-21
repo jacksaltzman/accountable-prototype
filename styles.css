@@ -3468,17 +3468,6 @@ body {
     z-index: 15;
 }
 
-.allocation-segment::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(to bottom, rgba(255,255,255,0.1) 0%, transparent 50%, rgba(0,0,0,0.1) 100%);
-    pointer-events: none;
-}
-
 .allocation-segment[data-category="social-security"] { background: #5C6B7A; }
 .allocation-segment[data-category="health"] { background: #7A9E7E; }
 .allocation-segment[data-category="defense"] { background: #8B7355; }
