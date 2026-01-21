@@ -1448,6 +1448,15 @@ function updateTaxPaidDisplay(year) {
     if (percentages[0]) percentages[0].textContent = federalPercent + '%';
     if (percentages[1]) percentages[1].textContent = statePercent + '%';
     if (percentages[2]) percentages[2].textContent = cityPercent + '%';
+
+    // Update jurisdiction tab amounts
+    const federalTab = document.querySelector('#tab-federal .jurisdiction-tab-amount');
+    const stateTab = document.querySelector('#tab-state .jurisdiction-tab-amount');
+    const cityTab = document.querySelector('#tab-city .jurisdiction-tab-amount');
+
+    if (federalTab) federalTab.textContent = '$' + data.federal.toLocaleString();
+    if (stateTab) stateTab.textContent = '$' + data.state.toLocaleString();
+    if (cityTab) cityTab.textContent = '$' + data.city.toLocaleString();
 }
 
 // Add event listeners for trend year labels
