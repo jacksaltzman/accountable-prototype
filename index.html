@@ -7387,7 +7387,15 @@ Thank you for contributing to your community.
 
         function initTrendChart() {
             const svg = document.getElementById('trend-chart-svg');
+            if (!svg) return;
+
             const rect = svg.getBoundingClientRect();
+
+            // If dimensions aren't ready yet, wait for next frame
+            if (rect.width === 0 || rect.height === 0) {
+                requestAnimationFrame(initTrendChart);
+                return;
+            }
 
             // Set viewBox to match actual pixel dimensions (prevents stretching)
             svg.setAttribute('viewBox', `0 0 ${rect.width} ${rect.height}`);
