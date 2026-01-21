@@ -38,10 +38,11 @@ function animateBenefitsProgress() {
         progressBar.style.width = percentage + '%';
     }, 100);
 
-    // Update the headline with the calculated percentage
+    // Update the headline with the available amount
     const headline = document.getElementById('progress-headline');
     if (headline) {
-        headline.innerHTML = `You're <strong>${percentage}%</strong> of the way to maximizing your benefits.`;
+        const availableFormatted = '~$' + benefitsData.available.toLocaleString();
+        headline.innerHTML = `You're likely eligible for <strong>${availableFormatted}</strong> in credits and benefits you haven't claimed yet.`;
     }
 }
 
