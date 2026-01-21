@@ -2945,8 +2945,9 @@ body {
     align-items: center;
     padding: 1rem 1.5rem;
     border-bottom: 1px solid var(--paper-line);
+    border-left: 4px solid transparent;
     cursor: pointer;
-    transition: background 0.15s;
+    transition: background 0.15s ease, border-color 0.15s ease, padding-left 0.15s ease;
     gap: 1rem;
 }
 
@@ -2956,6 +2957,13 @@ body {
 
 .breakdown-list-item:hover {
     background: var(--paper-warm);
+    padding-left: 1.75rem;
+}
+
+.breakdown-list-item:focus-visible {
+    outline: none;
+    background: var(--paper-warm);
+    box-shadow: inset 0 0 0 2px var(--brand-chartreuse);
 }
 
 .breakdown-list-item.no-drill {
@@ -2964,7 +2972,19 @@ body {
 
 .breakdown-list-item.no-drill:hover {
     background: transparent;
+    padding-left: 1.5rem;
 }
+
+/* Category-specific border colors */
+.breakdown-list-item[data-category="social-security"] { border-left-color: #5C6B7A; }
+.breakdown-list-item[data-category="health"] { border-left-color: #7A9E7E; }
+.breakdown-list-item[data-category="defense"] { border-left-color: #8B7355; }
+.breakdown-list-item[data-category="income-security"] { border-left-color: #9B8AA6; }
+.breakdown-list-item[data-category="interest"] { border-left-color: var(--coral); }
+.breakdown-list-item[data-category="veterans"] { border-left-color: #6B8E8E; }
+.breakdown-list-item[data-category="education"] { border-left-color: #B5A67C; }
+.breakdown-list-item[data-category="transportation"] { border-left-color: #8A9EA8; }
+.breakdown-list-item[data-category="other"] { border-left-color: #A89080; }
 
 .breakdown-bar-container {
     width: 120px;
@@ -3229,7 +3249,33 @@ body {
 
 .view.active {
     display: block;
-    animation: fadeIn 0.25s ease;
+    animation: drillDown 0.35s ease;
+}
+
+.view.active.drill-up {
+    animation: drillUp 0.35s ease;
+}
+
+@keyframes drillDown {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes drillUp {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 @keyframes fadeIn {
@@ -3396,8 +3442,9 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: filter 0.2s, transform 0.2s;
+    transition: filter 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
     overflow: hidden;
+    cursor: pointer;
 }
 
 .allocation-segment:first-child {
@@ -3409,8 +3456,27 @@ body {
 }
 
 .allocation-segment:hover {
-    filter: brightness(1.1);
+    filter: brightness(1.15);
+    transform: scaleY(1.15);
     z-index: 10;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.allocation-segment:focus-visible {
+    outline: 3px solid var(--brand-chartreuse);
+    outline-offset: 2px;
+    z-index: 15;
+}
+
+.allocation-segment::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.1) 0%, transparent 50%, rgba(0,0,0,0.1) 100%);
+    pointer-events: none;
 }
 
 .allocation-segment[data-category="social-security"] { background: #5C6B7A; }
@@ -3424,18 +3490,33 @@ body {
 .allocation-segment[data-category="other"] { background: #A89080; }
 
 .segment-label {
-    font-size: 0.6875rem;
-    font-weight: 500;
+    font-size: 0.625rem;
+    font-weight: 600;
     color: white;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    padding: 0 0.5rem;
+    padding: 0.125rem 0.5rem;
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    backdrop-filter: blur(4px);
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.allocation-segment:hover .segment-label {
+    background: rgba(0, 0, 0, 0.4);
+    transform: scale(1.05);
 }
 
 .allocation-segment.small .segment-label {
     display: none;
+}
+
+.allocation-segment.medium .segment-label {
+    font-size: 0.5625rem;
+    padding: 0.0625rem 0.375rem;
 }
 
 /* Allocation Tooltip */
@@ -3443,31 +3524,47 @@ body {
     position: fixed;
     background: var(--ink);
     color: var(--paper);
-    padding: 0.625rem 0.875rem;
-    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
     font-size: 0.8125rem;
     pointer-events: none;
     opacity: 0;
-    transition: opacity 0.15s;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    transform: translateY(4px);
     z-index: 1000;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    max-width: 200px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    max-width: 220px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .allocation-tooltip.visible {
     opacity: 1;
+    transform: translateY(0);
 }
 
 .allocation-tooltip-name {
-    font-weight: 500;
-    margin-bottom: 0.25rem;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.875rem;
+    margin-bottom: 0.375rem;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
 }
 
 .allocation-tooltip-details {
     display: flex;
-    gap: 0.75rem;
-    font-size: 0.75rem;
-    color: rgba(255,255,255,0.8);
+    gap: 1rem;
+    font-size: 0.8125rem;
+}
+
+.tooltip-amount {
+    font-family: var(--serif);
+    font-weight: 600;
+    color: var(--brand-chartreuse);
+}
+
+.tooltip-percent {
+    color: rgba(255,255,255,0.7);
 }
 
 .allocation-context {
@@ -5012,11 +5109,36 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.spending-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.02) 100%);
+    pointer-events: none;
+}
+
+.spending-hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--brand-coral), var(--brand-chartreuse), var(--brand-ink));
 }
 
 .spending-hero-content {
     max-width: 600px;
     margin: 0 auto;
+    position: relative;
+    z-index: 1;
 }
 
 .spending-hero-label {
@@ -5026,15 +5148,28 @@ body {
     color: var(--brand-ink);
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(0, 0, 0, 0.05);
+    padding: 0.375rem 0.875rem;
+    border-radius: 20px;
+}
+
+.spending-hero-label::before {
+    content: '📊';
+    font-size: 1rem;
 }
 
 .spending-hero-amount {
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.5rem;
+    transition: transform 0.3s ease;
 }
 
 .spending-hero-sublabel {
     color: var(--ink-secondary);
+    font-size: 1rem;
 }
 
 /* Jurisdiction Toggle */
@@ -5042,6 +5177,7 @@ body {
     display: flex;
     gap: 0;
     margin-bottom: 2rem;
+    position: relative;
 }
 
 .jurisdiction-btn {
@@ -5055,22 +5191,50 @@ body {
     letter-spacing: 0.02em;
     color: var(--brand-ink);
     cursor: pointer;
-    transition: all 0.15s;
+    transition: all 0.2s ease;
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.jurisdiction-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--brand-ink);
+    transform: translateY(100%);
+    transition: transform 0.25s ease;
+    z-index: 0;
+}
+
+.jurisdiction-btn span {
+    position: relative;
+    z-index: 1;
 }
 
 .jurisdiction-btn:first-child {
     border-right: none;
+    border-radius: 4px 0 0 4px;
 }
 
 .jurisdiction-btn:last-child {
     border-left: none;
+    border-radius: 0 4px 4px 0;
 }
 
 .jurisdiction-btn:hover {
     background: var(--paper-warm);
+}
+
+.jurisdiction-btn:focus-visible {
+    outline: 3px solid var(--brand-chartreuse);
+    outline-offset: 2px;
+    z-index: 5;
 }
 
 .jurisdiction-btn.active {
@@ -5078,12 +5242,29 @@ body {
     color: var(--brand-paper);
 }
 
+.jurisdiction-btn.active::before {
+    transform: translateY(0);
+}
+
 .jurisdiction-btn-amount {
     font-weight: 800;
     opacity: 0.7;
+    transition: opacity 0.2s ease;
 }
 
 .jurisdiction-btn.active .jurisdiction-btn-amount {
+    opacity: 1;
+}
+
+/* Jurisdiction icon indicators */
+.jurisdiction-btn-icon {
+    width: 16px;
+    height: 16px;
+    opacity: 0.6;
+    transition: opacity 0.2s ease;
+}
+
+.jurisdiction-btn.active .jurisdiction-btn-icon {
     opacity: 1;
 }
 
@@ -5143,11 +5324,24 @@ body {
 /* Jurisdiction content containers */
 .jurisdiction-content {
     display: none;
+    opacity: 0;
 }
 
 .jurisdiction-content.active {
     display: block;
-    animation: fadeIn 0.3s ease;
+    opacity: 1;
+    animation: jurisdictionFadeIn 0.4s ease;
+}
+
+@keyframes jurisdictionFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* State/City specific colors */
@@ -5178,6 +5372,34 @@ body {
     margin-bottom: 2rem;
     border-left: 4px solid var(--brand-ink);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    position: relative;
+    overflow: hidden;
+}
+
+.spending-context-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 120px;
+    height: 120px;
+    opacity: 0.03;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    pointer-events: none;
+}
+
+.spending-context-card.federal::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231A1A1A'%3E%3Cpath d='M12 2L2 7v1h20V7L12 2zM4 10v8H2v2h20v-2h-2v-8h-2v8h-4v-8h-2v8H8v-8H4z'/%3E%3C/svg%3E");
+}
+
+.spending-context-card.state::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231A1A1A'%3E%3Cpath d='M14 6V4h-4v2h4zM4 8v11h16V8H4zm16-2c1.1 0 2 .9 2 2v11c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2l.01-11c0-1.1.89-2 1.99-2h4V4c0-1.1.9-2 2-2h4c1.1 0 2 .9 2 2v2h4z'/%3E%3C/svg%3E");
+}
+
+.spending-context-card.city::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231A1A1A'%3E%3Cpath d='M15 11V5l-3-3-3 3v2H3v14h18V11h-6zm-8 8H5v-2h2v2zm0-4H5v-2h2v2zm0-4H5V9h2v2zm6 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V9h2v2zm0-4h-2V5h2v2zm6 12h-2v-2h2v2zm0-4h-2v-2h2v2z'/%3E%3C/svg%3E");
 }
 
 .spending-context-card.federal {
@@ -5200,12 +5422,23 @@ body {
     text-transform: uppercase;
     letter-spacing: 0.02em;
     margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.spending-context-title::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
 }
 
 .spending-context-text {
-    font-size: 0.8125rem;
+    font-size: 0.875rem;
     color: var(--ink-secondary);
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
 /* Responsive for tabs */
@@ -6890,5 +7123,205 @@ body {
         animation: none;
         box-shadow: 0 0 0 3px var(--brand-coral);
     }
+}
+
+/* ==========================================
+   WHERE IT GOES PAGE MOBILE OPTIMIZATIONS
+   ========================================== */
+
+@media (max-width: 768px) {
+    /* Spending Hero mobile */
+    .spending-hero {
+        padding: 3rem 1.5rem;
+        min-height: 30vh;
+    }
+
+    .spending-hero-label {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.625rem;
+    }
+
+    .spending-hero-label::before {
+        font-size: 0.875rem;
+    }
+
+    /* Jurisdiction toggle mobile */
+    .jurisdiction-toggle {
+        flex-wrap: wrap;
+    }
+
+    .jurisdiction-btn {
+        flex: 1;
+        min-width: 0;
+        padding: 0.75rem 0.5rem;
+        font-size: 0.6875rem;
+        justify-content: center;
+    }
+
+    .jurisdiction-btn-amount {
+        display: none;
+    }
+
+    /* Allocation bar mobile */
+    .allocation-bar {
+        height: 32px;
+    }
+
+    .allocation-segment:hover {
+        transform: scaleY(1.1);
+    }
+
+    .segment-label {
+        font-size: 0.5rem;
+        padding: 0.0625rem 0.25rem;
+    }
+
+    /* Context card mobile */
+    .spending-context-card {
+        padding: 1rem 1.25rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .spending-context-card::before {
+        width: 80px;
+        height: 80px;
+    }
+
+    /* Breakdown list mobile */
+    .breakdown-list-item {
+        padding: 0.875rem 1rem;
+        gap: 0.75rem;
+    }
+
+    .breakdown-list-item:hover {
+        padding-left: 1.125rem;
+    }
+
+    .breakdown-bar-container {
+        width: 80px;
+    }
+
+    .breakdown-figures {
+        min-width: 70px;
+    }
+
+    .breakdown-list-amount {
+        font-size: 1rem;
+    }
+
+    .breakdown-description {
+        display: none;
+    }
+
+    /* Nav panel mobile */
+    .nav-panel-header {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .nav-panel-title {
+        font-size: 1.125rem;
+    }
+
+    .nav-panel-amount {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 375px) {
+    .spending-hero {
+        padding: 2.5rem 1rem;
+    }
+
+    .jurisdiction-btn {
+        padding: 0.625rem 0.375rem;
+        font-size: 0.625rem;
+    }
+
+    .allocation-bar {
+        height: 28px;
+    }
+
+    .breakdown-list-item {
+        padding: 0.75rem;
+    }
+
+    .breakdown-bar-container {
+        width: 60px;
+    }
+
+    .breakdown-name {
+        font-size: 0.875rem;
+    }
+
+    .breakdown-list-amount {
+        font-size: 0.9375rem;
+    }
+}
+
+/* Touch-friendly improvements for Where It Goes */
+@media (hover: none) and (pointer: coarse) {
+    .allocation-segment {
+        min-height: 36px;
+    }
+
+    .breakdown-list-item {
+        min-height: 56px;
+    }
+
+    .jurisdiction-btn {
+        min-height: 48px;
+    }
+
+    /* Mobile tap tooltip for allocation bar */
+    .allocation-segment:active {
+        transform: scaleY(1.2);
+    }
+}
+
+/* Category highlight animation for Where It Goes */
+.breakdown-list-item.highlight {
+    animation: categoryHighlight 0.6s ease-out;
+    background: var(--paper-warm);
+}
+
+@keyframes categoryHighlight {
+    0% {
+        background: rgba(225, 255, 79, 0.3);
+        transform: translateX(-4px);
+    }
+    50% {
+        background: rgba(225, 255, 79, 0.2);
+    }
+    100% {
+        background: var(--paper-warm);
+        transform: translateX(0);
+    }
+}
+
+/* Loading shimmer for jurisdiction switch */
+.jurisdiction-content.loading {
+    position: relative;
+}
+
+.jurisdiction-content.loading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.4) 50%,
+        transparent 100%
+    );
+    animation: loadingShimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes loadingShimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
 }
 

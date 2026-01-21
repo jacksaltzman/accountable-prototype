@@ -259,17 +259,25 @@ document.addEventListener('keydown', (e) => {
 // ==========================================
 
 function switchJurisdiction(jurisdiction) {
-    // Update tab states
-    document.querySelectorAll('.jurisdiction-tab').forEach(tab => {
+    // Update tab states (support both old .jurisdiction-tab and new .jurisdiction-btn)
+    document.querySelectorAll('.jurisdiction-tab, .jurisdiction-btn').forEach(tab => {
         tab.classList.remove('active');
+        tab.setAttribute('aria-selected', 'false');
     });
-    document.getElementById('tab-' + jurisdiction).classList.add('active');
+    const activeTab = document.getElementById('tab-' + jurisdiction);
+    if (activeTab) {
+        activeTab.classList.add('active');
+        activeTab.setAttribute('aria-selected', 'true');
+    }
 
-    // Update content visibility
+    // Update content visibility with transition
     document.querySelectorAll('.jurisdiction-content').forEach(content => {
         content.classList.remove('active');
     });
-    document.getElementById('content-' + jurisdiction).classList.add('active');
+    const activeContent = document.getElementById('content-' + jurisdiction);
+    if (activeContent) {
+        activeContent.classList.add('active');
+    }
 
     // Update page title and subtitle
     const pageTitle = document.getElementById('spending-page-title');
@@ -298,6 +306,16 @@ function switchJurisdiction(jurisdiction) {
     // Scroll to top of content
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+
+// Keyboard navigation for allocation bar segments
+document.addEventListener('keydown', (e) => {
+    if (e.target.classList.contains('allocation-segment')) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            e.target.click();
+        }
+    }
+});
 
 // ==========================================
 // CELEBRATION ANIMATION
