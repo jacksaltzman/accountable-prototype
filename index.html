@@ -834,33 +834,6 @@
             fill: var(--coral);
         }
 
-        .trend-year-labels {
-            display: flex;
-            justify-content: space-between;
-            padding: 0 0.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .trend-year-label {
-            font-size: 0.6875rem;
-            font-weight: 600;
-            color: var(--ink-tertiary);
-            cursor: pointer;
-            padding: 0.25rem 0.5rem;
-            border-radius: 4px;
-            transition: all 0.2s;
-        }
-
-        .trend-year-label:hover {
-            background: var(--paper-warm);
-            color: var(--ink);
-        }
-
-        .trend-year-label.active {
-            background: var(--ink);
-            color: var(--paper);
-        }
-
         .trend-summary-stats {
             display: flex;
             gap: 2rem;
@@ -3855,7 +3828,7 @@
                     </div>
 
                     <div class="trend-chart-container">
-                        <svg class="trend-chart-svg" id="trend-chart-svg" viewBox="0 0 400 180" preserveAspectRatio="xMidYMid meet">
+                        <svg class="trend-chart-svg" id="trend-chart-svg" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid meet">
                             <defs>
                                 <linearGradient id="trendGradient" x1="0%" y1="0%" x2="0%" y2="100%">
                                     <stop offset="0%" style="stop-color: var(--coral); stop-opacity: 0.3"/>
@@ -3864,17 +3837,17 @@
                             </defs>
                             <!-- Grid lines -->
                             <g class="trend-grid" stroke="var(--paper-line)" stroke-width="1">
-                                <line x1="40" y1="20" x2="380" y2="20" stroke-dasharray="4"/>
-                                <line x1="40" y1="60" x2="380" y2="60" stroke-dasharray="4"/>
-                                <line x1="40" y1="100" x2="380" y2="100" stroke-dasharray="4"/>
-                                <line x1="40" y1="140" x2="380" y2="140" stroke-dasharray="4"/>
+                                <line x1="50" y1="20" x2="370" y2="20" stroke-dasharray="4"/>
+                                <line x1="50" y1="53" x2="370" y2="53" stroke-dasharray="4"/>
+                                <line x1="50" y1="86" x2="370" y2="86" stroke-dasharray="4"/>
+                                <line x1="50" y1="120" x2="370" y2="120" stroke-dasharray="4"/>
                             </g>
                             <!-- Y-axis labels -->
                             <g class="trend-y-labels" fill="var(--ink-tertiary)" font-size="10" font-family="var(--sans)">
-                                <text x="35" y="24" text-anchor="end">$40k</text>
-                                <text x="35" y="64" text-anchor="end">$30k</text>
-                                <text x="35" y="104" text-anchor="end">$20k</text>
-                                <text x="35" y="144" text-anchor="end">$10k</text>
+                                <text x="45" y="24" text-anchor="end">$40k</text>
+                                <text x="45" y="57" text-anchor="end">$30k</text>
+                                <text x="45" y="90" text-anchor="end">$20k</text>
+                                <text x="45" y="124" text-anchor="end">$10k</text>
                             </g>
                             <!-- Area fill -->
                             <path class="trend-area" id="trend-area" d=""></path>
@@ -3882,19 +3855,11 @@
                             <path class="trend-line" id="trend-line" d=""></path>
                             <!-- Points -->
                             <g id="trend-points"></g>
+                            <!-- Year labels (rendered by JS at same x as points) -->
+                            <g id="trend-year-labels-svg"></g>
                             <!-- Policy markers -->
                             <g id="policy-markers-svg"></g>
                         </svg>
-                    </div>
-
-                    <div class="trend-year-labels" id="trend-year-labels">
-                        <span class="trend-year-label" data-year="2019">'19</span>
-                        <span class="trend-year-label" data-year="2020">'20</span>
-                        <span class="trend-year-label" data-year="2021">'21</span>
-                        <span class="trend-year-label" data-year="2022">'22</span>
-                        <span class="trend-year-label" data-year="2023">'23</span>
-                        <span class="trend-year-label" data-year="2024">'24</span>
-                        <span class="trend-year-label active" data-year="2025">'25</span>
                     </div>
 
                     <div class="trend-summary-stats">
@@ -7357,19 +7322,22 @@ Thank you for contributing to your community.
         function initTrendChart() {
             const years = [2019, 2020, 2021, 2022, 2023, 2024, 2025];
             const amounts = years.map(year => taxHistoryByYear[year].total);
-            const maxAmount = 40000; // Fixed scale for visual consistency
-            const minAmount = 0;
+            const maxAmount = 40000;
+            const minAmount = 10000;
 
-            const chartWidth = 400;
-            const chartHeight = 180;
-            const padding = { top: 20, right: 20, bottom: 20, left: 40 };
-            const plotWidth = chartWidth - padding.left - padding.right;
-            const plotHeight = chartHeight - padding.top - padding.bottom;
+            // Chart dimensions matching the SVG viewBox and grid lines
+            const plotLeft = 50;
+            const plotRight = 370;
+            const plotTop = 20;
+            const plotBottom = 120;
+            const plotWidth = plotRight - plotLeft;
+            const plotHeight = plotBottom - plotTop;
+            const yearLabelY = 150;
 
             // Calculate point positions
             const points = years.map((year, i) => {
-                const x = padding.left + (i / (years.length - 1)) * plotWidth;
-                const y = padding.top + plotHeight - ((amounts[i] - minAmount) / (maxAmount - minAmount)) * plotHeight;
+                const x = plotLeft + (i / (years.length - 1)) * plotWidth;
+                const y = plotTop + plotHeight - ((amounts[i] - minAmount) / (maxAmount - minAmount)) * plotHeight;
                 return { x, y, year, amount: amounts[i] };
             });
 
@@ -7379,8 +7347,8 @@ Thank you for contributing to your community.
 
             // Create area path
             const areaPath = linePath +
-                ` L${points[points.length - 1].x},${padding.top + plotHeight}` +
-                ` L${points[0].x},${padding.top + plotHeight} Z`;
+                ` L${points[points.length - 1].x},${plotBottom}` +
+                ` L${points[0].x},${plotBottom} Z`;
             document.getElementById('trend-area').setAttribute('d', areaPath);
 
             // Create points
@@ -7396,6 +7364,26 @@ Thank you for contributing to your community.
                 circle.setAttribute('data-amount', p.amount);
                 circle.addEventListener('click', () => selectTrendYear(p.year));
                 pointsGroup.appendChild(circle);
+            });
+
+            // Create year labels inside SVG at same x positions as points
+            const yearLabelsGroup = document.getElementById('trend-year-labels-svg');
+            yearLabelsGroup.innerHTML = '';
+            points.forEach(p => {
+                const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                text.setAttribute('x', p.x);
+                text.setAttribute('y', yearLabelY);
+                text.setAttribute('text-anchor', 'middle');
+                text.setAttribute('font-size', '11');
+                text.setAttribute('font-family', 'var(--sans)');
+                text.setAttribute('fill', p.year === selectedTrendYear ? 'var(--ink)' : 'var(--ink-tertiary)');
+                text.setAttribute('font-weight', p.year === selectedTrendYear ? '600' : '500');
+                text.setAttribute('class', 'trend-year-label-svg');
+                text.setAttribute('data-year', p.year);
+                text.setAttribute('cursor', 'pointer');
+                text.textContent = "'" + String(p.year).slice(-2);
+                text.addEventListener('click', () => selectTrendYear(p.year));
+                yearLabelsGroup.appendChild(text);
             });
 
             // Add policy markers on SVG
@@ -7452,13 +7440,15 @@ Thank you for contributing to your community.
                 }
             });
 
-            // Update year labels
-            document.querySelectorAll('.trend-year-label').forEach(label => {
+            // Update SVG year labels
+            document.querySelectorAll('.trend-year-label-svg').forEach(label => {
                 const labelYear = parseInt(label.getAttribute('data-year'));
                 if (labelYear === year) {
-                    label.classList.add('active');
+                    label.setAttribute('fill', 'var(--ink)');
+                    label.setAttribute('font-weight', '600');
                 } else {
-                    label.classList.remove('active');
+                    label.setAttribute('fill', 'var(--ink-tertiary)');
+                    label.setAttribute('font-weight', '500');
                 }
             });
 
@@ -7605,16 +7595,6 @@ Thank you for contributing to your community.
             if (percentages[2]) percentages[2].textContent = cityPercent + '%';
         }
 
-        // Add event listeners for trend year labels
-        function initTrendYearLabels() {
-            document.querySelectorAll('.trend-year-label').forEach(label => {
-                label.addEventListener('click', function() {
-                    const year = parseInt(this.getAttribute('data-year'));
-                    selectTrendYear(year);
-                });
-            });
-        }
-
         // ==========================================
         // INITIALIZATION
         // ==========================================
@@ -7625,7 +7605,6 @@ Thank you for contributing to your community.
 
             // Initialize tax history trend features
             initTrendChart();
-            initTrendYearLabels();
             updateYearComparison(2025);
 
             // Navigate to default page
