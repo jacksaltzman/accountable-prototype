@@ -2772,16 +2772,18 @@
         }
 
         .celebration-actions {
-            display: flex;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             gap: 1rem;
             width: 100%;
-            justify-content: center;
-            flex-wrap: wrap;
+            max-width: 540px;
+            margin: 0 auto;
         }
 
         .celebration-btn {
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 0.5rem;
             padding: 0.875rem 1.5rem;
             border-radius: 8px;
@@ -2855,12 +2857,7 @@
             }
 
             .celebration-actions {
-                flex-direction: column;
-            }
-
-            .celebration-btn {
-                width: 100%;
-                justify-content: center;
+                grid-template-columns: 1fr;
             }
         }
 
