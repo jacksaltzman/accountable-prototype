@@ -5113,16 +5113,6 @@ body {
     pointer-events: none;
 }
 
-.spending-hero::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--brand-coral), var(--brand-chartreuse), var(--brand-ink));
-}
-
 .spending-hero-content {
     max-width: 600px;
     margin: 0 auto;
