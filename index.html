@@ -3896,19 +3896,15 @@
                         </div>
                         <div class="trend-chart-area">
                             <div class="trend-chart-container">
-                                <svg class="trend-chart-svg" id="trend-chart-svg" viewBox="0 0 400 160" preserveAspectRatio="none">
+                                <svg class="trend-chart-svg" id="trend-chart-svg">
                                     <defs>
                                         <linearGradient id="trendGradient" x1="0%" y1="0%" x2="0%" y2="100%">
                                             <stop offset="0%" style="stop-color: var(--coral); stop-opacity: 0.3"/>
                                             <stop offset="100%" style="stop-color: var(--coral); stop-opacity: 0"/>
                                         </linearGradient>
                                     </defs>
-                                    <!-- Grid lines -->
-                                    <g class="trend-grid" stroke="var(--paper-line)" stroke-width="1">
-                                        <line x1="0" y1="0" x2="400" y2="0" stroke-dasharray="4"/>
-                                        <line x1="0" y1="40" x2="400" y2="40" stroke-dasharray="4"/>
-                                        <line x1="0" y1="80" x2="400" y2="80" stroke-dasharray="4"/>
-                                        <line x1="0" y1="120" x2="400" y2="120" stroke-dasharray="4"/>
+                                    <!-- Grid lines (drawn dynamically) -->
+                                    <g class="trend-grid" id="trend-grid" stroke="var(--paper-line)" stroke-width="1">
                                     </g>
                                     <!-- Area fill -->
                                     <path class="trend-area" id="trend-area" d=""></path>
@@ -7390,16 +7386,33 @@ Thank you for contributing to your community.
         let selectedTrendYear = 2025;
 
         function initTrendChart() {
+            const svg = document.getElementById('trend-chart-svg');
+            const rect = svg.getBoundingClientRect();
+
             const years = [2019, 2020, 2021, 2022, 2023, 2024, 2025];
             const amounts = years.map(year => taxHistoryByYear[year].total);
             const maxAmount = 40000; // Fixed scale for visual consistency
             const minAmount = 0;
 
-            const chartWidth = 400;
-            const chartHeight = 160;
-            const padding = { top: 0, right: 0, bottom: 20, left: 0 };
+            const chartWidth = rect.width;
+            const chartHeight = rect.height;
+            const padding = { top: 5, right: 0, bottom: 5, left: 0 };
             const plotWidth = chartWidth - padding.left - padding.right;
             const plotHeight = chartHeight - padding.top - padding.bottom;
+
+            // Draw grid lines dynamically
+            const gridGroup = document.getElementById('trend-grid');
+            gridGroup.innerHTML = '';
+            const gridYPositions = [0, 0.25, 0.5, 0.75].map(ratio => padding.top + ratio * plotHeight);
+            gridYPositions.forEach(y => {
+                const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                line.setAttribute('x1', 0);
+                line.setAttribute('y1', y);
+                line.setAttribute('x2', chartWidth);
+                line.setAttribute('y2', y);
+                line.setAttribute('stroke-dasharray', '4');
+                gridGroup.appendChild(line);
+            });
 
             // Calculate point positions
             const points = years.map((year, i) => {
@@ -7665,6 +7678,13 @@ Thank you for contributing to your community.
 
             // Navigate to default page
             navigateTo('file');
+
+            // Redraw chart on window resize
+            let resizeTimeout;
+            window.addEventListener('resize', function() {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(initTrendChart, 100);
+            });
         });
     </script>
 </body>
