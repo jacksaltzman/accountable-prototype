@@ -166,12 +166,12 @@
                             </span>
                         </p>
                         <p class="summary-value" id="annual-taxes-paid">$37,290</p>
-                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <div class="summary-meta-row">
                             <span class="summary-meta" id="annual-taxes-year">2025</span>
                             <span class="data-badge confirmed"><span class="data-badge-dot"></span>Confirmed</span>
                         </div>
                     </div>
-                    <div class="summary-card" style="cursor: pointer;" onclick="navigateTo('owed')">
+                    <div class="summary-card clickable" onclick="navigateTo('owed')">
                         <p class="summary-label">
                             Benefits & credits
                             <span class="tooltip-trigger">
@@ -184,9 +184,9 @@
                             </span>
                         </p>
                         <p class="summary-value" id="annual-benefits">$6,759</p>
-                        <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+                        <div class="summary-meta-row">
                             <span class="summary-meta" id="annual-benefits-year">2025</span>
-                            <a href="javascript:void(0)" onclick="navigateTo('owed'); event.stopPropagation();" style="font-size: 0.75rem; color: var(--brand-coral); text-decoration: none; font-weight: 500;">View details →</a>
+                            <a href="javascript:void(0)" class="summary-card-link" onclick="navigateTo('owed'); event.stopPropagation();">View details →</a>
                         </div>
                     </div>
                     <div class="summary-card">
@@ -202,7 +202,7 @@
                             </span>
                         </p>
                         <p class="summary-value" id="annual-net">$30,531</p>
-                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <div class="summary-meta-row">
                             <span class="summary-meta" id="annual-net-year">2025</span>
                             <span class="data-badge confirmed"><span class="data-badge-dot"></span>Confirmed</span>
                         </div>
@@ -261,9 +261,9 @@
                         </div>
                     </div>
 
-                    <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--paper-line);">
-                        <p style="font-size: 0.8125rem; color: var(--ink-secondary); line-height: 1.5;">
-                            Where did your $24,180 actually go? <a href="javascript:void(0)" onclick="navigateTo('taxes');" style="color: var(--brand-coral); text-decoration: none; font-weight: 500;">See the breakdown →</a>
+                    <div class="taxes-paid-cta">
+                        <p class="taxes-paid-cta-text">
+                            Where did your $24,180 actually go? <a href="javascript:void(0)" class="taxes-paid-cta-link" onclick="navigateTo('taxes');">See the breakdown →</a>
                         </p>
                     </div>
                 </div>
@@ -427,7 +427,7 @@
                             </div>
                             <div class="policy-marker">
                                 <span class="policy-marker-year">2017+</span>
-                                <span class="policy-marker-dot"></span>
+                                <span class="policy-marker-dot reduction"></span>
                                 <span class="policy-marker-text">SALT cap in effect <span class="policy-marker-impact">(-$4,280/yr)</span></span>
                             </div>
                         </div>
@@ -441,136 +441,130 @@
             <!-- Filing History Section -->
             <section class="animate-in delay-3" style="margin-bottom: 3rem;">
                 <p class="section-label">Filing History</p>
-                <div style="background: var(--paper-warm); border-radius: 12px; overflow: hidden;">
-                    <!-- 2024 Filing -->
-                    <div style="padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--paper-line);">
-                        <div style="display: flex; align-items: center; gap: 1rem;">
-                            <div style="width: 40px; height: 40px; background: var(--confirmed-bg); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
-                                <svg style="width: 20px; height: 20px; color: var(--confirmed);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <div class="filing-history">
+                    <div class="filing-item">
+                        <div class="filing-item-left">
+                            <div class="filing-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <polyline points="20 6 9 17 4 12"></polyline>
                                 </svg>
                             </div>
-                            <div>
-                                <p style="font-size: 1rem; font-weight: 500; color: var(--ink); margin-bottom: 0.125rem;">2025 Tax Return</p>
-                                <p style="font-size: 0.8125rem; color: var(--ink-tertiary);">Filed April 8, 2026 · Federal & NY State</p>
+                            <div class="filing-details">
+                                <p class="filing-title">2025 Tax Return</p>
+                                <p class="filing-meta">Filed April 8, 2026 · Federal & NY State</p>
                             </div>
                         </div>
-                        <div style="text-align: right;">
-                            <p style="font-size: 0.75rem; color: var(--confirmed); font-weight: 500; margin-bottom: 0.125rem;">Accepted</p>
-                            <p style="font-size: 0.6875rem; color: var(--ink-tertiary);">#ACT-2025-847291</p>
+                        <div class="filing-item-right">
+                            <p class="filing-status accepted">Accepted</p>
+                            <p class="filing-id">#ACT-2025-847291</p>
                         </div>
                     </div>
-                    <!-- 2023 Filing -->
-                    <div style="padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--paper-line);">
-                        <div style="display: flex; align-items: center; gap: 1rem;">
-                            <div style="width: 40px; height: 40px; background: var(--confirmed-bg); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
-                                <svg style="width: 20px; height: 20px; color: var(--confirmed);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <div class="filing-item">
+                        <div class="filing-item-left">
+                            <div class="filing-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <polyline points="20 6 9 17 4 12"></polyline>
                                 </svg>
                             </div>
-                            <div>
-                                <p style="font-size: 1rem; font-weight: 500; color: var(--ink); margin-bottom: 0.125rem;">2023 Tax Return</p>
-                                <p style="font-size: 0.8125rem; color: var(--ink-tertiary);">Filed April 12, 2025 · Federal & NY State</p>
+                            <div class="filing-details">
+                                <p class="filing-title">2024 Tax Return</p>
+                                <p class="filing-meta">Filed April 12, 2025 · Federal & NY State</p>
                             </div>
                         </div>
-                        <div style="text-align: right;">
-                            <p style="font-size: 0.75rem; color: var(--confirmed); font-weight: 500; margin-bottom: 0.125rem;">Accepted</p>
-                            <p style="font-size: 0.6875rem; color: var(--ink-tertiary);">#ACT-2023-651842</p>
+                        <div class="filing-item-right">
+                            <p class="filing-status accepted">Accepted</p>
+                            <p class="filing-id">#ACT-2024-651842</p>
                         </div>
                     </div>
-                    <!-- 2022 Filing -->
-                    <div style="padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--paper-line);">
-                        <div style="display: flex; align-items: center; gap: 1rem;">
-                            <div style="width: 40px; height: 40px; background: var(--confirmed-bg); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
-                                <svg style="width: 20px; height: 20px; color: var(--confirmed);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <div class="filing-item">
+                        <div class="filing-item-left">
+                            <div class="filing-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <polyline points="20 6 9 17 4 12"></polyline>
                                 </svg>
                             </div>
-                            <div>
-                                <p style="font-size: 1rem; font-weight: 500; color: var(--ink); margin-bottom: 0.125rem;">2022 Tax Return</p>
-                                <p style="font-size: 0.8125rem; color: var(--ink-tertiary);">Filed April 14, 2023 · Federal & NY State</p>
+                            <div class="filing-details">
+                                <p class="filing-title">2023 Tax Return</p>
+                                <p class="filing-meta">Filed April 14, 2024 · Federal & NY State</p>
                             </div>
                         </div>
-                        <div style="text-align: right;">
-                            <p style="font-size: 0.75rem; color: var(--confirmed); font-weight: 500; margin-bottom: 0.125rem;">Accepted</p>
-                            <p style="font-size: 0.6875rem; color: var(--ink-tertiary);">#ACT-2022-493817</p>
+                        <div class="filing-item-right">
+                            <p class="filing-status accepted">Accepted</p>
+                            <p class="filing-id">#ACT-2023-493817</p>
                         </div>
                     </div>
-                    <!-- 2021 Filing -->
-                    <div style="padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--paper-line);">
-                        <div style="display: flex; align-items: center; gap: 1rem;">
-                            <div style="width: 40px; height: 40px; background: var(--confirmed-bg); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
-                                <svg style="width: 20px; height: 20px; color: var(--confirmed);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <div class="filing-item">
+                        <div class="filing-item-left">
+                            <div class="filing-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <polyline points="20 6 9 17 4 12"></polyline>
                                 </svg>
                             </div>
-                            <div>
-                                <p style="font-size: 1rem; font-weight: 500; color: var(--ink); margin-bottom: 0.125rem;">2021 Tax Return</p>
-                                <p style="font-size: 0.8125rem; color: var(--ink-tertiary);">Filed April 12, 2022 · Federal & NY State</p>
+                            <div class="filing-details">
+                                <p class="filing-title">2022 Tax Return</p>
+                                <p class="filing-meta">Filed April 12, 2023 · Federal & NY State</p>
                             </div>
                         </div>
-                        <div style="text-align: right;">
-                            <p style="font-size: 0.75rem; color: var(--confirmed); font-weight: 500; margin-bottom: 0.125rem;">Accepted</p>
-                            <p style="font-size: 0.6875rem; color: var(--ink-tertiary);">#ACT-2021-284619</p>
+                        <div class="filing-item-right">
+                            <p class="filing-status accepted">Accepted</p>
+                            <p class="filing-id">#ACT-2022-284619</p>
                         </div>
                     </div>
-                    <!-- 2020 Filing -->
-                    <div style="padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--paper-line);">
-                        <div style="display: flex; align-items: center; gap: 1rem;">
-                            <div style="width: 40px; height: 40px; background: var(--confirmed-bg); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
-                                <svg style="width: 20px; height: 20px; color: var(--confirmed);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <div class="filing-item">
+                        <div class="filing-item-left">
+                            <div class="filing-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <polyline points="20 6 9 17 4 12"></polyline>
                                 </svg>
                             </div>
-                            <div>
-                                <p style="font-size: 1rem; font-weight: 500; color: var(--ink); margin-bottom: 0.125rem;">2020 Tax Return</p>
-                                <p style="font-size: 0.8125rem; color: var(--ink-tertiary);">Filed May 17, 2021 · Federal & NY State</p>
+                            <div class="filing-details">
+                                <p class="filing-title">2021 Tax Return</p>
+                                <p class="filing-meta">Filed May 17, 2022 · Federal & NY State</p>
                             </div>
                         </div>
-                        <div style="text-align: right;">
-                            <p style="font-size: 0.75rem; color: var(--confirmed); font-weight: 500; margin-bottom: 0.125rem;">Accepted</p>
-                            <p style="font-size: 0.6875rem; color: var(--ink-tertiary);">#ACT-2020-173528</p>
+                        <div class="filing-item-right">
+                            <p class="filing-status accepted">Accepted</p>
+                            <p class="filing-id">#ACT-2021-173528</p>
                         </div>
                     </div>
-                    <!-- 2019 Filing -->
-                    <div style="padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: center;">
-                        <div style="display: flex; align-items: center; gap: 1rem;">
-                            <div style="width: 40px; height: 40px; background: var(--confirmed-bg); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
-                                <svg style="width: 20px; height: 20px; color: var(--confirmed);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <div class="filing-item">
+                        <div class="filing-item-left">
+                            <div class="filing-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <polyline points="20 6 9 17 4 12"></polyline>
                                 </svg>
                             </div>
-                            <div>
-                                <p style="font-size: 1rem; font-weight: 500; color: var(--ink); margin-bottom: 0.125rem;">2019 Tax Return</p>
-                                <p style="font-size: 0.8125rem; color: var(--ink-tertiary);">Filed April 15, 2020 · Federal & NY State</p>
+                            <div class="filing-details">
+                                <p class="filing-title">2020 Tax Return</p>
+                                <p class="filing-meta">Filed April 15, 2021 · Federal & NY State</p>
                             </div>
                         </div>
-                        <div style="text-align: right;">
-                            <p style="font-size: 0.75rem; color: var(--confirmed); font-weight: 500; margin-bottom: 0.125rem;">Accepted</p>
-                            <p style="font-size: 0.6875rem; color: var(--ink-tertiary);">#ACT-2019-092461</p>
+                        <div class="filing-item-right">
+                            <p class="filing-status accepted">Accepted</p>
+                            <p class="filing-id">#ACT-2020-092461</p>
                         </div>
                     </div>
                 </div>
             </section>
 
             <!-- Navigation Links -->
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem;">
-                <a href="javascript:void(0)" onclick="navigateTo('owed');" style="background: var(--paper-warm); border-radius: 12px; padding: 1.5rem; text-decoration: none; display: flex; align-items: center; gap: 1rem; transition: background 0.2s; border-left: 3px solid var(--confirmed);">
-                    <svg style="width: 28px; height: 28px; color: var(--confirmed);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <div class="nav-cards">
+                <a href="javascript:void(0)" onclick="navigateTo('owed');" class="nav-card owed">
+                    <svg class="nav-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
                     </svg>
-                    <div>
-                        <p style="font-size: 0.9375rem; font-weight: 600; color: var(--ink); margin-bottom: 0.25rem;">Money You're Owed</p>
-                        <p style="font-size: 0.8125rem; color: var(--ink-secondary); line-height: 1.4;">See benefits you've claimed and what you may be missing</p>
+                    <div class="nav-card-content">
+                        <p class="nav-card-title">Money You're Owed</p>
+                        <p class="nav-card-description">See benefits you've claimed and what you may be missing</p>
                     </div>
                 </a>
-                <a href="javascript:void(0)" onclick="navigateTo('voice');" style="background: var(--paper-warm); border-radius: 12px; padding: 1.5rem; text-decoration: none; display: flex; align-items: center; gap: 1rem; transition: background 0.2s; border-left: 3px solid var(--brand-coral);">
-                    <svg style="width: 28px; height: 28px; color: var(--brand-coral);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <a href="javascript:void(0)" onclick="navigateTo('voice');" class="nav-card voice">
+                    <svg class="nav-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                     </svg>
-                    <div>
-                        <p style="font-size: 0.9375rem; font-weight: 600; color: var(--ink); margin-bottom: 0.25rem;">Your Voice</p>
-                        <p style="font-size: 0.8125rem; color: var(--ink-secondary); line-height: 1.4;">How policy changed your taxes and who's responsible</p>
+                    <div class="nav-card-content">
+                        <p class="nav-card-title">Your Voice</p>
+                        <p class="nav-card-description">How policy changed your taxes and who's responsible</p>
                     </div>
                 </a>
             </div>

@@ -1136,14 +1136,23 @@ function updateAnnualSummary(year) {
     const data = annualSummaryByYear[year];
     if (!data) return;
 
-    // Update values
+    // Update values with animation
     const taxesPaid = document.getElementById('annual-taxes-paid');
     const benefits = document.getElementById('annual-benefits');
     const net = document.getElementById('annual-net');
 
-    if (taxesPaid) taxesPaid.textContent = '$' + data.totalTaxes.toLocaleString();
-    if (benefits) benefits.textContent = '$' + data.benefits.toLocaleString();
-    if (net) net.textContent = '$' + data.netContribution.toLocaleString();
+    // Helper function to animate value change
+    const animateValue = (element, newValue) => {
+        if (!element) return;
+        element.classList.remove('value-updated');
+        void element.offsetWidth; // Force reflow to restart animation
+        element.textContent = newValue;
+        element.classList.add('value-updated');
+    };
+
+    animateValue(taxesPaid, '$' + data.totalTaxes.toLocaleString());
+    animateValue(benefits, '$' + data.benefits.toLocaleString());
+    animateValue(net, '$' + data.netContribution.toLocaleString());
 
     // Update year labels
     const taxesYear = document.getElementById('annual-taxes-year');
@@ -1477,14 +1486,23 @@ function updateTaxPaidDisplay(year) {
     const data = taxHistoryByYear[year];
     if (!data) return;
 
-    // Update the "What You Paid" card
-    document.querySelector('.taxes-paid-title').textContent = `What You Paid in ${year}`;
-    document.getElementById('total-taxes-paid').textContent = '$' + data.total.toLocaleString();
-    document.getElementById('federal-taxes').textContent = '$' + data.federal.toLocaleString();
-    document.getElementById('state-taxes').textContent = '$' + data.state.toLocaleString();
-    document.getElementById('city-taxes').textContent = '$' + data.city.toLocaleString();
+    // Helper function to animate value change
+    const animateValue = (element, newValue) => {
+        if (!element) return;
+        element.classList.remove('value-updated');
+        void element.offsetWidth; // Force reflow to restart animation
+        element.textContent = newValue;
+        element.classList.add('value-updated');
+    };
 
-    // Update bar widths
+    // Update the "What You Paid" card with animations
+    document.querySelector('.taxes-paid-title').textContent = `What You Paid in ${year}`;
+    animateValue(document.getElementById('total-taxes-paid'), '$' + data.total.toLocaleString());
+    animateValue(document.getElementById('federal-taxes'), '$' + data.federal.toLocaleString());
+    animateValue(document.getElementById('state-taxes'), '$' + data.state.toLocaleString());
+    animateValue(document.getElementById('city-taxes'), '$' + data.city.toLocaleString());
+
+    // Update bar widths with transition
     const federalPercent = Math.round((data.federal / data.total) * 100);
     const statePercent = Math.round((data.state / data.total) * 100);
     const cityPercent = Math.round((data.city / data.total) * 100);

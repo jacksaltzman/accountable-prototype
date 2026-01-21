@@ -1899,6 +1899,578 @@ body {
     margin: 4rem 0;
 }
 
+/* ==========================================
+   FILING HISTORY STYLES
+   ========================================== */
+
+.filing-history {
+    background: var(--paper-warm);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.filing-item {
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--paper-line);
+    transition: background 0.15s ease;
+}
+
+.filing-item:last-child {
+    border-bottom: none;
+}
+
+.filing-item:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.filing-item-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.filing-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--confirmed-bg);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.filing-icon svg {
+    width: 20px;
+    height: 20px;
+    color: var(--confirmed);
+}
+
+.filing-icon.pending {
+    background: var(--estimate-bg);
+}
+
+.filing-icon.pending svg {
+    color: var(--estimate);
+}
+
+.filing-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.filing-title {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.125rem;
+}
+
+.filing-meta {
+    font-size: 0.8125rem;
+    color: var(--ink-tertiary);
+}
+
+.filing-item-right {
+    text-align: right;
+}
+
+.filing-status {
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin-bottom: 0.125rem;
+}
+
+.filing-status.accepted {
+    color: var(--confirmed);
+}
+
+.filing-status.pending {
+    color: var(--estimate);
+}
+
+.filing-id {
+    font-size: 0.6875rem;
+    color: var(--ink-tertiary);
+    font-family: var(--font-display);
+    letter-spacing: 0.02em;
+}
+
+/* ==========================================
+   ENHANCED SUMMARY CARDS
+   ========================================== */
+
+.summary-card.clickable {
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.summary-card.clickable:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.summary-card.clickable:active {
+    transform: translateY(0);
+}
+
+.summary-card-link {
+    font-size: 0.75rem;
+    color: var(--brand-coral);
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    transition: gap 0.15s ease;
+}
+
+.summary-card-link:hover {
+    text-decoration: underline;
+    gap: 0.5rem;
+}
+
+.summary-meta-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 0.25rem;
+}
+
+.summary-trend {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.125rem 0.375rem;
+    border-radius: 4px;
+}
+
+.summary-trend.up {
+    color: var(--decrease);
+    background: var(--decrease-bg);
+}
+
+.summary-trend.down {
+    color: var(--increase);
+    background: var(--increase-bg);
+}
+
+/* ==========================================
+   WHY THE CHANGE - ENHANCED FACTORS
+   ========================================== */
+
+.why-change-factor {
+    position: relative;
+    padding-left: 3rem;
+}
+
+.why-change-factor::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.why-change-factor.income::before {
+    background-color: var(--increase-bg);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232D5A3D' stroke-width='2'%3E%3Cpath d='M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6'/%3E%3C/svg%3E");
+}
+
+.why-change-factor.credits::before {
+    background-color: var(--coral-soft);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23F65B4E' stroke-width='2'%3E%3Crect x='2' y='5' width='20' height='14' rx='2'/%3E%3Cpath d='M2 10h20'/%3E%3C/svg%3E");
+}
+
+.why-change-factor.policy::before {
+    background-color: var(--neutral-bg);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234A5568' stroke-width='2'%3E%3Cpath d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'/%3E%3Cpath d='M14 2v6h6M16 13H8M16 17H8M10 9H8'/%3E%3C/svg%3E");
+}
+
+.why-change-factor.deduction::before {
+    background-color: #E8EEF4;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235A6B7A' stroke-width='2'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M8 12h8'/%3E%3C/svg%3E");
+}
+
+.why-change-toggle {
+    border-top: 1px solid var(--paper-line);
+    margin-top: 1rem;
+    padding-top: 1rem;
+}
+
+.why-change-toggle:hover .why-change-toggle-text {
+    color: var(--brand-ink);
+}
+
+.why-change-factor-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin-top: 0.5rem;
+    font-size: 0.8125rem;
+    color: var(--brand-coral);
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+    transition: gap 0.15s ease;
+}
+
+.why-change-factor-action:hover {
+    gap: 0.5rem;
+}
+
+/* ==========================================
+   POLICY MARKERS - COLOR CODED
+   ========================================== */
+
+.policy-marker-list {
+    position: relative;
+    padding-left: 1rem;
+}
+
+.policy-marker-list::before {
+    content: '';
+    position: absolute;
+    left: 0.4375rem;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    width: 2px;
+    background: var(--paper-line);
+    border-radius: 1px;
+}
+
+.policy-marker {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.625rem 0;
+}
+
+.policy-marker-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--ink-tertiary);
+    flex-shrink: 0;
+    margin-top: 0.25rem;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 0 0 3px var(--brand-paper);
+}
+
+.policy-marker-dot.benefit {
+    background: var(--increase);
+}
+
+.policy-marker-dot.reduction {
+    background: var(--coral);
+}
+
+.policy-marker-dot.neutral {
+    background: var(--ink-tertiary);
+}
+
+.policy-marker-impact {
+    font-weight: 600;
+    padding: 0.125rem 0.375rem;
+    border-radius: 4px;
+    font-size: 0.8125rem;
+}
+
+.policy-marker-dot.benefit + .policy-marker-text .policy-marker-impact {
+    color: var(--increase);
+    background: var(--increase-bg);
+}
+
+.policy-marker-dot.reduction + .policy-marker-text .policy-marker-impact {
+    color: var(--coral);
+    background: var(--coral-soft);
+}
+
+/* ==========================================
+   TAXES PAID CARD - ENHANCED
+   ========================================== */
+
+.tax-type-row {
+    padding: 0.75rem;
+    border-radius: 8px;
+    transition: background 0.15s ease;
+}
+
+.tax-type-row:hover {
+    background: var(--paper-warm);
+}
+
+.tax-type-bar-fill {
+    position: relative;
+}
+
+.tax-type-bar-fill::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: inherit;
+    filter: brightness(0.85);
+    border-radius: 0 4px 4px 0;
+}
+
+.taxes-paid-cta {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--paper-line);
+}
+
+.taxes-paid-cta-text {
+    font-size: 0.8125rem;
+    color: var(--ink-secondary);
+    line-height: 1.5;
+}
+
+.taxes-paid-cta-link {
+    color: var(--brand-coral);
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    transition: gap 0.15s ease;
+}
+
+.taxes-paid-cta-link:hover {
+    gap: 0.5rem;
+}
+
+/* ==========================================
+   YOY COMPARISON - ENHANCED
+   ========================================== */
+
+.yoy-row {
+    padding: 0.75rem;
+    border-radius: 8px;
+    transition: background 0.15s ease;
+}
+
+.yoy-row:hover {
+    background: var(--paper-warm);
+}
+
+.yoy-row.total {
+    background: var(--paper-warm);
+    margin-bottom: 0.5rem;
+}
+
+.yoy-row.total .yoy-label {
+    font-weight: 600;
+    color: var(--brand-ink);
+}
+
+.yoy-row.total .yoy-amount {
+    font-size: 1.25rem;
+}
+
+.yoy-change {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+.yoy-change.increase {
+    background: var(--decrease-bg);
+    color: var(--decrease);
+}
+
+.yoy-change.decrease {
+    background: var(--increase-bg);
+    color: var(--increase);
+}
+
+.yoy-change-arrow {
+    font-weight: 700;
+}
+
+/* ==========================================
+   TREND VISUALIZATION - ENHANCED
+   ========================================== */
+
+.trend-point {
+    transition: r 0.15s ease, fill 0.15s ease;
+}
+
+.trend-point:hover {
+    r: 8;
+    fill: var(--coral);
+}
+
+.trend-year-label {
+    cursor: pointer;
+    padding: 0.375rem 0.5rem;
+    border-radius: 6px;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.trend-year-label:hover {
+    background: var(--paper-warm);
+    color: var(--brand-ink);
+}
+
+.trend-year-label.active {
+    background: var(--brand-coral);
+    color: white;
+    font-weight: 600;
+}
+
+.trend-stat {
+    padding: 1rem;
+    background: var(--paper-warm);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.trend-stat-value {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--brand-coral);
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+/* ==========================================
+   YEAR CHANGE ANIMATIONS
+   ========================================== */
+
+@keyframes slideInValue {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulseHighlight {
+    0% {
+        box-shadow: 0 0 0 0 rgba(246, 91, 78, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 8px rgba(246, 91, 78, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(246, 91, 78, 0);
+    }
+}
+
+.value-updated {
+    animation: slideInValue 0.3s ease;
+}
+
+.year-pill.active {
+    animation: pulseHighlight 0.5s ease;
+}
+
+/* ==========================================
+   NAVIGATION CARDS
+   ========================================== */
+
+.nav-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.nav-card {
+    background: var(--paper-warm);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    border-left: 3px solid var(--paper-line);
+}
+
+.nav-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    background: var(--brand-paper);
+}
+
+.nav-card:focus-visible {
+    outline: 3px solid var(--brand-chartreuse);
+    outline-offset: 2px;
+}
+
+.nav-card.owed {
+    border-left-color: var(--confirmed);
+}
+
+.nav-card.voice {
+    border-left-color: var(--brand-coral);
+}
+
+.nav-card-icon {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+}
+
+.nav-card.owed .nav-card-icon {
+    color: var(--confirmed);
+}
+
+.nav-card.voice .nav-card-icon {
+    color: var(--brand-coral);
+}
+
+.nav-card-content {
+    flex: 1;
+}
+
+.nav-card-title {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.25rem;
+}
+
+.nav-card-description {
+    font-size: 0.8125rem;
+    color: var(--ink-secondary);
+    line-height: 1.4;
+}
+
+@media (max-width: 600px) {
+    .nav-cards {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* Data Source Footer */
 .data-source {
     margin-top: 3rem;
