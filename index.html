@@ -6889,12 +6889,12 @@
         // ==========================================
 
         const taxHistoryByYear = {
-            2019: { total: 19920, federal: 12480, state: 6440, city: 1000 },
-            2020: { total: 21340, federal: 13890, state: 6290, city: 1160 },
-            2021: { total: 24780, federal: 15920, state: 7540, city: 1320 },
-            2022: { total: 28450, federal: 18290, state: 8640, city: 1520 },
-            2023: { total: 31200, federal: 20180, state: 9380, city: 1640 },
-            2024: { total: 33870, federal: 21290, state: 10940, city: 1640 },
+            2019: { total: 30320, federal: 19710, state: 9100, city: 1510 },
+            2020: { total: 30890, federal: 20080, state: 9270, city: 1540 },
+            2021: { total: 32140, federal: 20890, state: 9640, city: 1610 },
+            2022: { total: 33450, federal: 21740, state: 10040, city: 1670 },
+            2023: { total: 34680, federal: 22540, state: 10410, city: 1730 },
+            2024: { total: 35940, federal: 23360, state: 10940, city: 1640 },
             2025: { total: 37290, federal: 24180, state: 11420, city: 1690 }
         };
 
@@ -6908,45 +6908,45 @@
         // Why the change explanations by year
         const yearOverYearExplanations = {
             2025: {
-                summary: "Why you paid $3,420 more in 2025:",
+                summary: "Why you paid $1,350 more in 2025:",
                 factors: [
-                    { type: "income", title: "Higher income (+$12,000 reported income)", detail: "Your federal marginal rate stayed at 22%" },
-                    { type: "credits", title: "Fewer credits claimed (-$400)", detail: "You didn't claim the Saver's Credit this year", action: "Check if you still qualify →", actionPage: "owed" },
+                    { type: "income", title: "Modest income growth (+$5,200 reported income)", detail: "Your federal marginal rate stayed at 22%" },
+                    { type: "credits", title: "Fewer credits claimed (-$200)", detail: "You didn't claim the Saver's Credit this year", action: "Check if you still qualify →", actionPage: "owed" },
                     { type: "policy", title: "State tax rate unchanged", detail: "NY rates were flat year-over-year" }
                 ]
             },
             2024: {
-                summary: "Why you paid $2,670 more in 2024:",
+                summary: "Why you paid $1,260 more in 2024:",
                 factors: [
-                    { type: "income", title: "Salary increase (+$8,500 reported income)", detail: "You moved into a slightly higher state bracket" },
+                    { type: "income", title: "Cost of living raise (+$4,800 reported income)", detail: "Your effective rate stayed roughly the same" },
                     { type: "policy", title: "NY State rate adjustment", detail: "Minor bracket inflation adjustments applied" }
                 ]
             },
             2023: {
-                summary: "Why you paid $2,750 more in 2023:",
+                summary: "Why you paid $1,230 more in 2023:",
                 factors: [
-                    { type: "income", title: "Promotion and raise (+$10,000 reported income)", detail: "Your effective rate increased slightly" },
-                    { type: "credits", title: "Child Tax Credit normalized", detail: "Reverted to pre-expansion levels after 2021" }
+                    { type: "income", title: "Annual raise (+$4,500 reported income)", detail: "Your effective rate increased slightly" },
+                    { type: "policy", title: "Standard deduction adjustment", detail: "Inflation adjustments partially offset the increase" }
                 ]
             },
             2022: {
-                summary: "Why you paid $3,670 more in 2022:",
+                summary: "Why you paid $1,310 more in 2022:",
                 factors: [
-                    { type: "policy", title: "Child Tax Credit reduced (-$1,600)", detail: "The expanded credit from 2021 expired" },
-                    { type: "income", title: "Income growth (+$7,500 reported income)", detail: "Steady career progression" }
+                    { type: "income", title: "Salary adjustment (+$5,000 reported income)", detail: "Steady career progression" },
+                    { type: "policy", title: "Child Tax Credit reduced", detail: "The expanded credit from 2021 expired" }
                 ]
             },
             2021: {
-                summary: "Why you paid $3,440 more in 2021:",
+                summary: "Why you paid $1,250 more in 2021:",
                 factors: [
-                    { type: "income", title: "Income increase (+$15,000 reported income)", detail: "Significant salary growth this year" },
-                    { type: "policy", title: "Child Tax Credit expansion (+$1,600)", detail: "American Rescue Plan increased the credit", action: "Learn about this policy →", actionPage: "voice" }
+                    { type: "income", title: "Income increase (+$4,800 reported income)", detail: "Post-pandemic salary recovery" },
+                    { type: "policy", title: "Child Tax Credit expansion (+$1,600)", detail: "American Rescue Plan increased the credit — partially offset the increase", action: "Learn about this policy →", actionPage: "voice" }
                 ]
             },
             2020: {
-                summary: "Why you paid $1,420 more in 2020:",
+                summary: "Why you paid $570 more in 2020:",
                 factors: [
-                    { type: "income", title: "Modest income growth (+$4,000 reported income)", detail: "Cost of living adjustment" },
+                    { type: "income", title: "Minimal income change (+$2,100 reported income)", detail: "Pandemic year — limited salary growth" },
                     { type: "credits", title: "Standard deduction increase", detail: "Inflation adjustment helped offset some taxes" }
                 ]
             }
