@@ -13,7 +13,7 @@
     <link rel="icon" type="image/png" href="Favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -27,11 +27,11 @@
             <span class="logo-text">Accountable</span>
         </div>
         <nav class="nav-items">
-            <a class="nav-link" id="nav-file" onclick="navigateTo('file')">File</a>
+            <a class="nav-link" id="nav-file" onclick="navigateTo('file')">Filed</a>
             <a class="nav-link" id="nav-record" onclick="navigateTo('record')">Your Taxes</a>
-            <a class="nav-link" id="nav-taxes" onclick="navigateTo('taxes')">Where They Go</a>
-            <a class="nav-link" id="nav-owed" onclick="navigateTo('owed')">Money You're Owed</a>
-            <a class="nav-link" id="nav-voice" onclick="navigateTo('voice')">Your Voice</a>
+            <a class="nav-link" id="nav-taxes" onclick="navigateTo('taxes')">Where It Goes</a>
+            <a class="nav-link" id="nav-owed" onclick="navigateTo('owed')">Claim</a>
+            <a class="nav-link" id="nav-voice" onclick="navigateTo('voice')">Act</a>
         </nav>
         <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation menu">
             <span></span>
@@ -43,155 +43,96 @@
     <!-- Mobile Navigation Drawer -->
     <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
     <nav class="mobile-nav-drawer" id="mobile-nav-drawer">
-        <a class="nav-link" id="mobile-nav-file" onclick="navigateTo('file'); closeMobileMenu();">File</a>
-        <a class="nav-link" id="mobile-nav-record" onclick="navigateTo('record'); closeMobileMenu();">Tax History</a>
-        <a class="nav-link" id="mobile-nav-owed" onclick="navigateTo('owed'); closeMobileMenu();">Money You're Owed</a>
+        <a class="nav-link" id="mobile-nav-file" onclick="navigateTo('file'); closeMobileMenu();">Filed</a>
+        <a class="nav-link" id="mobile-nav-record" onclick="navigateTo('record'); closeMobileMenu();">Your Taxes</a>
+        <a class="nav-link" id="mobile-nav-owed" onclick="navigateTo('owed'); closeMobileMenu();">Claim</a>
         <a class="nav-link" id="mobile-nav-taxes" onclick="navigateTo('taxes'); closeMobileMenu();">Where It Goes</a>
-        <a class="nav-link" id="mobile-nav-voice" onclick="navigateTo('voice'); closeMobileMenu();">Your Voice</a>
+        <a class="nav-link" id="mobile-nav-voice" onclick="navigateTo('voice'); closeMobileMenu();">Act</a>
     </nav>
 
     <!-- ==========================================
          PAGE: FILE (Celebration/Completion State)
          ========================================== -->
     <div class="page-view" id="page-file">
-        <main class="main">
-            <div class="file-celebration">
-                <!-- Animated Checkmark -->
-                <div class="celebration-checkmark animate-in">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
-                </div>
-
-                <!-- Success Message -->
-                <h1 class="celebration-title animate-in delay-1">Your Taxes Are Filed</h1>
-                <p class="celebration-subtitle animate-in delay-1">
-                    Congratulations! Your 2024 federal and state tax returns have been successfully submitted to the IRS and NY Department of Taxation.
-                </p>
-
-                <!-- Filing Summary Card -->
-                <div class="filing-summary-card animate-in delay-2">
-                    <div class="filing-summary-header">
-                        <span class="filing-summary-year">2025 Tax Return</span>
-                        <span class="filing-status-badge">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="20 6 9 17 4 12"></polyline>
-                            </svg>
-                            Accepted
-                        </span>
-                    </div>
-                    <div class="filing-details">
-                        <div class="filing-detail-item">
-                            <p class="filing-detail-label">Federal Refund</p>
-                            <p class="filing-detail-value refund">+$2,847</p>
-                        </div>
-                        <div class="filing-detail-item">
-                            <p class="filing-detail-label">State Refund (NY)</p>
-                            <p class="filing-detail-value refund">+$412</p>
-                        </div>
-                        <div class="filing-detail-item">
-                            <p class="filing-detail-label">Filed On</p>
-                            <p class="filing-detail-value">April 8, 2026</p>
-                        </div>
-                        <div class="filing-detail-item">
-                            <p class="filing-detail-label">Confirmation</p>
-                            <p class="filing-detail-value">#ACT-2025-847291</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Timeline -->
-                <div class="filing-timeline animate-in delay-3">
-                    <div class="timeline-item">
-                        <div class="timeline-dot completed">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="20 6 9 17 4 12"></polyline>
-                            </svg>
-                        </div>
-                        <div class="timeline-content">
-                            <p class="timeline-title">Return submitted</p>
-                            <p class="timeline-meta">April 8, 2026 at 3:42 PM</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot completed">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="20 6 9 17 4 12"></polyline>
-                            </svg>
-                        </div>
-                        <div class="timeline-content">
-                            <p class="timeline-title">IRS accepted return</p>
-                            <p class="timeline-meta">April 8, 2026 at 4:15 PM</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot pending">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="3"></circle>
-                            </svg>
-                        </div>
-                        <div class="timeline-content">
-                            <p class="timeline-title">Refund processing</p>
-                            <p class="timeline-meta">Expected by April 29, 2026</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Action Buttons -->
-                <div class="celebration-actions animate-in delay-4">
-                    <button class="celebration-btn primary" onclick="navigateTo('owed')">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-                        </svg>
-                        See Benefits You're Owed
-                    </button>
-                    <button class="celebration-btn secondary" onclick="navigateTo('taxes')">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <path d="M12 6v6l4 2"></path>
-                        </svg>
-                        See How Your Taxes Were Spent
-                    </button>
-                    <button class="celebration-btn secondary" onclick="navigateTo('record')">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                            <polyline points="14 2 14 8 20 8"></polyline>
-                            <line x1="16" y1="13" x2="8" y2="13"></line>
-                            <line x1="16" y1="17" x2="8" y2="17"></line>
-                            <polyline points="10 9 9 9 8 9"></polyline>
-                        </svg>
-                        View Your Tax History
-                    </button>
-                    <button class="celebration-btn secondary" onclick="downloadReceipt()">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                            <polyline points="7 10 12 15 17 10"></polyline>
-                            <line x1="12" y1="15" x2="12" y2="3"></line>
-                        </svg>
-                        Download Your Receipt
-                    </button>
+        <!-- Hero Section - Full Bleed Coral -->
+        <div class="filed-hero section-coral">
+            <div class="filed-hero-content animate-in">
+                <h1 class="filed-headline headline-display-xl">Filed.</h1>
+                <div class="filed-refund">
+                    <span class="filed-refund-amount stat-hero">+$3,259</span>
+                    <span class="filed-refund-label stat-label">Total refund coming your way</span>
                 </div>
             </div>
-        </main>
+        </div>
+
+        <!-- Details Section -->
+        <div class="filed-details section-paper">
+            <div class="filed-details-content">
+                <!-- Refund Breakdown -->
+                <div class="filed-breakdown animate-in delay-1">
+                    <div class="filed-breakdown-item">
+                        <span class="filed-breakdown-label">Federal</span>
+                        <span class="filed-breakdown-value">+$2,847</span>
+                    </div>
+                    <div class="filed-breakdown-item">
+                        <span class="filed-breakdown-label">New York State</span>
+                        <span class="filed-breakdown-value">+$412</span>
+                    </div>
+                </div>
+
+                <!-- Status Bar -->
+                <div class="filed-status animate-in delay-2">
+                    <div class="filed-status-bar">
+                        <div class="filed-status-step completed">
+                            <span class="filed-status-dot"></span>
+                            <span class="filed-status-text">Submitted</span>
+                        </div>
+                        <div class="filed-status-line completed"></div>
+                        <div class="filed-status-step completed">
+                            <span class="filed-status-dot"></span>
+                            <span class="filed-status-text">Accepted</span>
+                        </div>
+                        <div class="filed-status-line"></div>
+                        <div class="filed-status-step">
+                            <span class="filed-status-dot"></span>
+                            <span class="filed-status-text">Refund</span>
+                        </div>
+                    </div>
+                    <p class="filed-status-meta">Expected by April 29, 2026</p>
+                </div>
+
+                <!-- Primary CTA -->
+                <div class="filed-actions animate-in delay-3">
+                    <button class="btn-brand-primary" onclick="navigateTo('taxes')">
+                        See Where It Goes
+                    </button>
+                    <div class="filed-secondary-actions">
+                        <button class="btn-brand-secondary" onclick="navigateTo('owed')">Claim more benefits</button>
+                        <button class="btn-brand-secondary" onclick="navigateTo('record')">View tax history</button>
+                        <button class="btn-brand-secondary" onclick="downloadReceipt()">Download receipt</button>
+                    </div>
+                </div>
+
+                <!-- Confirmation -->
+                <p class="filed-confirmation animate-in delay-4">Confirmation #ACT-2025-847291</p>
+            </div>
+        </div>
     </div>
 
     <!-- ==========================================
          PAGE: YOUR TAXES
          ========================================== -->
     <div class="page-view" id="page-record">
-        <main class="main">
-            <!-- Profile Header -->
-            <section class="profile-header animate-in">
-                <h1 class="profile-greeting">Your Taxes</h1>
-                <p class="profile-subtitle">Everything you've paid. Everything you've received.</p>
-            </section>
-
-            <!-- Tax Story Summary -->
-            <div class="tax-story-summary animate-in" id="tax-story-summary">
-                <p class="tax-story-text">
-                    Since 2019, you've contributed <span class="tax-story-highlight" id="tax-story-total">$234,710</span> in taxes — and your annual amount has grown <span class="tax-story-highlight" id="tax-story-growth">23%</span> as your income increased.
-                </p>
+        <!-- Hero Section -->
+        <div class="taxes-hero section-chartreuse">
+            <div class="taxes-hero-content animate-in">
+                <p class="taxes-hero-label">Since 2019, you've contributed</p>
+                <h1 class="taxes-hero-amount stat-hero">$127,842</h1>
+                <p class="taxes-hero-sublabel stat-label">in federal, state, and local taxes</p>
             </div>
+        </div>
+
+        <main class="main">
 
             <!-- Year Selector -->
             <section class="animate-in delay-1">
@@ -654,60 +595,31 @@
          PAGE: MONEY YOU'RE OWED
          ========================================== -->
     <div class="page-view" id="page-owed">
+        <!-- Split Screen Hero -->
+        <div class="claim-hero">
+            <div class="claim-hero-secured section-coral animate-in">
+                <p class="claim-hero-label">Secured</p>
+                <span class="claim-hero-amount stat-hero" id="secured-amount">$6,759</span>
+                <p class="claim-hero-meta">6 benefits claimed</p>
+            </div>
+            <div class="claim-hero-available section-chartreuse animate-in delay-1">
+                <p class="claim-hero-label">Available</p>
+                <span class="claim-hero-amount stat-hero" id="available-amount">~$3,200</span>
+                <p class="claim-hero-meta">5 more to explore</p>
+            </div>
+        </div>
+
         <main class="main">
-            <!-- Page Header -->
-            <section class="profile-header animate-in">
-                <h1 class="profile-greeting">Money You're Owed</h1>
-                <p class="profile-subtitle">2025 Tax Year</p>
-            </section>
-
-            <!-- Progress Hero -->
-            <section class="benefits-progress-hero animate-in delay-1">
-                <div class="benefits-progress-card">
-                    <div class="benefits-progress-amounts">
-                        <div class="benefits-progress-secured">
-                            <span class="benefits-progress-value" id="secured-amount">$6,759</span>
-                            <span class="benefits-progress-label">secured</span>
-                        </div>
-                        <div class="benefits-progress-available">
-                            <span class="benefits-progress-value" id="available-amount">~$3,200</span>
-                            <span class="benefits-progress-label">available</span>
-                        </div>
-                    </div>
-
-                    <div class="benefits-progress-bar-container">
-                        <div class="benefits-progress-bar">
-                            <div class="benefits-progress-bar-filled" id="benefits-progress-filled"></div>
-                            <div class="benefits-progress-bar-remaining"></div>
-                        </div>
-                    </div>
-
-                    <div class="benefits-progress-stats">
-                        <div class="benefits-progress-stat secured">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                                <polyline points="20 6 9 17 4 12"></polyline>
-                            </svg>
-                            <span>6 benefits claimed</span>
-                        </div>
-                        <div class="benefits-progress-stat available">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"></circle>
-                            </svg>
-                            <span>5 more to explore</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="benefits-progress-message">
-                    <p class="benefits-progress-headline" id="progress-headline">You're likely eligible for <strong>~$3,200</strong> in credits and benefits you haven't claimed yet.</p>
-                    <a href="javascript:void(0)" onclick="document.getElementById('benefits-waiting-section').scrollIntoView({behavior: 'smooth'});" class="benefits-progress-cta">Let's close the gap →</a>
-                </div>
-            </section>
+            <!-- CTA Banner -->
+            <div class="claim-cta-banner animate-in delay-2">
+                <p class="claim-cta-text">You could be leaving <strong>~$3,200/year</strong> on the table.</p>
+                <a href="javascript:void(0)" onclick="document.getElementById('benefits-waiting-section').scrollIntoView({behavior: 'smooth'});" class="btn-brand-primary">Claim What's Yours</a>
+            </div>
 
             <!-- What You've Secured Section -->
-            <section class="benefits-section animate-in delay-2">
+            <section class="benefits-section animate-in delay-3">
                 <div class="benefits-section-header">
-                    <h2 class="benefits-section-title">✓ What You've Secured</h2>
+                    <h2 class="benefits-section-title">What You've Secured</h2>
                     <span class="benefits-section-total">$6,759</span>
                 </div>
 
@@ -806,9 +718,9 @@
             </section>
 
             <!-- What's Waiting For You Section -->
-            <section class="benefits-section animate-in delay-3" id="benefits-waiting-section">
+            <section class="benefits-section animate-in delay-4" id="benefits-waiting-section">
                 <div class="benefits-section-header">
-                    <h2 class="benefits-section-title">○ What's Waiting For You</h2>
+                    <h2 class="benefits-section-title">Claim These Next</h2>
                     <span class="benefits-section-total">~$3,200/yr</span>
                 </div>
 
@@ -975,39 +887,26 @@
          PAGE: WHERE THEY GO
          ========================================== -->
     <div class="page-view" id="page-taxes">
+        <!-- Hero Section -->
+        <div class="spending-hero section-warm">
+            <div class="spending-hero-content animate-in">
+                <p class="spending-hero-label">Where It Goes</p>
+                <h1 class="spending-hero-amount stat-hero" id="spending-page-title">$24,180</h1>
+                <p class="spending-hero-sublabel stat-label" id="spending-page-subtitle">to the federal government in 2025</p>
+            </div>
+        </div>
+
         <main class="main wide">
-            <!-- Page Header -->
-            <div class="page-header">
-                <h1 class="page-title" id="spending-page-title">How Your Tax Dollars Are Spent</h1>
-                <p class="page-subtitle" id="spending-page-subtitle">You paid $37,290 this year. Here's where every dollar went.</p>
-            </div>
-
-            <!-- Year Selector -->
-            <div class="year-selector">
-                <span class="year-selector-label">Tax year:</span>
-                <div class="year-pills">
-                    <button class="year-pill" data-year="2020">2020</button>
-                    <button class="year-pill" data-year="2021">2021</button>
-                    <button class="year-pill" data-year="2022">2022</button>
-                    <button class="year-pill" data-year="2023">2023</button>
-                    <button class="year-pill" data-year="2024">2024</button>
-                    <button class="year-pill active" data-year="2025">2025</button>
-                </div>
-            </div>
-
-            <!-- Jurisdiction Tabs -->
-            <div class="jurisdiction-tabs">
-                <button class="jurisdiction-tab active" onclick="switchJurisdiction('federal')" id="tab-federal">
-                    Federal
-                    <span class="jurisdiction-tab-amount">$24,180</span>
+            <!-- Jurisdiction Toggle -->
+            <div class="jurisdiction-toggle animate-in">
+                <button class="jurisdiction-btn active" onclick="switchJurisdiction('federal')" id="tab-federal">
+                    Federal <span class="jurisdiction-btn-amount">$24,180</span>
                 </button>
-                <button class="jurisdiction-tab" onclick="switchJurisdiction('state')" id="tab-state">
-                    NY State
-                    <span class="jurisdiction-tab-amount">$11,420</span>
+                <button class="jurisdiction-btn" onclick="switchJurisdiction('state')" id="tab-state">
+                    NY State <span class="jurisdiction-btn-amount">$11,420</span>
                 </button>
-                <button class="jurisdiction-tab" onclick="switchJurisdiction('city')" id="tab-city">
-                    NYC
-                    <span class="jurisdiction-tab-amount">$1,690</span>
+                <button class="jurisdiction-btn" onclick="switchJurisdiction('city')" id="tab-city">
+                    NYC <span class="jurisdiction-btn-amount">$1,690</span>
                 </button>
             </div>
 
@@ -2100,17 +1999,23 @@
          PAGE: YOUR VOICE
          ========================================== -->
     <div class="page-view" id="page-voice">
-        <main class="main">
-            <!-- Page Header -->
-            <section class="profile-header animate-in">
-                <h1 class="profile-greeting">Your Voice</h1>
-                <p class="profile-subtitle">Who decides where your $37,290 goes — and how to be heard.</p>
-            </section>
+        <!-- Urgent Action Hero -->
+        <div class="act-hero section-coral animate-in">
+            <div class="act-hero-content">
+                <p class="act-hero-label">Urgent: Vote in 7 Days</p>
+                <h1 class="act-hero-title headline-display">End The SALT Cap</h1>
+                <p class="act-hero-impact">This saves you <span class="act-hero-amount">$4,280/year</span></p>
+                <button class="btn-brand-primary" style="background: var(--brand-ink); color: var(--brand-paper); margin-top: 1.5rem;" onclick="openTakeAction('salt-repeal')">
+                    Call Your Senator Now
+                </button>
+            </div>
+        </div>
 
+        <main class="main">
             <!-- Legislation Tracker -->
             <section class="legislation-tracker animate-in delay-1">
                 <div class="legislation-header">
-                    <h2 class="section-title">Legislation That Affects You</h2>
+                    <h2 class="section-title" style="font-family: var(--font-display); font-weight: 800; text-transform: uppercase; letter-spacing: 0.02em;">More Legislation</h2>
                 </div>
 
                 <div class="bill-list">
@@ -2965,6 +2870,71 @@
                 </div>
             </div>
         </main>
+    </div>
+
+    <!-- Taxpayer Receipt Modal -->
+    <div class="receipt-modal" id="receipt-modal">
+        <div class="receipt-modal-backdrop" onclick="closeReceiptModal()"></div>
+        <div class="receipt-paper">
+            <div class="receipt-header">
+                <p class="receipt-title">Taxpayer Receipt</p>
+                <p class="receipt-year">2025 Tax Year</p>
+            </div>
+            <div class="receipt-body">
+                <div class="receipt-line receipt-name">
+                    <span>Jordan Rivera</span>
+                </div>
+                <div class="receipt-divider"></div>
+                <div class="receipt-line">
+                    <span>Total Taxes Paid</span>
+                    <span class="receipt-amount">$37,290</span>
+                </div>
+                <div class="receipt-line">
+                    <span>Refund Received</span>
+                    <span class="receipt-amount receipt-positive">+$3,259</span>
+                </div>
+                <div class="receipt-divider"></div>
+                <p class="receipt-section-title">Where It Went</p>
+                <div class="receipt-line">
+                    <span>Social Security</span>
+                    <span>$5,320</span>
+                </div>
+                <div class="receipt-line">
+                    <span>Health Programs</span>
+                    <span>$4,352</span>
+                </div>
+                <div class="receipt-line">
+                    <span>National Defense</span>
+                    <span>$3,143</span>
+                </div>
+                <div class="receipt-line">
+                    <span>Safety Net</span>
+                    <span>$2,660</span>
+                </div>
+                <div class="receipt-line">
+                    <span>Interest on Debt</span>
+                    <span>$2,418</span>
+                </div>
+                <div class="receipt-line">
+                    <span>Other Federal</span>
+                    <span>$6,287</span>
+                </div>
+                <div class="receipt-line">
+                    <span>NY State</span>
+                    <span>$11,420</span>
+                </div>
+                <div class="receipt-line">
+                    <span>NYC</span>
+                    <span>$1,690</span>
+                </div>
+                <div class="receipt-divider"></div>
+                <p class="receipt-thanks">Thank you for building America.</p>
+            </div>
+            <div class="receipt-actions">
+                <button class="btn-brand-primary" onclick="actuallyDownloadReceipt()">Download PDF</button>
+                <button class="btn-brand-secondary" onclick="closeReceiptModal()">Close</button>
+            </div>
+        </div>
     </div>
 
     <script src="app.js"></script>

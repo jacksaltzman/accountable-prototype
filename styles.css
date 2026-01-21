@@ -1,22 +1,35 @@
 :root {
-    --coral: #F05A4E;
-    --coral-soft: rgba(240, 90, 78, 0.12);
-    --ink: #1A1A1A;
+    /* Brand Colors */
+    --brand-coral: #F65B4E;
+    --brand-chartreuse: #E1FF4F;
+    --brand-ink: #000000;
+    --brand-paper: #FFFFFF;
+    --brand-warm-gray: #D9D4CE;
+
+    /* Legacy mappings (for backward compatibility) */
+    --coral: var(--brand-coral);
+    --coral-soft: rgba(246, 91, 78, 0.12);
+    --ink: var(--brand-ink);
     --ink-secondary: #4A4A4A;
     --ink-tertiary: #7A7A7A;
-    --paper: #FDFBF9;
-    --paper-warm: #F7F3EF;
-    --paper-line: #E8E2DC;
-    --confirmed: #2D5A3D;
+    --paper: var(--brand-warm-gray);
+    --paper-warm: #E8E4DE;
+    --paper-line: #C9C5BF;
+
+    /* Semantic colors */
+    --confirmed: #1A1A1A;
     --confirmed-bg: #E8F0EB;
-    --estimate: #8B6914;
-    --estimate-bg: #FDF6E3;
+    --estimate: #666666;
+    --estimate-bg: #F5F5F5;
     --increase: #2D5A3D;
     --increase-bg: #E8F0EB;
-    --decrease: #8B3D3D;
+    --decrease: #C43D3D;
     --decrease-bg: #F5EBEB;
     --neutral: #4A5568;
     --neutral-bg: #EDF2F7;
+
+    /* Typography */
+    --font-display: 'Barlow Condensed', sans-serif;
     --serif: 'Cormorant Garamond', Georgia, serif;
     --sans: 'DM Sans', -apple-system, sans-serif;
 }
@@ -40,10 +53,157 @@ body {
     min-height: 100vh;
 }
 
+/* ==========================================
+   BRAND TYPOGRAPHY UTILITIES
+   ========================================== */
+
+.headline-display {
+    font-family: var(--font-display);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    line-height: 0.9;
+    color: var(--brand-ink);
+}
+
+.headline-display-xl {
+    font-family: var(--font-display);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.03em;
+    line-height: 0.85;
+    font-size: clamp(3rem, 15vw, 8rem);
+    color: var(--brand-ink);
+}
+
+.headline-serif {
+    font-family: var(--serif);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+}
+
+.stat-hero {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: clamp(2.5rem, 12vw, 6rem);
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    color: var(--brand-ink);
+}
+
+.stat-label {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    font-weight: 400;
+    margin-top: 0.5rem;
+    color: var(--brand-ink);
+}
+
+/* ==========================================
+   BRAND COLOR SECTIONS
+   ========================================== */
+
+.section-coral {
+    background: var(--brand-coral);
+    color: var(--brand-ink);
+}
+
+.section-chartreuse {
+    background: var(--brand-chartreuse);
+    color: var(--brand-ink);
+}
+
+.section-warm {
+    background: var(--brand-warm-gray);
+    color: var(--brand-ink);
+}
+
+.section-paper {
+    background: var(--brand-paper);
+    color: var(--brand-ink);
+}
+
+/* ==========================================
+   BRAND BUTTONS
+   ========================================== */
+
+.btn-brand-primary {
+    background: var(--brand-chartreuse);
+    color: var(--brand-ink);
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    padding: 1rem 2rem;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.btn-brand-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-brand-primary:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+.btn-brand-secondary {
+    background: transparent;
+    color: var(--brand-ink);
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: 0.9375rem;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
+    padding: 0.5rem 0;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.15s ease;
+}
+
+.btn-brand-secondary:hover {
+    opacity: 0.7;
+}
+
+.btn-brand-outline {
+    background: transparent;
+    color: var(--brand-ink);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    padding: 0.75rem 1.5rem;
+    border: 2px solid var(--brand-ink);
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.btn-brand-outline:hover {
+    background: var(--brand-ink);
+    color: var(--brand-paper);
+}
+
 /* Header */
 .header {
-    background: var(--paper);
-    border-bottom: 1px solid var(--paper-line);
+    background: var(--brand-paper);
+    border-bottom: 1px solid var(--brand-ink);
     padding: 1rem 2rem;
     display: flex;
     align-items: center;
@@ -63,39 +223,47 @@ body {
 .logo-mark {
     width: 36px;
     height: 36px;
-    border-radius: 8px;
+    border-radius: 0;
     object-fit: cover;
 }
 
 .logo-text {
     font-family: var(--serif);
-    font-size: 1.25rem;
-    font-weight: 500;
-    color: var(--ink);
-    letter-spacing: -0.01em;
+    font-size: 1.375rem;
+    font-weight: 600;
+    color: var(--brand-ink);
+    letter-spacing: -0.02em;
 }
 
 .nav-items {
     display: flex;
-    gap: 2rem;
+    gap: 1.75rem;
     align-items: center;
 }
 
 .nav-link {
-    font-size: 0.875rem;
-    color: var(--ink-secondary);
+    font-family: var(--font-display);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    color: var(--brand-ink);
     text-decoration: none;
-    transition: color 0.2s;
+    transition: opacity 0.15s ease;
     cursor: pointer;
+    opacity: 0.5;
 }
 
 .nav-link:hover {
-    color: var(--ink);
+    opacity: 1;
 }
 
 .nav-link.active {
-    color: var(--ink);
-    font-weight: 500;
+    opacity: 1;
+    text-decoration: underline;
+    text-decoration-color: var(--brand-chartreuse);
+    text-decoration-thickness: 3px;
+    text-underline-offset: 6px;
 }
 
 /* Mobile Navigation */
@@ -158,7 +326,7 @@ body {
     right: -280px;
     width: 280px;
     height: 100%;
-    background: var(--paper);
+    background: var(--brand-paper);
     z-index: 175;
     transition: right 0.3s ease;
     padding: 5rem 1.5rem 2rem;
@@ -174,22 +342,28 @@ body {
     display: flex;
     align-items: center;
     padding: 1rem 0.75rem;
-    font-size: 1.125rem;
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
     border-bottom: 1px solid var(--paper-line);
-    min-height: 52px;
-    border-radius: 8px;
+    min-height: 56px;
+    border-radius: 0;
     margin: 0 -0.75rem;
-    transition: background 0.2s ease;
+    transition: background 0.15s ease;
+    opacity: 0.6;
 }
 
 .mobile-nav-drawer .nav-link:hover {
-    background: var(--paper-warm);
+    background: var(--brand-warm-gray);
+    opacity: 1;
 }
 
 .mobile-nav-drawer .nav-link.active {
-    background: var(--coral-soft);
-    color: var(--coral);
-    font-weight: 500;
+    background: var(--brand-chartreuse);
+    color: var(--brand-ink);
+    opacity: 1;
 }
 
 .mobile-nav-drawer .nav-link:last-child {
@@ -255,19 +429,50 @@ body {
 }
 
 .profile-greeting {
-    font-family: var(--serif);
+    font-family: var(--font-display);
     font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--ink);
-    line-height: 1.2;
+    font-weight: 900;
+    color: var(--brand-ink);
+    line-height: 1;
     margin-bottom: 0.5rem;
     letter-spacing: -0.02em;
+    text-transform: uppercase;
 }
 
 .profile-subtitle {
     font-size: 1rem;
     color: var(--ink-tertiary);
     font-weight: 400;
+}
+
+/* Taxes Page Hero */
+.taxes-hero {
+    padding: 3rem 2rem;
+    text-align: center;
+}
+
+.taxes-hero-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.taxes-hero-label {
+    font-family: var(--sans);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--brand-ink);
+    opacity: 0.7;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.taxes-hero-amount {
+    margin-bottom: 0.25rem;
+}
+
+.taxes-hero-sublabel {
+    opacity: 0.7;
 }
 
 /* Section Titles */
@@ -407,9 +612,10 @@ body {
 }
 
 .taxes-paid-card {
-    background: var(--paper-warm);
-    border-radius: 12px;
+    background: var(--brand-paper);
+    border-radius: 0;
     padding: 2rem;
+    border: 1px solid var(--paper-line);
 }
 
 .taxes-paid-header {
@@ -417,19 +623,20 @@ body {
 }
 
 .taxes-paid-title {
-    font-size: 0.8125rem;
-    color: var(--ink-tertiary);
+    font-family: var(--font-display);
+    font-size: 0.875rem;
+    color: var(--brand-ink);
     margin-bottom: 0.5rem;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-weight: 600;
+    letter-spacing: 0.02em;
+    font-weight: 700;
 }
 
 .taxes-paid-amount {
-    font-family: var(--serif);
-    font-size: 2.5rem;
-    font-weight: 500;
-    color: var(--ink);
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--brand-ink);
     letter-spacing: -0.02em;
     margin-bottom: 0.25rem;
 }
@@ -492,15 +699,15 @@ body {
 }
 
 .tax-type-bar-fill.federal {
-    background: #5C6B7A;
+    background: var(--brand-ink);
 }
 
 .tax-type-bar-fill.state {
-    background: #7A9E7E;
+    background: var(--brand-coral);
 }
 
 .tax-type-bar-fill.city {
-    background: #8B7355;
+    background: var(--brand-chartreuse);
 }
 
 .tax-type-percentage {
@@ -1766,26 +1973,28 @@ body {
 }
 
 .year-pill {
-    font-family: var(--sans);
+    font-family: var(--font-display);
     font-size: 0.8125rem;
+    font-weight: 700;
     padding: 0.5rem 1rem;
-    border: 1px solid var(--paper-line);
-    background: var(--paper);
-    border-radius: 6px;
+    border: 2px solid transparent;
+    background: var(--brand-paper);
+    border-radius: 0;
     cursor: pointer;
-    color: var(--ink-secondary);
-    transition: all 0.2s;
+    color: var(--ink-tertiary);
+    transition: all 0.15s;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
 }
 
 .year-pill:hover {
-    border-color: var(--ink-tertiary);
-    color: var(--ink);
+    color: var(--brand-ink);
 }
 
 .year-pill.active {
-    background: var(--ink);
-    color: var(--paper);
-    border-color: var(--ink);
+    background: var(--brand-chartreuse);
+    color: var(--brand-ink);
+    border-color: var(--brand-ink);
 }
 
 /* Federal Context Card */
@@ -2598,280 +2807,168 @@ body {
 }
 
 /* ==========================================
-   FILE PAGE - Celebration/Completion State
+   FILE PAGE - Bold Brand Treatment
    ========================================== */
 
-.file-celebration {
+.filed-hero {
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+}
+
+.filed-hero-content {
+    text-align: center;
+}
+
+.filed-headline {
+    margin-bottom: 2rem;
+}
+
+.filed-refund {
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
+}
+
+.filed-refund-amount {
+    margin-bottom: 0.25rem;
+}
+
+.filed-refund-label {
+    opacity: 0.8;
+}
+
+/* Filed Details Section */
+.filed-details {
     padding: 3rem 2rem 4rem;
-    max-width: 640px;
+}
+
+.filed-details-content {
+    max-width: 600px;
     margin: 0 auto;
 }
 
-.celebration-checkmark {
-    width: 120px;
-    height: 120px;
-    background: var(--confirmed-bg);
-    border-radius: 50%;
+.filed-breakdown {
     display: flex;
-    align-items: center;
     justify-content: center;
-    margin-bottom: 2rem;
-    animation: scaleIn 0.5s ease forwards, pulse 2s ease-in-out 0.5s infinite;
-}
-
-.celebration-checkmark svg {
-    width: 56px;
-    height: 56px;
-    color: var(--confirmed);
-    stroke-width: 3;
-    animation: drawCheck 0.6s ease 0.3s forwards;
-    stroke-dasharray: 100;
-    stroke-dashoffset: 100;
-}
-
-@keyframes scaleIn {
-    from {
-        transform: scale(0);
-        opacity: 0;
-    }
-    to {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-
-@keyframes pulse {
-    0%, 100% {
-        box-shadow: 0 0 0 0 rgba(45, 90, 61, 0.2);
-    }
-    50% {
-        box-shadow: 0 0 0 20px rgba(45, 90, 61, 0);
-    }
-}
-
-@keyframes drawCheck {
-    to {
-        stroke-dashoffset: 0;
-    }
-}
-
-.celebration-title {
-    font-family: var(--serif);
-    font-size: 2.25rem;
-    font-weight: 500;
-    color: var(--ink);
-    margin-bottom: 0.75rem;
-    letter-spacing: -0.02em;
-}
-
-.celebration-subtitle {
-    font-size: 1.0625rem;
-    color: var(--ink-secondary);
-    margin-bottom: 2.5rem;
-    line-height: 1.5;
-}
-
-.filing-summary-card {
-    background: var(--paper-warm);
-    border-radius: 16px;
-    padding: 2rem;
-    width: 100%;
-    margin-bottom: 2rem;
-}
-
-.filing-summary-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 1.5rem;
-    padding-bottom: 1rem;
+    gap: 3rem;
+    padding-bottom: 2rem;
     border-bottom: 1px solid var(--paper-line);
+    margin-bottom: 2rem;
 }
 
-.filing-summary-year {
-    font-family: var(--serif);
-    font-size: 1.375rem;
-    font-weight: 500;
-    color: var(--ink);
-}
-
-.filing-status-badge {
+.filed-breakdown-item {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 0.375rem;
-    background: var(--confirmed-bg);
-    color: var(--confirmed);
-    padding: 0.375rem 0.75rem;
-    border-radius: 100px;
+    gap: 0.25rem;
+}
+
+.filed-breakdown-label {
     font-size: 0.8125rem;
-    font-weight: 500;
-}
-
-.filing-status-badge svg {
-    width: 14px;
-    height: 14px;
-}
-
-.filing-details {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-}
-
-.filing-detail-item {
-    text-align: left;
-}
-
-.filing-detail-label {
-    font-size: 0.75rem;
+    color: var(--ink-tertiary);
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: var(--ink-tertiary);
-    margin-bottom: 0.375rem;
 }
 
-.filing-detail-value {
-    font-size: 1.125rem;
-    font-weight: 500;
-    color: var(--ink);
+.filed-breakdown-value {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--brand-ink);
 }
 
-.filing-detail-value.refund {
-    color: var(--confirmed);
-    font-size: 1.5rem;
-    font-family: var(--serif);
-}
-
-.filing-detail-value.owed {
-    color: var(--decrease);
-    font-size: 1.5rem;
-    font-family: var(--serif);
-}
-
-.filing-timeline {
-    background: var(--paper);
-    border-radius: 12px;
-    padding: 1.25rem 1.5rem;
-    width: 100%;
+/* Status Bar */
+.filed-status {
     margin-bottom: 2.5rem;
 }
 
-.timeline-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-    position: relative;
-}
-
-.timeline-item:not(:last-child) {
-    padding-bottom: 1.25rem;
-}
-
-.timeline-item:not(:last-child)::before {
-    content: '';
-    position: absolute;
-    left: 11px;
-    top: 24px;
-    bottom: 0;
-    width: 2px;
-    background: var(--paper-line);
-}
-
-.timeline-dot {
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
+.filed-status-bar {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
+    gap: 0;
+    margin-bottom: 1rem;
 }
 
-.timeline-dot.completed {
-    background: var(--confirmed-bg);
-    color: var(--confirmed);
+.filed-status-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
 }
 
-.timeline-dot.pending {
-    background: var(--estimate-bg);
-    color: var(--estimate);
+.filed-status-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--paper-line);
+    border: 2px solid var(--paper-line);
 }
 
-.timeline-dot svg {
-    width: 14px;
-    height: 14px;
+.filed-status-step.completed .filed-status-dot {
+    background: var(--brand-ink);
+    border-color: var(--brand-ink);
 }
 
-.timeline-content {
-    flex: 1;
-    padding-top: 2px;
-}
-
-.timeline-title {
-    font-weight: 500;
-    color: var(--ink);
-    font-size: 0.9375rem;
-    margin-bottom: 0.125rem;
-}
-
-.timeline-meta {
-    font-size: 0.8125rem;
+.filed-status-text {
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
     color: var(--ink-tertiary);
 }
 
-.celebration-actions {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(200px, 1fr));
-    grid-auto-rows: 1fr;
-    gap: 1rem;
+.filed-status-step.completed .filed-status-text {
+    color: var(--brand-ink);
 }
 
-.celebration-btn {
+.filed-status-line {
+    width: 60px;
+    height: 2px;
+    background: var(--paper-line);
+    margin: 0 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.filed-status-line.completed {
+    background: var(--brand-ink);
+}
+
+.filed-status-meta {
+    text-align: center;
+    font-size: 0.875rem;
+    color: var(--ink-tertiary);
+}
+
+/* Filed Actions */
+.filed-actions {
     display: flex;
+    flex-direction: column;
     align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.filed-secondary-actions {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
     justify-content: center;
-    gap: 0.5rem;
-    padding: 0.875rem 1.5rem;
-    border-radius: 8px;
-    font-size: 0.9375rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    border: none;
-    font-family: var(--sans);
-    min-height: 56px;
 }
 
-.celebration-btn.primary {
-    background: var(--ink);
-    color: var(--paper);
+.filed-confirmation {
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--ink-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
-.celebration-btn.primary:hover {
-    background: var(--ink-secondary);
-}
-
-.celebration-btn.secondary {
-    background: var(--paper);
-    color: var(--ink);
-    border: 1px solid var(--paper-line);
-}
-
-.celebration-btn.secondary:hover {
-    background: var(--paper-warm);
-    border-color: var(--ink-tertiary);
-}
-
-.celebration-btn svg {
-    width: 18px;
-    height: 18px;
-}
-
-/* Celebration canvas */
+/* Celebration canvas - keep for confetti */
 .celebration-canvas {
     position: fixed;
     top: 0;
@@ -2882,33 +2979,115 @@ body {
     z-index: 1000;
 }
 
-/* Responsive adjustments for celebration page */
+/* Responsive adjustments for filed page */
 @media (max-width: 600px) {
-    .file-celebration {
-        padding: 2rem 1rem 3rem;
+    .filed-hero {
+        min-height: 40vh;
+        padding: 3rem 1.5rem;
     }
 
-    .celebration-checkmark {
-        width: 100px;
-        height: 100px;
+    .filed-headline {
+        font-size: clamp(2.5rem, 18vw, 5rem);
     }
 
-    .celebration-checkmark svg {
-        width: 48px;
-        height: 48px;
+    .filed-refund-amount {
+        font-size: clamp(2rem, 14vw, 4rem);
     }
 
-    .celebration-title {
-        font-size: 1.75rem;
+    .filed-details {
+        padding: 2rem 1.5rem 3rem;
     }
 
-    .filing-details {
-        grid-template-columns: 1fr;
+    .filed-breakdown {
+        flex-direction: column;
         gap: 1rem;
     }
 
-    .celebration-actions {
+    .filed-status-line {
+        width: 40px;
+    }
+
+    .filed-secondary-actions {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+    }
+}
+
+/* ==========================================
+   CLAIM PAGE - Split Screen Hero
+   ========================================== */
+
+.claim-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 35vh;
+}
+
+.claim-hero-secured,
+.claim-hero-available {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 2rem;
+    text-align: center;
+}
+
+.claim-hero-label {
+    font-family: var(--font-display);
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+    opacity: 0.7;
+}
+
+.claim-hero-amount {
+    margin-bottom: 0.5rem;
+}
+
+.claim-hero-meta {
+    font-size: 0.875rem;
+    opacity: 0.7;
+}
+
+.claim-cta-banner {
+    background: var(--brand-paper);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    text-align: center;
+    border: 1px solid var(--paper-line);
+}
+
+.claim-cta-text {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    color: var(--brand-ink);
+}
+
+.claim-cta-text strong {
+    font-weight: 600;
+}
+
+@media (max-width: 600px) {
+    .claim-hero {
         grid-template-columns: 1fr;
+        min-height: auto;
+    }
+
+    .claim-hero-secured,
+    .claim-hero-available {
+        padding: 2rem 1.5rem;
+    }
+
+    .claim-hero-amount {
+        font-size: clamp(2rem, 12vw, 4rem);
     }
 }
 
@@ -3131,16 +3310,18 @@ body {
 }
 
 .benefits-section-title {
-    font-family: var(--serif);
-    font-size: 1.5rem;
-    font-weight: 400;
-    color: var(--ink);
-    letter-spacing: -0.01em;
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--brand-ink);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
 }
 
 .benefits-section-total {
-    font-family: var(--serif);
+    font-family: var(--font-display);
     font-size: 1.25rem;
+    font-weight: 800;
     font-weight: 500;
     color: var(--ink);
 }
@@ -3803,6 +3984,86 @@ body {
    WHERE IT GOES - JURISDICTION TABS
    ========================================== */
 
+/* Spending Hero */
+.spending-hero {
+    padding: 3rem 2rem;
+    text-align: center;
+}
+
+.spending-hero-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.spending-hero-label {
+    font-family: var(--font-display);
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--brand-ink);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+}
+
+.spending-hero-amount {
+    margin-bottom: 0.25rem;
+}
+
+.spending-hero-sublabel {
+    color: var(--ink-secondary);
+}
+
+/* Jurisdiction Toggle */
+.jurisdiction-toggle {
+    display: flex;
+    gap: 0;
+    margin-bottom: 2rem;
+}
+
+.jurisdiction-btn {
+    padding: 0.875rem 1.5rem;
+    border: 2px solid var(--brand-ink);
+    background: transparent;
+    font-family: var(--font-display);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--brand-ink);
+    cursor: pointer;
+    transition: all 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.jurisdiction-btn:first-child {
+    border-right: none;
+}
+
+.jurisdiction-btn:last-child {
+    border-left: none;
+}
+
+.jurisdiction-btn:hover {
+    background: var(--paper-warm);
+}
+
+.jurisdiction-btn.active {
+    background: var(--brand-ink);
+    color: var(--brand-paper);
+}
+
+.jurisdiction-btn-amount {
+    font-weight: 800;
+    opacity: 0.7;
+}
+
+.jurisdiction-btn.active .jurisdiction-btn-amount {
+    opacity: 1;
+}
+
+/* Legacy jurisdiction tabs - keep for backward compatibility */
 .jurisdiction-tabs {
     display: flex;
     gap: 0.5rem;
@@ -3931,6 +4192,39 @@ body {
     .jurisdiction-tab-amount {
         display: none;
     }
+
+    .jurisdiction-toggle {
+        flex-wrap: wrap;
+    }
+
+    .jurisdiction-btn {
+        padding: 0.75rem 1rem;
+        font-size: 0.75rem;
+        flex: 1;
+        justify-content: center;
+    }
+
+    .jurisdiction-btn:first-child {
+        border-right: 2px solid var(--brand-ink);
+        border-bottom: none;
+    }
+
+    .jurisdiction-btn:last-child {
+        border-left: 2px solid var(--brand-ink);
+        border-top: none;
+    }
+
+    .jurisdiction-btn-amount {
+        display: none;
+    }
+
+    .spending-hero {
+        padding: 2rem 1.5rem;
+    }
+
+    .spending-hero-amount {
+        font-size: clamp(2rem, 12vw, 4rem);
+    }
 }
 
 /* Toast Notification */
@@ -3955,6 +4249,60 @@ body {
 .toast.visible {
     transform: translateX(-50%) translateY(0);
     opacity: 1;
+}
+
+/* ==========================================
+   ACT PAGE - Urgency Hero
+   ========================================== */
+
+.act-hero {
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.act-hero-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.act-hero-label {
+    font-family: var(--font-display);
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+    background: var(--brand-ink);
+    color: var(--brand-paper);
+    display: inline-block;
+    padding: 0.5rem 1rem;
+}
+
+.act-hero-title {
+    font-size: clamp(2.5rem, 10vw, 5rem);
+    margin-bottom: 1rem;
+}
+
+.act-hero-impact {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    color: var(--brand-ink);
+}
+
+.act-hero-amount {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 1.5rem;
+}
+
+@media (max-width: 600px) {
+    .act-hero {
+        padding: 3rem 1.5rem;
+    }
+
+    .act-hero-title {
+        font-size: clamp(2rem, 12vw, 3.5rem);
+    }
 }
 
 /* ==========================================
@@ -4046,18 +4394,18 @@ body {
 }
 
 .bill-row-impact {
-    font-family: var(--serif);
+    font-family: var(--font-display);
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 800;
     flex-shrink: 0;
 }
 
 .bill-row-impact.increase {
-    color: var(--forest);
+    color: var(--increase);
 }
 
 .bill-row-impact.decrease {
-    color: var(--coral);
+    color: var(--brand-coral);
 }
 
 .bill-row-impact.mixed {
@@ -4589,6 +4937,130 @@ body {
         padding: 0.5rem 0.875rem;
         font-size: 0.8125rem;
         min-height: 40px;
+    }
+}
+
+/* ==========================================
+   TAXPAYER RECEIPT MODAL
+   ========================================== */
+
+.receipt-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.receipt-modal.active {
+    display: flex;
+}
+
+.receipt-modal-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.receipt-paper {
+    position: relative;
+    background: #FFFEF8;
+    width: 100%;
+    max-width: 360px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+}
+
+.receipt-header {
+    background: var(--brand-ink);
+    color: var(--brand-paper);
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.receipt-title {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.25rem;
+}
+
+.receipt-year {
+    font-size: 0.75rem;
+    opacity: 0.7;
+}
+
+.receipt-body {
+    padding: 1.5rem;
+    font-family: 'Courier New', monospace;
+    font-size: 0.8125rem;
+}
+
+.receipt-name {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.receipt-divider {
+    border-top: 1px dashed var(--ink-tertiary);
+    margin: 1rem 0;
+}
+
+.receipt-line {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.375rem;
+}
+
+.receipt-amount {
+    font-weight: bold;
+}
+
+.receipt-positive {
+    color: var(--increase);
+}
+
+.receipt-section-title {
+    font-weight: bold;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    font-size: 0.6875rem;
+    letter-spacing: 0.05em;
+}
+
+.receipt-thanks {
+    text-align: center;
+    font-style: italic;
+    color: var(--ink-secondary);
+    margin-top: 1rem;
+}
+
+.receipt-actions {
+    padding: 1rem 1.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+@media (max-width: 600px) {
+    .receipt-modal {
+        padding: 1rem;
+    }
+
+    .receipt-paper {
+        max-width: 100%;
     }
 }
 
