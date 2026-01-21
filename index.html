@@ -1134,7 +1134,7 @@
         /* Tooltip */
         .tooltip-trigger {
             position: relative;
-            cursor: help;
+            cursor: default;
         }
 
         .tooltip-trigger .tooltip {
@@ -3787,11 +3787,6 @@
         <main class="main wide">
             <!-- Page Header -->
             <div class="page-header">
-                <nav class="breadcrumb">
-                    <a onclick="navigateTo('record')">Your Taxes</a>
-                    <span class="breadcrumb-separator">›</span>
-                    <span>Where They Go</span>
-                </nav>
                 <h1 class="page-title" id="spending-page-title">How Your Tax Dollars Are Spent</h1>
                 <p class="page-subtitle" id="spending-page-subtitle">You paid $37,290 this year. Here's where every dollar went.</p>
             </div>
@@ -6426,9 +6421,9 @@
 
             currentYear = year;
 
-            // Update tax summary card
-            document.querySelector('.summary-label').textContent = `Your ${year} federal tax contribution`;
-            document.querySelector('.summary-value').textContent = `$${data.totalTax.toLocaleString()}`;
+            // Update tax summary card (on Where Your Taxes Go page)
+            document.querySelector('.tax-summary-card .summary-label').textContent = `Your ${year} federal tax contribution`;
+            document.querySelector('.tax-summary-card .summary-value').textContent = `$${data.totalTax.toLocaleString()}`;
             document.querySelector('.tax-summary-breakdown-item:nth-child(1) .tax-summary-breakdown-value').textContent = `$${data.incomeTax.toLocaleString()}`;
             document.querySelector('.tax-summary-breakdown-item:nth-child(2) .tax-summary-breakdown-value').textContent = `$${data.payrollTax.toLocaleString()}`;
 
