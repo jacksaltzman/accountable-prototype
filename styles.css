@@ -2968,6 +2968,154 @@ body {
     line-height: 1.5;
 }
 
+/* Benefits Progress Hero */
+.benefits-progress-hero {
+    margin-bottom: 2.5rem;
+}
+
+.benefits-progress-card {
+    background: var(--paper-warm);
+    border-radius: 12px;
+    padding: 1.75rem;
+    margin-bottom: 1.25rem;
+}
+
+.benefits-progress-amounts {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.25rem;
+}
+
+.benefits-progress-secured,
+.benefits-progress-available {
+    display: flex;
+    flex-direction: column;
+}
+
+.benefits-progress-secured {
+    align-items: flex-start;
+}
+
+.benefits-progress-available {
+    align-items: flex-end;
+    text-align: right;
+}
+
+.benefits-progress-value {
+    font-family: var(--serif);
+    font-size: 2rem;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+}
+
+.benefits-progress-secured .benefits-progress-value {
+    color: var(--confirmed);
+}
+
+.benefits-progress-available .benefits-progress-value {
+    color: var(--estimate);
+}
+
+.benefits-progress-label {
+    font-size: 0.8125rem;
+    color: var(--ink-tertiary);
+    margin-top: 0.25rem;
+}
+
+/* Progress Bar */
+.benefits-progress-bar-container {
+    margin-bottom: 1.25rem;
+}
+
+.benefits-progress-bar {
+    display: flex;
+    height: 12px;
+    border-radius: 6px;
+    overflow: hidden;
+    background: transparent;
+}
+
+.benefits-progress-bar-filled {
+    background: var(--confirmed);
+    border-radius: 6px 0 0 6px;
+    width: 0%;
+    transition: width 1s ease-out;
+}
+
+.benefits-progress-bar-remaining {
+    flex: 1;
+    background-image: repeating-linear-gradient(
+        90deg,
+        var(--estimate) 0,
+        var(--estimate) 6px,
+        transparent 6px,
+        transparent 12px
+    );
+    opacity: 0.4;
+    border-radius: 0 6px 6px 0;
+}
+
+/* Progress Stats */
+.benefits-progress-stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.benefits-progress-stat {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.8125rem;
+    color: var(--ink-secondary);
+}
+
+.benefits-progress-stat svg {
+    width: 16px;
+    height: 16px;
+}
+
+.benefits-progress-stat.secured svg {
+    color: var(--confirmed);
+}
+
+.benefits-progress-stat.available svg {
+    color: var(--estimate);
+}
+
+/* Progress Message */
+.benefits-progress-message {
+    text-align: center;
+    padding: 0 1rem;
+}
+
+.benefits-progress-headline {
+    font-size: 1rem;
+    color: var(--ink-secondary);
+    margin-bottom: 0.625rem;
+    line-height: 1.5;
+}
+
+.benefits-progress-headline strong {
+    color: var(--ink);
+    font-weight: 600;
+}
+
+.benefits-progress-cta {
+    display: inline-block;
+    color: var(--coral);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.benefits-progress-cta:hover {
+    opacity: 0.8;
+}
+
 /* Benefits Section Headers */
 .benefits-section {
     margin-bottom: 2rem;
@@ -3364,6 +3512,43 @@ body {
     .owed-summary-grid {
         grid-template-columns: 1fr;
         gap: 1rem;
+    }
+
+    .benefits-progress-card {
+        padding: 1.25rem;
+    }
+
+    .benefits-progress-amounts {
+        flex-direction: column;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+    }
+
+    .benefits-progress-secured,
+    .benefits-progress-available {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: baseline;
+        width: 100%;
+    }
+
+    .benefits-progress-value {
+        font-size: 1.5rem;
+    }
+
+    .benefits-progress-label {
+        margin-top: 0;
+    }
+
+    .benefits-progress-stats {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: flex-start;
+    }
+
+    .benefits-progress-message {
+        text-align: left;
+        padding: 0;
     }
 
     .potential-benefit-card {

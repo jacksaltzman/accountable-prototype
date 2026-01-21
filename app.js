@@ -13,6 +13,39 @@ function showToast(message, duration = 3000) {
 }
 
 // ==========================================
+// BENEFITS PROGRESS BAR
+// ==========================================
+
+const benefitsData = {
+    secured: 6759,
+    available: 3200,
+    securedCount: 6,
+    availableCount: 5
+};
+
+function animateBenefitsProgress() {
+    const progressBar = document.getElementById('benefits-progress-filled');
+    if (!progressBar) return;
+
+    const total = benefitsData.secured + benefitsData.available;
+    const percentage = Math.round((benefitsData.secured / total) * 100);
+
+    // Reset the bar first
+    progressBar.style.width = '0%';
+
+    // Animate after a brief delay to ensure the reset takes effect
+    setTimeout(() => {
+        progressBar.style.width = percentage + '%';
+    }, 100);
+
+    // Update the headline with the calculated percentage
+    const headline = document.getElementById('progress-headline');
+    if (headline) {
+        headline.innerHTML = `You're <strong>${percentage}%</strong> of the way to maximizing your benefits.`;
+    }
+}
+
+// ==========================================
 // MOBILE NAVIGATION
 // ==========================================
 
@@ -77,6 +110,8 @@ function navigateTo(page) {
         document.getElementById('nav-owed').classList.add('active');
         document.getElementById('mobile-nav-owed').classList.add('active');
         document.title = 'Money You\'re Owed — Accountable';
+        // Animate the benefits progress bar
+        animateBenefitsProgress();
     } else if (page === 'taxes') {
         document.getElementById('page-taxes').classList.add('active');
         document.getElementById('nav-taxes').classList.add('active');
