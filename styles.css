@@ -2826,6 +2826,7 @@ body {
 .celebration-actions {
     display: grid;
     grid-template-columns: repeat(2, minmax(200px, 1fr));
+    grid-auto-rows: 1fr;
     gap: 1rem;
 }
 
@@ -2842,6 +2843,7 @@ body {
     transition: all 0.2s ease;
     border: none;
     font-family: var(--sans);
+    min-height: 56px;
 }
 
 .celebration-btn.primary {
