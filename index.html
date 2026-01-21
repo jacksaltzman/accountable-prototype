@@ -3529,9 +3529,36 @@
             }
         }
 
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--ink);
+            color: var(--paper);
+            padding: 0.875rem 1.5rem;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            z-index: 10000;
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            pointer-events: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .toast.visible {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
     </style>
 </head>
 <body>
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
     <!-- Header -->
     <header class="header">
         <div class="logo" onclick="navigateTo('record')">
@@ -3757,7 +3784,7 @@
                         <p class="summary-value" id="annual-benefits">$6,759</p>
                         <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
                             <span class="summary-meta" id="annual-benefits-year">2025</span>
-                            <a href="#" onclick="navigateTo('owed'); event.stopPropagation(); return false;" style="font-size: 0.75rem; color: var(--coral); text-decoration: none; font-weight: 500;">View details →</a>
+                            <a href="javascript:void(0)" onclick="navigateTo('owed'); event.stopPropagation();" style="font-size: 0.75rem; color: var(--coral); text-decoration: none; font-weight: 500;">View details →</a>
                         </div>
                     </div>
                     <div class="summary-card">
@@ -3834,7 +3861,7 @@
 
                     <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--paper-line);">
                         <p style="font-size: 0.8125rem; color: var(--ink-secondary); line-height: 1.5;">
-                            Where did your $24,180 actually go? <a href="#" onclick="navigateTo('taxes'); return false;" style="color: var(--coral); text-decoration: none; font-weight: 500;">See the breakdown →</a>
+                            Where did your $24,180 actually go? <a href="javascript:void(0)" onclick="navigateTo('taxes');" style="color: var(--coral); text-decoration: none; font-weight: 500;">See the breakdown →</a>
                         </p>
                     </div>
                 </div>
@@ -4126,7 +4153,7 @@
 
             <!-- Navigation Links -->
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem;">
-                <a href="#" onclick="navigateTo('owed'); return false;" style="background: var(--paper-warm); border-radius: 12px; padding: 1.5rem; text-decoration: none; display: flex; align-items: center; gap: 1rem; transition: background 0.2s; border-left: 3px solid var(--confirmed);">
+                <a href="javascript:void(0)" onclick="navigateTo('owed');" style="background: var(--paper-warm); border-radius: 12px; padding: 1.5rem; text-decoration: none; display: flex; align-items: center; gap: 1rem; transition: background 0.2s; border-left: 3px solid var(--confirmed);">
                     <svg style="width: 28px; height: 28px; color: var(--confirmed);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
                     </svg>
@@ -4135,7 +4162,7 @@
                         <p style="font-size: 0.8125rem; color: var(--ink-secondary); line-height: 1.4;">See benefits you've claimed and what you may be missing</p>
                     </div>
                 </a>
-                <a href="#" onclick="navigateTo('voice'); return false;" style="background: var(--paper-warm); border-radius: 12px; padding: 1.5rem; text-decoration: none; display: flex; align-items: center; gap: 1rem; transition: background 0.2s; border-left: 3px solid var(--coral);">
+                <a href="javascript:void(0)" onclick="navigateTo('voice');" style="background: var(--paper-warm); border-radius: 12px; padding: 1.5rem; text-decoration: none; display: flex; align-items: center; gap: 1rem; transition: background 0.2s; border-left: 3px solid var(--coral);">
                     <svg style="width: 28px; height: 28px; color: var(--coral);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                     </svg>
@@ -4155,7 +4182,7 @@
                 <div class="data-source-content">
                     <p class="data-source-title">About your data</p>
                     <p class="data-source-text">
-                        Policy data is sourced from official legislative records (Congress.gov, state legislature websites) and official voting records. Official information is drawn from public records including election results, official biographies, and government websites. Your data is stored securely and belongs to you. <a href="#" class="data-source-link">Learn more about data sources</a>
+                        Policy data is sourced from official legislative records (Congress.gov, state legislature websites) and official voting records. Official information is drawn from public records including election results, official biographies, and government websites. Your data is stored securely and belongs to you. <a href="javascript:void(0)" onclick="showToast('Data sources documentation coming soon.');" class="data-source-link">Learn more about data sources</a>
                     </p>
                 </div>
             </div>
@@ -4330,7 +4357,7 @@
                                     <span class="potential-benefit-amount">~$400</span>
                                     <span class="potential-benefit-period">per year</span>
                                 </div>
-                                <a href="#" class="potential-benefit-cta">
+                                <a href="javascript:void(0)" onclick="showToast('Eligibility checker coming soon.');" class="potential-benefit-cta">
                                     Check if you qualify →
                                 </a>
                             </div>
@@ -4349,7 +4376,7 @@
                                     <span class="potential-benefit-amount">~$1,200</span>
                                     <span class="potential-benefit-period">per year</span>
                                 </div>
-                                <a href="#" class="potential-benefit-cta">
+                                <a href="javascript:void(0)" onclick="showToast('Eligibility checker coming soon.');" class="potential-benefit-cta">
                                     Check if you qualify →
                                 </a>
                             </div>
@@ -4375,7 +4402,7 @@
                                     <span class="potential-benefit-amount">~$500</span>
                                     <span class="potential-benefit-period">per year</span>
                                 </div>
-                                <a href="#" class="potential-benefit-cta">
+                                <a href="javascript:void(0)" onclick="showToast('Eligibility checker coming soon.');" class="potential-benefit-cta">
                                     Check if you qualify →
                                 </a>
                             </div>
@@ -4394,7 +4421,7 @@
                                     <span class="potential-benefit-amount">~$350</span>
                                     <span class="potential-benefit-period">per year</span>
                                 </div>
-                                <a href="#" class="potential-benefit-cta">
+                                <a href="javascript:void(0)" onclick="showToast('Eligibility checker coming soon.');" class="potential-benefit-cta">
                                     Check if you qualify →
                                 </a>
                             </div>
@@ -4420,7 +4447,7 @@
                                     <span class="potential-benefit-amount">~$750</span>
                                     <span class="potential-benefit-period">value per year</span>
                                 </div>
-                                <a href="#" class="potential-benefit-cta">
+                                <a href="javascript:void(0)" onclick="showToast('Eligibility checker coming soon.');" class="potential-benefit-cta">
                                     Check if you qualify →
                                 </a>
                             </div>
@@ -4451,7 +4478,7 @@
 
             <!-- Navigation Links -->
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 3rem;">
-                <a href="#" onclick="navigateTo('record'); return false;" style="background: var(--paper-warm); border-radius: 12px; padding: 1.5rem; text-decoration: none; display: flex; align-items: center; gap: 1rem; transition: background 0.2s;">
+                <a href="javascript:void(0)" onclick="navigateTo('record');" style="background: var(--paper-warm); border-radius: 12px; padding: 1.5rem; text-decoration: none; display: flex; align-items: center; gap: 1rem; transition: background 0.2s;">
                     <svg style="width: 24px; height: 24px; color: var(--ink-tertiary);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
                         <polyline points="14 2 14 8 20 8"/>
@@ -4461,7 +4488,7 @@
                         <p style="font-size: 0.75rem; color: var(--ink-tertiary);">See what you've paid over time</p>
                     </div>
                 </a>
-                <a href="#" onclick="navigateTo('voice'); return false;" style="background: var(--paper-warm); border-radius: 12px; padding: 1.5rem; text-decoration: none; display: flex; align-items: center; gap: 1rem; transition: background 0.2s;">
+                <a href="javascript:void(0)" onclick="navigateTo('voice');" style="background: var(--paper-warm); border-radius: 12px; padding: 1.5rem; text-decoration: none; display: flex; align-items: center; gap: 1rem; transition: background 0.2s;">
                     <svg style="width: 24px; height: 24px; color: var(--ink-tertiary);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                     </svg>
@@ -4480,7 +4507,7 @@
                 <div class="data-source-content">
                     <p class="data-source-title">About this data</p>
                     <p class="data-source-text">
-                        Claimed benefits are based on your filed tax returns. Potential benefits are estimates based on your income, location, and family status—actual eligibility may vary. We recommend consulting a tax professional for personalized advice. <a href="#" class="data-source-link">Learn more about our methodology</a>
+                        Claimed benefits are based on your filed tax returns. Potential benefits are estimates based on your income, location, and family status—actual eligibility may vary. We recommend consulting a tax professional for personalized advice. <a href="javascript:void(0)" onclick="showToast('Methodology documentation coming soon.');" class="data-source-link">Learn more about our methodology</a>
                     </p>
                 </div>
             </div>
@@ -4905,7 +4932,7 @@
                             <div class="breakdown-content">
                                 <p class="breakdown-name">Medicare Hospital Insurance (Part A)</p>
                                 <p class="breakdown-description">Covers inpatient hospital stays, skilled nursing facility care, hospice, and some home health services for beneficiaries 65 and older or with qualifying disabilities.</p>
-                                <p class="source-tag">Source: <a href="#">CMS FY2023 Budget Justification</a></p>
+                                <p class="source-tag">Source: <a href="https://www.cms.gov/about-cms/budget-information" target="_blank" rel="noopener noreferrer">CMS FY2023 Budget Justification</a></p>
                             </div>
                             <div class="breakdown-figures">
                                 <span class="breakdown-list-amount">$1,924</span>
@@ -4924,7 +4951,7 @@
                             <div class="breakdown-content">
                                 <p class="breakdown-name">Medicare Supplementary Medical Insurance (Part B)</p>
                                 <p class="breakdown-description">Covers physician services, outpatient care, medical supplies, and preventive services. Funded through premiums and general revenues.</p>
-                                <p class="source-tag">Source: <a href="#">CMS FY2023 Budget Justification</a></p>
+                                <p class="source-tag">Source: <a href="https://www.cms.gov/about-cms/budget-information" target="_blank" rel="noopener noreferrer">CMS FY2023 Budget Justification</a></p>
                             </div>
                             <div class="breakdown-figures">
                                 <span class="breakdown-list-amount">$1,036</span>
@@ -4943,7 +4970,7 @@
                             <div class="breakdown-content">
                                 <p class="breakdown-name">Medicaid (Federal Share)</p>
                                 <p class="breakdown-description">Joint federal-state program providing health coverage to low-income individuals. Federal government matches state spending at rates between 50% and 77% depending on state income levels.</p>
-                                <p class="source-tag">Source: <a href="#">CMS FY2023 Budget Justification</a></p>
+                                <p class="source-tag">Source: <a href="https://www.cms.gov/about-cms/budget-information" target="_blank" rel="noopener noreferrer">CMS FY2023 Budget Justification</a></p>
                             </div>
                             <div class="breakdown-figures">
                                 <span class="breakdown-list-amount">$444</span>
@@ -4962,7 +4989,7 @@
                             <div class="breakdown-content">
                                 <p class="breakdown-name">Medicare Prescription Drug Benefit (Part D)</p>
                                 <p class="breakdown-description">Subsidizes prescription drug coverage for Medicare beneficiaries through private insurance plans. Includes Low-Income Subsidy for qualifying individuals.</p>
-                                <p class="source-tag">Source: <a href="#">CMS FY2023 Budget Justification</a></p>
+                                <p class="source-tag">Source: <a href="https://www.cms.gov/about-cms/budget-information" target="_blank" rel="noopener noreferrer">CMS FY2023 Budget Justification</a></p>
                             </div>
                             <div class="breakdown-figures">
                                 <span class="breakdown-list-amount">$222</span>
@@ -4981,7 +5008,7 @@
                             <div class="breakdown-content">
                                 <p class="breakdown-name">Children's Health Insurance Program (CHIP)</p>
                                 <p class="breakdown-description">Provides health coverage to children in families with incomes too high for Medicaid but who cannot afford private coverage. Federal matching rate is higher than Medicaid.</p>
-                                <p class="source-tag">Source: <a href="#">CMS FY2023 Budget Justification</a></p>
+                                <p class="source-tag">Source: <a href="https://www.cms.gov/about-cms/budget-information" target="_blank" rel="noopener noreferrer">CMS FY2023 Budget Justification</a></p>
                             </div>
                             <div class="breakdown-figures">
                                 <span class="breakdown-list-amount">$73</span>
@@ -5090,7 +5117,7 @@
                             <div class="breakdown-content">
                                 <p class="breakdown-name">Operations & Maintenance</p>
                                 <p class="breakdown-description">Day-to-day military operations including training, equipment maintenance, base operations, and civilian personnel. Largest single budget category.</p>
-                                <p class="source-tag">Source: <a href="#">DoD FY2023 Budget Overview</a></p>
+                                <p class="source-tag">Source: <a href="https://comptroller.defense.gov/Budget-Materials/" target="_blank" rel="noopener noreferrer">DoD FY2023 Budget Overview</a></p>
                             </div>
                             <div class="breakdown-figures">
                                 <span class="breakdown-list-amount">$1,194</span>
@@ -5109,7 +5136,7 @@
                             <div class="breakdown-content">
                                 <p class="breakdown-name">Military Personnel</p>
                                 <p class="breakdown-description">Pay, housing allowances, and benefits for approximately 1.3 million active-duty service members across Army, Navy, Air Force, Marine Corps, and Space Force.</p>
-                                <p class="source-tag">Source: <a href="#">DoD FY2023 Budget Overview</a></p>
+                                <p class="source-tag">Source: <a href="https://comptroller.defense.gov/Budget-Materials/" target="_blank" rel="noopener noreferrer">DoD FY2023 Budget Overview</a></p>
                             </div>
                             <div class="breakdown-figures">
                                 <span class="breakdown-list-amount">$747</span>
@@ -5128,7 +5155,7 @@
                             <div class="breakdown-content">
                                 <p class="breakdown-name">Procurement</p>
                                 <p class="breakdown-description">Purchase of weapons systems, vehicles, aircraft, ships, and other equipment. Includes contracts with defense manufacturers.</p>
-                                <p class="source-tag">Source: <a href="#">DoD FY2023 Budget Overview</a></p>
+                                <p class="source-tag">Source: <a href="https://comptroller.defense.gov/Budget-Materials/" target="_blank" rel="noopener noreferrer">DoD FY2023 Budget Overview</a></p>
                             </div>
                             <div class="breakdown-figures">
                                 <span class="breakdown-list-amount">$597</span>
@@ -5147,7 +5174,7 @@
                             <div class="breakdown-content">
                                 <p class="breakdown-name">Research, Development, Test & Evaluation</p>
                                 <p class="breakdown-description">Development of new weapons systems, technologies, and capabilities. Includes DARPA, service laboratories, and testing facilities.</p>
-                                <p class="source-tag">Source: <a href="#">DoD FY2023 Budget Overview</a></p>
+                                <p class="source-tag">Source: <a href="https://comptroller.defense.gov/Budget-Materials/" target="_blank" rel="noopener noreferrer">DoD FY2023 Budget Overview</a></p>
                             </div>
                             <div class="breakdown-figures">
                                 <span class="breakdown-list-amount">$299</span>
@@ -5166,7 +5193,7 @@
                             <div class="breakdown-content">
                                 <p class="breakdown-name">Military Construction & Family Housing</p>
                                 <p class="breakdown-description">Construction and maintenance of military facilities, barracks, and family housing on bases worldwide.</p>
-                                <p class="source-tag">Source: <a href="#">DoD FY2023 Budget Overview</a></p>
+                                <p class="source-tag">Source: <a href="https://comptroller.defense.gov/Budget-Materials/" target="_blank" rel="noopener noreferrer">DoD FY2023 Budget Overview</a></p>
                             </div>
                             <div class="breakdown-figures">
                                 <span class="breakdown-list-amount">$149</span>
@@ -5203,7 +5230,7 @@
                             <div class="breakdown-content">
                                 <p class="breakdown-name">Interest on Treasury Debt Securities</p>
                                 <p class="breakdown-description">Payments to holders of Treasury bonds, notes, and bills. The federal government borrows by issuing these securities, and interest payments are a legal obligation. As of 2023, gross federal debt stands at approximately $33 trillion.</p>
-                                <p class="source-tag">Source: <a href="#">Treasury Dept. Monthly Statement of Public Debt</a></p>
+                                <p class="source-tag">Source: <a href="https://fiscaldata.treasury.gov/datasets/monthly-statement-public-debt/summary-of-treasury-securities-outstanding" target="_blank" rel="noopener noreferrer">Treasury Dept. Monthly Statement of Public Debt</a></p>
                             </div>
                             <div class="breakdown-figures">
                                 <span class="breakdown-list-amount">$2,418</span>
@@ -5405,7 +5432,7 @@
                         <div class="methodology-content">
                             <p class="methodology-title">About NY State budget data</p>
                             <p class="methodology-text">
-                                State spending allocations are based on the NYS Enacted Budget for FY2023-24. Your share is calculated proportionally based on your state income tax paid. Data source: <a href="#" class="methodology-link">NYS Division of the Budget</a>
+                                State spending allocations are based on the NYS Enacted Budget for FY2023-24. Your share is calculated proportionally based on your state income tax paid. Data source: <a href="https://www.budget.ny.gov/pubs/archive/fy24archive/enactedfy24.html" target="_blank" rel="noopener noreferrer" class="methodology-link">NYS Division of the Budget</a>
                             </p>
                         </div>
                     </div>
@@ -5584,7 +5611,7 @@
                         <div class="methodology-content">
                             <p class="methodology-title">About NYC budget data</p>
                             <p class="methodology-text">
-                                City spending allocations are based on the NYC Adopted Budget for FY2026. Your share is calculated proportionally based on your city income tax paid. Data source: <a href="#" class="methodology-link">NYC Office of Management and Budget</a>
+                                City spending allocations are based on the NYC Adopted Budget for FY2026. Your share is calculated proportionally based on your city income tax paid. Data source: <a href="https://www.nyc.gov/site/omb/publications/adopted-budget.page" target="_blank" rel="noopener noreferrer" class="methodology-link">NYC Office of Management and Budget</a>
                             </p>
                         </div>
                     </div>
@@ -5604,7 +5631,7 @@
                             Your allocation is calculated by applying your federal tax payment to the overall federal budget proportions for the selected fiscal year. This is an estimate—actual spending is not earmarked by taxpayer. Budget data comes from the Office of Management and Budget's historical tables and agency budget justifications. Program descriptions are drawn from official agency documentation.
                         </p>
                         <p class="methodology-text" style="margin-top: 0.75rem;">
-                            <a href="#" class="methodology-link">View full methodology</a> · <a href="#" class="methodology-link">Explore raw budget data on USAspending.gov</a>
+                            <a href="javascript:void(0)" onclick="showToast('Full methodology coming soon.'); return false;" class="methodology-link">View full methodology</a> · <a href="https://www.usaspending.gov/explorer" target="_blank" rel="noopener noreferrer" class="methodology-link">Explore raw budget data on USAspending.gov</a>
                         </p>
                     </div>
                 </div>
@@ -6271,6 +6298,20 @@
 
     <script>
         // ==========================================
+        // TOAST NOTIFICATION
+        // ==========================================
+
+        function showToast(message, duration = 3000) {
+            const toast = document.getElementById('toast');
+            if (!toast) return;
+            toast.textContent = message;
+            toast.classList.add('visible');
+            setTimeout(() => {
+                toast.classList.remove('visible');
+            }, duration);
+        }
+
+        // ==========================================
         // MOBILE NAVIGATION
         // ==========================================
 
@@ -6349,7 +6390,7 @@
                 document.title = 'Your Voice — Accountable';
             } else {
                 // Placeholder for other pages
-                alert('This page is coming soon.');
+                showToast('This page is coming soon.');
                 navigateTo('record');
             }
         }
@@ -6878,7 +6919,7 @@ Thank you for contributing to your community.
                 const header = navPanel.querySelector('.nav-panel-header');
                 header.insertAdjacentElement('afterend', trendContainer.firstElementChild);
             } else {
-                alert('Detailed breakdown for this category coming soon.');
+                showToast('Detailed breakdown for this category coming soon.');
                 showCategories();
             }
         }
@@ -6896,7 +6937,7 @@ Thank you for contributing to your community.
             if (viewId) {
                 document.getElementById(viewId).classList.add('active');
             } else {
-                alert('Program details for this agency coming soon.');
+                showToast('Program details for this agency coming soon.');
             }
         }
 
