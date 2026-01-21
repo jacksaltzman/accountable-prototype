@@ -834,6 +834,33 @@
             fill: var(--coral);
         }
 
+        .trend-year-labels {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 5% 0 10%;
+            margin-bottom: 1rem;
+        }
+
+        .trend-year-label {
+            font-size: 0.6875rem;
+            font-weight: 600;
+            color: var(--ink-tertiary);
+            cursor: pointer;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .trend-year-label:hover {
+            background: var(--paper-warm);
+            color: var(--ink);
+        }
+
+        .trend-year-label.active {
+            background: var(--ink);
+            color: var(--paper);
+        }
+
         .trend-summary-stats {
             display: flex;
             gap: 2rem;
