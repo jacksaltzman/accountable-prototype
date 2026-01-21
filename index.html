@@ -1147,12 +1147,12 @@
             font-size: 0.75rem;
             padding: 0.5rem 0.75rem;
             border-radius: 6px;
-            white-space: nowrap;
             opacity: 0;
             visibility: hidden;
             transition: all 0.2s;
             z-index: 10;
-            max-width: 250px;
+            min-width: 180px;
+            max-width: 280px;
             white-space: normal;
             text-align: center;
         }
@@ -3190,9 +3190,10 @@
                         <p class="summary-label">
                             Taxes paid
                             <span class="tooltip-trigger">
-                                <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                                     <circle cx="12" cy="12" r="10"/>
-                                    <path d="M12 16v-4M12 8h.01"/>
+                                    <line x1="12" y1="12" x2="12" y2="16"/>
+                                    <circle cx="12" cy="8" r="1" fill="currentColor" stroke="none"/>
                                 </svg>
                                 <span class="tooltip tooltip-below">Federal, state, and local combined</span>
                             </span>
@@ -3207,9 +3208,10 @@
                         <p class="summary-label">
                             Benefits & credits
                             <span class="tooltip-trigger">
-                                <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                                     <circle cx="12" cy="12" r="10"/>
-                                    <path d="M12 16v-4M12 8h.01"/>
+                                    <line x1="12" y1="12" x2="12" y2="16"/>
+                                    <circle cx="12" cy="8" r="1" fill="currentColor" stroke="none"/>
                                 </svg>
                                 <span class="tooltip tooltip-below">Refunds, credits, and deductions</span>
                             </span>
@@ -3224,9 +3226,10 @@
                         <p class="summary-label">
                             Net Contribution
                             <span class="tooltip-trigger">
-                                <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                                     <circle cx="12" cy="12" r="10"/>
-                                    <path d="M12 16v-4M12 8h.01"/>
+                                    <line x1="12" y1="12" x2="12" y2="16"/>
+                                    <circle cx="12" cy="8" r="1" fill="currentColor" stroke="none"/>
                                 </svg>
                                 <span class="tooltip tooltip-below">What you put in minus what you got back</span>
                             </span>
