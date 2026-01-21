@@ -4521,3 +4521,74 @@ body {
     border-color: var(--coral);
 }
 
+/* ==========================================
+   MOBILE OPTIMIZATION ENHANCEMENTS
+   ========================================== */
+
+/* Constrain tooltips on small screens */
+@media (max-width: 600px) {
+    .tooltip-trigger .tooltip {
+        max-width: calc(100vw - 2rem);
+        min-width: 140px;
+    }
+
+    /* Increase small font sizes for better readability */
+    .trend-y-label {
+        font-size: 0.6875rem;
+    }
+
+    .trend-badge-icon {
+        font-size: 0.6875rem;
+    }
+
+    .trend-bar-change {
+        font-size: 0.6875rem;
+    }
+}
+
+/* Extra-small screens (320px-375px) */
+@media (max-width: 375px) {
+    .main {
+        padding: 1.5rem 0.75rem 3rem;
+    }
+
+    .mobile-nav-drawer {
+        width: calc(100% - 56px);
+        right: calc(-100% + 56px);
+    }
+
+    .mobile-nav-drawer.active {
+        right: 0;
+    }
+
+    .header {
+        padding: 0.75rem;
+    }
+
+    .profile-greeting,
+    .page-title {
+        font-size: 1.75rem;
+    }
+
+    .summary-card {
+        padding: 1rem;
+    }
+
+    .celebration-title {
+        font-size: 1.5rem;
+    }
+
+    .celebration-subtitle {
+        font-size: 1rem;
+    }
+}
+
+/* Preserve touch-friendly filter buttons at tablet size */
+@media (max-width: 768px) and (min-width: 601px) {
+    .filter-btn {
+        padding: 0.5rem 0.875rem;
+        font-size: 0.8125rem;
+        min-height: 40px;
+    }
+}
+
