@@ -1,0 +1,29 @@
+{
+  "name": "accountable-prototype",
+  "version": "1.0.0",
+  "description": "Understand your taxes, claim your benefits, and make your voice heard.",
+  "private": true,
+  "scripts": {
+    "lint": "eslint *.html --ext .html",
+    "lint:css": "stylelint \"*.css\"",
+    "lint:fix": "eslint *.html --ext .html --fix",
+    "format": "prettier --write \"*.{html,css,js,json,md}\"",
+    "format:check": "prettier --check \"*.{html,css,js,json,md}\"",
+    "validate": "npm run lint && npm run lint:css"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-plugin-html": "^8.0.0",
+    "prettier": "^3.2.5",
+    "stylelint": "^16.2.1",
+    "stylelint-config-standard": "^36.0.0"
+  },
+  "keywords": [
+    "taxes",
+    "civic",
+    "government",
+    "prototype"
+  ],
+  "author": "",
+  "license": "UNLICENSED"
+}
