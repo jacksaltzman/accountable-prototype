@@ -6426,9 +6426,9 @@
 
             currentYear = year;
 
-            // Update tax summary card
-            document.querySelector('.summary-label').textContent = `Your ${year} federal tax contribution`;
-            document.querySelector('.summary-value').textContent = `$${data.totalTax.toLocaleString()}`;
+            // Update tax summary card (on Where Your Taxes Go page)
+            document.querySelector('.tax-summary-card .summary-label').textContent = `Your ${year} federal tax contribution`;
+            document.querySelector('.tax-summary-card .summary-value').textContent = `$${data.totalTax.toLocaleString()}`;
             document.querySelector('.tax-summary-breakdown-item:nth-child(1) .tax-summary-breakdown-value').textContent = `$${data.incomeTax.toLocaleString()}`;
             document.querySelector('.tax-summary-breakdown-item:nth-child(2) .tax-summary-breakdown-value').textContent = `$${data.payrollTax.toLocaleString()}`;
 
