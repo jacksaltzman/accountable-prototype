@@ -447,8 +447,12 @@ body {
 
 /* Taxes Page Hero */
 .taxes-hero {
-    padding: 3rem 2rem;
+    padding: 4rem 2rem;
     text-align: center;
+    min-height: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .taxes-hero-content {
@@ -513,7 +517,7 @@ body {
     gap: 1px;
     background: var(--paper-line);
     border: 1px solid var(--paper-line);
-    border-radius: 12px;
+    border-radius: 0;
     overflow: hidden;
 }
 
@@ -541,10 +545,10 @@ body {
 }
 
 .summary-value {
-    font-family: var(--serif);
+    font-family: var(--font-display);
     font-size: 2rem;
-    font-weight: 500;
-    color: var(--ink);
+    font-weight: 800;
+    color: var(--brand-ink);
     letter-spacing: -0.02em;
     margin-bottom: 0.25rem;
 }
@@ -558,12 +562,13 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 0.25rem;
+    font-family: var(--font-display);
     font-size: 0.6875rem;
-    font-weight: 500;
-    padding: 0.125rem 0.5rem;
-    border-radius: 4px;
+    font-weight: 700;
+    padding: 0.1875rem 0.5rem;
+    border-radius: 0;
     text-transform: uppercase;
-    letter-spacing: 0.03em;
+    letter-spacing: 0.02em;
 }
 
 .data-badge.confirmed {
@@ -606,9 +611,12 @@ body {
 }
 
 .year-selector-page1-label {
-    font-size: 0.875rem;
-    color: var(--ink-secondary);
-    font-weight: 500;
+    font-family: var(--font-display);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--ink-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
 }
 
 .taxes-paid-card {
@@ -746,9 +754,9 @@ body {
 
 /* Year-over-Year Comparison Card */
 .yoy-comparison-card {
-    background: var(--paper);
+    background: var(--brand-paper);
     border: 1px solid var(--paper-line);
-    border-radius: 12px;
+    border-radius: 0;
     padding: 1.5rem;
     margin-top: 1.5rem;
 }
@@ -959,9 +967,9 @@ body {
 
 /* Lifetime Trend Visualization */
 .trend-visualization {
-    background: var(--paper);
+    background: var(--brand-paper);
     border: 1px solid var(--paper-line);
-    border-radius: 12px;
+    border-radius: 0;
     padding: 1.5rem;
     margin-top: 1.5rem;
 }
@@ -2811,7 +2819,7 @@ body {
    ========================================== */
 
 .filed-hero {
-    min-height: 50vh;
+    min-height: 40vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -3328,9 +3336,9 @@ body {
 
 /* Expandable Benefit Rows */
 .benefit-category {
-    background: var(--paper);
+    background: var(--brand-paper);
     border: 1px solid var(--paper-line);
-    border-radius: 10px;
+    border-radius: 0;
     margin-bottom: 0.75rem;
     overflow: hidden;
 }
@@ -3385,14 +3393,17 @@ body {
 }
 
 .benefit-category-name {
+    font-family: var(--font-display);
     font-size: 1rem;
-    font-weight: 500;
-    color: var(--ink);
+    font-weight: 700;
+    color: var(--brand-ink);
     margin-bottom: 0.125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
 }
 
 .benefit-category-count {
-    font-size: 0.8125rem;
+    font-size: 0.75rem;
     color: var(--ink-tertiary);
 }
 
@@ -3403,10 +3414,10 @@ body {
 }
 
 .benefit-category-amount {
-    font-family: var(--serif);
-    font-size: 1.25rem;
-    font-weight: 500;
-    color: var(--confirmed);
+    font-family: var(--font-display);
+    font-size: 1.375rem;
+    font-weight: 800;
+    color: var(--brand-ink);
 }
 
 .benefit-category-chevron {
@@ -3645,9 +3656,9 @@ body {
 
 /* Benefit Spotlight */
 .benefit-spotlight {
-    background: var(--paper-warm);
-    border-radius: 12px;
-    border: 2px solid var(--confirmed);
+    background: var(--brand-chartreuse);
+    border-radius: 0;
+    border: none;
     padding: 1.5rem;
     margin-bottom: 1.5rem;
 }
@@ -3656,12 +3667,15 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 0.375rem;
-    background: var(--confirmed-bg);
-    color: var(--confirmed);
-    font-size: 0.75rem;
-    font-weight: 600;
+    background: var(--brand-ink);
+    color: var(--brand-paper);
+    font-family: var(--font-display);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
     padding: 0.375rem 0.75rem;
-    border-radius: 100px;
+    border-radius: 0;
     margin-bottom: 1rem;
 }
 
@@ -3986,8 +4000,12 @@ body {
 
 /* Spending Hero */
 .spending-hero {
-    padding: 3rem 2rem;
+    padding: 4rem 2rem;
     text-align: center;
+    min-height: 35vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .spending-hero-content {
@@ -4143,29 +4161,32 @@ body {
 
 /* Context card variants */
 .spending-context-card {
-    background: var(--paper-warm);
-    border-radius: 12px;
+    background: var(--brand-paper);
+    border-radius: 0;
     padding: 1.25rem 1.5rem;
     margin-bottom: 2rem;
-    border-left: 4px solid var(--paper-line);
+    border-left: 4px solid var(--brand-ink);
 }
 
 .spending-context-card.federal {
-    border-left-color: #5C6B7A;
+    border-left-color: var(--brand-ink);
 }
 
 .spending-context-card.state {
-    border-left-color: #7A9E7E;
+    border-left-color: var(--brand-coral);
 }
 
 .spending-context-card.city {
-    border-left-color: #8B7355;
+    border-left-color: var(--brand-chartreuse);
 }
 
 .spending-context-title {
+    font-family: var(--font-display);
     font-size: 0.875rem;
-    font-weight: 600;
-    color: var(--ink);
+    font-weight: 700;
+    color: var(--brand-ink);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
     margin-bottom: 0.5rem;
 }
 
@@ -4258,6 +4279,10 @@ body {
 .act-hero {
     padding: 4rem 2rem;
     text-align: center;
+    min-height: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .act-hero-content {
@@ -4320,9 +4345,9 @@ body {
 
 /* Bill List */
 .bill-list {
-    background: white;
+    background: var(--brand-paper);
     border: 1px solid var(--paper-line);
-    border-radius: 12px;
+    border-radius: 0;
     overflow: hidden;
 }
 
@@ -4385,9 +4410,12 @@ body {
 
 .bill-row-title {
     flex: 1;
+    font-family: var(--font-display);
     font-size: 0.9375rem;
-    font-weight: 500;
-    color: var(--ink);
+    font-weight: 700;
+    color: var(--brand-ink);
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -4480,31 +4508,34 @@ body {
 .bill-expanded-cta {
     display: inline-flex;
     align-items: center;
-    padding: 0.625rem 1.25rem;
-    border-radius: 6px;
-    font-size: 0.875rem;
-    font-weight: 600;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0;
+    font-family: var(--font-display);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.15s ease;
     border: none;
-    background: var(--coral);
-    color: white;
+    background: var(--brand-chartreuse);
+    color: var(--brand-ink);
 }
 
 .bill-expanded-cta:hover {
-    background: #d94d42;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .bill-expanded-cta.secondary {
-    background: var(--paper);
-    color: var(--ink-secondary);
-    border: 1px solid var(--paper-line);
+    background: transparent;
+    color: var(--brand-ink);
+    border: 2px solid var(--brand-ink);
 }
 
 .bill-expanded-cta.secondary:hover {
-    background: white;
-    border-color: var(--ink-tertiary);
-    color: var(--ink);
+    background: var(--brand-ink);
+    color: var(--brand-paper);
 }
 
 /* Take Action Section */
