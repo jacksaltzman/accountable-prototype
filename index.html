@@ -2166,132 +2166,137 @@
             <!-- Legislation Tracker -->
             <section class="legislation-tracker animate-in delay-2">
                 <div class="legislation-header">
-                    <div class="legislation-title-row">
-                        <h2 class="section-title">Legislation That Affects You</h2>
-                        <span class="legislation-count">5 active bills</span>
-                    </div>
-                    <p class="section-description">Bills in Congress that would change what you pay or receive.</p>
+                    <h2 class="section-title">Legislation That Affects You</h2>
+                    <p class="section-description">What's being decided in Congress right now — and what it means for your wallet.</p>
                 </div>
 
-                <div class="legislation-list">
-                    <div class="legislation-item" data-bill="salt-repeal">
-                        <div class="legislation-status">
-                            <span class="status-dot active"></span>
-                            <span class="status-text">Floor Vote Scheduled</span>
+                <div class="legislation-cards">
+                    <!-- SALT Repeal - Urgent -->
+                    <div class="bill-card urgent" data-bill="salt-repeal">
+                        <div class="bill-card-status">
+                            <span class="status-indicator urgent"></span>
+                            <span class="status-label">Vote Feb 28</span>
                         </div>
-                        <div class="legislation-content">
-                            <h3 class="legislation-name">S.1234 — SALT Deduction Cap Repeal Act</h3>
-                            <p class="legislation-sponsor">Sen. Schumer (D-NY) · 23 cosponsors</p>
+
+                        <div class="bill-card-impact increase">+$4,280<span class="per-year">/yr</span></div>
+
+                        <div class="bill-card-content">
+                            <h3 class="bill-card-title">End the cap on state and local tax deductions</h3>
+                            <p class="bill-card-context">You've lost $21,400 to this cap since 2018.</p>
                         </div>
-                        <div class="legislation-impact increase">
-                            <span class="impact-direction">↑</span>
-                            <span class="impact-value">+$4,280/yr</span>
+
+                        <div class="bill-card-footer">
+                            <span class="bill-card-reps support">Your reps support this</span>
+                            <button class="bill-card-cta" onclick="openTakeAction('salt-repeal')">Tell Them It Matters</button>
                         </div>
-                        <div class="legislation-stance">
-                            <span class="stance-label">Your Reps:</span>
-                            <span class="stance-badge support">Schumer ✓</span>
-                            <span class="stance-badge support">Gillibrand ✓</span>
-                            <span class="stance-badge support">Nadler ✓</span>
+
+                        <button class="bill-card-expand" onclick="toggleBillDetails(this)">
+                            <span>Details</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+                        <div class="bill-card-details">
+                            <p><strong>S.1234 — SALT Deduction Cap Repeal Act</strong></p>
+                            <p>Sponsored by Sen. Schumer (D-NY) with 23 cosponsors. Would eliminate the $10,000 cap on state and local tax deductions that was enacted in 2017.</p>
+                            <p class="bill-card-source">Source: Congress.gov</p>
                         </div>
-                        <svg class="legislation-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="9 18 15 12 9 6"></polyline>
-                        </svg>
                     </div>
 
-                    <div class="legislation-item" data-bill="ctc-enhance">
-                        <div class="legislation-status">
-                            <span class="status-dot pending"></span>
-                            <span class="status-text">In Committee</span>
+                    <!-- Child Tax Credit -->
+                    <div class="bill-card" data-bill="ctc-enhance">
+                        <div class="bill-card-status">
+                            <span class="status-indicator"></span>
+                            <span class="status-label">In Committee</span>
                         </div>
-                        <div class="legislation-content">
-                            <h3 class="legislation-name">H.R.5678 — Child Tax Credit Enhancement Act</h3>
-                            <p class="legislation-sponsor">Rep. Nadler (D-NY-12) · 89 cosponsors</p>
+
+                        <div class="bill-card-impact increase">+$1,600<span class="per-year">/yr</span></div>
+
+                        <div class="bill-card-content">
+                            <h3 class="bill-card-title">Increase the Child Tax Credit to $3,600 per child</h3>
+                            <p class="bill-card-context">Would also make it fully refundable for low earners.</p>
                         </div>
-                        <div class="legislation-impact increase">
-                            <span class="impact-direction">↑</span>
-                            <span class="impact-value">+$1,600/yr</span>
+
+                        <div class="bill-card-footer">
+                            <span class="bill-card-reps partial">2 of 3 reps support</span>
+                            <button class="bill-card-cta secondary" onclick="openTakeAction('ctc-enhance')">Learn More</button>
                         </div>
-                        <div class="legislation-stance">
-                            <span class="stance-label">Your Reps:</span>
-                            <span class="stance-badge support">Nadler ✓</span>
-                            <span class="stance-badge support">Schumer ✓</span>
-                            <span class="stance-badge unknown">Gillibrand ?</span>
+
+                        <button class="bill-card-expand" onclick="toggleBillDetails(this)">
+                            <span>Details</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+                        <div class="bill-card-details">
+                            <p><strong>H.R.5678 — Child Tax Credit Enhancement Act</strong></p>
+                            <p>Sponsored by Rep. Nadler (D-NY-12) with 89 cosponsors. Would expand the CTC from $2,000 to $3,600 per child and make it fully refundable.</p>
+                            <p class="bill-card-source">Source: Congress.gov</p>
                         </div>
-                        <svg class="legislation-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="9 18 15 12 9 6"></polyline>
-                        </svg>
                     </div>
 
-                    <div class="legislation-item" data-bill="tcja-extend">
-                        <div class="legislation-status">
-                            <span class="status-dot pending"></span>
-                            <span class="status-text">Introduced</span>
+                    <!-- TCJA Extension - Mixed -->
+                    <div class="bill-card" data-bill="tcja-extend">
+                        <div class="bill-card-status">
+                            <span class="status-indicator"></span>
+                            <span class="status-label">Introduced</span>
                         </div>
-                        <div class="legislation-content">
-                            <h3 class="legislation-name">H.R.9012 — TCJA Extension Act</h3>
-                            <p class="legislation-sponsor">Rep. Smith (R-MO) · 156 cosponsors</p>
+
+                        <div class="bill-card-impact mixed">±Mixed</div>
+
+                        <div class="bill-card-content">
+                            <h3 class="bill-card-title">Extend the 2017 tax cuts permanently</h3>
+                            <p class="bill-card-context">Keeps your lower rates, but also keeps the SALT cap.</p>
                         </div>
-                        <div class="legislation-impact mixed">
-                            <span class="impact-direction">±</span>
-                            <span class="impact-value">Mixed impact</span>
+
+                        <div class="bill-card-footer">
+                            <span class="bill-card-reps oppose">1 of 3 reps opposes</span>
+                            <button class="bill-card-cta secondary" onclick="openTakeAction('tcja-extend')">Learn More</button>
                         </div>
-                        <div class="legislation-stance">
-                            <span class="stance-label">Your Reps:</span>
-                            <span class="stance-badge oppose">Nadler ✗</span>
-                            <span class="stance-badge unknown">Schumer ?</span>
-                            <span class="stance-badge unknown">Gillibrand ?</span>
+
+                        <button class="bill-card-expand" onclick="toggleBillDetails(this)">
+                            <span>Details</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+                        <div class="bill-card-details">
+                            <p><strong>H.R.9012 — TCJA Extension Act</strong></p>
+                            <p>Sponsored by Rep. Smith (R-MO) with 156 cosponsors. Would make permanent the individual tax provisions from the 2017 Tax Cuts and Jobs Act, including lower rates but also the SALT deduction cap.</p>
+                            <p class="bill-card-source">Source: Congress.gov</p>
                         </div>
-                        <svg class="legislation-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="9 18 15 12 9 6"></polyline>
-                        </svg>
                     </div>
 
-                    <div class="legislation-item" data-bill="eitc-expand">
-                        <div class="legislation-status">
-                            <span class="status-dot pending"></span>
-                            <span class="status-text">In Committee</span>
+                    <!-- EITC Expansion -->
+                    <div class="bill-card" data-bill="eitc-expand">
+                        <div class="bill-card-status">
+                            <span class="status-indicator"></span>
+                            <span class="status-label">In Committee</span>
                         </div>
-                        <div class="legislation-content">
-                            <h3 class="legislation-name">S.3456 — EITC Expansion for Working Families</h3>
-                            <p class="legislation-sponsor">Sen. Gillibrand (D-NY) · 12 cosponsors</p>
-                        </div>
-                        <div class="legislation-impact increase">
-                            <span class="impact-direction">↑</span>
-                            <span class="impact-value">+$800/yr</span>
-                        </div>
-                        <div class="legislation-stance">
-                            <span class="stance-label">Your Reps:</span>
-                            <span class="stance-badge support">Gillibrand ✓</span>
-                            <span class="stance-badge support">Schumer ✓</span>
-                            <span class="stance-badge support">Nadler ✓</span>
-                        </div>
-                        <svg class="legislation-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="9 18 15 12 9 6"></polyline>
-                        </svg>
-                    </div>
 
-                    <div class="legislation-item" data-bill="mta-funding">
-                        <div class="legislation-status">
-                            <span class="status-dot active"></span>
-                            <span class="status-text">Conference</span>
+                        <div class="bill-card-impact increase">+$800<span class="per-year">/yr</span></div>
+
+                        <div class="bill-card-content">
+                            <h3 class="bill-card-title">Expand the Earned Income Tax Credit</h3>
+                            <p class="bill-card-context">Larger credit for working families earning under $60,000.</p>
                         </div>
-                        <div class="legislation-content">
-                            <h3 class="legislation-name">H.R.7890 — Transit Infrastructure Investment Act</h3>
-                            <p class="legislation-sponsor">Rep. Jeffries (D-NY-8) · 67 cosponsors</p>
+
+                        <div class="bill-card-footer">
+                            <span class="bill-card-reps support">Your reps support this</span>
+                            <button class="bill-card-cta secondary" onclick="openTakeAction('eitc-expand')">Learn More</button>
                         </div>
-                        <div class="legislation-impact neutral">
-                            <span class="impact-direction">~</span>
-                            <span class="impact-value">$245/yr</span>
+
+                        <button class="bill-card-expand" onclick="toggleBillDetails(this)">
+                            <span>Details</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+                        <div class="bill-card-details">
+                            <p><strong>S.3456 — EITC Expansion for Working Families</strong></p>
+                            <p>Sponsored by Sen. Gillibrand (D-NY) with 12 cosponsors. Would increase EITC benefits for working families and expand eligibility.</p>
+                            <p class="bill-card-source">Source: Congress.gov</p>
                         </div>
-                        <div class="legislation-stance">
-                            <span class="stance-label">Your Reps:</span>
-                            <span class="stance-badge support">Nadler ✓</span>
-                            <span class="stance-badge support">Schumer ✓</span>
-                            <span class="stance-badge support">Gillibrand ✓</span>
-                        </div>
-                        <svg class="legislation-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="9 18 15 12 9 6"></polyline>
-                        </svg>
                     </div>
                 </div>
 
