@@ -522,7 +522,7 @@ body {
 }
 
 .summary-card {
-    background: var(--paper);
+    background: var(--brand-paper);
     padding: 1.75rem;
     position: relative;
 }
@@ -537,11 +537,12 @@ body {
 
 .summary-label {
     font-size: 0.8125rem;
-    color: var(--ink-tertiary);
+    color: var(--brand-ink);
     margin-bottom: 0.5rem;
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    font-weight: 500;
 }
 
 .summary-value {
@@ -555,7 +556,7 @@ body {
 
 .summary-meta {
     font-size: 0.75rem;
-    color: var(--ink-tertiary);
+    color: var(--ink-secondary);
 }
 
 .data-badge {
