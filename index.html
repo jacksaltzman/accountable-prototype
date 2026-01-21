@@ -2069,10 +2069,13 @@
 
                 <div class="bill-list">
                     <!-- SALT Repeal - Urgent -->
-                    <div class="bill-row urgent" data-bill="salt-repeal" onclick="toggleBillRow(this)">
+                    <div class="bill-row urgent" data-bill="salt-repeal" tabindex="0" role="button" aria-expanded="false" onclick="toggleBillRow(this)">
                         <div class="bill-row-summary">
                             <span class="bill-row-indicator urgent"></span>
-                            <span class="bill-row-date">Feb 28</span>
+                            <span class="bill-row-deadline">
+                                <span class="deadline-days">7</span>
+                                <span class="deadline-label">days</span>
+                            </span>
                             <span class="bill-row-title">End the SALT cap</span>
                             <span class="bill-row-impact increase">+$4,280</span>
                             <svg class="bill-row-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -2080,17 +2083,19 @@
                             </svg>
                         </div>
                         <div class="bill-row-expanded">
-                            <p class="bill-expanded-description">Would eliminate the $10,000 cap on state and local tax deductions. You've lost $21,400 to this cap since 2018.</p>
-                            <div class="bill-expanded-meta">
-                                <span class="bill-expanded-status">Senate Floor Vote</span>
-                                <span class="bill-expanded-reps support">Your reps support this</span>
+                            <div class="bill-row-expanded-inner">
+                                <p class="bill-expanded-description">Would eliminate the $10,000 cap on state and local tax deductions. You've lost $21,400 to this cap since 2018.</p>
+                                <div class="bill-expanded-meta">
+                                    <span class="bill-expanded-status">Senate Floor Vote</span>
+                                    <span class="bill-expanded-reps support">Your reps support this</span>
+                                </div>
+                                <button class="bill-expanded-cta" onclick="event.stopPropagation(); openTakeAction('salt-repeal')">Tell Your Senators</button>
                             </div>
-                            <button class="bill-expanded-cta" onclick="event.stopPropagation(); openTakeAction('salt-repeal')">Tell Your Senators</button>
                         </div>
                     </div>
 
                     <!-- Child Tax Credit -->
-                    <div class="bill-row" data-bill="ctc-enhance" onclick="toggleBillRow(this)">
+                    <div class="bill-row" data-bill="ctc-enhance" tabindex="0" role="button" aria-expanded="false" onclick="toggleBillRow(this)">
                         <div class="bill-row-summary">
                             <span class="bill-row-indicator"></span>
                             <span class="bill-row-date"></span>
@@ -2101,17 +2106,19 @@
                             </svg>
                         </div>
                         <div class="bill-row-expanded">
-                            <p class="bill-expanded-description">Would increase the Child Tax Credit to $3,600 per child and make it fully refundable for low earners.</p>
-                            <div class="bill-expanded-meta">
-                                <span class="bill-expanded-status">In Committee</span>
-                                <span class="bill-expanded-reps partial">2 of 3 reps support</span>
+                            <div class="bill-row-expanded-inner">
+                                <p class="bill-expanded-description">Would increase the Child Tax Credit to $3,600 per child and make it fully refundable for low earners.</p>
+                                <div class="bill-expanded-meta">
+                                    <span class="bill-expanded-status">In Committee</span>
+                                    <span class="bill-expanded-reps partial">2 of 3 reps support</span>
+                                </div>
+                                <button class="bill-expanded-cta secondary" onclick="event.stopPropagation(); openTakeAction('ctc-enhance')">Learn More</button>
                             </div>
-                            <button class="bill-expanded-cta secondary" onclick="event.stopPropagation(); openTakeAction('ctc-enhance')">Learn More</button>
                         </div>
                     </div>
 
                     <!-- TCJA Extension -->
-                    <div class="bill-row" data-bill="tcja-extend" onclick="toggleBillRow(this)">
+                    <div class="bill-row" data-bill="tcja-extend" tabindex="0" role="button" aria-expanded="false" onclick="toggleBillRow(this)">
                         <div class="bill-row-summary">
                             <span class="bill-row-indicator"></span>
                             <span class="bill-row-date"></span>
@@ -2122,17 +2129,19 @@
                             </svg>
                         </div>
                         <div class="bill-row-expanded">
-                            <p class="bill-expanded-description">Would make the 2017 tax cuts permanent. Keeps your lower rates, but also keeps the SALT cap that costs you $4,280/year.</p>
-                            <div class="bill-expanded-meta">
-                                <span class="bill-expanded-status">Introduced</span>
-                                <span class="bill-expanded-reps oppose">1 of 3 reps opposes</span>
+                            <div class="bill-row-expanded-inner">
+                                <p class="bill-expanded-description">Would make the 2017 tax cuts permanent. Keeps your lower rates, but also keeps the SALT cap that costs you $4,280/year.</p>
+                                <div class="bill-expanded-meta">
+                                    <span class="bill-expanded-status">Introduced</span>
+                                    <span class="bill-expanded-reps oppose">1 of 3 reps opposes</span>
+                                </div>
+                                <button class="bill-expanded-cta secondary" onclick="event.stopPropagation(); openTakeAction('tcja-extend')">Learn More</button>
                             </div>
-                            <button class="bill-expanded-cta secondary" onclick="event.stopPropagation(); openTakeAction('tcja-extend')">Learn More</button>
                         </div>
                     </div>
 
                     <!-- EITC Expansion -->
-                    <div class="bill-row" data-bill="eitc-expand" onclick="toggleBillRow(this)">
+                    <div class="bill-row" data-bill="eitc-expand" tabindex="0" role="button" aria-expanded="false" onclick="toggleBillRow(this)">
                         <div class="bill-row-summary">
                             <span class="bill-row-indicator"></span>
                             <span class="bill-row-date"></span>
@@ -2143,12 +2152,14 @@
                             </svg>
                         </div>
                         <div class="bill-row-expanded">
-                            <p class="bill-expanded-description">Would expand the Earned Income Tax Credit for working families earning under $60,000.</p>
-                            <div class="bill-expanded-meta">
-                                <span class="bill-expanded-status">In Committee</span>
-                                <span class="bill-expanded-reps support">Your reps support this</span>
+                            <div class="bill-row-expanded-inner">
+                                <p class="bill-expanded-description">Would expand the Earned Income Tax Credit for working families earning under $60,000.</p>
+                                <div class="bill-expanded-meta">
+                                    <span class="bill-expanded-status">In Committee</span>
+                                    <span class="bill-expanded-reps support">Your reps support this</span>
+                                </div>
+                                <button class="bill-expanded-cta secondary" onclick="event.stopPropagation(); openTakeAction('eitc-expand')">Learn More</button>
                             </div>
-                            <button class="bill-expanded-cta secondary" onclick="event.stopPropagation(); openTakeAction('eitc-expand')">Learn More</button>
                         </div>
                     </div>
                 </div>
@@ -2194,7 +2205,7 @@
                                 <span class="contact-stance support">Supports this bill</span>
                             </div>
                             <div class="contact-buttons">
-                                <a href="mailto:senator@schumer.senate.gov?subject=Support%20for%20SALT%20Cap%20Repeal&body=Dear%20Senator%20Schumer%2C%0A%0AAs%20your%20constituent%20in%20New%20York%2C%20I'm%20writing%20to%20urge%20your%20continued%20support%20for%20the%20SALT%20Deduction%20Cap%20Repeal%20Act.%0A%0AThe%20%2410%2C000%20cap%20costs%20me%20%244%2C280%20per%20year%20in%20additional%20federal%20taxes.%0A%0ASincerely%2C%0A%5BYour%20Name%5D" class="contact-btn email">
+                                <a href="mailto:senator@schumer.senate.gov?subject=Support%20for%20SALT%20Cap%20Repeal&body=Dear%20Senator%20Schumer%2C%0A%0AAs%20your%20constituent%20in%20New%20York%2C%20I'm%20writing%20to%20urge%20your%20continued%20support%20for%20the%20SALT%20Deduction%20Cap%20Repeal%20Act.%0A%0AThe%20%2410%2C000%20cap%20costs%20me%20%244%2C280%20per%20year%20in%20additional%20federal%20taxes.%0A%0ASincerely%2C%0A%5BYour%20Name%5D" class="contact-btn email recommended">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
                                         <polyline points="22,6 12,13 2,6"/>
@@ -2288,7 +2299,7 @@
                             </svg>
                         </div>
                         <div class="policy-card-body">
-                            <div style="padding: 1rem 1.25rem;">
+                            <div class="policy-card-body-inner" style="padding: 1rem 1.25rem;">
                                 <p class="officials-title" style="margin-bottom: 0.5rem;">How they voted. What it cost you.</p>
                                 <div class="officials-list">
                                 <div class="official-row" style="background: var(--paper); border-radius: 6px; padding: 0.625rem 0.75rem;">
@@ -2361,7 +2372,7 @@
                             </svg>
                         </div>
                         <div class="policy-card-body">
-                            <div style="padding: 1rem 1.25rem;">
+                            <div class="policy-card-body-inner" style="padding: 1rem 1.25rem;">
                                 <p class="officials-title" style="margin-bottom: 0.5rem;">How they voted. What it cost you.</p>
                                 <div class="officials-list">
                                 <div class="official-row" style="background: var(--paper); border-radius: 6px; padding: 0.625rem 0.75rem;">
@@ -2434,7 +2445,7 @@
                             </svg>
                         </div>
                         <div class="policy-card-body">
-                            <div style="padding: 1rem 1.25rem;">
+                            <div class="policy-card-body-inner" style="padding: 1rem 1.25rem;">
                                 <p class="officials-title" style="margin-bottom: 0.5rem;">How they voted. What it cost you.</p>
                                 <div class="officials-list">
                                 <div class="official-row" style="background: var(--paper); border-radius: 6px; padding: 0.625rem 0.75rem;">
@@ -2507,7 +2518,7 @@
                             </svg>
                         </div>
                         <div class="policy-card-body">
-                            <div style="padding: 1rem 1.25rem;">
+                            <div class="policy-card-body-inner" style="padding: 1rem 1.25rem;">
                                 <p class="officials-title" style="margin-bottom: 0.5rem;">How they voted. What it cost you.</p>
                                 <div class="officials-list">
                                 <div class="official-row" style="background: var(--paper); border-radius: 6px; padding: 0.625rem 0.75rem;">
@@ -2586,7 +2597,7 @@
                             </svg>
                         </div>
                         <div class="policy-card-body">
-                            <div style="padding: 1rem 1.25rem;">
+                            <div class="policy-card-body-inner" style="padding: 1rem 1.25rem;">
                                 <p class="officials-title" style="margin-bottom: 0.5rem;">How they voted. What it cost you.</p>
                                 <div class="officials-list">
                                 <div class="official-row" style="background: var(--paper); border-radius: 6px; padding: 0.625rem 0.75rem;">
@@ -2652,7 +2663,7 @@
                             </svg>
                         </div>
                         <div class="policy-card-body">
-                            <div style="padding: 1rem 1.25rem;">
+                            <div class="policy-card-body-inner" style="padding: 1rem 1.25rem;">
                                 <p class="officials-title" style="margin-bottom: 0.5rem;">How they voted. What it cost you.</p>
                                 <div class="officials-list">
                                 <div class="official-row" style="background: var(--paper); border-radius: 6px; padding: 0.625rem 0.75rem;">
@@ -2706,7 +2717,7 @@
                             </svg>
                         </div>
                         <div class="policy-card-body">
-                            <div style="padding: 1rem 1.25rem;">
+                            <div class="policy-card-body-inner" style="padding: 1rem 1.25rem;">
                                 <p class="officials-title" style="margin-bottom: 0.5rem;">How they voted. What it cost you.</p>
                                 <div class="officials-list">
                                 <div class="official-row" style="background: var(--paper); border-radius: 6px; padding: 0.625rem 0.75rem;">
@@ -2773,7 +2784,7 @@
                             </svg>
                         </div>
                         <div class="policy-card-body">
-                            <div style="padding: 1rem 1.25rem;">
+                            <div class="policy-card-body-inner" style="padding: 1rem 1.25rem;">
                                 <p class="officials-title" style="margin-bottom: 0.5rem;">How they voted. What it cost you.</p>
                                 <div class="officials-list">
                                 <div class="official-row" style="background: var(--paper); border-radius: 6px; padding: 0.625rem 0.75rem;">
@@ -2839,7 +2850,7 @@
                             </svg>
                         </div>
                         <div class="policy-card-body">
-                            <div style="padding: 1rem 1.25rem;">
+                            <div class="policy-card-body-inner" style="padding: 1rem 1.25rem;">
                                 <p class="officials-title" style="margin-bottom: 0.5rem;">How they voted. What it cost you.</p>
                                 <div class="officials-list">
                                 <div class="official-row" style="background: var(--paper); border-radius: 6px; padding: 0.625rem 0.75rem;">

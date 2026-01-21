@@ -2,14 +2,50 @@
 // TOAST NOTIFICATION
 // ==========================================
 
-function showToast(message, duration = 3000) {
+function showToast(message, type = 'default', duration = 3000) {
     const toast = document.getElementById('toast');
     if (!toast) return;
-    toast.textContent = message;
+
+    // Add icon for success type
+    if (type === 'success') {
+        toast.innerHTML = `<span class="toast-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span class="toast-message">${message}</span>`;
+        toast.className = 'toast success';
+    } else {
+        toast.innerHTML = `<span class="toast-message">${message}</span>`;
+        toast.className = 'toast';
+    }
+
     toast.classList.add('visible');
     setTimeout(() => {
         toast.classList.remove('visible');
     }, duration);
+}
+
+// Count-up animation for numbers
+function animateCountUp(element, targetValue, duration = 1000) {
+    const start = 0;
+    const startTime = performance.now();
+    const isNegative = targetValue < 0;
+    const absTarget = Math.abs(targetValue);
+    const prefix = element.dataset.prefix || '';
+    const suffix = element.dataset.suffix || '';
+
+    function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+
+        // Ease out cubic
+        const easeOut = 1 - Math.pow(1 - progress, 3);
+        const current = Math.round(easeOut * absTarget);
+
+        element.textContent = prefix + (isNegative ? '-' : '') + '$' + current.toLocaleString() + suffix;
+
+        if (progress < 1) {
+            requestAnimationFrame(update);
+        }
+    }
+
+    requestAnimationFrame(update);
 }
 
 // ==========================================
@@ -1635,16 +1671,26 @@ Sincerely,
 
 // Toggle bill row expansion
 function toggleBillRow(row) {
-    // Close any other open rows
+    // Close any other open rows and update their aria-expanded
     document.querySelectorAll('.bill-row.expanded').forEach(openRow => {
         if (openRow !== row) {
             openRow.classList.remove('expanded');
+            openRow.setAttribute('aria-expanded', 'false');
         }
     });
 
     // Toggle this row
-    row.classList.toggle('expanded');
+    const isExpanded = row.classList.toggle('expanded');
+    row.setAttribute('aria-expanded', isExpanded);
 }
+
+// Keyboard support for bill rows
+document.addEventListener('keydown', (e) => {
+    if (e.target.classList.contains('bill-row') && (e.key === 'Enter' || e.key === ' ')) {
+        e.preventDefault();
+        toggleBillRow(e.target);
+    }
+});
 
 // Open Take Action module for a specific bill
 function openTakeAction(billId) {
@@ -1689,12 +1735,30 @@ function toggleLegislationDetails(billId) {
 // Copy message to clipboard
 function copyMessage() {
     const messageContent = document.getElementById('take-action-message-content');
+    const copyBtn = document.querySelector('.message-copy-btn');
     if (!messageContent) return;
 
     const text = messageContent.innerText;
+    const originalHTML = copyBtn ? copyBtn.innerHTML : '';
+
+    // Show loading state
+    if (copyBtn) {
+        copyBtn.classList.add('loading');
+    }
 
     navigator.clipboard.writeText(text).then(() => {
-        showToast('Message copied to clipboard');
+        // Show success state
+        if (copyBtn) {
+            copyBtn.classList.remove('loading');
+            copyBtn.classList.add('success');
+            copyBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Copied!';
+
+            setTimeout(() => {
+                copyBtn.classList.remove('success');
+                copyBtn.innerHTML = originalHTML;
+            }, 2000);
+        }
+        showToast('Message copied to clipboard', 'success');
     }).catch(err => {
         // Fallback for older browsers
         const textArea = document.createElement('textarea');
@@ -1703,7 +1767,18 @@ function copyMessage() {
         textArea.select();
         document.execCommand('copy');
         document.body.removeChild(textArea);
-        showToast('Message copied to clipboard');
+
+        if (copyBtn) {
+            copyBtn.classList.remove('loading');
+            copyBtn.classList.add('success');
+            copyBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Copied!';
+
+            setTimeout(() => {
+                copyBtn.classList.remove('success');
+                copyBtn.innerHTML = originalHTML;
+            }, 2000);
+        }
+        showToast('Message copied to clipboard', 'success');
     });
 }
 
