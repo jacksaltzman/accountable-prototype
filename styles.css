@@ -5137,18 +5137,7 @@ body {
     color: var(--brand-ink);
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    margin-bottom: 0.75rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: rgba(0, 0, 0, 0.05);
-    padding: 0.375rem 0.875rem;
-    border-radius: 20px;
-}
-
-.spending-hero-label::before {
-    content: '📊';
-    font-size: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 .spending-hero-amount {
@@ -7123,15 +7112,6 @@ body {
     .spending-hero {
         padding: 3rem 1.5rem;
         min-height: 30vh;
-    }
-
-    .spending-hero-label {
-        font-size: 0.75rem;
-        padding: 0.25rem 0.625rem;
-    }
-
-    .spending-hero-label::before {
-        font-size: 0.875rem;
     }
 
     /* Jurisdiction toggle mobile */
