@@ -1591,21 +1591,17 @@ Sincerely,
     }
 };
 
-// Toggle bill details visibility
-function toggleBillDetails(button) {
-    const card = button.closest('.bill-card');
-    const details = card.querySelector('.bill-card-details');
+// Toggle bill row expansion
+function toggleBillRow(row) {
+    // Close any other open rows
+    document.querySelectorAll('.bill-row.expanded').forEach(openRow => {
+        if (openRow !== row) {
+            openRow.classList.remove('expanded');
+        }
+    });
 
-    button.classList.toggle('expanded');
-    details.classList.toggle('visible');
-
-    // Update button text
-    const span = button.querySelector('span');
-    if (details.classList.contains('visible')) {
-        span.textContent = 'Hide details';
-    } else {
-        span.textContent = 'Details';
-    }
+    // Toggle this row
+    row.classList.toggle('expanded');
 }
 
 // Open Take Action module for a specific bill
