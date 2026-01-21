@@ -1172,6 +1172,19 @@
             visibility: visible;
         }
 
+        /* Tooltip below variant */
+        .tooltip-trigger .tooltip.tooltip-below {
+            bottom: auto;
+            top: calc(100% + 8px);
+        }
+
+        .tooltip-trigger .tooltip.tooltip-below::after {
+            top: auto;
+            bottom: 100%;
+            border-top-color: transparent;
+            border-bottom-color: var(--ink);
+        }
+
         /* ========================================
            WHERE YOUR TAXES GO - Specific Styles
            ======================================== */
@@ -3120,14 +3133,14 @@
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
                         </svg>
-                        See money you might be missing
+                        See Benefits You're Owed
                     </button>
                     <button class="celebration-btn secondary" onclick="navigateTo('taxes')">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <circle cx="12" cy="12" r="10"></circle>
                             <path d="M12 6v6l4 2"></path>
                         </svg>
-                        See where your money went
+                        See How Your Taxes Were Spent
                     </button>
                     <button class="celebration-btn secondary" onclick="navigateTo('record')">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -3184,7 +3197,7 @@
                                     <circle cx="12" cy="12" r="10"/>
                                     <path d="M12 16v-4M12 8h.01"/>
                                 </svg>
-                                <span class="tooltip">Refunds, credits, and deductions</span>
+                                <span class="tooltip tooltip-below">Refunds, credits, and deductions</span>
                             </span>
                         </p>
                         <p class="summary-value">$18,340</p>
@@ -3195,13 +3208,13 @@
                     </div>
                     <div class="summary-card">
                         <p class="summary-label">
-                            What you put in minus what you got back
+                            Net Contribution
                             <span class="tooltip-trigger">
                                 <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <circle cx="12" cy="12" r="10"/>
                                     <path d="M12 16v-4M12 8h.01"/>
                                 </svg>
-                                <span class="tooltip">Taxes paid minus benefits claimed</span>
+                                <span class="tooltip">What you put in minus what you got back</span>
                             </span>
                         </p>
                         <p class="summary-value">$109,502</p>
