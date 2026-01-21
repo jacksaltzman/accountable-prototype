@@ -10,17 +10,17 @@
     --coral: var(--brand-coral);
     --coral-soft: rgba(246, 91, 78, 0.12);
     --ink: var(--brand-ink);
-    --ink-secondary: #4A4A4A;
-    --ink-tertiary: #7A7A7A;
+    --ink-secondary: #3A3A3A;
+    --ink-tertiary: #5A5A5A;
     --paper: var(--brand-warm-gray);
     --paper-warm: #E8E4DE;
-    --paper-line: #C9C5BF;
+    --paper-line: #A8A49E;
 
     /* Semantic colors */
     --confirmed: #1A1A1A;
     --confirmed-bg: #E8F0EB;
-    --estimate: #666666;
-    --estimate-bg: #F5F5F5;
+    --estimate: #555555;
+    --estimate-bg: #F0F0F0;
     --increase: #2D5A3D;
     --increase-bg: #E8F0EB;
     --decrease: #C43D3D;
@@ -138,8 +138,9 @@ body {
     letter-spacing: 0.02em;
     padding: 1rem 2rem;
     border: none;
+    border-radius: 8px;
     cursor: pointer;
-    transition: transform 0.1s ease, box-shadow 0.1s ease;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
     text-decoration: none;
     display: inline-flex;
     align-items: center;
@@ -149,12 +150,19 @@ body {
 
 .btn-brand-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    background: #d4f047;
 }
 
 .btn-brand-primary:active {
     transform: translateY(0);
-    box-shadow: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background: #c8e43d;
+}
+
+.btn-brand-primary:focus-visible {
+    outline: 3px solid var(--brand-ink);
+    outline-offset: 2px;
 }
 
 .btn-brand-secondary {
@@ -166,14 +174,25 @@ body {
     text-decoration: underline;
     text-underline-offset: 4px;
     text-decoration-thickness: 1px;
-    padding: 0.5rem 0;
+    padding: 0.5rem 0.75rem;
     border: none;
+    border-radius: 6px;
     cursor: pointer;
-    transition: opacity 0.15s ease;
+    transition: background 0.15s ease, text-decoration-color 0.15s ease;
 }
 
 .btn-brand-secondary:hover {
-    opacity: 0.7;
+    background: rgba(0, 0, 0, 0.05);
+    text-decoration-thickness: 2px;
+}
+
+.btn-brand-secondary:active {
+    background: rgba(0, 0, 0, 0.08);
+}
+
+.btn-brand-secondary:focus-visible {
+    outline: 2px solid var(--brand-ink);
+    outline-offset: 2px;
 }
 
 .btn-brand-outline {
@@ -186,8 +205,9 @@ body {
     letter-spacing: 0.02em;
     padding: 0.75rem 1.5rem;
     border: 2px solid var(--brand-ink);
+    border-radius: 8px;
     cursor: pointer;
-    transition: background 0.15s ease, color 0.15s ease;
+    transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
     text-decoration: none;
     display: inline-flex;
     align-items: center;
@@ -198,6 +218,18 @@ body {
 .btn-brand-outline:hover {
     background: var(--brand-ink);
     color: var(--brand-paper);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.btn-brand-outline:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-brand-outline:focus-visible {
+    outline: 3px solid var(--brand-chartreuse);
+    outline-offset: 2px;
 }
 
 /* Header */
@@ -218,12 +250,25 @@ body {
     align-items: center;
     gap: 0.75rem;
     cursor: pointer;
+    padding: 0.25rem;
+    margin: -0.25rem;
+    border-radius: 8px;
+    transition: opacity 0.15s ease;
+}
+
+.logo:hover {
+    opacity: 0.8;
+}
+
+.logo:focus-visible {
+    outline: 3px solid var(--brand-chartreuse);
+    outline-offset: 2px;
 }
 
 .logo-mark {
     width: 36px;
     height: 36px;
-    border-radius: 0;
+    border-radius: 6px;
     object-fit: cover;
 }
 
@@ -252,10 +297,18 @@ body {
     transition: opacity 0.15s ease;
     cursor: pointer;
     opacity: 0.5;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
 }
 
 .nav-link:hover {
     opacity: 1;
+}
+
+.nav-link:focus-visible {
+    opacity: 1;
+    outline: 2px solid var(--brand-chartreuse);
+    outline-offset: 2px;
 }
 
 .nav-link.active {
@@ -280,6 +333,17 @@ body {
     cursor: pointer;
     gap: 5px;
     z-index: 200;
+    border-radius: 8px;
+    transition: background 0.15s ease;
+}
+
+.mobile-menu-btn:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.mobile-menu-btn:focus-visible {
+    outline: 3px solid var(--brand-chartreuse);
+    outline-offset: 2px;
 }
 
 .mobile-menu-btn span {
@@ -349,7 +413,7 @@ body {
     letter-spacing: 0.01em;
     border-bottom: 1px solid var(--paper-line);
     min-height: 56px;
-    border-radius: 0;
+    border-radius: 8px;
     margin: 0 -0.75rem;
     transition: background 0.15s ease;
     opacity: 0.6;
@@ -357,6 +421,12 @@ body {
 
 .mobile-nav-drawer .nav-link:hover {
     background: var(--brand-warm-gray);
+    opacity: 1;
+}
+
+.mobile-nav-drawer .nav-link:focus-visible {
+    outline: 3px solid var(--brand-chartreuse);
+    outline-offset: -3px;
     opacity: 1;
 }
 
@@ -517,8 +587,9 @@ body {
     gap: 1px;
     background: var(--paper-line);
     border: 1px solid var(--paper-line);
-    border-radius: 0;
+    border-radius: 12px;
     overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .summary-card {
@@ -528,11 +599,11 @@ body {
 }
 
 .summary-card:first-child {
-    border-radius: 12px 0 0 12px;
+    border-radius: 11px 0 0 11px;
 }
 
 .summary-card:last-child {
-    border-radius: 0 12px 12px 0;
+    border-radius: 0 11px 11px 0;
 }
 
 .summary-label {
@@ -565,8 +636,8 @@ body {
     font-family: var(--font-display);
     font-size: 0.6875rem;
     font-weight: 700;
-    padding: 0.1875rem 0.5rem;
-    border-radius: 0;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
     text-transform: uppercase;
     letter-spacing: 0.02em;
 }
@@ -621,9 +692,10 @@ body {
 
 .taxes-paid-card {
     background: var(--brand-paper);
-    border-radius: 0;
+    border-radius: 12px;
     padding: 2rem;
     border: 1px solid var(--paper-line);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .taxes-paid-header {
@@ -756,9 +828,10 @@ body {
 .yoy-comparison-card {
     background: var(--brand-paper);
     border: 1px solid var(--paper-line);
-    border-radius: 0;
+    border-radius: 12px;
     padding: 1.5rem;
     margin-top: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .yoy-comparison-header {
@@ -969,9 +1042,10 @@ body {
 .trend-visualization {
     background: var(--brand-paper);
     border: 1px solid var(--paper-line);
-    border-radius: 0;
+    border-radius: 12px;
     padding: 1.5rem;
     margin-top: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .trend-viz-header {
@@ -1470,11 +1544,19 @@ body {
     border: 1px solid var(--paper-line);
     border-radius: 12px;
     overflow: hidden;
-    transition: border-color 0.2s;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .policy-card:hover {
     border-color: var(--ink-tertiary);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    transform: translateY(-1px);
+}
+
+.policy-card:focus-within {
+    border-color: var(--brand-ink);
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
 }
 
 .policy-card-header {
@@ -1484,6 +1566,18 @@ body {
     align-items: flex-start;
     gap: 1rem;
     cursor: pointer;
+    transition: background 0.15s ease;
+    border-radius: 11px 11px 0 0;
+}
+
+.policy-card-header:hover {
+    background: var(--paper-warm);
+}
+
+.policy-card-header:focus-visible {
+    outline: 3px solid var(--brand-chartreuse);
+    outline-offset: -3px;
+    background: var(--paper-warm);
 }
 
 .policy-card-main {
@@ -1985,18 +2079,25 @@ body {
     font-size: 0.8125rem;
     font-weight: 700;
     padding: 0.5rem 1rem;
-    border: 2px solid transparent;
+    border: 2px solid var(--paper-line);
     background: var(--brand-paper);
-    border-radius: 0;
+    border-radius: 8px;
     cursor: pointer;
-    color: var(--ink-tertiary);
-    transition: all 0.15s;
+    color: var(--ink-secondary);
+    transition: all 0.15s ease;
     text-transform: uppercase;
     letter-spacing: 0.02em;
 }
 
 .year-pill:hover {
     color: var(--brand-ink);
+    border-color: var(--ink-secondary);
+    background: var(--paper-warm);
+}
+
+.year-pill:focus-visible {
+    outline: 3px solid var(--brand-chartreuse);
+    outline-offset: 2px;
 }
 
 .year-pill.active {
@@ -3338,9 +3439,15 @@ body {
 .benefit-category {
     background: var(--brand-paper);
     border: 1px solid var(--paper-line);
-    border-radius: 0;
+    border-radius: 12px;
     margin-bottom: 0.75rem;
     overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.benefit-category:hover {
+    border-color: var(--ink-tertiary);
 }
 
 .benefit-category-header {
@@ -3349,11 +3456,22 @@ body {
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
-    transition: background 0.2s;
+    transition: background 0.15s ease;
+    border-radius: 11px;
 }
 
 .benefit-category-header:hover {
     background: var(--paper-warm);
+}
+
+.benefit-category-header:focus-visible {
+    outline: 3px solid var(--brand-chartreuse);
+    outline-offset: -3px;
+    background: var(--paper-warm);
+}
+
+.benefit-category.expanded .benefit-category-header {
+    border-radius: 11px 11px 0 0;
 }
 
 .benefit-category-info {
@@ -3544,12 +3662,20 @@ body {
     justify-content: space-between;
     align-items: flex-start;
     gap: 1rem;
-    transition: border-color 0.2s, box-shadow 0.2s;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .potential-benefit-card:hover {
     border-color: var(--estimate);
-    box-shadow: 0 2px 8px rgba(139, 105, 20, 0.1);
+    box-shadow: 0 4px 12px rgba(139, 105, 20, 0.12);
+    transform: translateY(-1px);
+}
+
+.potential-benefit-card:focus-within {
+    border-color: var(--brand-ink);
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
 }
 
 .potential-benefit-main {
@@ -3657,10 +3783,11 @@ body {
 /* Benefit Spotlight */
 .benefit-spotlight {
     background: var(--brand-chartreuse);
-    border-radius: 0;
-    border: none;
+    border-radius: 12px;
+    border: 2px solid var(--brand-ink);
     padding: 1.5rem;
     margin-bottom: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .benefit-spotlight-badge {
@@ -3675,7 +3802,7 @@ body {
     text-transform: uppercase;
     letter-spacing: 0.02em;
     padding: 0.375rem 0.75rem;
-    border-radius: 0;
+    border-radius: 6px;
     margin-bottom: 1rem;
 }
 
@@ -4113,6 +4240,11 @@ body {
     background: var(--paper);
 }
 
+.jurisdiction-tab:focus-visible {
+    outline: 3px solid var(--brand-chartreuse);
+    outline-offset: -3px;
+}
+
 .jurisdiction-tab.active {
     background: var(--paper);
     color: var(--ink);
@@ -4162,10 +4294,11 @@ body {
 /* Context card variants */
 .spending-context-card {
     background: var(--brand-paper);
-    border-radius: 0;
+    border-radius: 0 12px 12px 0;
     padding: 1.25rem 1.5rem;
     margin-bottom: 2rem;
     border-left: 4px solid var(--brand-ink);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .spending-context-card.federal {
@@ -4347,8 +4480,9 @@ body {
 .bill-list {
     background: var(--brand-paper);
     border: 1px solid var(--paper-line);
-    border-radius: 0;
+    border-radius: 12px;
     overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 /* Bill Row - Collapsed State */
@@ -4364,6 +4498,11 @@ body {
 
 .bill-row:hover {
     background: var(--paper);
+}
+
+.bill-row:focus-within {
+    background: var(--paper);
+    box-shadow: inset 0 0 0 2px var(--brand-chartreuse);
 }
 
 .bill-row.urgent {
@@ -4509,7 +4648,7 @@ body {
     display: inline-flex;
     align-items: center;
     padding: 0.75rem 1.25rem;
-    border-radius: 0;
+    border-radius: 8px;
     font-family: var(--font-display);
     font-size: 0.8125rem;
     font-weight: 700;
@@ -4524,7 +4663,18 @@ body {
 
 .bill-expanded-cta:hover {
     transform: translateY(-1px);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    background: #d4f047;
+}
+
+.bill-expanded-cta:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.bill-expanded-cta:focus-visible {
+    outline: 3px solid var(--brand-ink);
+    outline-offset: 2px;
 }
 
 .bill-expanded-cta.secondary {
@@ -4536,6 +4686,13 @@ body {
 .bill-expanded-cta.secondary:hover {
     background: var(--brand-ink);
     color: var(--brand-paper);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.bill-expanded-cta.secondary:focus-visible {
+    outline: 3px solid var(--brand-chartreuse);
+    outline-offset: 2px;
 }
 
 /* Take Action Section */
