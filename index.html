@@ -610,15 +610,36 @@
                 <a href="javascript:void(0)" onclick="document.getElementById('benefits-waiting-section').scrollIntoView({behavior: 'smooth'});" class="btn-brand-primary">Claim What's Yours</a>
             </div>
 
+            <!-- Progress Bar -->
+            <div class="benefits-progress animate-in delay-2">
+                <div class="benefits-progress-header">
+                    <span class="benefits-progress-title">Your Benefits Status</span>
+                    <span class="benefits-progress-percentage">68% claimed</span>
+                </div>
+                <div class="benefits-progress-bar">
+                    <div class="benefits-progress-fill" id="benefits-progress-fill" style="width: 68%;"></div>
+                </div>
+                <div class="benefits-progress-labels">
+                    <div class="benefits-progress-label">
+                        <span class="benefits-progress-dot secured"></span>
+                        <span>$6,759 secured</span>
+                    </div>
+                    <div class="benefits-progress-label">
+                        <span class="benefits-progress-dot available"></span>
+                        <span>~$3,200 available</span>
+                    </div>
+                </div>
+            </div>
+
             <!-- What You've Secured Section -->
-            <section class="benefits-section animate-in delay-3">
+            <section class="benefits-section secured animate-in delay-3">
                 <div class="benefits-section-header">
                     <h2 class="benefits-section-title">What You've Secured</h2>
                     <span class="benefits-section-total">$6,759</span>
                 </div>
 
                 <!-- Tax Credits Category -->
-                <div class="benefit-category" onclick="toggleBenefitCategory(this)">
+                <div class="benefit-category" onclick="toggleBenefitCategory(this)" role="button" tabindex="0" aria-expanded="false">
                     <div class="benefit-category-header">
                         <div class="benefit-category-info">
                             <div class="benefit-category-icon credits">
@@ -639,6 +660,7 @@
                         </div>
                     </div>
                     <div class="benefit-category-body">
+                        <div class="benefit-category-body-inner">
                         <div class="benefit-item">
                             <div class="benefit-item-info">
                                 <span class="benefit-item-name">Child Tax Credit</span>
@@ -667,11 +689,12 @@
                             </div>
                             <span class="benefit-item-amount">$100</span>
                         </div>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Refunds Category -->
-                <div class="benefit-category" onclick="toggleBenefitCategory(this)">
+                <div class="benefit-category" onclick="toggleBenefitCategory(this)" role="button" tabindex="0" aria-expanded="false">
                     <div class="benefit-category-header">
                         <div class="benefit-category-info">
                             <div class="benefit-category-icon refunds">
@@ -693,6 +716,7 @@
                         </div>
                     </div>
                     <div class="benefit-category-body">
+                        <div class="benefit-category-body-inner">
                         <div class="benefit-item">
                             <div class="benefit-item-info">
                                 <span class="benefit-item-name">Federal Tax Refund</span>
@@ -707,12 +731,13 @@
                             </div>
                             <span class="benefit-item-amount">$412</span>
                         </div>
+                        </div>
                     </div>
                 </div>
             </section>
 
             <!-- What's Waiting For You Section -->
-            <section class="benefits-section animate-in delay-4" id="benefits-waiting-section">
+            <section class="benefits-section available animate-in delay-4" id="benefits-waiting-section">
                 <div class="benefits-section-header">
                     <h2 class="benefits-section-title">Claim These Next</h2>
                     <span class="benefits-section-total">~$3,200/yr</span>
@@ -751,9 +776,12 @@
                 <div class="benefits-compact-section">
                     <p class="benefits-compact-header">Also worth exploring</p>
                     <div class="benefits-compact-list">
-                        <div class="benefit-compact-item">
+                        <div class="benefit-compact-item" onclick="showToast('Eligibility checker coming soon.');">
                             <div class="benefit-compact-info">
-                                <span class="benefit-compact-name">Pre-Tax Childcare Savings</span>
+                                <span class="benefit-compact-name">
+                                    Pre-Tax Childcare Savings
+                                    <span class="eligibility-badge high">Likely eligible</span>
+                                </span>
                                 <span class="benefit-compact-meta">
                                     <span class="benefit-compact-effort">
                                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
@@ -764,12 +792,15 @@
                             </div>
                             <div class="benefit-compact-right">
                                 <span class="benefit-compact-amount">+$1,200/yr</span>
-                                <a href="javascript:void(0)" onclick="showToast('Eligibility checker coming soon.');" class="benefit-compact-cta">Check →</a>
+                                <a href="javascript:void(0)" onclick="event.stopPropagation(); showToast('Eligibility checker coming soon.');" class="benefit-compact-cta">Check →</a>
                             </div>
                         </div>
-                        <div class="benefit-compact-item">
+                        <div class="benefit-compact-item" onclick="showToast('Eligibility checker coming soon.');">
                             <div class="benefit-compact-info">
-                                <span class="benefit-compact-name">Retirement Savings Bonus</span>
+                                <span class="benefit-compact-name">
+                                    Retirement Savings Bonus
+                                    <span class="eligibility-badge high">Likely eligible</span>
+                                </span>
                                 <span class="benefit-compact-meta">
                                     <span class="benefit-compact-effort">
                                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
@@ -780,12 +811,15 @@
                             </div>
                             <div class="benefit-compact-right">
                                 <span class="benefit-compact-amount">+$400/yr</span>
-                                <a href="javascript:void(0)" onclick="showToast('Eligibility checker coming soon.');" class="benefit-compact-cta">Check →</a>
+                                <a href="javascript:void(0)" onclick="event.stopPropagation(); showToast('Eligibility checker coming soon.');" class="benefit-compact-cta">Check →</a>
                             </div>
                         </div>
-                        <div class="benefit-compact-item">
+                        <div class="benefit-compact-item" onclick="showToast('Eligibility checker coming soon.');">
                             <div class="benefit-compact-info">
-                                <span class="benefit-compact-name">College Fund Tax Break</span>
+                                <span class="benefit-compact-name">
+                                    College Fund Tax Break
+                                    <span class="eligibility-badge medium">May qualify</span>
+                                </span>
                                 <span class="benefit-compact-meta">
                                     <span class="benefit-compact-effort">
                                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
@@ -796,12 +830,15 @@
                             </div>
                             <div class="benefit-compact-right">
                                 <span class="benefit-compact-amount">+$500/yr</span>
-                                <a href="javascript:void(0)" onclick="showToast('Eligibility checker coming soon.');" class="benefit-compact-cta">Check →</a>
+                                <a href="javascript:void(0)" onclick="event.stopPropagation(); showToast('Eligibility checker coming soon.');" class="benefit-compact-cta">Check →</a>
                             </div>
                         </div>
-                        <div class="benefit-compact-item">
+                        <div class="benefit-compact-item" onclick="showToast('Eligibility checker coming soon.');">
                             <div class="benefit-compact-info">
-                                <span class="benefit-compact-name">Property Tax Relief</span>
+                                <span class="benefit-compact-name">
+                                    Property Tax Relief
+                                    <span class="eligibility-badge medium">May qualify</span>
+                                </span>
                                 <span class="benefit-compact-meta">
                                     <span class="benefit-compact-effort">
                                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
@@ -812,7 +849,7 @@
                             </div>
                             <div class="benefit-compact-right">
                                 <span class="benefit-compact-amount">+$350/yr</span>
-                                <a href="javascript:void(0)" onclick="showToast('Eligibility checker coming soon.');" class="benefit-compact-cta">Check →</a>
+                                <a href="javascript:void(0)" onclick="event.stopPropagation(); showToast('Eligibility checker coming soon.');" class="benefit-compact-cta">Check →</a>
                             </div>
                         </div>
                     </div>
@@ -829,7 +866,25 @@
                     <polyline points="10 9 9 9 8 9"/>
                 </svg>
                 <p class="enrollment-teaser-title">Enrollment Assistant Coming Soon</p>
-                <p class="enrollment-teaser-text">We're building tools to help you apply for these benefits: eligibility quizzes, document checklists, direct application links, and deadline reminders.</p>
+                <p class="enrollment-teaser-text">We're building tools to help you claim every benefit you deserve.</p>
+                <div class="enrollment-teaser-features">
+                    <span class="enrollment-teaser-feature">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        Eligibility quizzes
+                    </span>
+                    <span class="enrollment-teaser-feature">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        Document checklists
+                    </span>
+                    <span class="enrollment-teaser-feature">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        Direct application links
+                    </span>
+                    <span class="enrollment-teaser-feature">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        Deadline reminders
+                    </span>
+                </div>
                 <button class="enrollment-teaser-btn" disabled>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 16px; height: 16px;">
                         <circle cx="12" cy="12" r="10"/>
@@ -840,24 +895,24 @@
             </div>
 
             <!-- Navigation Links -->
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 3rem;">
-                <a href="javascript:void(0)" onclick="navigateTo('record');" style="background: var(--paper-warm); border-radius: 12px; padding: 1.5rem; text-decoration: none; display: flex; align-items: center; gap: 1rem; transition: background 0.2s;">
-                    <svg style="width: 24px; height: 24px; color: var(--ink-tertiary);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <div class="nav-cards" style="margin-top: 3rem;">
+                <a href="javascript:void(0)" onclick="navigateTo('record');" class="nav-card">
+                    <svg class="nav-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
                         <polyline points="14 2 14 8 20 8"/>
                     </svg>
-                    <div>
-                        <p style="font-size: 0.875rem; font-weight: 500; color: var(--ink); margin-bottom: 0.125rem;">Your Taxes</p>
-                        <p style="font-size: 0.75rem; color: var(--ink-tertiary);">See what you've paid over time</p>
+                    <div class="nav-card-content">
+                        <p class="nav-card-title">Your Taxes</p>
+                        <p class="nav-card-description">See what you've paid over time</p>
                     </div>
                 </a>
-                <a href="javascript:void(0)" onclick="navigateTo('voice');" style="background: var(--paper-warm); border-radius: 12px; padding: 1.5rem; text-decoration: none; display: flex; align-items: center; gap: 1rem; transition: background 0.2s;">
-                    <svg style="width: 24px; height: 24px; color: var(--ink-tertiary);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <a href="javascript:void(0)" onclick="navigateTo('voice');" class="nav-card voice">
+                    <svg class="nav-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                     </svg>
-                    <div>
-                        <p style="font-size: 0.875rem; font-weight: 500; color: var(--ink); margin-bottom: 0.125rem;">Your Voice</p>
-                        <p style="font-size: 0.75rem; color: var(--ink-tertiary);">Who decided these policies?</p>
+                    <div class="nav-card-content">
+                        <p class="nav-card-title">Your Voice</p>
+                        <p class="nav-card-description">Who decided these policies?</p>
                     </div>
                 </a>
             </div>

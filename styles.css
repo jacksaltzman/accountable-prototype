@@ -3735,25 +3735,161 @@ body {
 }
 
 .claim-cta-banner {
-    background: var(--brand-paper);
+    background: linear-gradient(135deg, var(--brand-paper) 0%, var(--paper-warm) 100%);
     padding: 2rem;
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1.5rem;
     text-align: center;
-    border: 1px solid var(--paper-line);
+    border: 2px solid var(--brand-chartreuse);
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+}
+
+.claim-cta-banner::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent 40%,
+        rgba(225, 255, 79, 0.15) 50%,
+        transparent 60%
+    );
+    animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
 }
 
 .claim-cta-text {
     font-family: var(--serif);
-    font-size: 1.25rem;
+    font-size: 1.375rem;
     color: var(--brand-ink);
+    position: relative;
+    z-index: 1;
 }
 
 .claim-cta-text strong {
     font-weight: 600;
+    color: var(--brand-coral);
+}
+
+.claim-cta-banner .btn-brand-primary {
+    position: relative;
+    z-index: 1;
+    padding: 1rem 2.5rem;
+    font-size: 1.125rem;
+}
+
+/* ==========================================
+   PROGRESS BAR VISUALIZATION
+   ========================================== */
+
+.benefits-progress {
+    background: var(--brand-paper);
+    border: 1px solid var(--paper-line);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.benefits-progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.benefits-progress-title {
+    font-family: var(--font-display);
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--ink-secondary);
+}
+
+.benefits-progress-percentage {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--brand-ink);
+}
+
+.benefits-progress-bar {
+    height: 12px;
+    background: var(--paper-warm);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.benefits-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--brand-coral) 0%, #FF7A6E 100%);
+    border-radius: 6px;
+    transition: width 1s ease-out;
+    position: relative;
+}
+
+.benefits-progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.3) 50%,
+        transparent 100%
+    );
+    animation: progressShine 2s ease-in-out infinite;
+}
+
+@keyframes progressShine {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.benefits-progress-labels {
+    display: flex;
+    justify-content: space-between;
+}
+
+.benefits-progress-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8125rem;
+    color: var(--ink-secondary);
+}
+
+.benefits-progress-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.benefits-progress-dot.secured {
+    background: var(--brand-coral);
+}
+
+.benefits-progress-dot.available {
+    background: var(--brand-chartreuse);
+    border: 1px solid var(--ink-tertiary);
 }
 
 @media (max-width: 600px) {
@@ -3997,14 +4133,40 @@ body {
     color: var(--brand-ink);
     text-transform: uppercase;
     letter-spacing: 0.02em;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.benefits-section-title::before {
+    content: '';
+    width: 4px;
+    height: 1.25rem;
+    border-radius: 2px;
+    background: var(--paper-line);
+}
+
+.benefits-section.secured .benefits-section-title::before {
+    background: var(--brand-coral);
+}
+
+.benefits-section.available .benefits-section-title::before {
+    background: var(--brand-chartreuse);
 }
 
 .benefits-section-total {
-    font-family: var(--font-display);
+    font-family: var(--serif);
     font-size: 1.25rem;
-    font-weight: 800;
     font-weight: 500;
     color: var(--ink);
+}
+
+.benefits-section.secured .benefits-section-total {
+    color: var(--brand-coral);
+}
+
+.benefits-section.available .benefits-section-total {
+    color: var(--increase);
 }
 
 /* Expandable Benefit Rows */
@@ -4122,13 +4284,19 @@ body {
 }
 
 .benefit-category-body {
-    display: none;
+    display: grid;
+    grid-template-rows: 0fr;
     border-top: 1px solid var(--paper-line);
     background: var(--paper-warm);
+    transition: grid-template-rows 0.3s ease;
+}
+
+.benefit-category-body-inner {
+    overflow: hidden;
 }
 
 .benefit-category.expanded .benefit-category-body {
-    display: block;
+    grid-template-rows: 1fr;
 }
 
 .benefit-item {
@@ -4137,10 +4305,41 @@ body {
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid var(--paper-line);
+    transition: background 0.15s ease, padding-left 0.15s ease;
+    cursor: default;
+}
+
+.benefit-item:hover {
+    background: rgba(255, 255, 255, 0.5);
+    padding-left: 1.75rem;
 }
 
 .benefit-item:last-child {
     border-bottom: none;
+}
+
+.benefit-item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.benefit-item-name {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--ink);
+}
+
+.benefit-item-source {
+    font-size: 0.75rem;
+    color: var(--ink-tertiary);
+}
+
+.benefit-item-amount {
+    font-family: var(--serif);
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: var(--confirmed);
 }
 
 .benefit-item-info {
@@ -4450,19 +4649,35 @@ body {
 .benefit-spotlight-cta {
     display: inline-flex;
     align-items: center;
-    gap: 0.375rem;
-    background: var(--confirmed);
+    gap: 0.5rem;
+    background: var(--brand-ink);
     color: white;
-    font-size: 0.875rem;
-    font-weight: 500;
-    padding: 0.625rem 1rem;
-    border-radius: 6px;
+    font-family: var(--font-display);
+    font-size: 0.9375rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    padding: 0.875rem 1.5rem;
+    border-radius: 8px;
     text-decoration: none;
-    transition: opacity 0.2s;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .benefit-spotlight-cta:hover {
-    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    background: #1a1a1a;
+}
+
+.benefit-spotlight-cta:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.benefit-spotlight-cta:focus-visible {
+    outline: 3px solid var(--brand-coral);
+    outline-offset: 2px;
 }
 
 /* Benefits Compact Section */
@@ -4491,14 +4706,23 @@ body {
     align-items: center;
     background: var(--paper-warm);
     padding: 1rem 1.25rem;
-    border-radius: 8px;
+    border-radius: 10px;
     gap: 1rem;
+    border: 1px solid transparent;
+    transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+}
+
+.benefit-compact-item:hover {
+    border-color: var(--paper-line);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
 .benefit-compact-info {
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
+    gap: 0.375rem;
     flex: 1;
     min-width: 0;
 }
@@ -4507,6 +4731,37 @@ body {
     font-size: 0.9375rem;
     font-weight: 500;
     color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.eligibility-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    padding: 0.125rem 0.5rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.eligibility-badge.high {
+    background: var(--increase-bg);
+    color: var(--increase);
+}
+
+.eligibility-badge.medium {
+    background: var(--estimate-bg);
+    color: var(--estimate);
+}
+
+.eligibility-badge.low {
+    background: var(--paper-warm);
+    color: var(--ink-tertiary);
+    border: 1px solid var(--paper-line);
 }
 
 .benefit-compact-meta {
@@ -4592,46 +4847,92 @@ body {
 
 /* Phase 3 Teaser */
 .enrollment-teaser {
-    background: var(--paper-warm);
-    border-radius: 12px;
-    padding: 2rem;
+    background: linear-gradient(135deg, var(--paper-warm) 0%, var(--brand-paper) 100%);
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
     text-align: center;
     margin-top: 3rem;
+    border: 1px dashed var(--paper-line);
+    position: relative;
+    overflow: hidden;
+}
+
+.enrollment-teaser::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--brand-coral), var(--brand-chartreuse));
+    border-radius: 16px 16px 0 0;
 }
 
 .enrollment-teaser-icon {
-    width: 48px;
-    height: 48px;
-    margin: 0 auto 1rem;
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 1.25rem;
+    padding: 1rem;
+    background: var(--brand-paper);
+    border-radius: 12px;
     color: var(--coral);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .enrollment-teaser-title {
-    font-family: var(--serif);
-    font-size: 1.25rem;
-    font-weight: 500;
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    font-weight: 800;
     color: var(--ink);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
 }
 
 .enrollment-teaser-text {
-    font-size: 0.875rem;
+    font-size: 0.9375rem;
     color: var(--ink-secondary);
     line-height: 1.6;
-    max-width: 500px;
+    max-width: 480px;
     margin: 0 auto 1.5rem;
+}
+
+.enrollment-teaser-features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.enrollment-teaser-feature {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.75rem;
+    color: var(--ink-secondary);
+    background: var(--brand-paper);
+    padding: 0.375rem 0.75rem;
+    border-radius: 20px;
+    border: 1px solid var(--paper-line);
+}
+
+.enrollment-teaser-feature svg {
+    width: 12px;
+    height: 12px;
+    color: var(--increase);
 }
 
 .enrollment-teaser-btn {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
+    padding: 0.875rem 1.75rem;
     background: var(--paper);
-    border: 1px solid var(--paper-line);
-    border-radius: 6px;
+    border: 2px solid var(--paper-line);
+    border-radius: 8px;
     font-size: 0.875rem;
-    font-weight: 500;
+    font-weight: 600;
     color: var(--ink-secondary);
     cursor: not-allowed;
     opacity: 0.7;
@@ -5821,6 +6122,260 @@ body {
 
     .receipt-paper {
         max-width: 100%;
+    }
+}
+
+/* ==========================================
+   CLAIM PAGE MOBILE OPTIMIZATIONS
+   ========================================== */
+
+@media (max-width: 768px) {
+    /* CTA Banner - Stack content and reduce padding */
+    .claim-cta-banner {
+        padding: 1.5rem;
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .claim-cta-text {
+        font-size: 1.125rem;
+        line-height: 1.4;
+    }
+
+    .claim-cta-banner .btn-brand-primary {
+        padding: 0.875rem 2rem;
+        font-size: 1rem;
+        width: 100%;
+    }
+
+    /* Progress Bar - Compact version */
+    .benefits-progress {
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .benefits-progress-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+
+    .benefits-progress-percentage {
+        font-size: 1rem;
+    }
+
+    .benefits-progress-labels {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    /* Section Headers - Smaller typography */
+    .benefits-section-title {
+        font-size: 1rem;
+    }
+
+    .benefits-section-total {
+        font-size: 1rem;
+    }
+
+    /* Benefit Categories - Touch-friendly */
+    .benefit-category-header {
+        padding: 0.75rem 1rem;
+    }
+
+    .benefit-category-info {
+        gap: 0.75rem;
+    }
+
+    .benefit-category-icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    .benefit-category-icon svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .benefit-category-name {
+        font-size: 0.875rem;
+    }
+
+    .benefit-category-amount {
+        font-size: 1.125rem;
+    }
+
+    .benefit-category-right {
+        gap: 0.5rem;
+    }
+
+    /* Benefit Items - Full width */
+    .benefit-item {
+        padding: 0.75rem 1rem;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .benefit-item:hover {
+        padding-left: 1.125rem;
+    }
+
+    .benefit-item-name {
+        font-size: 0.8125rem;
+        flex: 1 1 100%;
+        order: 1;
+    }
+
+    .benefit-item-amount {
+        font-size: 1rem;
+        order: 2;
+    }
+
+    /* Spotlight Card - Improved mobile layout */
+    .benefit-spotlight {
+        padding: 1.25rem;
+    }
+
+    .benefit-spotlight-badge {
+        font-size: 0.625rem;
+        padding: 0.25rem 0.5rem;
+    }
+
+    .benefit-spotlight-name {
+        font-size: 1rem;
+    }
+
+    .benefit-spotlight-description {
+        font-size: 0.8125rem;
+    }
+
+    .benefit-spotlight-amount {
+        font-size: 1.5rem;
+    }
+
+    .benefit-spotlight-cta {
+        padding: 0.75rem 1.25rem;
+        font-size: 0.8125rem;
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Eligibility Badges - Larger touch targets */
+    .eligibility-badge {
+        font-size: 0.625rem;
+        padding: 0.25rem 0.5rem;
+    }
+
+    /* Compact Benefits - Stack on mobile */
+    .benefit-compact-item {
+        padding: 0.875rem 1rem;
+    }
+
+    .benefit-compact-name {
+        font-size: 0.875rem;
+    }
+
+    .benefit-compact-amount {
+        font-size: 1.125rem;
+    }
+
+    /* Enrollment Teaser - Compact */
+    .enrollment-teaser {
+        padding: 2rem 1.25rem;
+        margin-top: 2rem;
+    }
+
+    .enrollment-teaser-icon {
+        width: 48px;
+        height: 48px;
+        padding: 0.75rem;
+    }
+
+    .enrollment-teaser-title {
+        font-size: 1rem;
+    }
+
+    .enrollment-teaser-text {
+        font-size: 0.875rem;
+    }
+
+    .enrollment-teaser-features {
+        gap: 0.375rem;
+    }
+
+    .enrollment-teaser-feature {
+        font-size: 0.6875rem;
+        padding: 0.25rem 0.5rem;
+    }
+
+    .enrollment-teaser-btn {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.8125rem;
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Extra-small screens for Claim page */
+@media (max-width: 375px) {
+    .claim-cta-banner {
+        padding: 1.25rem 1rem;
+        border-radius: 12px;
+    }
+
+    .claim-cta-text {
+        font-size: 1rem;
+    }
+
+    .benefits-section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+
+    .benefit-category-header {
+        padding: 0.625rem 0.75rem;
+    }
+
+    .benefit-category-amount {
+        font-size: 1rem;
+    }
+
+    .benefit-spotlight {
+        padding: 1rem;
+        border-radius: 12px;
+    }
+
+    .benefit-spotlight-amount {
+        font-size: 1.25rem;
+    }
+
+    .enrollment-teaser {
+        padding: 1.5rem 1rem;
+        border-radius: 12px;
+    }
+}
+
+/* Touch-friendly improvements for all interactive elements */
+@media (hover: none) and (pointer: coarse) {
+    .benefit-category-header {
+        min-height: 56px;
+    }
+
+    .benefit-item {
+        min-height: 48px;
+    }
+
+    .benefit-compact-item {
+        min-height: 48px;
+    }
+
+    .benefit-spotlight-cta {
+        min-height: 48px;
+    }
+
+    .enrollment-teaser-btn {
+        min-height: 48px;
     }
 }
 
