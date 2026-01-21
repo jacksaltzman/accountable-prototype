@@ -3646,9 +3646,10 @@ body {
 
 .benefit-compact-amount {
     font-family: var(--serif);
-    font-size: 1rem;
-    font-weight: 500;
-    color: var(--estimate);
+    font-size: 1.375rem;
+    font-weight: 600;
+    color: var(--coral);
+    letter-spacing: -0.02em;
 }
 
 .benefit-compact-cta {
