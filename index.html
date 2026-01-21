@@ -918,13 +918,47 @@
             border-top: 1px solid var(--paper-line);
         }
 
+        .policy-markers-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+
         .policy-markers-title {
             font-size: 0.75rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.05em;
             color: var(--ink-tertiary);
-            margin-bottom: 0.75rem;
+        }
+
+        .policy-markers-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--ink-secondary);
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            transition: all 0.2s;
+            font-family: var(--sans);
+        }
+
+        .policy-markers-link:hover {
+            color: var(--ink);
+            background: var(--paper-warm);
+        }
+
+        .policy-markers-link svg {
+            width: 14px;
+            height: 14px;
         }
 
         .policy-marker-list {
@@ -3940,7 +3974,15 @@
                     </div>
 
                     <div class="policy-markers">
-                        <p class="policy-markers-title">Policy events affecting your taxes</p>
+                        <div class="policy-markers-header">
+                            <p class="policy-markers-title">Policy events affecting your taxes</p>
+                            <button class="policy-markers-link" onclick="navigateTo('voice')">
+                                See how your representatives voted
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                            </button>
+                        </div>
                         <div class="policy-marker-list" id="policy-marker-list">
                             <div class="policy-marker">
                                 <span class="policy-marker-year">2021</span>
