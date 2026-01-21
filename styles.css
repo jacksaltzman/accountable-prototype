@@ -1,24 +1,115 @@
 :root {
+    /* ═══════════════════════════════════════════════════════════
+       ACCOUNTABLE DESIGN SYSTEM
+       A warm, trustworthy palette for financial clarity
+       ═══════════════════════════════════════════════════════════ */
+
+    /* Brand Colors */
     --coral: #F05A4E;
+    --coral-hover: #E04A3E;
     --coral-soft: rgba(240, 90, 78, 0.12);
+    --coral-muted: rgba(240, 90, 78, 0.08);
+
+    /* Ink (Text) Hierarchy - WCAG AA compliant on paper backgrounds */
     --ink: #1A1A1A;
     --ink-secondary: #4A4A4A;
-    --ink-tertiary: #7A7A7A;
+    --ink-tertiary: #6B6B6B;          /* Improved from #7A7A7A for better contrast */
+    --ink-quaternary: #8A8A8A;         /* For truly decorative elements only */
+
+    /* Paper (Background) System */
     --paper: #FDFBF9;
     --paper-warm: #F7F3EF;
+    --paper-cool: #F5F7F9;
     --paper-line: #E8E2DC;
+    --paper-line-strong: #D8D2CC;      /* For more prominent dividers */
+
+    /* Status Colors - Semantic */
     --confirmed: #2D5A3D;
     --confirmed-bg: #E8F0EB;
+    --confirmed-soft: rgba(45, 90, 61, 0.08);
     --estimate: #8B6914;
     --estimate-bg: #FDF6E3;
+    --estimate-soft: rgba(139, 105, 20, 0.08);
     --increase: #2D5A3D;
     --increase-bg: #E8F0EB;
     --decrease: #8B3D3D;
     --decrease-bg: #F5EBEB;
     --neutral: #4A5568;
     --neutral-bg: #EDF2F7;
+
+    /* Allocation Colors - Harmonious palette for data viz */
+    --alloc-social: #5C6B7A;
+    --alloc-health: #7A9E7E;
+    --alloc-defense: #8B7355;
+    --alloc-income: #9B8AA6;
+    --alloc-veterans: #6B8E8E;
+    --alloc-education: #B5A67C;
+    --alloc-transport: #8A9EA8;
+    --alloc-other: #A89080;
+    --alloc-interest: #7A8B9A;
+
+    /* Jurisdiction Colors */
+    --jurisdiction-federal: #5C6B7A;
+    --jurisdiction-state: #7A9E7E;
+    --jurisdiction-city: #8B7355;
+
+    /* State-level subcategory colors (green family) */
+    --state-education: #7A9E7E;
+    --state-health: #5C8A6B;
+    --state-transport: #4A7A5A;
+    --state-safety: #3D6B4D;
+    --state-economic: #8FB896;
+    --state-environment: #A5C9AC;
+    --state-other: #B8D4BE;
+
+    /* City-level subcategory colors (warm family) */
+    --city-education: #8B7355;
+    --city-safety: #7A6348;
+    --city-health: #9B8365;
+    --city-infrastructure: #6A5338;
+    --city-housing: #AB9375;
+    --city-parks: #BBA385;
+    --city-other: #CBB395;
+
+    /* Typography */
     --serif: 'Cormorant Garamond', Georgia, serif;
-    --sans: 'DM Sans', -apple-system, sans-serif;
+    --sans: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+    /* ─── Border Radius Scale ─── */
+    --radius-xs: 4px;                  /* Small badges, inputs */
+    --radius-sm: 6px;                  /* Buttons, tags */
+    --radius-md: 8px;                  /* Cards, medium containers */
+    --radius-lg: 12px;                 /* Large cards, modals */
+    --radius-xl: 16px;                 /* Feature cards, hero elements */
+    --radius-full: 9999px;             /* Pills, avatars */
+
+    /* ─── Elevation (Shadow) System ─── */
+    --shadow-xs: 0 1px 2px rgba(26, 26, 26, 0.04);
+    --shadow-sm: 0 1px 3px rgba(26, 26, 26, 0.06), 0 1px 2px rgba(26, 26, 26, 0.04);
+    --shadow-md: 0 4px 6px rgba(26, 26, 26, 0.05), 0 2px 4px rgba(26, 26, 26, 0.04);
+    --shadow-lg: 0 10px 15px rgba(26, 26, 26, 0.06), 0 4px 6px rgba(26, 26, 26, 0.04);
+    --shadow-xl: 0 20px 25px rgba(26, 26, 26, 0.08), 0 8px 10px rgba(26, 26, 26, 0.04);
+    --shadow-focus: 0 0 0 3px var(--coral-soft);
+    --shadow-card: 0 1px 3px rgba(26, 26, 26, 0.04), 0 0 0 1px rgba(26, 26, 26, 0.02);
+
+    /* ─── Spacing Scale (8px base) ─── */
+    --space-1: 0.25rem;                /* 4px */
+    --space-2: 0.5rem;                 /* 8px */
+    --space-3: 0.75rem;                /* 12px */
+    --space-4: 1rem;                   /* 16px */
+    --space-5: 1.25rem;                /* 20px */
+    --space-6: 1.5rem;                 /* 24px */
+    --space-8: 2rem;                   /* 32px */
+    --space-10: 2.5rem;                /* 40px */
+    --space-12: 3rem;                  /* 48px */
+    --space-16: 4rem;                  /* 64px */
+
+    /* ─── Transitions ─── */
+    --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+    --transition-fast: 150ms var(--ease-out);
+    --transition-base: 200ms var(--ease-out);
+    --transition-slow: 300ms var(--ease-out);
 }
 
 * {
@@ -38,6 +129,21 @@ body {
     color: var(--ink);
     line-height: 1.6;
     min-height: 100vh;
+}
+
+/* Focus styles for accessibility */
+*:focus-visible {
+    outline: 2px solid var(--coral);
+    outline-offset: 2px;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 2px solid var(--coral);
+    outline-offset: 2px;
+    box-shadow: var(--shadow-focus);
 }
 
 /* Header */
@@ -63,7 +169,7 @@ body {
 .logo-mark {
     width: 36px;
     height: 36px;
-    border-radius: 8px;
+    border-radius: var(--radius-md);
     object-fit: cover;
 }
 
@@ -85,7 +191,7 @@ body {
     font-size: 0.875rem;
     color: var(--ink-secondary);
     text-decoration: none;
-    transition: color 0.2s;
+    transition: color var(--transition-fast);
     cursor: pointer;
 }
 
@@ -119,8 +225,8 @@ body {
     width: 22px;
     height: 2px;
     background: var(--ink);
-    border-radius: 2px;
-    transition: all 0.3s ease;
+    border-radius: var(--radius-xs);
+    transition: var(--transition-base);
 }
 
 .mobile-menu-btn.active span:nth-child(1) {
@@ -162,7 +268,7 @@ body {
     z-index: 175;
     transition: right 0.3s ease;
     padding: 5rem 1.5rem 2rem;
-    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-xl);
     overflow-y: auto;
 }
 
@@ -177,9 +283,9 @@ body {
     font-size: 1.125rem;
     border-bottom: 1px solid var(--paper-line);
     min-height: 52px;
-    border-radius: 8px;
+    border-radius: var(--radius-md);
     margin: 0 -0.75rem;
-    transition: background 0.2s ease;
+    transition: background var(--transition-fast);
 }
 
 .mobile-nav-drawer .nav-link:hover {
@@ -275,8 +381,8 @@ body {
     font-size: 0.75rem;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--ink-tertiary);
+    letter-spacing: 0.1em;
+    color: var(--ink-secondary);
     margin-bottom: 1rem;
 }
 
@@ -308,8 +414,9 @@ body {
     gap: 1px;
     background: var(--paper-line);
     border: 1px solid var(--paper-line);
-    border-radius: 12px;
+    border-radius: var(--radius-lg);
     overflow: hidden;
+    box-shadow: var(--shadow-card);
 }
 
 .summary-card {
@@ -319,11 +426,11 @@ body {
 }
 
 .summary-card:first-child {
-    border-radius: 12px 0 0 12px;
+    border-radius: var(--radius-lg) 0 0 var(--radius-lg);
 }
 
 .summary-card:last-child {
-    border-radius: 0 12px 12px 0;
+    border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
 }
 
 .summary-label {
@@ -356,7 +463,7 @@ body {
     font-size: 0.6875rem;
     font-weight: 500;
     padding: 0.125rem 0.5rem;
-    border-radius: 4px;
+    border-radius: var(--radius-xs);
     text-transform: uppercase;
     letter-spacing: 0.03em;
 }
@@ -374,7 +481,7 @@ body {
 .data-badge-dot {
     width: 5px;
     height: 5px;
-    border-radius: 50%;
+    border-radius: var(--radius-full);
     background: currentColor;
 }
 
@@ -408,7 +515,7 @@ body {
 
 .taxes-paid-card {
     background: var(--paper-warm);
-    border-radius: 12px;
+    border-radius: var(--radius-lg);
     padding: 2rem;
 }
 
@@ -481,26 +588,26 @@ body {
 .tax-type-bar {
     height: 8px;
     background: var(--paper);
-    border-radius: 4px;
+    border-radius: var(--radius-xs);
     overflow: hidden;
 }
 
 .tax-type-bar-fill {
     height: 100%;
-    border-radius: 4px;
+    border-radius: var(--radius-xs);
     transition: width 0.4s ease;
 }
 
 .tax-type-bar-fill.federal {
-    background: #5C6B7A;
+    background: var(--jurisdiction-federal);
 }
 
 .tax-type-bar-fill.state {
-    background: #7A9E7E;
+    background: var(--jurisdiction-state);
 }
 
 .tax-type-bar-fill.city {
-    background: #8B7355;
+    background: var(--jurisdiction-city);
 }
 
 .tax-type-percentage {
@@ -518,7 +625,7 @@ body {
 .tax-story-summary {
     background: linear-gradient(135deg, var(--paper-warm) 0%, var(--paper) 100%);
     border-left: 3px solid var(--ink-tertiary);
-    border-radius: 0 12px 12px 0;
+    border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
     padding: 1.25rem 1.5rem;
     margin-bottom: 2rem;
 }
@@ -541,7 +648,7 @@ body {
 .yoy-comparison-card {
     background: var(--paper);
     border: 1px solid var(--paper-line);
-    border-radius: 12px;
+    border-radius: var(--radius-lg);
     padding: 1.5rem;
     margin-top: 1.5rem;
 }
@@ -563,7 +670,7 @@ body {
     font-size: 0.6875rem;
     font-weight: 500;
     padding: 0.25rem 0.5rem;
-    border-radius: 4px;
+    border-radius: var(--radius-xs);
     text-transform: uppercase;
     letter-spacing: 0.03em;
 }
@@ -675,7 +782,7 @@ body {
     width: 18px;
     height: 18px;
     color: var(--coral);
-    transition: transform 0.2s;
+    transition: transform var(--transition-fast);
 }
 
 .yoy-comparison-card.expanded .why-change-chevron {
@@ -754,7 +861,7 @@ body {
 .trend-visualization {
     background: var(--paper);
     border: 1px solid var(--paper-line);
-    border-radius: 12px;
+    border-radius: var(--radius-lg);
     padding: 1.5rem;
     margin-top: 1.5rem;
 }
@@ -855,8 +962,8 @@ body {
     color: var(--ink-tertiary);
     cursor: pointer;
     padding: 0.25rem 0.5rem;
-    border-radius: 4px;
-    transition: all 0.2s;
+    border-radius: var(--radius-xs);
+    transition: var(--transition-fast);
 }
 
 .trend-year-label:hover {
@@ -929,8 +1036,8 @@ body {
     border: 1px solid var(--paper-line);
     cursor: pointer;
     padding: 0.375rem 0.625rem;
-    border-radius: 4px;
-    transition: all 0.2s;
+    border-radius: var(--radius-xs);
+    transition: var(--transition-fast);
     font-family: var(--sans);
     white-space: nowrap;
 }
@@ -969,7 +1076,7 @@ body {
 .policy-marker-dot {
     width: 6px;
     height: 6px;
-    border-radius: 50%;
+    border-radius: var(--radius-full);
     background: var(--coral);
     flex-shrink: 0;
 }
@@ -1041,7 +1148,7 @@ body {
 /* Benefits Breakdown Section */
 .benefits-breakdown {
     background: var(--paper-warm);
-    border-radius: 12px;
+    border-radius: var(--radius-lg);
     padding: 2rem;
     margin-bottom: 3rem;
 }
@@ -1115,14 +1222,14 @@ body {
 .jurisdiction-bar {
     height: 8px;
     background: var(--paper);
-    border-radius: 4px;
+    border-radius: var(--radius-xs);
     overflow: hidden;
 }
 
 .jurisdiction-bar-fill {
     height: 100%;
     background: var(--confirmed);
-    border-radius: 4px;
+    border-radius: var(--radius-xs);
     transition: width 0.4s ease;
 }
 
@@ -1141,7 +1248,7 @@ body {
 
 .benefit-highlight {
     background: var(--paper);
-    border-radius: 8px;
+    border-radius: var(--radius-md);
     padding: 1rem 1.25rem;
     margin-top: 1.5rem;
     border-left: 3px solid var(--confirmed);
@@ -1174,7 +1281,7 @@ body {
     gap: 1px;
     background: var(--paper-line);
     border: 1px solid var(--paper-line);
-    border-radius: 12px;
+    border-radius: var(--radius-lg);
     overflow: hidden;
     margin-bottom: 2rem;
 }
@@ -1225,21 +1332,24 @@ body {
     padding: 0.5rem 1rem;
     border: 1px solid var(--paper-line);
     background: var(--paper);
-    border-radius: 6px;
+    border-radius: var(--radius-sm);
     cursor: pointer;
     color: var(--ink-secondary);
-    transition: all 0.2s;
+    transition: var(--transition-fast);
+    box-shadow: var(--shadow-xs);
 }
 
 .filter-btn:hover {
-    border-color: var(--ink-tertiary);
+    border-color: var(--paper-line-strong);
     color: var(--ink);
+    box-shadow: var(--shadow-sm);
 }
 
 .filter-btn.active {
     background: var(--ink);
     color: var(--paper);
     border-color: var(--ink);
+    box-shadow: none;
 }
 
 /* Policy Cards Container */
@@ -1253,13 +1363,15 @@ body {
 .policy-card {
     background: var(--paper);
     border: 1px solid var(--paper-line);
-    border-radius: 12px;
+    border-radius: var(--radius-lg);
     overflow: hidden;
-    transition: border-color 0.2s;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-shadow: var(--shadow-card);
 }
 
 .policy-card:hover {
-    border-color: var(--ink-tertiary);
+    border-color: var(--paper-line-strong);
+    box-shadow: var(--shadow-sm);
 }
 
 .policy-card-header {
@@ -1304,7 +1416,7 @@ body {
     color: var(--ink-tertiary);
     background: var(--paper-warm);
     padding: 0.125rem 0.5rem;
-    border-radius: 3px;
+    border-radius: var(--radius-xs);
 }
 
 .policy-impact-badge {
@@ -1402,7 +1514,7 @@ body {
     justify-content: space-between;
     padding: 0.75rem 1rem;
     background: var(--paper-warm);
-    border-radius: 8px;
+    border-radius: var(--radius-md);
 }
 
 .official-info {
@@ -1414,7 +1526,7 @@ body {
 .official-avatar {
     width: 36px;
     height: 36px;
-    border-radius: 50%;
+    border-radius: var(--radius-full);
     background: var(--paper-line);
     display: flex;
     align-items: center;
@@ -1483,7 +1595,7 @@ body {
 .breakdown-item {
     padding: 0.75rem;
     background: var(--paper-warm);
-    border-radius: 6px;
+    border-radius: var(--radius-sm);
     text-align: center;
 }
 
@@ -1519,7 +1631,7 @@ body {
     width: 20px;
     height: 20px;
     color: var(--ink-tertiary);
-    transition: transform 0.2s;
+    transition: transform var(--transition-fast);
     flex-shrink: 0;
 }
 
@@ -1532,7 +1644,7 @@ body {
     margin-top: 2rem;
     padding: 1.5rem;
     background: var(--paper-warm);
-    border-radius: 12px;
+    border-radius: var(--radius-lg);
 }
 
 .methodology-header {
@@ -1595,7 +1707,7 @@ body {
     margin-top: 3rem;
     padding: 1.5rem;
     background: var(--paper-warm);
-    border-radius: 8px;
+    border-radius: var(--radius-md);
     display: flex;
     gap: 1rem;
     align-items: flex-start;
@@ -1657,10 +1769,10 @@ body {
     color: var(--paper);
     font-size: 0.75rem;
     padding: 0.5rem 0.75rem;
-    border-radius: 6px;
+    border-radius: var(--radius-sm);
     opacity: 0;
     visibility: hidden;
-    transition: all 0.2s;
+    transition: var(--transition-fast);
     z-index: 10;
     min-width: 180px;
     max-width: 280px;
@@ -1771,10 +1883,10 @@ body {
     padding: 0.5rem 1rem;
     border: 1px solid var(--paper-line);
     background: var(--paper);
-    border-radius: 6px;
+    border-radius: var(--radius-sm);
     cursor: pointer;
     color: var(--ink-secondary);
-    transition: all 0.2s;
+    transition: var(--transition-fast);
 }
 
 .year-pill:hover {
@@ -1791,7 +1903,7 @@ body {
 /* Federal Context Card */
 .federal-context-card {
     background: var(--paper-warm);
-    border-radius: 12px;
+    border-radius: var(--radius-lg);
     padding: 1.75rem;
     margin-bottom: 2.5rem;
     border-left: 3px solid var(--coral);
@@ -1828,7 +1940,7 @@ body {
 /* Total Burden Card (deprecated - moved to Page 1) */
 .total-burden-card {
     background: var(--paper-warm);
-    border-radius: 12px;
+    border-radius: var(--radius-lg);
     padding: 2rem;
     margin-bottom: 2rem;
 }
@@ -1901,26 +2013,26 @@ body {
 .burden-bar {
     height: 8px;
     background: var(--paper);
-    border-radius: 4px;
+    border-radius: var(--radius-xs);
     overflow: hidden;
 }
 
 .burden-bar-fill {
     height: 100%;
-    border-radius: 4px;
+    border-radius: var(--radius-xs);
     transition: width 0.4s ease;
 }
 
 .burden-bar-fill.federal {
-    background: #5C6B7A;
+    background: var(--jurisdiction-federal);
 }
 
 .burden-bar-fill.state {
-    background: #7A9E7E;
+    background: var(--jurisdiction-state);
 }
 
 .burden-bar-fill.city {
-    background: #8B7355;
+    background: var(--jurisdiction-city);
 }
 
 .burden-percentage {
@@ -1947,7 +2059,7 @@ body {
 /* Tax Summary Card */
 .tax-summary-card {
     background: var(--paper-warm);
-    border-radius: 12px;
+    border-radius: var(--radius-lg);
     padding: 2rem;
     margin-bottom: 3rem;
     display: flex;
@@ -1986,7 +2098,7 @@ body {
 .nav-panel {
     background: var(--paper);
     border: 1px solid var(--paper-line);
-    border-radius: 12px;
+    border-radius: var(--radius-lg);
     overflow: hidden;
     margin-bottom: 2rem;
 }
@@ -2008,8 +2120,8 @@ body {
     color: var(--ink-secondary);
     text-decoration: none;
     padding: 0.375rem 0.75rem;
-    border-radius: 4px;
-    transition: all 0.2s;
+    border-radius: var(--radius-xs);
+    transition: var(--transition-fast);
     cursor: pointer;
 }
 
@@ -2078,14 +2190,14 @@ body {
 .breakdown-bar {
     height: 8px;
     background: var(--paper-line);
-    border-radius: 4px;
+    border-radius: var(--radius-xs);
     overflow: hidden;
 }
 
 .breakdown-bar-fill {
     height: 100%;
     background: var(--ink);
-    border-radius: 4px;
+    border-radius: var(--radius-xs);
     transition: width 0.4s ease;
 }
 
@@ -2137,7 +2249,7 @@ body {
     align-items: center;
     gap: 0.25rem;
     padding: 0.125rem 0.5rem;
-    border-radius: 12px;
+    border-radius: var(--radius-lg);
     font-size: 0.6875rem;
     font-weight: 500;
     margin-top: 0.25rem;
@@ -2173,7 +2285,7 @@ body {
     height: 20px;
     color: var(--ink-tertiary);
     flex-shrink: 0;
-    transition: transform 0.2s;
+    transition: transform var(--transition-fast);
 }
 
 .breakdown-list-item:hover .breakdown-chevron {
@@ -2209,7 +2321,7 @@ body {
     margin-top: 3rem;
     padding: 1.5rem;
     background: var(--paper-warm);
-    border-radius: 12px;
+    border-radius: var(--radius-lg);
 }
 
 .methodology-content {
@@ -2219,7 +2331,7 @@ body {
 /* Category Trend View */
 .category-trend {
     background: var(--paper-warm);
-    border-radius: 12px;
+    border-radius: var(--radius-lg);
     padding: 1.5rem;
     margin-bottom: 1.5rem;
 }
@@ -2272,7 +2384,7 @@ body {
     flex: 1;
     height: 24px;
     background: var(--paper);
-    border-radius: 4px;
+    border-radius: var(--radius-xs);
     position: relative;
     overflow: hidden;
 }
@@ -2280,7 +2392,7 @@ body {
 .trend-bar-fill {
     height: 100%;
     background: var(--ink-secondary);
-    border-radius: 4px;
+    border-radius: var(--radius-xs);
     transition: width 0.4s ease;
     position: relative;
 }
@@ -2362,11 +2474,11 @@ body {
     }
 
     .summary-card:first-child {
-        border-radius: 12px 12px 0 0;
+        border-radius: var(--radius-lg) var(--radius-lg) 0 0;
     }
 
     .summary-card:last-child {
-        border-radius: 0 0 12px 12px;
+        border-radius: 0 0 var(--radius-lg) var(--radius-lg);
     }
 
     .impact-summary-strip {
@@ -2490,7 +2602,7 @@ body {
 .allocation-bar {
     display: flex;
     height: 36px;
-    border-radius: 8px;
+    border-radius: var(--radius-md);
     overflow: hidden;
     cursor: pointer;
 }
@@ -2505,11 +2617,11 @@ body {
 }
 
 .allocation-segment:first-child {
-    border-radius: 8px 0 0 8px;
+    border-radius: var(--radius-md) 0 0 var(--radius-md);
 }
 
 .allocation-segment:last-child {
-    border-radius: 0 8px 8px 0;
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
 }
 
 .allocation-segment:hover {
@@ -2517,15 +2629,15 @@ body {
     z-index: 10;
 }
 
-.allocation-segment[data-category="social-security"] { background: #5C6B7A; }
-.allocation-segment[data-category="health"] { background: #7A9E7E; }
-.allocation-segment[data-category="defense"] { background: #8B7355; }
-.allocation-segment[data-category="income-security"] { background: #9B8AA6; }
-.allocation-segment[data-category="interest"] { background: var(--coral); }
-.allocation-segment[data-category="veterans"] { background: #6B8E8E; }
-.allocation-segment[data-category="education"] { background: #B5A67C; }
-.allocation-segment[data-category="transportation"] { background: #8A9EA8; }
-.allocation-segment[data-category="other"] { background: #A89080; }
+.allocation-segment[data-category="social-security"] { background: var(--alloc-social); }
+.allocation-segment[data-category="health"] { background: var(--alloc-health); }
+.allocation-segment[data-category="defense"] { background: var(--alloc-defense); }
+.allocation-segment[data-category="income-security"] { background: var(--alloc-income); }
+.allocation-segment[data-category="interest"] { background: var(--alloc-interest); }
+.allocation-segment[data-category="veterans"] { background: var(--alloc-veterans); }
+.allocation-segment[data-category="education"] { background: var(--alloc-education); }
+.allocation-segment[data-category="transportation"] { background: var(--alloc-transport); }
+.allocation-segment[data-category="other"] { background: var(--alloc-other); }
 
 .segment-label {
     font-size: 0.6875rem;
@@ -2548,13 +2660,13 @@ body {
     background: var(--ink);
     color: var(--paper);
     padding: 0.625rem 0.875rem;
-    border-radius: 6px;
+    border-radius: var(--radius-sm);
     font-size: 0.8125rem;
     pointer-events: none;
     opacity: 0;
     transition: opacity 0.15s;
     z-index: 1000;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    box-shadow: var(--shadow-lg);
     max-width: 200px;
 }
 
@@ -2615,7 +2727,7 @@ body {
     width: 120px;
     height: 120px;
     background: var(--confirmed-bg);
-    border-radius: 50%;
+    border-radius: var(--radius-full);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2677,7 +2789,7 @@ body {
 
 .filing-summary-card {
     background: var(--paper-warm);
-    border-radius: 16px;
+    border-radius: var(--radius-xl);
     padding: 2rem;
     width: 100%;
     margin-bottom: 2rem;
@@ -2706,7 +2818,7 @@ body {
     background: var(--confirmed-bg);
     color: var(--confirmed);
     padding: 0.375rem 0.75rem;
-    border-radius: 100px;
+    border-radius: var(--radius-full);
     font-size: 0.8125rem;
     font-weight: 500;
 }
@@ -2754,7 +2866,7 @@ body {
 
 .filing-timeline {
     background: var(--paper);
-    border-radius: 12px;
+    border-radius: var(--radius-lg);
     padding: 1.25rem 1.5rem;
     width: 100%;
     margin-bottom: 2.5rem;
@@ -2784,7 +2896,7 @@ body {
 .timeline-dot {
     width: 24px;
     height: 24px;
-    border-radius: 50%;
+    border-radius: var(--radius-full);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2836,11 +2948,11 @@ body {
     justify-content: center;
     gap: 0.5rem;
     padding: 0.875rem 1.5rem;
-    border-radius: 8px;
+    border-radius: var(--radius-md);
     font-size: 0.9375rem;
     font-weight: 500;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: var(--transition-fast);
     border: none;
     font-family: var(--sans);
     min-height: 56px;
@@ -2849,21 +2961,26 @@ body {
 .celebration-btn.primary {
     background: var(--ink);
     color: var(--paper);
+    box-shadow: var(--shadow-sm);
 }
 
 .celebration-btn.primary:hover {
     background: var(--ink-secondary);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
 }
 
 .celebration-btn.secondary {
     background: var(--paper);
     color: var(--ink);
     border: 1px solid var(--paper-line);
+    box-shadow: var(--shadow-xs);
 }
 
 .celebration-btn.secondary:hover {
     background: var(--paper-warm);
-    border-color: var(--ink-tertiary);
+    border-color: var(--paper-line-strong);
+    box-shadow: var(--shadow-sm);
 }
 
 .celebration-btn svg {
@@ -2926,7 +3043,7 @@ body {
 
 .owed-summary-card {
     background: var(--paper-warm);
-    border-radius: 10px;
+    border-radius: var(--radius-md);
     padding: 1.25rem;
     position: relative;
 }
@@ -2977,7 +3094,7 @@ body {
 
 .benefits-progress-card {
     background: var(--paper-warm);
-    border-radius: 12px;
+    border-radius: var(--radius-lg);
     padding: 1.75rem;
     margin-bottom: 1.25rem;
 }
@@ -3034,14 +3151,14 @@ body {
 .benefits-progress-bar {
     display: flex;
     height: 12px;
-    border-radius: 6px;
+    border-radius: var(--radius-sm);
     overflow: hidden;
     background: transparent;
 }
 
 .benefits-progress-bar-filled {
     background: var(--confirmed);
-    border-radius: 6px 0 0 6px;
+    border-radius: var(--radius-sm) 0 0 var(--radius-sm);
     width: 0%;
     transition: width 1s ease-out;
 }
@@ -3056,7 +3173,7 @@ body {
         transparent 12px
     );
     opacity: 0.4;
-    border-radius: 0 6px 6px 0;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
 }
 
 /* Progress Stats */
@@ -3149,7 +3266,7 @@ body {
 .benefit-category {
     background: var(--paper);
     border: 1px solid var(--paper-line);
-    border-radius: 10px;
+    border-radius: var(--radius-md);
     margin-bottom: 0.75rem;
     overflow: hidden;
 }
@@ -3176,7 +3293,7 @@ body {
 .benefit-category-icon {
     width: 36px;
     height: 36px;
-    border-radius: 8px;
+    border-radius: var(--radius-md);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -3232,7 +3349,7 @@ body {
     width: 20px;
     height: 20px;
     color: var(--ink-tertiary);
-    transition: transform 0.2s;
+    transition: transform var(--transition-fast);
 }
 
 .benefit-category.expanded .benefit-category-chevron {
@@ -3288,7 +3405,7 @@ body {
 /* Potential Benefits Cards */
 .potential-benefits-callout {
     background: var(--estimate-bg);
-    border-radius: 12px;
+    border-radius: var(--radius-lg);
     padding: 1.5rem;
     margin-bottom: 2rem;
     display: flex;
@@ -3346,18 +3463,19 @@ body {
 .potential-benefit-card {
     background: var(--paper);
     border: 1px solid var(--paper-line);
-    border-radius: 12px;
+    border-radius: var(--radius-lg);
     padding: 1.25rem 1.5rem;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     gap: 1rem;
     transition: border-color 0.2s, box-shadow 0.2s;
+    box-shadow: var(--shadow-card);
 }
 
 .potential-benefit-card:hover {
     border-color: var(--estimate);
-    box-shadow: 0 2px 8px rgba(139, 105, 20, 0.1);
+    box-shadow: var(--shadow-md);
 }
 
 .potential-benefit-main {
@@ -3388,7 +3506,7 @@ body {
 .eligibility-dot {
     width: 8px;
     height: 8px;
-    border-radius: 50%;
+    border-radius: var(--radius-full);
 }
 
 .eligibility-dot.high {
@@ -3465,10 +3583,11 @@ body {
 /* Benefit Spotlight */
 .benefit-spotlight {
     background: var(--paper-warm);
-    border-radius: 12px;
+    border-radius: var(--radius-lg);
     border: 2px solid var(--confirmed);
     padding: 1.5rem;
     margin-bottom: 1.5rem;
+    box-shadow: var(--shadow-card);
 }
 
 .benefit-spotlight-badge {
@@ -3480,7 +3599,7 @@ body {
     font-size: 0.75rem;
     font-weight: 600;
     padding: 0.375rem 0.75rem;
-    border-radius: 100px;
+    border-radius: var(--radius-full);
     margin-bottom: 1rem;
 }
 
@@ -3520,7 +3639,7 @@ body {
     line-height: 1.5;
     background: var(--paper);
     padding: 0.75rem;
-    border-radius: 8px;
+    border-radius: var(--radius-md);
     border-left: 3px solid var(--confirmed);
 }
 
@@ -3562,13 +3681,16 @@ body {
     font-size: 0.875rem;
     font-weight: 500;
     padding: 0.625rem 1rem;
-    border-radius: 6px;
+    border-radius: var(--radius-sm);
     text-decoration: none;
-    transition: opacity 0.2s;
+    transition: var(--transition-fast);
+    box-shadow: var(--shadow-sm);
 }
 
 .benefit-spotlight-cta:hover {
-    opacity: 0.9;
+    filter: brightness(1.1);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
 }
 
 /* Benefits Compact Section */
@@ -3597,7 +3719,7 @@ body {
     align-items: center;
     background: var(--paper-warm);
     padding: 1rem 1.25rem;
-    border-radius: 8px;
+    border-radius: var(--radius-md);
     gap: 1rem;
 }
 
@@ -3699,7 +3821,7 @@ body {
 /* Phase 3 Teaser */
 .enrollment-teaser {
     background: var(--paper-warm);
-    border-radius: 12px;
+    border-radius: var(--radius-lg);
     padding: 2rem;
     text-align: center;
     margin-top: 3rem;
@@ -3735,7 +3857,7 @@ body {
     padding: 0.75rem 1.5rem;
     background: var(--paper);
     border: 1px solid var(--paper-line);
-    border-radius: 6px;
+    border-radius: var(--radius-sm);
     font-size: 0.875rem;
     font-weight: 500;
     color: var(--ink-secondary);
@@ -3809,7 +3931,7 @@ body {
     margin-bottom: 2rem;
     padding: 0.375rem;
     background: var(--paper-warm);
-    border-radius: 10px;
+    border-radius: var(--radius-md);
     width: fit-content;
 }
 
@@ -3817,13 +3939,13 @@ body {
     padding: 0.75rem 1.25rem;
     border: none;
     background: transparent;
-    border-radius: 8px;
+    border-radius: var(--radius-md);
     font-family: var(--sans);
     font-size: 0.875rem;
     font-weight: 500;
     color: var(--ink-secondary);
     cursor: pointer;
-    transition: all 0.2s;
+    transition: var(--transition-fast);
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -3837,7 +3959,7 @@ body {
 .jurisdiction-tab.active {
     background: var(--paper);
     color: var(--ink);
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    box-shadow: var(--shadow-sm);
 }
 
 .jurisdiction-tab-amount {
@@ -3861,44 +3983,44 @@ body {
 }
 
 /* State/City specific colors */
-.allocation-segment.state-education { background: #7A9E7E; }
-.allocation-segment.state-health { background: #5C8A6B; }
-.allocation-segment.state-transport { background: #4A7A5A; }
-.allocation-segment.state-safety { background: #3D6B4D; }
-.allocation-segment.state-economic { background: #8FB896; }
-.allocation-segment.state-environment { background: #A5C9AC; }
-.allocation-segment.state-other { background: #B8D4BE; }
+.allocation-segment.state-education { background: var(--state-education); }
+.allocation-segment.state-health { background: var(--state-health); }
+.allocation-segment.state-transport { background: var(--state-transport); }
+.allocation-segment.state-safety { background: var(--state-safety); }
+.allocation-segment.state-economic { background: var(--state-economic); }
+.allocation-segment.state-environment { background: var(--state-environment); }
+.allocation-segment.state-other { background: var(--state-other); }
 
-.allocation-segment.city-education { background: #8B7355; }
-.allocation-segment.city-safety { background: #7A6348; }
-.allocation-segment.city-health { background: #9B8365; }
-.allocation-segment.city-infrastructure { background: #6A5338; }
-.allocation-segment.city-housing { background: #AB9375; }
-.allocation-segment.city-parks { background: #BBA385; }
-.allocation-segment.city-other { background: #CBB395; }
+.allocation-segment.city-education { background: var(--city-education); }
+.allocation-segment.city-safety { background: var(--city-safety); }
+.allocation-segment.city-health { background: var(--city-health); }
+.allocation-segment.city-infrastructure { background: var(--city-infrastructure); }
+.allocation-segment.city-housing { background: var(--city-housing); }
+.allocation-segment.city-parks { background: var(--city-parks); }
+.allocation-segment.city-other { background: var(--city-other); }
 
-.breakdown-bar-fill.state { background: #7A9E7E; }
-.breakdown-bar-fill.city { background: #8B7355; }
+.breakdown-bar-fill.state { background: var(--jurisdiction-state); }
+.breakdown-bar-fill.city { background: var(--jurisdiction-city); }
 
 /* Context card variants */
 .spending-context-card {
     background: var(--paper-warm);
-    border-radius: 12px;
+    border-radius: var(--radius-lg);
     padding: 1.25rem 1.5rem;
     margin-bottom: 2rem;
     border-left: 4px solid var(--paper-line);
 }
 
 .spending-context-card.federal {
-    border-left-color: #5C6B7A;
+    border-left-color: var(--jurisdiction-federal);
 }
 
 .spending-context-card.state {
-    border-left-color: #7A9E7E;
+    border-left-color: var(--jurisdiction-state);
 }
 
 .spending-context-card.city {
-    border-left-color: #8B7355;
+    border-left-color: var(--jurisdiction-city);
 }
 
 .spending-context-title {
@@ -3942,14 +4064,14 @@ body {
     background: var(--ink);
     color: var(--paper);
     padding: 0.875rem 1.5rem;
-    border-radius: 8px;
+    border-radius: var(--radius-md);
     font-size: 0.875rem;
     font-weight: 500;
     z-index: 10000;
     opacity: 0;
     transition: transform 0.3s ease, opacity 0.3s ease;
     pointer-events: none;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: var(--shadow-lg);
 }
 
 .toast.visible {
@@ -3974,7 +4096,7 @@ body {
 .bill-list {
     background: white;
     border: 1px solid var(--paper-line);
-    border-radius: 12px;
+    border-radius: var(--radius-lg);
     overflow: hidden;
 }
 
@@ -4012,7 +4134,7 @@ body {
 .bill-row-indicator {
     width: 8px;
     height: 8px;
-    border-radius: 50%;
+    border-radius: var(--radius-full);
     background: var(--paper-line);
     flex-shrink: 0;
 }
@@ -4109,7 +4231,7 @@ body {
     color: var(--ink-tertiary);
     background: var(--paper);
     padding: 0.25rem 0.5rem;
-    border-radius: 4px;
+    border-radius: var(--radius-xs);
 }
 
 .bill-expanded-reps {
@@ -4133,30 +4255,35 @@ body {
     display: inline-flex;
     align-items: center;
     padding: 0.625rem 1.25rem;
-    border-radius: 6px;
+    border-radius: var(--radius-sm);
     font-size: 0.875rem;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: var(--transition-fast);
     border: none;
     background: var(--coral);
     color: white;
+    box-shadow: var(--shadow-sm);
 }
 
 .bill-expanded-cta:hover {
-    background: #d94d42;
+    background: var(--coral-hover);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
 }
 
 .bill-expanded-cta.secondary {
     background: var(--paper);
     color: var(--ink-secondary);
     border: 1px solid var(--paper-line);
+    box-shadow: var(--shadow-xs);
 }
 
 .bill-expanded-cta.secondary:hover {
-    background: white;
-    border-color: var(--ink-tertiary);
+    background: var(--paper-warm);
+    border-color: var(--paper-line-strong);
     color: var(--ink);
+    box-shadow: var(--shadow-sm);
 }
 
 /* Take Action Section */
@@ -4171,7 +4298,7 @@ body {
 .take-action-card {
     background: white;
     border: 1px solid var(--paper-line);
-    border-radius: 12px;
+    border-radius: var(--radius-lg);
     overflow: hidden;
 }
 
@@ -4222,12 +4349,12 @@ body {
     padding: 0.375rem 0.75rem;
     background: var(--paper);
     border: 1px solid var(--paper-line);
-    border-radius: 6px;
+    border-radius: var(--radius-sm);
     font-size: 0.75rem;
     font-weight: 500;
     color: var(--ink-secondary);
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: var(--transition-fast);
 }
 
 .message-copy-btn:hover {
@@ -4243,7 +4370,7 @@ body {
 
 .message-content {
     background: var(--paper);
-    border-radius: 8px;
+    border-radius: var(--radius-md);
     padding: 1.25rem;
     font-size: 0.875rem;
     line-height: 1.6;
@@ -4276,7 +4403,7 @@ body {
     align-items: center;
     padding: 0.875rem 1rem;
     background: var(--paper);
-    border-radius: 8px;
+    border-radius: var(--radius-md);
     gap: 1rem;
 }
 
@@ -4322,11 +4449,12 @@ body {
     align-items: center;
     gap: 0.375rem;
     padding: 0.5rem 0.875rem;
-    border-radius: 6px;
+    border-radius: var(--radius-sm);
     font-size: 0.8125rem;
     font-weight: 600;
     text-decoration: none;
-    transition: all 0.2s ease;
+    transition: var(--transition-fast);
+    box-shadow: var(--shadow-xs);
 }
 
 .contact-btn svg {
@@ -4337,27 +4465,31 @@ body {
 .contact-btn.email {
     background: var(--coral);
     color: white;
+    box-shadow: var(--shadow-sm);
 }
 
 .contact-btn.email:hover {
-    background: #d94d42;
+    background: var(--coral-hover);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
 }
 
 .contact-btn.phone {
-    background: white;
+    background: var(--paper);
     color: var(--ink);
     border: 1px solid var(--paper-line);
 }
 
 .contact-btn.phone:hover {
-    background: var(--paper);
-    border-color: var(--ink-tertiary);
+    background: var(--paper-warm);
+    border-color: var(--paper-line-strong);
+    box-shadow: var(--shadow-sm);
 }
 
 /* Community Stats */
 .take-action-community {
     padding: 1.25rem;
-    background: linear-gradient(135deg, #F8FBF9 0%, #F5F9F7 100%);
+    background: linear-gradient(135deg, var(--paper-cool) 0%, var(--paper) 100%);
     border-top: 1px solid var(--paper-line);
 }
 
@@ -4389,14 +4521,14 @@ body {
 .community-bar {
     height: 8px;
     background: rgba(45, 90, 61, 0.15);
-    border-radius: 4px;
+    border-radius: var(--radius-xs);
     overflow: hidden;
 }
 
 .community-bar-fill {
     height: 100%;
     background: var(--forest);
-    border-radius: 4px;
+    border-radius: var(--radius-xs);
     transition: width 0.5s ease;
 }
 
@@ -4421,13 +4553,13 @@ body {
     max-width: 120px;
     height: 6px;
     background: var(--paper-line);
-    border-radius: 3px;
+    border-radius: var(--radius-xs);
     overflow: hidden;
 }
 
 .alignment-fill {
     height: 100%;
-    border-radius: 3px;
+    border-radius: var(--radius-xs);
     transition: width 0.5s ease;
 }
 
