@@ -3168,24 +3168,38 @@
                 <p class="profile-subtitle">Everything you've paid. Everything you've received.</p>
             </section>
 
-            <!-- Lifetime Summary -->
-            <section class="summary-section animate-in delay-1">
-                <p class="section-label">Lifetime Summary</p>
+            <!-- Year Selector -->
+            <section class="animate-in delay-1">
+                <div class="year-selector-page1">
+                    <span class="year-selector-page1-label">Tax year:</span>
+                    <div class="year-pills">
+                        <button class="year-pill" data-year="2020">2020</button>
+                        <button class="year-pill" data-year="2021">2021</button>
+                        <button class="year-pill" data-year="2022">2022</button>
+                        <button class="year-pill" data-year="2023">2023</button>
+                        <button class="year-pill" data-year="2024">2024</button>
+                        <button class="year-pill active" data-year="2025" id="page1-year-2025">2025</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Annual Summary -->
+            <section class="summary-section animate-in delay-2">
                 <div class="summary-grid">
                     <div class="summary-card">
                         <p class="summary-label">
-                            Total taxes paid
+                            Taxes paid
                             <span class="tooltip-trigger">
                                 <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <circle cx="12" cy="12" r="10"/>
                                     <path d="M12 16v-4M12 8h.01"/>
                                 </svg>
-                                <span class="tooltip">Federal, state, and local combined</span>
+                                <span class="tooltip tooltip-below">Federal, state, and local combined</span>
                             </span>
                         </p>
-                        <p class="summary-value">$127,842</p>
+                        <p class="summary-value" id="annual-taxes-paid">$37,290</p>
                         <div style="display: flex; align-items: center; gap: 0.5rem;">
-                            <span class="summary-meta">2019 – 2025</span>
+                            <span class="summary-meta" id="annual-taxes-year">2025</span>
                             <span class="data-badge confirmed"><span class="data-badge-dot"></span>Confirmed</span>
                         </div>
                     </div>
@@ -3200,9 +3214,9 @@
                                 <span class="tooltip tooltip-below">Refunds, credits, and deductions</span>
                             </span>
                         </p>
-                        <p class="summary-value">$18,340</p>
+                        <p class="summary-value" id="annual-benefits">$6,759</p>
                         <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
-                            <span class="summary-meta">2019 – 2025</span>
+                            <span class="summary-meta" id="annual-benefits-year">2025</span>
                             <a href="#" onclick="navigateTo('owed'); event.stopPropagation(); return false;" style="font-size: 0.75rem; color: var(--coral); text-decoration: none; font-weight: 500;">View details →</a>
                         </div>
                     </div>
@@ -3214,36 +3228,20 @@
                                     <circle cx="12" cy="12" r="10"/>
                                     <path d="M12 16v-4M12 8h.01"/>
                                 </svg>
-                                <span class="tooltip">What you put in minus what you got back</span>
+                                <span class="tooltip tooltip-below">What you put in minus what you got back</span>
                             </span>
                         </p>
-                        <p class="summary-value">$109,502</p>
+                        <p class="summary-value" id="annual-net">$30,531</p>
                         <div style="display: flex; align-items: center; gap: 0.5rem;">
-                            <span class="summary-meta">2019 – 2025</span>
+                            <span class="summary-meta" id="annual-net-year">2025</span>
                             <span class="data-badge confirmed"><span class="data-badge-dot"></span>Confirmed</span>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Section Divider -->
-            <div class="section-divider"></div>
-
             <!-- This Year Section -->
-            <section class="this-year-section animate-in delay-2">
-                <!-- Year Selector -->
-                <div class="year-selector-page1">
-                    <span class="year-selector-page1-label">Tax year:</span>
-                    <div class="year-pills">
-                        <button class="year-pill" data-year="2020">2020</button>
-                        <button class="year-pill" data-year="2021">2021</button>
-                        <button class="year-pill" data-year="2022">2022</button>
-                        <button class="year-pill" data-year="2023">2023</button>
-                        <button class="year-pill" data-year="2024">2024</button>
-                        <button class="year-pill active" data-year="2025" id="page1-year-2025">2025</button>
-                    </div>
-                </div>
-
+            <section class="this-year-section animate-in delay-3">
                 <!-- What You Paid Card -->
                 <div class="taxes-paid-card">
                     <div class="taxes-paid-header">
@@ -6275,6 +6273,16 @@
             }
         };
 
+        // Annual summary data (total taxes, benefits, net contribution by year)
+        const annualSummaryByYear = {
+            2020: { totalTaxes: 28540, benefits: 2180, netContribution: 26360 },
+            2021: { totalTaxes: 31280, benefits: 5840, netContribution: 25440 },
+            2022: { totalTaxes: 33650, benefits: 3420, netContribution: 30230 },
+            2023: { totalTaxes: 34890, benefits: 2950, netContribution: 31940 },
+            2024: { totalTaxes: 36120, benefits: 3180, netContribution: 32940 },
+            2025: { totalTaxes: 37290, benefits: 6759, netContribution: 30531 }
+        };
+
         let currentYear = 2023;
 
         // ==========================================
@@ -6523,8 +6531,33 @@
                 this.classList.add('active');
                 const selectedYear = parseInt(this.dataset.year);
                 updateTaxDisplay(selectedYear);
+                updateAnnualSummary(selectedYear);
             });
         });
+
+        // Update annual summary boxes
+        function updateAnnualSummary(year) {
+            const data = annualSummaryByYear[year];
+            if (!data) return;
+
+            // Update values
+            const taxesPaid = document.getElementById('annual-taxes-paid');
+            const benefits = document.getElementById('annual-benefits');
+            const net = document.getElementById('annual-net');
+
+            if (taxesPaid) taxesPaid.textContent = '$' + data.totalTaxes.toLocaleString();
+            if (benefits) benefits.textContent = '$' + data.benefits.toLocaleString();
+            if (net) net.textContent = '$' + data.netContribution.toLocaleString();
+
+            // Update year labels
+            const taxesYear = document.getElementById('annual-taxes-year');
+            const benefitsYear = document.getElementById('annual-benefits-year');
+            const netYear = document.getElementById('annual-net-year');
+
+            if (taxesYear) taxesYear.textContent = year;
+            if (benefitsYear) benefitsYear.textContent = year;
+            if (netYear) netYear.textContent = year;
+        }
 
         // ==========================================
         // ALLOCATION BAR - Tooltips & Click behavior
