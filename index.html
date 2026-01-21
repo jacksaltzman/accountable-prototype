@@ -792,10 +792,36 @@
             color: var(--ink-tertiary);
         }
 
+        .trend-chart-wrapper {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .trend-y-axis {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 0 0 0.5rem 0;
+            min-width: 36px;
+        }
+
+        .trend-y-label {
+            font-size: 0.625rem;
+            font-weight: 500;
+            color: var(--ink-tertiary);
+            text-align: right;
+        }
+
+        .trend-chart-area {
+            flex: 1;
+            min-width: 0;
+        }
+
         .trend-chart-container {
             position: relative;
-            height: 180px;
-            margin-bottom: 1rem;
+            height: 140px;
+            margin-bottom: 0.5rem;
         }
 
         .trend-chart-svg {
@@ -834,6 +860,32 @@
             fill: var(--coral);
         }
 
+        .trend-year-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .trend-year-label {
+            font-size: 0.6875rem;
+            font-weight: 600;
+            color: var(--ink-tertiary);
+            cursor: pointer;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .trend-year-label:hover {
+            background: var(--paper-warm);
+            color: var(--ink);
+        }
+
+        .trend-year-label.active {
+            background: var(--ink);
+            color: var(--paper);
+        }
+
         .trend-summary-stats {
             display: flex;
             gap: 2rem;
@@ -866,13 +918,49 @@
             border-top: 1px solid var(--paper-line);
         }
 
+        .policy-markers-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+
         .policy-markers-title {
             font-size: 0.75rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.05em;
             color: var(--ink-tertiary);
-            margin-bottom: 0.75rem;
+        }
+
+        .policy-markers-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--ink-secondary);
+            background: var(--paper);
+            border: 1px solid var(--paper-line);
+            cursor: pointer;
+            padding: 0.375rem 0.625rem;
+            border-radius: 4px;
+            transition: all 0.2s;
+            font-family: var(--sans);
+            white-space: nowrap;
+        }
+
+        .policy-markers-link:hover {
+            color: var(--ink);
+            background: var(--paper-warm);
+            border-color: var(--ink-tertiary);
+        }
+
+        .policy-markers-link svg {
+            width: 14px;
+            height: 14px;
         }
 
         .policy-marker-list {
@@ -954,8 +1042,16 @@
                 gap: 1rem;
             }
 
+            .trend-y-axis {
+                min-width: 30px;
+            }
+
+            .trend-y-label {
+                font-size: 0.5625rem;
+            }
+
             .trend-chart-container {
-                height: 140px;
+                height: 120px;
             }
         }
 
@@ -3827,39 +3923,45 @@
                         <p class="trend-viz-subtitle">Click any year to see details</p>
                     </div>
 
-                    <div class="trend-chart-container">
-                        <svg class="trend-chart-svg" id="trend-chart-svg" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid meet">
-                            <defs>
-                                <linearGradient id="trendGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                                    <stop offset="0%" style="stop-color: var(--coral); stop-opacity: 0.3"/>
-                                    <stop offset="100%" style="stop-color: var(--coral); stop-opacity: 0"/>
-                                </linearGradient>
-                            </defs>
-                            <!-- Grid lines -->
-                            <g class="trend-grid" stroke="var(--paper-line)" stroke-width="1">
-                                <line x1="50" y1="20" x2="370" y2="20" stroke-dasharray="4"/>
-                                <line x1="50" y1="53" x2="370" y2="53" stroke-dasharray="4"/>
-                                <line x1="50" y1="86" x2="370" y2="86" stroke-dasharray="4"/>
-                                <line x1="50" y1="120" x2="370" y2="120" stroke-dasharray="4"/>
-                            </g>
-                            <!-- Y-axis labels -->
-                            <g class="trend-y-labels" fill="var(--ink-tertiary)" font-size="10" font-family="var(--sans)">
-                                <text x="45" y="24" text-anchor="end">$40k</text>
-                                <text x="45" y="57" text-anchor="end">$30k</text>
-                                <text x="45" y="90" text-anchor="end">$20k</text>
-                                <text x="45" y="124" text-anchor="end">$10k</text>
-                            </g>
-                            <!-- Area fill -->
-                            <path class="trend-area" id="trend-area" d=""></path>
-                            <!-- Line -->
-                            <path class="trend-line" id="trend-line" d=""></path>
-                            <!-- Points -->
-                            <g id="trend-points"></g>
-                            <!-- Year labels (rendered by JS at same x as points) -->
-                            <g id="trend-year-labels-svg"></g>
-                            <!-- Policy markers -->
-                            <g id="policy-markers-svg"></g>
-                        </svg>
+                    <div class="trend-chart-wrapper">
+                        <div class="trend-y-axis">
+                            <span class="trend-y-label">$40k</span>
+                            <span class="trend-y-label">$30k</span>
+                            <span class="trend-y-label">$20k</span>
+                            <span class="trend-y-label">$10k</span>
+                        </div>
+                        <div class="trend-chart-area">
+                            <div class="trend-chart-container">
+                                <svg class="trend-chart-svg" id="trend-chart-svg">
+                                    <defs>
+                                        <linearGradient id="trendGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                            <stop offset="0%" style="stop-color: var(--coral); stop-opacity: 0.3"/>
+                                            <stop offset="100%" style="stop-color: var(--coral); stop-opacity: 0"/>
+                                        </linearGradient>
+                                    </defs>
+                                    <!-- Grid lines (drawn dynamically) -->
+                                    <g class="trend-grid" id="trend-grid" stroke="var(--paper-line)" stroke-width="1">
+                                    </g>
+                                    <!-- Area fill -->
+                                    <path class="trend-area" id="trend-area" d=""></path>
+                                    <!-- Line -->
+                                    <path class="trend-line" id="trend-line" d=""></path>
+                                    <!-- Points -->
+                                    <g id="trend-points"></g>
+                                    <!-- Policy markers -->
+                                    <g id="policy-markers-svg"></g>
+                                </svg>
+                            </div>
+                            <div class="trend-year-labels" id="trend-year-labels">
+                                <span class="trend-year-label" data-year="2019">'19</span>
+                                <span class="trend-year-label" data-year="2020">'20</span>
+                                <span class="trend-year-label" data-year="2021">'21</span>
+                                <span class="trend-year-label" data-year="2022">'22</span>
+                                <span class="trend-year-label" data-year="2023">'23</span>
+                                <span class="trend-year-label" data-year="2024">'24</span>
+                                <span class="trend-year-label active" data-year="2025">'25</span>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="trend-summary-stats">
@@ -3874,7 +3976,15 @@
                     </div>
 
                     <div class="policy-markers">
-                        <p class="policy-markers-title">Policy events affecting your taxes</p>
+                        <div class="policy-markers-header">
+                            <p class="policy-markers-title">Policy events affecting your taxes</p>
+                            <button class="policy-markers-link" onclick="navigateTo('voice')">
+                                See how your representatives voted
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                            </button>
+                        </div>
                         <div class="policy-marker-list" id="policy-marker-list">
                             <div class="policy-marker">
                                 <span class="policy-marker-year">2021</span>
@@ -7320,24 +7430,49 @@ Thank you for contributing to your community.
         let selectedTrendYear = 2025;
 
         function initTrendChart() {
+            const svg = document.getElementById('trend-chart-svg');
+            if (!svg) return;
+
+            const rect = svg.getBoundingClientRect();
+
+            // If dimensions aren't ready yet, wait for next frame
+            if (rect.width === 0 || rect.height === 0) {
+                requestAnimationFrame(initTrendChart);
+                return;
+            }
+
+            // Set viewBox to match actual pixel dimensions (prevents stretching)
+            svg.setAttribute('viewBox', `0 0 ${rect.width} ${rect.height}`);
+
             const years = [2019, 2020, 2021, 2022, 2023, 2024, 2025];
             const amounts = years.map(year => taxHistoryByYear[year].total);
-            const maxAmount = 40000;
-            const minAmount = 10000;
+            const maxAmount = 40000; // Fixed scale for visual consistency
+            const minAmount = 0;
 
-            // Chart dimensions matching the SVG viewBox and grid lines
-            const plotLeft = 50;
-            const plotRight = 370;
-            const plotTop = 20;
-            const plotBottom = 120;
-            const plotWidth = plotRight - plotLeft;
-            const plotHeight = plotBottom - plotTop;
-            const yearLabelY = 150;
+            const chartWidth = rect.width;
+            const chartHeight = rect.height;
+            const padding = { top: 5, right: 0, bottom: 5, left: 0 };
+            const plotWidth = chartWidth - padding.left - padding.right;
+            const plotHeight = chartHeight - padding.top - padding.bottom;
+
+            // Draw grid lines dynamically
+            const gridGroup = document.getElementById('trend-grid');
+            gridGroup.innerHTML = '';
+            const gridYPositions = [0, 0.25, 0.5, 0.75].map(ratio => padding.top + ratio * plotHeight);
+            gridYPositions.forEach(y => {
+                const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                line.setAttribute('x1', 0);
+                line.setAttribute('y1', y);
+                line.setAttribute('x2', chartWidth);
+                line.setAttribute('y2', y);
+                line.setAttribute('stroke-dasharray', '4');
+                gridGroup.appendChild(line);
+            });
 
             // Calculate point positions
             const points = years.map((year, i) => {
-                const x = plotLeft + (i / (years.length - 1)) * plotWidth;
-                const y = plotTop + plotHeight - ((amounts[i] - minAmount) / (maxAmount - minAmount)) * plotHeight;
+                const x = padding.left + (i / (years.length - 1)) * plotWidth;
+                const y = padding.top + plotHeight - ((amounts[i] - minAmount) / (maxAmount - minAmount)) * plotHeight;
                 return { x, y, year, amount: amounts[i] };
             });
 
@@ -7347,8 +7482,8 @@ Thank you for contributing to your community.
 
             // Create area path
             const areaPath = linePath +
-                ` L${points[points.length - 1].x},${plotBottom}` +
-                ` L${points[0].x},${plotBottom} Z`;
+                ` L${points[points.length - 1].x},${padding.top + plotHeight}` +
+                ` L${points[0].x},${padding.top + plotHeight} Z`;
             document.getElementById('trend-area').setAttribute('d', areaPath);
 
             // Create points
@@ -7364,26 +7499,6 @@ Thank you for contributing to your community.
                 circle.setAttribute('data-amount', p.amount);
                 circle.addEventListener('click', () => selectTrendYear(p.year));
                 pointsGroup.appendChild(circle);
-            });
-
-            // Create year labels inside SVG at same x positions as points
-            const yearLabelsGroup = document.getElementById('trend-year-labels-svg');
-            yearLabelsGroup.innerHTML = '';
-            points.forEach(p => {
-                const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-                text.setAttribute('x', p.x);
-                text.setAttribute('y', yearLabelY);
-                text.setAttribute('text-anchor', 'middle');
-                text.setAttribute('font-size', '11');
-                text.setAttribute('font-family', 'var(--sans)');
-                text.setAttribute('fill', p.year === selectedTrendYear ? 'var(--ink)' : 'var(--ink-tertiary)');
-                text.setAttribute('font-weight', p.year === selectedTrendYear ? '600' : '500');
-                text.setAttribute('class', 'trend-year-label-svg');
-                text.setAttribute('data-year', p.year);
-                text.setAttribute('cursor', 'pointer');
-                text.textContent = "'" + String(p.year).slice(-2);
-                text.addEventListener('click', () => selectTrendYear(p.year));
-                yearLabelsGroup.appendChild(text);
             });
 
             // Add policy markers on SVG
@@ -7440,15 +7555,13 @@ Thank you for contributing to your community.
                 }
             });
 
-            // Update SVG year labels
-            document.querySelectorAll('.trend-year-label-svg').forEach(label => {
+            // Update year labels
+            document.querySelectorAll('.trend-year-label').forEach(label => {
                 const labelYear = parseInt(label.getAttribute('data-year'));
                 if (labelYear === year) {
-                    label.setAttribute('fill', 'var(--ink)');
-                    label.setAttribute('font-weight', '600');
+                    label.classList.add('active');
                 } else {
-                    label.setAttribute('fill', 'var(--ink-tertiary)');
-                    label.setAttribute('font-weight', '500');
+                    label.classList.remove('active');
                 }
             });
 
@@ -7595,6 +7708,16 @@ Thank you for contributing to your community.
             if (percentages[2]) percentages[2].textContent = cityPercent + '%';
         }
 
+        // Add event listeners for trend year labels
+        function initTrendYearLabels() {
+            document.querySelectorAll('.trend-year-label').forEach(label => {
+                label.addEventListener('click', function() {
+                    const year = parseInt(this.getAttribute('data-year'));
+                    selectTrendYear(year);
+                });
+            });
+        }
+
         // ==========================================
         // INITIALIZATION
         // ==========================================
@@ -7605,10 +7728,18 @@ Thank you for contributing to your community.
 
             // Initialize tax history trend features
             initTrendChart();
+            initTrendYearLabels();
             updateYearComparison(2025);
 
             // Navigate to default page
             navigateTo('file');
+
+            // Redraw chart on window resize
+            let resizeTimeout;
+            window.addEventListener('resize', function() {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(initTrendChart, 100);
+            });
         });
     </script>
 </body>
