@@ -7389,6 +7389,9 @@ Thank you for contributing to your community.
             const svg = document.getElementById('trend-chart-svg');
             const rect = svg.getBoundingClientRect();
 
+            // Set viewBox to match actual pixel dimensions (prevents stretching)
+            svg.setAttribute('viewBox', `0 0 ${rect.width} ${rect.height}`);
+
             const years = [2019, 2020, 2021, 2022, 2023, 2024, 2025];
             const amounts = years.map(year => taxHistoryByYear[year].total);
             const maxAmount = 40000; // Fixed scale for visual consistency
