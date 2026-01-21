@@ -1591,6 +1591,23 @@ Sincerely,
     }
 };
 
+// Toggle bill details visibility
+function toggleBillDetails(button) {
+    const card = button.closest('.bill-card');
+    const details = card.querySelector('.bill-card-details');
+
+    button.classList.toggle('expanded');
+    details.classList.toggle('visible');
+
+    // Update button text
+    const span = button.querySelector('span');
+    if (details.classList.contains('visible')) {
+        span.textContent = 'Hide details';
+    } else {
+        span.textContent = 'Details';
+    }
+}
+
 // Open Take Action module for a specific bill
 function openTakeAction(billId) {
     const bill = billData[billId];
