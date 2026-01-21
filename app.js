@@ -1506,6 +1506,168 @@ function initTrendYearLabels() {
 }
 
 // ==========================================
+// CIVIC ENGAGEMENT FEATURES
+// ==========================================
+
+// Bill data for Take Action messages
+const billData = {
+    'salt-repeal': {
+        name: 'SALT Deduction Cap Repeal Act',
+        billNumber: 'S.1234',
+        impact: '+$4,280/year',
+        message: `Dear [Representative],
+
+As your constituent in New York, I'm writing to urge your support for the SALT Deduction Cap Repeal Act (S.1234).
+
+The $10,000 cap on state and local tax deductions costs me $4,280 per year in additional federal taxes. This cap disproportionately affects middle-class families in high-cost states like New York who rely on strong public services.
+
+I urge you to support this legislation and prioritize bringing it to a floor vote.
+
+Sincerely,
+[Your Name]
+[Your Address]`,
+        contacts: [
+            { name: 'Sen. Charles Schumer', stance: 'support', email: 'senator@schumer.senate.gov', phone: '+12022244451' },
+            { name: 'Sen. Kirsten Gillibrand', stance: 'support', email: 'senator@gillibrand.senate.gov', phone: '+12024544752' }
+        ]
+    },
+    'ctc-enhance': {
+        name: 'Child Tax Credit Enhancement Act',
+        billNumber: 'H.R.5678',
+        impact: '+$1,600/year',
+        message: `Dear Representative Nadler,
+
+As your constituent in NY-12, I'm writing to urge your support for the Child Tax Credit Enhancement Act (H.R.5678).
+
+As a parent, expanding the Child Tax Credit to $3,600 per child would provide meaningful support for my family - approximately $1,600 more per year. Making the credit fully refundable would also help working families who need it most.
+
+I appreciate your leadership on family tax issues and ask that you prioritize this legislation in committee.
+
+Sincerely,
+[Your Name]
+[Your Address]`,
+        contacts: [
+            { name: 'Rep. Jerry Nadler', stance: 'support', email: 'congressman@nadler.house.gov', phone: '+12022255635' }
+        ]
+    },
+    'tcja-extend': {
+        name: 'TCJA Extension Act',
+        billNumber: 'H.R.9012',
+        impact: 'Mixed',
+        message: `Dear [Representative],
+
+I'm writing regarding the TCJA Extension Act (H.R.9012).
+
+While some provisions of the 2017 Tax Cuts and Jobs Act have benefited middle-class families like mine, others - particularly the SALT cap - have increased my tax burden by $4,280 per year.
+
+I urge you to consider the full impact of these provisions on working families in high-cost states before voting on this extension.
+
+Sincerely,
+[Your Name]
+[Your Address]`,
+        contacts: [
+            { name: 'Rep. Jerry Nadler', stance: 'oppose', email: 'congressman@nadler.house.gov', phone: '+12022255635' }
+        ]
+    },
+    'eitc-expand': {
+        name: 'EITC Expansion for Working Families',
+        billNumber: 'S.3456',
+        impact: '+$800/year',
+        message: `Dear Senator,
+
+As your constituent, I'm writing to urge your support for the EITC Expansion for Working Families Act (S.3456).
+
+The Earned Income Tax Credit is one of the most effective anti-poverty programs in America. Expanding it would help working families like mine keep more of what we earn.
+
+I appreciate your attention to this important issue.
+
+Sincerely,
+[Your Name]
+[Your Address]`,
+        contacts: [
+            { name: 'Sen. Kirsten Gillibrand', stance: 'support', email: 'senator@gillibrand.senate.gov', phone: '+12024544752' },
+            { name: 'Sen. Charles Schumer', stance: 'support', email: 'senator@schumer.senate.gov', phone: '+12022244451' }
+        ]
+    }
+};
+
+// Open Take Action module for a specific bill
+function openTakeAction(billId) {
+    const bill = billData[billId];
+    if (!bill) return;
+
+    // Update the Take Action card content
+    const billName = document.getElementById('take-action-bill');
+    const messageContent = document.getElementById('take-action-message-content');
+
+    if (billName) {
+        billName.textContent = bill.name;
+    }
+
+    if (messageContent) {
+        // Format the message with paragraphs
+        const paragraphs = bill.message.split('\n\n');
+        messageContent.innerHTML = paragraphs.map(p => `<p>${p.replace(/\n/g, '<br>')}</p>`).join('');
+    }
+
+    // Scroll to the Take Action section
+    const takeActionSection = document.getElementById('take-action-section');
+    if (takeActionSection) {
+        takeActionSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+        // Add highlight animation
+        takeActionSection.classList.add('highlight');
+        setTimeout(() => {
+            takeActionSection.classList.remove('highlight');
+        }, 2000);
+    }
+}
+
+// Toggle legislation details (expand/collapse)
+function toggleLegislationDetails(billId) {
+    const item = document.querySelector(`.legislation-item[data-bill="${billId}"]`);
+    if (item) {
+        item.classList.toggle('expanded');
+    }
+}
+
+// Copy message to clipboard
+function copyMessage() {
+    const messageContent = document.getElementById('take-action-message-content');
+    if (!messageContent) return;
+
+    const text = messageContent.innerText;
+
+    navigator.clipboard.writeText(text).then(() => {
+        showToast('Message copied to clipboard');
+    }).catch(err => {
+        // Fallback for older browsers
+        const textArea = document.createElement('textarea');
+        textArea.value = text;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        showToast('Message copied to clipboard');
+    });
+}
+
+// Initialize legislation item click handlers
+function initLegislationTracker() {
+    document.querySelectorAll('.legislation-item').forEach(item => {
+        item.addEventListener('click', function(e) {
+            // Don't trigger if clicking on a button inside
+            if (e.target.closest('button') || e.target.closest('a')) return;
+
+            const billId = this.getAttribute('data-bill');
+            if (billId) {
+                openTakeAction(billId);
+            }
+        });
+    });
+}
+
+// ==========================================
 // INITIALIZATION
 // ==========================================
 
@@ -1517,6 +1679,9 @@ document.addEventListener('DOMContentLoaded', function() {
     initTrendChart();
     initTrendYearLabels();
     updateYearComparison(2025);
+
+    // Initialize civic engagement features
+    initLegislationTracker();
 
     // Navigate to default page
     navigateTo('file');
