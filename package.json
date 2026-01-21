@@ -4,9 +4,9 @@
   "description": "Understand your taxes, claim your benefits, and make your voice heard.",
   "private": true,
   "scripts": {
-    "lint": "eslint *.html --ext .html",
+    "lint": "eslint *.html *.js --ext .html,.js",
     "lint:css": "stylelint \"*.css\"",
-    "lint:fix": "eslint *.html --ext .html --fix",
+    "lint:fix": "eslint *.html *.js --ext .html,.js --fix",
     "format": "prettier --write \"*.{html,css,js,json,md}\"",
     "format:check": "prettier --check \"*.{html,css,js,json,md}\"",
     "validate": "npm run lint && npm run lint:css"
